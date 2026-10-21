@@ -1,0 +1,93 @@
+{
+  "task_id": "0f1c18f3d960487c96c0b1b7091f94c3",
+  "status": "REJECTED",
+  "probe": {
+    "type": "NATIVE_PROBE",
+    "case_id": "policy",
+    "target": "src/cases_test.cj",
+    "policy": {
+      "request": {
+        "schema_version": 1,
+        "policy_version": "1.1",
+        "request_id": "42c4fad31fc04844b711bc6f823f8e2c",
+        "task_id": "0f1c18f3d960487c96c0b1b7091f94c3",
+        "action": "candidate.apply",
+        "paths": [
+          "src/cases_test.cj"
+        ],
+        "input_tree_hash": "340ba9b06c34626e3b2820632bb3d28dad9ffe876bae78cd897dd6d2ff3893e0",
+        "arguments_hash": "953294ba8733372729da6285b7e4fda662c9db26c18e1141fbad61b0d9f40859",
+        "remaining_budget": 1,
+        "accepted": false,
+        "approval_binding": "",
+        "deadline_at": 1792486305742
+      },
+      "decision": {
+        "schema_version": 1,
+        "policy_version": "1.1",
+        "request_id": "42c4fad31fc04844b711bc6f823f8e2c",
+        "input_tree_hash": "340ba9b06c34626e3b2820632bb3d28dad9ffe876bae78cd897dd6d2ff3893e0",
+        "arguments_hash": "953294ba8733372729da6285b7e4fda662c9db26c18e1141fbad61b0d9f40859",
+        "approval_binding": "",
+        "decision": "Deny",
+        "reason": "PROTECTED_PATH",
+        "policy_component_hash": "80a0cf08fa49e0fa4b9083f5264cb3087e97e84f8df1b07ad845790cccf888c9",
+        "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+      }
+    },
+    "mcp_status": "ERROR",
+    "baseline_unchanged": true,
+    "candidate_writes": 0,
+    "schema_version": 1,
+    "event_id": "52bb81013c714b9e9ad7e94a39b617f2",
+    "task_id": "0f1c18f3d960487c96c0b1b7091f94c3",
+    "sequence": 1,
+    "candidate_id": null,
+    "input_ref": null,
+    "output_ref": null,
+    "object_ref": null,
+    "status": "READY",
+    "occurred_at": 1792486276.446225,
+    "data": {
+      "type": "NATIVE_PROBE",
+      "case_id": "policy",
+      "target": "src/cases_test.cj",
+      "policy": {
+        "request": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "42c4fad31fc04844b711bc6f823f8e2c",
+          "task_id": "0f1c18f3d960487c96c0b1b7091f94c3",
+          "action": "candidate.apply",
+          "paths": [
+            "src/cases_test.cj"
+          ],
+          "input_tree_hash": "340ba9b06c34626e3b2820632bb3d28dad9ffe876bae78cd897dd6d2ff3893e0",
+          "arguments_hash": "953294ba8733372729da6285b7e4fda662c9db26c18e1141fbad61b0d9f40859",
+          "remaining_budget": 1,
+          "accepted": false,
+          "approval_binding": "",
+          "deadline_at": 1792486305742
+        },
+        "decision": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "42c4fad31fc04844b711bc6f823f8e2c",
+          "input_tree_hash": "340ba9b06c34626e3b2820632bb3d28dad9ffe876bae78cd897dd6d2ff3893e0",
+          "arguments_hash": "953294ba8733372729da6285b7e4fda662c9db26c18e1141fbad61b0d9f40859",
+          "approval_binding": "",
+          "decision": "Deny",
+          "reason": "PROTECTED_PATH",
+          "policy_component_hash": "80a0cf08fa49e0fa4b9083f5264cb3087e97e84f8df1b07ad845790cccf888c9",
+          "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+        }
+      },
+      "mcp_status": "ERROR",
+      "baseline_unchanged": true,
+      "candidate_writes": 0
+    }
+  },
+  "model_requests": 0,
+  "candidates": 0,
+  "acceptances": 0
+}

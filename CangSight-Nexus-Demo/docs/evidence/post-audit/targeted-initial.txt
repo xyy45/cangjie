@@ -1,0 +1,69 @@
+............F...........                                                 [100%]
+=================================== FAILURES ===================================
+____________ test_real_stdio_search_matches_misses_empty_and_limit _____________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-68/test_real_stdio_search_matches0')
+
+    def test_real_stdio_search_matches_misses_empty_and_limit(tmp_path):
+        source = tmp_path / 'registered'
+        (source / 'src').mkdir(parents=True)
+        (source / 'cjpm.toml').write_text('[package]\nname="searchdemo"')
+        content = 'package searchdemo\n' + ''.join(f'// needle line {n}\n' for n in range(105))
+        (source / 'src/search.cj').write_text(content)
+        ws = WorkspaceStore(tmp_path / 'runs', registered=[source])
+        baseline = ws.import_project(source, '.')
+        async def run():
+            async with ToolClient(ws.root) as client:
+                async def search(query):
+                    return await client.call_tool('workspace.search', dict(baseline_id=baseline, query=query))
+                hit = await search('needle line 104')
+                assert hit.operation_status == 'OK'
+                assert hit.data == {'matches': [{'path': 'src/search.cj', 'line': 106,
+                                                 'text': '// needle line 104'}], 'truncated': False}
+                missing = await search('not-in-this-project')
+                assert missing.operation_status == 'OK'
+                assert missing.data == {'matches': [], 'truncated': False}
+                empty = await search('')
+                assert empty.operation_status == 'ERROR'
+                assert 'query' in empty.error
+                limited = await search('needle')
+                assert limited.operation_status == 'OK'
+                assert limited.data['truncated'] is True
+                assert limited.data['matches'] == [
+                    {'path': 'src/search.cj', 'line': n+2, 'text': f'// needle line {n}'} for n in range(100)]
+>       asyncio.run(run())
+
+tests/integration/test_mcp_protocol.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def run():
+        async with ToolClient(ws.root) as client:
+            async def search(query):
+                return await client.call_tool('workspace.search', dict(baseline_id=baseline, query=query))
+            hit = await search('needle line 104')
+            assert hit.operation_status == 'OK'
+            assert hit.data == {'matches': [{'path': 'src/search.cj', 'line': 106,
+                                             'text': '// needle line 104'}], 'truncated': False}
+            missing = await search('not-in-this-project')
+            assert missing.operation_status == 'OK'
+            assert missing.data == {'matches': [], 'truncated': False}
+            empty = await search('')
+            assert empty.operation_status == 'ERROR'
+>           assert 'query' in empty.error
+E           assert 'query' in '[TextContent(type=\'text\', text="Input validation error: \'\' should be non-empty", annotations=None, meta=None)]'
+E            +  where '[TextContent(type=\'text\', text="Input validation error: \'\' should be non-empty", annotations=None, meta=None)]' = ToolResult(operation_status='ERROR', data={}, error='[TextContent(type=\'text\', text="Input validation error: \'\' should be non-empty", annotations=None, meta=None)]', record_refs=[]).error
+
+tests/integration/test_mcp_protocol.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_mcp_protocol.py::test_real_stdio_search_matches_misses_empty_and_limit
+1 failed, 23 passed in 5.93s

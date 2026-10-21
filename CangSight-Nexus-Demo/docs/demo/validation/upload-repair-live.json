@@ -1,0 +1,99 @@
+{
+  "task_id": "b68093de2f8146be98f289df1ee62c2e",
+  "project_id": "upload_01d7569c432949d5b5a6d12c8c229d05",
+  "candidate_id": "c_e46af204802845e99efa73b8a2cd9739",
+  "status": "REVIEW_PENDING",
+  "source_sha256": "f59260ef8cfe7b8e3c5022dae45c100f8fa9264dbd357cbb420575010f7527c8",
+  "source_prefix": "package uploadedrepair\n",
+  "baseline_hash": "7f96292a17d696ee415659d3b50250aa133061e972f8baab024e67ff116b6f8b",
+  "candidate_tree_hash": "fe845e04f28cf466dbd2f4c200034d10241688fe3ebcb333603d3d7e91072044",
+  "model_requests": 1,
+  "attempts": 1,
+  "model_context_matches_bound_sources": true,
+  "examples": [
+    {
+      "args": [
+        3,
+        100
+      ],
+      "expected": 300,
+      "suite": "target"
+    },
+    {
+      "args": [
+        0,
+        100
+      ],
+      "expected": -1,
+      "suite": "target"
+    },
+    {
+      "args": [
+        1,
+        0
+      ],
+      "expected": 0,
+      "suite": "regression"
+    },
+    {
+      "args": [
+        -1,
+        100
+      ],
+      "expected": -1,
+      "suite": "regression"
+    },
+    {
+      "args": [
+        1000,
+        1000000
+      ],
+      "expected": 1000000000,
+      "suite": "regression"
+    },
+    {
+      "args": [
+        1001,
+        100
+      ],
+      "expected": -1,
+      "suite": "regression"
+    }
+  ],
+  "tools": [
+    {
+      "tool": "sympas_slice",
+      "status": "UNAVAILABLE",
+      "included": false
+    },
+    {
+      "tool": "sympas_dep_graph",
+      "status": "VALID",
+      "included": true
+    },
+    {
+      "tool": "ast_symbol_extractor",
+      "status": "VALID",
+      "included": true
+    }
+  ],
+  "final_checks": {
+    "build": {
+      "state": "PASS",
+      "counts": {},
+      "plan_hash": "5931f3f5ae2236aa3f354d62daaeb6a0aa9bbe46fd20c166ba105afe197652bf"
+    },
+    "test": {
+      "state": "PASS",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "skipped": 0,
+        "total": 6
+      },
+      "plan_hash": "5931f3f5ae2236aa3f354d62daaeb6a0aa9bbe46fd20c166ba105afe197652bf"
+    }
+  },
+  "acceptances": 0
+}

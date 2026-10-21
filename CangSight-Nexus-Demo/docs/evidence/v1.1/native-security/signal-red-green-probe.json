@@ -1,0 +1,14 @@
+[
+  {
+    "extra": "",
+    "exit": 0,
+    "stdout": "UNRELATED_SIGNAL_ALLOWED\n",
+    "stderr": ""
+  },
+  {
+    "extra": "(deny signal)(allow signal (target self))(allow signal (target children))",
+    "exit": 0,
+    "stdout": "UNRELATED_SIGNAL_DENIED\n",
+    "stderr": ""
+  }
+]

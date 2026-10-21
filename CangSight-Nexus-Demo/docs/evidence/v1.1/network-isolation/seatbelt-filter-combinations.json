@@ -1,0 +1,42 @@
+[
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound(require-not(remote tcp \"localhost:8765\")))",
+    "code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound(require-all(remote tcp \"localhost:*\")(require-not(remote tcp \"localhost:8765\"))))",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-bind)(allow network-outbound(require-not(remote tcp \"localhost:8765\")))",
+    "code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-bind)(allow network-outbound(require-all(remote tcp \"localhost:*\")(require-not(remote tcp \"localhost:8765\"))))",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-inbound(local tcp \"*:*\"))(allow network-outbound(require-not(remote tcp \"localhost:8765\")))",
+    "code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-inbound(local tcp \"*:*\"))(allow network-outbound(require-all(remote tcp \"localhost:*\")(require-not(remote tcp \"localhost:8765\"))))",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-inbound(remote tcp \"localhost:*\"))(allow network-outbound(require-not(remote tcp \"localhost:8765\")))",
+    "code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "profile": "(version 1)(allow default)(deny network*)(allow network-inbound(remote tcp \"localhost:*\"))(allow network-outbound(require-all(remote tcp \"localhost:*\")(require-not(remote tcp \"localhost:8765\"))))",
+    "code": 0,
+    "stderr": ""
+  }
+]

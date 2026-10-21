@@ -1,0 +1,20 @@
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, RESULT:
+    REASON: failed to run package (exit code = 9)
+Summary: TOTAL: 1
+    [32mPASSED[0m: 0, [32mSKIPPED[0m: 0, ERROR: 1
+    [31mFAILED[0m: 0, listed below:
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 3291000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 3110000 ns, RESULT:
+    ERROR:
+    TP: [33morderdemo[0m, RESULT:
+        REASON: failed to run package (exit code = 9)
+Summary: TOTAL: 1
+    [32mPASSED[0m: 0, [32mSKIPPED[0m: 0, ERROR: 1
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

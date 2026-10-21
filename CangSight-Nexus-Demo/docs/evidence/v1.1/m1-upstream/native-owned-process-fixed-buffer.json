@@ -1,0 +1,27 @@
+{
+  "scope": "Owned synthetic process arguments. Fixed buffer removes KERN_ARGMAX prerequisite so a blocked sizing query cannot mask the actual process-data read.",
+  "source": "\n#include <sys/types.h>\n#include <sys/sysctl.h>\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <errno.h>\nint main(int argc,char **argv){\n if(argc!=2)return 10;\n int mib[3]={CTL_KERN,KERN_PROCARGS2,atoi(argv[1])};size_t size=262144;\n char *data=malloc(size);if(!data)return 11;\n if(sysctl(mib,3,data,&size,NULL,0)){printf(\"READ_DENIED errno=%d\\n\",errno);free(data);return 0;}\n const char *marker=\"SYNTHETIC_ONLY_PROCESS_ENV_MARKER\";int found=0;\n for(size_t i=0;i+strlen(marker)<=size;i++)if(memcmp(data+i,marker,strlen(marker))==0)found=1;\n printf(\"BYTES_READ=%zu\\n\",size);free(data);puts(found?\"SYNTHETIC_PROCESS_DATA_READABLE\":\"SYNTHETIC_MARKER_NOT_FOUND\");return 0;\n}\n",
+  "results": [
+    {
+      "label": "positive-current",
+      "rule": "",
+      "exit_code": 0,
+      "stdout": "BYTES_READ=876\nSYNTHETIC_PROCESS_DATA_READABLE\n",
+      "stderr": ""
+    },
+    {
+      "label": "all-sysctl-read",
+      "rule": "(deny sysctl-read)",
+      "exit_code": 0,
+      "stdout": "BYTES_READ=876\nSYNTHETIC_PROCESS_DATA_READABLE\n",
+      "stderr": ""
+    },
+    {
+      "label": "all-sysctl-and-process",
+      "rule": "(deny sysctl-read)(deny process-info*)",
+      "exit_code": 0,
+      "stdout": "READ_DENIED errno=1\n",
+      "stderr": ""
+    }
+  ]
+}

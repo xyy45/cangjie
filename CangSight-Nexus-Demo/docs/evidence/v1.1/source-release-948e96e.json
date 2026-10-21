@@ -1,0 +1,17 @@
+{
+  "source_commit": "948e96e61f8c9aacc2f8a195bd74d194e3783c96",
+  "source_zip": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-source-948e96e.zip",
+  "sha256": "2fd51f5bb4a3b615b67cbe7b2f47bc2893d358a536cf7d65d47cc7683a44d10c",
+  "bytes": 1092337,
+  "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-repro-d3jzld7a/CangSight-Nexus",
+  "git_probe_exit": 128,
+  "dotenv_present": false,
+  "sensitive_key_found": false,
+  "forbidden_files_found": false,
+  "runtime_setup": "Only pinned SDK/stdx reused by symlink; no .env, prior policy binary, session key, task records or model configuration copied",
+  "live_status": "PENDING_AUTHORIZATION",
+  "release_scope": "V1.1 development validation snapshot; not final competition submission",
+  "no_git_offline_regression": "108 passed, 8 deselected in 26.22s",
+  "no_git_offline_evidence": "docs/evidence/v1.1/review/zip-no-git-offline.txt",
+  "fresh_native_policy_build": "PASS; first setup omitted stdx symlink, retained failing log, corrected test runtime links and rebuilt successfully"
+}

@@ -1,0 +1,32 @@
+{
+  "source_commit": "9a41097",
+  "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+  "http": {
+    "/": {
+      "status": 200,
+      "operator_page": true
+    },
+    "/api/tasks": {
+      "status": 403
+    },
+    "/agents/runs/missing": {
+      "status": 403
+    },
+    "/static/workbench.js": {
+      "status": 200,
+      "starts_through_base_gateway": true
+    }
+  },
+  "before": {
+    "tasks": 9,
+    "model_records": 4
+  },
+  "after": {
+    "tasks": 9,
+    "model_records": 4
+  },
+  "task_model_counts_unchanged": true,
+  "operator_key_submitted_by_agent": false,
+  "private_backup": ".runtime/backups/workbench-before-m1-dispatch-20261018T030154Z.sqlite3",
+  "backup_mode": "0o600"
+}

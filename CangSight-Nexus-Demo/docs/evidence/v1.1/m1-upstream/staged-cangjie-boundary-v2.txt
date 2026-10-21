@@ -1,0 +1,117 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_real_cangjie_cannot_read_operator_key_or_read_approval_data _______
+
+tmp_path = PosixPath('/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-cangjie-v2/test_real_cangjie_cannot_read_0')
+
+    def test_real_cangjie_cannot_read_operator_key_or_read_approval_data(tmp_path):
+        ws=WorkspaceStore(tmp_path,registered=[ROOT/'fixtures/order-demo-bug'])
+        baseline=ws.import_project(ROOT/'fixtures/order-demo-bug','.')
+        store=RunStore(tmp_path)
+        task=store.create_task(baseline,'HAND_WRITTEN native security probe',['src/quantity.cj'])
+        owner=RuntimeOwner(tmp_path);assert owner.acquire()
+        class NoModel:
+            async def run(self,*args):raise AssertionError('Security probe must not start model')
+        try:
+            key=owner.operator_key()
+            app=create_app(store,NoModel(),DeliveryService(store),operator_key=key)
+            statuses=[]
+            @app.after_request
+            def observed(response):
+                from flask import request
+                if request.path=='/api/tasks':statuses.append(response.status_code)
+                return response
+            server=make_server('127.0.0.1',0,app)
+            thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+            probe=r'''
+    import std.fs.*
+    import std.net.*
+    import std.console.*
+    import std.process.*
+    
+    func controllerBoundaryProbe(): Unit {
+        try {
+            let child = Process.start("/bin/sh", ["-c", "printf UNEXPECTED_SHELL"])
+            let ignored = child.wait()
+            throw Exception("Candidate started a shell")
+        } catch (error: ProcessException) {
+            if (!error.message.contains("Operation not permitted")) {
+                throw Exception("Expected process execution denial")
+            }
+        }
+        if (Console.stdIn.readln() != None) {
+            throw Exception("Controller stdin leaked to candidate")
+        }
+        try {
+            let ignored = File.readFrom(PRIVATE_PATH)
+            throw Exception("Controller credential was readable")
+        } catch (error: FSException) {
+            if (!error.message.contains("Operation not permitted")) {
+                throw Exception("Expected sandbox permission denial")
+            }
+        }
+        try (socket = TcpSocket("127.0.0.1", PROBE_PORT)) {
+            socket.connect()
+            socket.write("GET /api/tasks HTTP/1.0\r\nHost: 127.0.0.1:PROBE_PORT\r\nConnection: close\r\n\r\n".toArray())
+            let buffer = Array<Byte>(4096, repeat: 0)
+            let count = socket.read(buffer)
+            let response = String.fromUtf8(buffer[..count])
+            if (!response.startsWith("HTTP/1.0 403")) {
+                throw Exception("Unpaired candidate reached controller data")
+            }
+        }
+    }
+    '''.replace('PRIVATE_PATH',json.dumps(str(tmp_path/'.operator-key'),ensure_ascii=False)).replace('PROBE_PORT',str(server.server_port))
+            source=ws.read_file(baseline,'src/quantity.cj')
+            content=source.replace('package orderdemo','package orderdemo\n'+probe).replace(
+                'quantity >= 0','controllerBoundaryProbe()\n    quantity >= 1')
+            assert content!=source and key not in content
+            async def run():
+                async with ToolClient(tmp_path) as client:
+                    applied=await client.call_tool('candidate.apply',dict(task_id=task.id,proposal=dict(
+                        edits=[dict(path='src/quantity.cj',before_hash=file_hash(source),content=content)],requirement_refs=['goal'])))
+                    assert applied.operation_status=='OK',applied
+                    args=dict(task_id=task.id,candidate_id=applied.data['id'],expected_tree_hash=applied.data['tree_hash'])
+                    for name in ('build','test'):
+                        result=await client.call_tool('candidate.'+name,args)
+                        assert result.operation_status=='OK' and result.data['state']=='PASS',result
+                        if name=='test':assert result.data['counts']['passed']==11
+                        if name=='test':assert result.data['execution_argv']==[
+                            ['cjpm','test','--no-run'],['cjpm','test','--skip-build']]
+            try:
+>               asyncio.run(run())
+
+tests/sdk/test_native_operator_boundary.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def run():
+        async with ToolClient(tmp_path) as client:
+            applied=await client.call_tool('candidate.apply',dict(task_id=task.id,proposal=dict(
+                edits=[dict(path='src/quantity.cj',before_hash=file_hash(source),content=content)],requirement_refs=['goal'])))
+            assert applied.operation_status=='OK',applied
+            args=dict(task_id=task.id,candidate_id=applied.data['id'],expected_tree_hash=applied.data['tree_hash'])
+            for name in ('build','test'):
+                result=await client.call_tool('candidate.'+name,args)
+>               assert result.operation_status=='OK' and result.data['state']=='PASS',result
+E               AssertionError: ToolResult(schema_version=1, operation_status='OK', data={'schema_version': 1, 'argv': ['cjpm', 'test'], 'execution_ar...r=None, record_refs=['records/07791031d3464580ad11c7b068295444.json', 'records/449a9819134f4f2081ef2cdc68aba513.json'])
+E               assert ('OK' == 'OK'
+E                 
+E                   OK and 'UNKNOWN' == 'PASS'
+E                 
+E                 - PASS
+E                 + UNKNOWN)
+
+tests/sdk/test_native_operator_boundary.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED tests/sdk/test_native_operator_boundary.py::test_real_cangjie_cannot_read_operator_key_or_read_approval_data
+1 failed in 3.25s

@@ -1,0 +1,131 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_normal_and_defective_order_demo _____________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-1/test_normal_and_defective_orde0')
+
+    def test_normal_and_defective_order_demo(tmp_path):
+        project = tmp_path / 'order'
+        shutil.copytree(ROOT / 'fixtures/order-demo', project,
+                        ignore=shutil.ignore_patterns('target', '.git', 'cjpm.lock'))
+        build = run_sdk(project, ['cjpm', 'build', '-V'])
+        assert build.returncode == 0, build.stdout + build.stderr
+        result = run_sdk(project, ['cjpm', 'test'])
+        (ROOT / 'docs/evidence/order-normal-test.txt').write_text(result.stdout + result.stderr)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: Warning: there is no '.cj' file in directory '/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-1/test_normal_and_defective_orde0/order/src', and its subdirectories will not be scanned as source code
+E         Warning: there is no '.cj' file in directory '/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-1/test_normal_and_defective_orde0/order/src', and its subdirectories will not be scanned as source code
+E         ld64.lld: error: /Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk/usr/lib/libSystem.tbd(/usr/lib/libSystem.B.dylib) is incompatible with arm64 (macOS)
+E         ld64.lld: error: undefined symbol: ___stack_chk_fail
+E         >>> referenced by section.cpp:0 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:0)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x2fc)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(typetemplate.c.o):(symbol _ClosureTTField0Fn+0x48)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(typetemplate.c.o):(symbol _ClosureTTField1Fn+0x48)
+E         >>> referenced 374 more times
+E         
+E         ld64.lld: error: undefined symbol: ___stack_chk_guard
+E         >>> referenced by section.cpp:181 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:181)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x2d8)
+E         >>> referenced by section.cpp:181 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:181)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x2d4)
+E         >>> referenced by section.cpp:134 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:134)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x18)
+E         >>> referenced 1573 more times
+E         
+E         ld64.lld: error: undefined symbol: __dyld_get_image_header
+E         >>> referenced by section.cpp:154 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:154)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x90)
+E         
+E         ld64.lld: error: undefined symbol: ___assert_rtn
+E         >>> referenced by section.cpp:153 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:153)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x88)
+E         
+E         ld64.lld: error: undefined symbol: _strcmp
+E         >>> referenced by section.cpp:146 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:146)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x58)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(core.o):(symbol __CNatXk6equalsHk+0x38)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(core.o):(symbol __CNatXk7compareHk+0x58)
+E         >>> referenced 6 more times
+E         
+E         ld64.lld: error: undefined symbol: __dyld_get_image_name
+E         >>> referenced by section.cpp:145 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:145)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x50)
+E         
+E         ld64.lld: error: undefined symbol: __dyld_image_count
+E         >>> referenced by section.cpp:142 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:142)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x38)
+E         
+E         ld64.lld: error: undefined symbol: _dladdr
+E         >>> referenced by section.cpp:138 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:138)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x30)
+E         
+E         ld64.lld: error: undefined symbol: _getsectiondata
+E         >>> referenced by section.cpp:130 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:130)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x2dc)
+E         >>> referenced by section.cpp:129 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:129)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x2b8)
+E         >>> referenced by section.cpp:128 (/opt/cangjieBuildWorkSpace/cangjie_runtime/runtime/src/os/Macos/section.cpp:128)
+E         >>>               /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x294)
+E         >>> referenced 17 more times
+E         
+E         ld64.lld: error: undefined symbol: _free
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x138)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x130)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x128)
+E         >>> referenced 88 more times
+E         
+E         ld64.lld: error: undefined symbol: _malloc
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0xb8)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x40)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x30)
+E         >>> referenced 39 more times
+E         
+E         ld64.lld: error: undefined symbol: _getchar
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x90)
+E         
+E         ld64.lld: error: undefined symbol: _clearerr
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_ClearstdInerr+0x48)
+E         
+E         ld64.lld: error: undefined symbol: ___stdinp
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_ClearstdInerr+0x20)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_ClearstdInerr+0x1c)
+E         
+E         ld64.lld: error: undefined symbol: _memcmp
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string_strstr.c.o):(symbol _CJ_CORE_RabinKarp+0xec)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string_strstr.c.o):(symbol _CJ_CORE_RabinKarp+0x98)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string_strstr.c.o):(symbol _CJ_CORE_RabinKarpR+0x108)
+E         >>> referenced 27 more times
+E         
+E         ld64.lld: error: undefined symbol: _strchr
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string_SIMD.c.o):(symbol _FastStrstr+0x78)
+E         
+E         ld64.lld: error: undefined symbol: _memcpy
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string.c.o):(symbol _CJ_BUFFER_Int64ToCPointer+0xc4)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(string.c.o):(symbol _CJ_BUFFER_UInt64ToCPointer+0x84)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(core.o):(symbol __CNat11ZipIteratorIG_G0_E4nextHv+0x2c4)
+E         >>> referenced 631 more times
+E         
+E         ld64.lld: error: undefined symbol: _fflush
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintUTF8+0x6c)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_ErrorPrintUTF8+0x6c)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintBool+0xb8)
+E         >>> referenced 7 more times
+E         
+E         ld64.lld: error: undefined symbol: _fwrite
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintUTF8+0x60)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintUTF8+0x44)
+E         >>> referenced by /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_ErrorPrintUTF8+0x60)
+E         >>> referenced 10 more times
+E         
+E         ld64.lld: error: too many errors emitted, stopping now (use --error-limit=0 to see all errors)
+E         [31merror[0m: '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/third_party/llvm/bin/ld64.lld' '-o' '/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-1/test_normal_and_defective_orde0/order/target/release/unittest_bin/std.testrunner' '-arch' 'arm64' '-platform_version' 'macos' '12.0.0' '26.5' '-syslibroot' '/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk' '-pie' '-L/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative' '-L/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/section.o' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/cjstart.o' '/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/cangjie-tmp-28omw8Nn45i-6c58bf84/std.testrunner.o' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-binary.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-collection.concurrent.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-convert.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-core.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-env.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-fs.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-io.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-math.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-net.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-overflow.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-process.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-random.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-regex.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-runtime.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-sort.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-sync.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-time.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unicode.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.common.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.diff.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.mock.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.mock.internal.a' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libcangjie-std-unittest.prop_test.a' '-lcangjie-runtime' '-lboundscheck' '-lSystem' '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/lib/darwin_aarch64_cjnative/libclang_rt.osx.a' : command failed (use -V to see invocation)
+E         Created process failed, errMessage: "No such file or directory".
+E         Error: cjpm test failed
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['cjpm', 'test'], returncode=1, stdout="Warning: there is no '.cj' file in directory '/private/v...se -V to see invocation)\nCreated process failed, errMessage: "No such file or directory".\nError: cjpm test failed\n').returncode
+
+tests/sdk/test_order_demo.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED tests/sdk/test_order_demo.py::test_normal_and_defective_order_demo - A...
+1 failed in 3.64s

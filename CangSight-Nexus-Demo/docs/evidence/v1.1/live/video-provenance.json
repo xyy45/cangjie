@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "video": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-LIVE-record-replay.mp4",
+  "sha256": "48a9f1de1e1c05165d852ce2f4a3dd7bc2f1b39fa9ee53a93f5f77388b97b93c",
+  "duration_seconds": 26,
+  "width": 1440,
+  "height": 900,
+  "audio": false,
+  "kind": "Actual browser-frame replay of already completed LIVE records, not real-time repair recording",
+  "task_id": "752d3444ebc14479a604be1816a7042b",
+  "capture_runtime": ".runtime/live/7f067a727a24440fa3008d632aa131c3",
+  "capture_port": 8766,
+  "capture_controls": "Worker disabled, all POST denied, no model call or user approval during capture; preview stopped afterwards",
+  "approval_identity_note": "Browser replay session is different from LIVE_TEST_OPERATOR, so its existing approval is not reusable for download",
+  "actual_record_images": [
+    ".runtime/capture/v11-live-replay/02-checks.png",
+    ".runtime/capture/v11-live-replay/03-records.png"
+  ],
+  "visual_review": "Decoded middle/end frames inspected; no cropped labels or unreadable result panels",
+  "limits": "Frame-based clip, silent; D on the closing card is from actual stored hand-written probe evidence, not a second live browser attack"
+}

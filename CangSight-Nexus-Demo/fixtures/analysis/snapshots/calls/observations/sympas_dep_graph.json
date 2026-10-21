@@ -1,0 +1,1230 @@
+{
+  "elapsed_ms": 671,
+  "http_status": 200,
+  "input": {
+    "code": "func clamp(value: Int64, lower: Int64, upper: Int64): Int64 {\n    if (value < lower) {\n        return lower\n    }\n    if (value > upper) {\n        return upper\n    }\n    return value\n}\nfunc transform(value: Int64): Int64 {\n    let bounded = clamp(value, -10, 10)\n    return bounded * bounded\n}\nfunc aggregate(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        let transformed = transform(value)\n        total = total + transformed\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(aggregate([2, -3, 20]))\n    println(aggregate([0]))\n    return 0\n}\n",
+    "filename": "l3_calls.cj",
+    "formats": [
+      "dot"
+    ],
+    "graph_types": "Ddg",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-19T15:40:37.327537+00:00",
+  "request_id": "53e1d0029142463986b01b86e8e68aee-sympas_dep_graph",
+  "response": {
+    "artifacts": [
+      {
+        "dot": {
+          "artifact_path": "sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+          "download_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+          "name": "l3_calls_ddg.dot",
+          "path": "/workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+          "preview": {
+            "available": true,
+            "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_2 {\n    label=\"[\\\"l3_calls.cj:14\\\"]@aggregate\";\n    style=dashed;\n    color=gray;\n    n39 [label=\"[L18]: value = values\", shape=box, fillcolor=white, style=filled];\n    n53 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n42 [label=\"[L20]: total = total + transformed\", shape=box, fillcolor=white, style=filled];\n    n50 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n34 [label=\"[L15]: index = 0\", shape=box, fillcolor=white, style=filled];\n    n48 [label=\"(formal-out)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n46 [label=\"[L23]: return total\", shape=box, fillcolor=white, style=filled];\n    n35 [label=\"[L16]: total = 0\", shape=box, fillcolor=white, style=filled];\n    n43 [label=\"[L21]: index = index + 1\", shape=box, fillcolor=white, style=filled];\n    n54 [label=\"FinalUse(%transformed)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n52 [label=\"FinalUse(%values)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n36 [label=\"[L17]: <Loop_cond> (index < values)\", shape=box, fillcolor=white, style=filled];\n    n51 [label=\"FinalUse(%index)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n47 [label=\"(formal-in)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n41 [label=\"[L19]: transformed = transform(value)\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_0 {\n    label=\"[\\\"l3_calls.cj:1\\\"]@clamp\";\n    style=dashed;\n    color=gray;\n    n21 [label=\"FinalUse(%lower)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n17 [label=\"(formal-out)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n10 [label=\"[L6]: return upper\", shape=box, fillcolor=white, style=filled];\n    n14 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n19 [label=\"(formal-out)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"[L5]: <Cond> (value > upper)\", shape=box, fillcolor=white, style=filled];\n    n23 [label=\"FinalUse(%upper)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n15 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n16 [label=\"(formal-in)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n22 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n18 [label=\"(formal-in)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"[L3]: return lower\", shape=box, fillcolor=white, style=filled];\n    n1 [label=\"[L2]: <Cond> (value < lower)\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"[L8]: return value\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_3 {\n    label=\"[\\\"l3_calls.cj:25\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l3_calls.cj:10\\\"]@transform\";\n    style=dashed;\n    color=gray;\n    n27 [label=\"[L12]: return bounded * bounded\", shape=box, fillcolor=white, style=filled];\n    n31 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n32 [label=\"FinalUse(%bounded)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n28 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n26 [label=\"[L11]: bounded = clamp(value, -10, 10)\", shape=box, fillcolor=white, style=filled];\n    n29 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n  }\n\n\n  n42 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n54 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n48 -> n52 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n50 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n41 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n35 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n34 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n32 [label=\"data\", style=solid, color=sandybrown];\n  n29 -> n31 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n26 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n19 -> n23 [label=\"data\", style=solid, color=sandybrown];\n  n15 -> n22 [label=\"data\", style=solid, color=sandybrown];\n  n17 -> n21 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n10 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n4 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n19 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n17 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n15 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+          },
+          "url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]"
+        },
+        "engine_log": "解析 runtime/sympas_src_fa356c/l3_calls.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 150.0 (Average: 15)\nVariable      SrcLineNumbers\n------------------------------\nbounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nindex@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\nlower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\ntotal@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\ntransformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\nupper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalues@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.svg, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_pi9pzep5",
+        "generated": true,
+        "graph_type": "Ddg",
+        "name": "ddg"
+      }
+    ],
+    "cache": "miss",
+    "data": {
+      "engine": "sympas-gs",
+      "formats": [
+        "dot"
+      ],
+      "generated_count": 1,
+      "graph_count": 1,
+      "graph_types": [
+        "Ddg"
+      ],
+      "graphs": [
+        {
+          "dot": {
+            "artifact_path": "sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+            "download_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+            "name": "l3_calls_ddg.dot",
+            "path": "/workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+            "preview": {
+              "available": true,
+              "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_2 {\n    label=\"[\\\"l3_calls.cj:14\\\"]@aggregate\";\n    style=dashed;\n    color=gray;\n    n39 [label=\"[L18]: value = values\", shape=box, fillcolor=white, style=filled];\n    n53 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n42 [label=\"[L20]: total = total + transformed\", shape=box, fillcolor=white, style=filled];\n    n50 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n34 [label=\"[L15]: index = 0\", shape=box, fillcolor=white, style=filled];\n    n48 [label=\"(formal-out)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n46 [label=\"[L23]: return total\", shape=box, fillcolor=white, style=filled];\n    n35 [label=\"[L16]: total = 0\", shape=box, fillcolor=white, style=filled];\n    n43 [label=\"[L21]: index = index + 1\", shape=box, fillcolor=white, style=filled];\n    n54 [label=\"FinalUse(%transformed)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n52 [label=\"FinalUse(%values)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n36 [label=\"[L17]: <Loop_cond> (index < values)\", shape=box, fillcolor=white, style=filled];\n    n51 [label=\"FinalUse(%index)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n47 [label=\"(formal-in)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n41 [label=\"[L19]: transformed = transform(value)\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_0 {\n    label=\"[\\\"l3_calls.cj:1\\\"]@clamp\";\n    style=dashed;\n    color=gray;\n    n21 [label=\"FinalUse(%lower)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n17 [label=\"(formal-out)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n10 [label=\"[L6]: return upper\", shape=box, fillcolor=white, style=filled];\n    n14 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n19 [label=\"(formal-out)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"[L5]: <Cond> (value > upper)\", shape=box, fillcolor=white, style=filled];\n    n23 [label=\"FinalUse(%upper)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n15 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n16 [label=\"(formal-in)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n22 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n18 [label=\"(formal-in)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"[L3]: return lower\", shape=box, fillcolor=white, style=filled];\n    n1 [label=\"[L2]: <Cond> (value < lower)\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"[L8]: return value\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_3 {\n    label=\"[\\\"l3_calls.cj:25\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l3_calls.cj:10\\\"]@transform\";\n    style=dashed;\n    color=gray;\n    n27 [label=\"[L12]: return bounded * bounded\", shape=box, fillcolor=white, style=filled];\n    n31 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n32 [label=\"FinalUse(%bounded)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n28 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n26 [label=\"[L11]: bounded = clamp(value, -10, 10)\", shape=box, fillcolor=white, style=filled];\n    n29 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n  }\n\n\n  n42 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n54 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n48 -> n52 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n50 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n41 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n35 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n34 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n32 [label=\"data\", style=solid, color=sandybrown];\n  n29 -> n31 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n26 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n19 -> n23 [label=\"data\", style=solid, color=sandybrown];\n  n15 -> n22 [label=\"data\", style=solid, color=sandybrown];\n  n17 -> n21 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n10 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n4 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n19 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n17 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n15 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+            },
+            "url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]"
+          },
+          "engine_log": "解析 runtime/sympas_src_fa356c/l3_calls.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 150.0 (Average: 15)\nVariable      SrcLineNumbers\n------------------------------\nbounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nindex@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\nlower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\ntotal@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\ntransformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\nupper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalues@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.svg, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_pi9pzep5",
+          "generated": true,
+          "graph_type": "Ddg",
+          "name": "ddg"
+        }
+      ],
+      "json_graphs": [
+        {
+          "edge_count": 51,
+          "edges": [
+            {
+              "from": "n42",
+              "to": "n46"
+            },
+            {
+              "from": "n35",
+              "to": "n46"
+            },
+            {
+              "from": "n34",
+              "to": "n43"
+            },
+            {
+              "from": "n41",
+              "to": "n42"
+            },
+            {
+              "from": "n35",
+              "to": "n42"
+            },
+            {
+              "from": "n43",
+              "to": "n39"
+            },
+            {
+              "from": "n34",
+              "to": "n39"
+            },
+            {
+              "from": "n43",
+              "to": "n36"
+            },
+            {
+              "from": "n34",
+              "to": "n36"
+            },
+            {
+              "from": "n41",
+              "to": "n54"
+            },
+            {
+              "from": "n42",
+              "to": "n53"
+            },
+            {
+              "from": "n35",
+              "to": "n53"
+            },
+            {
+              "from": "n48",
+              "to": "n52"
+            },
+            {
+              "from": "n43",
+              "to": "n51"
+            },
+            {
+              "from": "n34",
+              "to": "n51"
+            },
+            {
+              "from": "n39",
+              "to": "n50"
+            },
+            {
+              "from": "n47",
+              "to": "n46"
+            },
+            {
+              "from": "n43",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n43"
+            },
+            {
+              "from": "n42",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n42"
+            },
+            {
+              "from": "n41",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n41"
+            },
+            {
+              "from": "n39",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n39"
+            },
+            {
+              "from": "n47",
+              "to": "n36"
+            },
+            {
+              "from": "n35",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n35"
+            },
+            {
+              "from": "n34",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n34"
+            },
+            {
+              "from": "n47",
+              "to": "n48"
+            },
+            {
+              "from": "n26",
+              "to": "n27"
+            },
+            {
+              "from": "n26",
+              "to": "n32"
+            },
+            {
+              "from": "n29",
+              "to": "n31"
+            },
+            {
+              "from": "n28",
+              "to": "n27"
+            },
+            {
+              "from": "n26",
+              "to": "n29"
+            },
+            {
+              "from": "n28",
+              "to": "n26"
+            },
+            {
+              "from": "n28",
+              "to": "n29"
+            },
+            {
+              "from": "n19",
+              "to": "n23"
+            },
+            {
+              "from": "n15",
+              "to": "n22"
+            },
+            {
+              "from": "n17",
+              "to": "n21"
+            },
+            {
+              "from": "n14",
+              "to": "n13"
+            },
+            {
+              "from": "n18",
+              "to": "n10"
+            },
+            {
+              "from": "n14",
+              "to": "n7"
+            },
+            {
+              "from": "n18",
+              "to": "n7"
+            },
+            {
+              "from": "n16",
+              "to": "n4"
+            },
+            {
+              "from": "n14",
+              "to": "n1"
+            },
+            {
+              "from": "n16",
+              "to": "n1"
+            },
+            {
+              "from": "n18",
+              "to": "n19"
+            },
+            {
+              "from": "n16",
+              "to": "n17"
+            },
+            {
+              "from": "n14",
+              "to": "n15"
+            }
+          ],
+          "graph_type": "Ddg",
+          "node_count": 35,
+          "nodes": [
+            {
+              "id": "n39",
+              "label": "[L18]: value = values"
+            },
+            {
+              "id": "n53",
+              "label": "FinalUse(%total)"
+            },
+            {
+              "id": "n42",
+              "label": "[L20]: total = total + transformed"
+            },
+            {
+              "id": "n50",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n34",
+              "label": "[L15]: index = 0"
+            },
+            {
+              "id": "n48",
+              "label": "(formal-out)%values"
+            },
+            {
+              "id": "n46",
+              "label": "[L23]: return total"
+            },
+            {
+              "id": "n35",
+              "label": "[L16]: total = 0"
+            },
+            {
+              "id": "n43",
+              "label": "[L21]: index = index + 1"
+            },
+            {
+              "id": "n54",
+              "label": "FinalUse(%transformed)"
+            },
+            {
+              "id": "n52",
+              "label": "FinalUse(%values)"
+            },
+            {
+              "id": "n36",
+              "label": "[L17]: <Loop_cond> (index < values)"
+            },
+            {
+              "id": "n51",
+              "label": "FinalUse(%index)"
+            },
+            {
+              "id": "n47",
+              "label": "(formal-in)%values"
+            },
+            {
+              "id": "n41",
+              "label": "[L19]: transformed = transform(value)"
+            },
+            {
+              "id": "n21",
+              "label": "FinalUse(%lower)"
+            },
+            {
+              "id": "n17",
+              "label": "(formal-out)%lower"
+            },
+            {
+              "id": "n10",
+              "label": "[L6]: return upper"
+            },
+            {
+              "id": "n14",
+              "label": "(formal-in)%value"
+            },
+            {
+              "id": "n19",
+              "label": "(formal-out)%upper"
+            },
+            {
+              "id": "n7",
+              "label": "[L5]: <Cond> (value > upper)"
+            },
+            {
+              "id": "n23",
+              "label": "FinalUse(%upper)"
+            },
+            {
+              "id": "n15",
+              "label": "(formal-out)%value"
+            },
+            {
+              "id": "n16",
+              "label": "(formal-in)%lower"
+            },
+            {
+              "id": "n22",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n18",
+              "label": "(formal-in)%upper"
+            },
+            {
+              "id": "n4",
+              "label": "[L3]: return lower"
+            },
+            {
+              "id": "n1",
+              "label": "[L2]: <Cond> (value < lower)"
+            },
+            {
+              "id": "n13",
+              "label": "[L8]: return value"
+            },
+            {
+              "id": "n27",
+              "label": "[L12]: return bounded * bounded"
+            },
+            {
+              "id": "n31",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n32",
+              "label": "FinalUse(%bounded)"
+            },
+            {
+              "id": "n28",
+              "label": "(formal-in)%value"
+            },
+            {
+              "id": "n26",
+              "label": "[L11]: bounded = clamp(value, -10, 10)"
+            },
+            {
+              "id": "n29",
+              "label": "(formal-out)%value"
+            }
+          ]
+        }
+      ],
+      "output_dir": "/workspace/artifacts/sympas_depgraph_pi9pzep5",
+      "requested_graph_types": [
+        "Ddg"
+      ],
+      "target": "runtime/sympas_src_fa356c/l3_calls.cj"
+    },
+    "engine": "sympas-gs",
+    "formats": [
+      "dot"
+    ],
+    "generated_count": 1,
+    "graph_count": 1,
+    "graph_types": [
+      "Ddg"
+    ],
+    "graphs": [
+      {
+        "dot": {
+          "artifact_path": "sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+          "download_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+          "name": "l3_calls_ddg.dot",
+          "path": "/workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+          "preview": {
+            "available": true,
+            "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_2 {\n    label=\"[\\\"l3_calls.cj:14\\\"]@aggregate\";\n    style=dashed;\n    color=gray;\n    n39 [label=\"[L18]: value = values\", shape=box, fillcolor=white, style=filled];\n    n53 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n42 [label=\"[L20]: total = total + transformed\", shape=box, fillcolor=white, style=filled];\n    n50 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n34 [label=\"[L15]: index = 0\", shape=box, fillcolor=white, style=filled];\n    n48 [label=\"(formal-out)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n46 [label=\"[L23]: return total\", shape=box, fillcolor=white, style=filled];\n    n35 [label=\"[L16]: total = 0\", shape=box, fillcolor=white, style=filled];\n    n43 [label=\"[L21]: index = index + 1\", shape=box, fillcolor=white, style=filled];\n    n54 [label=\"FinalUse(%transformed)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n52 [label=\"FinalUse(%values)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n36 [label=\"[L17]: <Loop_cond> (index < values)\", shape=box, fillcolor=white, style=filled];\n    n51 [label=\"FinalUse(%index)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n47 [label=\"(formal-in)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n41 [label=\"[L19]: transformed = transform(value)\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_0 {\n    label=\"[\\\"l3_calls.cj:1\\\"]@clamp\";\n    style=dashed;\n    color=gray;\n    n21 [label=\"FinalUse(%lower)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n17 [label=\"(formal-out)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n10 [label=\"[L6]: return upper\", shape=box, fillcolor=white, style=filled];\n    n14 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n19 [label=\"(formal-out)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"[L5]: <Cond> (value > upper)\", shape=box, fillcolor=white, style=filled];\n    n23 [label=\"FinalUse(%upper)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n15 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n16 [label=\"(formal-in)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n22 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n18 [label=\"(formal-in)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"[L3]: return lower\", shape=box, fillcolor=white, style=filled];\n    n1 [label=\"[L2]: <Cond> (value < lower)\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"[L8]: return value\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_3 {\n    label=\"[\\\"l3_calls.cj:25\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l3_calls.cj:10\\\"]@transform\";\n    style=dashed;\n    color=gray;\n    n27 [label=\"[L12]: return bounded * bounded\", shape=box, fillcolor=white, style=filled];\n    n31 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n32 [label=\"FinalUse(%bounded)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n28 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n26 [label=\"[L11]: bounded = clamp(value, -10, 10)\", shape=box, fillcolor=white, style=filled];\n    n29 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n  }\n\n\n  n42 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n54 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n48 -> n52 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n50 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n41 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n35 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n34 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n32 [label=\"data\", style=solid, color=sandybrown];\n  n29 -> n31 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n26 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n19 -> n23 [label=\"data\", style=solid, color=sandybrown];\n  n15 -> n22 [label=\"data\", style=solid, color=sandybrown];\n  n17 -> n21 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n10 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n4 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n19 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n17 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n15 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+          },
+          "url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]"
+        },
+        "engine_log": "解析 runtime/sympas_src_fa356c/l3_calls.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 150.0 (Average: 15)\nVariable      SrcLineNumbers\n------------------------------\nbounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nindex@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\nlower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\ntotal@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\ntransformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\nupper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalues@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.svg, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_pi9pzep5",
+        "generated": true,
+        "graph_type": "Ddg",
+        "name": "ddg"
+      }
+    ],
+    "issue_count": 0,
+    "issues": [],
+    "json_graphs": [
+      {
+        "edge_count": 51,
+        "edges": [
+          {
+            "from": "n42",
+            "to": "n46"
+          },
+          {
+            "from": "n35",
+            "to": "n46"
+          },
+          {
+            "from": "n34",
+            "to": "n43"
+          },
+          {
+            "from": "n41",
+            "to": "n42"
+          },
+          {
+            "from": "n35",
+            "to": "n42"
+          },
+          {
+            "from": "n43",
+            "to": "n39"
+          },
+          {
+            "from": "n34",
+            "to": "n39"
+          },
+          {
+            "from": "n43",
+            "to": "n36"
+          },
+          {
+            "from": "n34",
+            "to": "n36"
+          },
+          {
+            "from": "n41",
+            "to": "n54"
+          },
+          {
+            "from": "n42",
+            "to": "n53"
+          },
+          {
+            "from": "n35",
+            "to": "n53"
+          },
+          {
+            "from": "n48",
+            "to": "n52"
+          },
+          {
+            "from": "n43",
+            "to": "n51"
+          },
+          {
+            "from": "n34",
+            "to": "n51"
+          },
+          {
+            "from": "n39",
+            "to": "n50"
+          },
+          {
+            "from": "n47",
+            "to": "n46"
+          },
+          {
+            "from": "n43",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n43"
+          },
+          {
+            "from": "n42",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n42"
+          },
+          {
+            "from": "n41",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n41"
+          },
+          {
+            "from": "n39",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n39"
+          },
+          {
+            "from": "n47",
+            "to": "n36"
+          },
+          {
+            "from": "n35",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n35"
+          },
+          {
+            "from": "n34",
+            "to": "n48"
+          },
+          {
+            "from": "n47",
+            "to": "n34"
+          },
+          {
+            "from": "n47",
+            "to": "n48"
+          },
+          {
+            "from": "n26",
+            "to": "n27"
+          },
+          {
+            "from": "n26",
+            "to": "n32"
+          },
+          {
+            "from": "n29",
+            "to": "n31"
+          },
+          {
+            "from": "n28",
+            "to": "n27"
+          },
+          {
+            "from": "n26",
+            "to": "n29"
+          },
+          {
+            "from": "n28",
+            "to": "n26"
+          },
+          {
+            "from": "n28",
+            "to": "n29"
+          },
+          {
+            "from": "n19",
+            "to": "n23"
+          },
+          {
+            "from": "n15",
+            "to": "n22"
+          },
+          {
+            "from": "n17",
+            "to": "n21"
+          },
+          {
+            "from": "n14",
+            "to": "n13"
+          },
+          {
+            "from": "n18",
+            "to": "n10"
+          },
+          {
+            "from": "n14",
+            "to": "n7"
+          },
+          {
+            "from": "n18",
+            "to": "n7"
+          },
+          {
+            "from": "n16",
+            "to": "n4"
+          },
+          {
+            "from": "n14",
+            "to": "n1"
+          },
+          {
+            "from": "n16",
+            "to": "n1"
+          },
+          {
+            "from": "n18",
+            "to": "n19"
+          },
+          {
+            "from": "n16",
+            "to": "n17"
+          },
+          {
+            "from": "n14",
+            "to": "n15"
+          }
+        ],
+        "graph_type": "Ddg",
+        "node_count": 35,
+        "nodes": [
+          {
+            "id": "n39",
+            "label": "[L18]: value = values"
+          },
+          {
+            "id": "n53",
+            "label": "FinalUse(%total)"
+          },
+          {
+            "id": "n42",
+            "label": "[L20]: total = total + transformed"
+          },
+          {
+            "id": "n50",
+            "label": "FinalUse(%value)"
+          },
+          {
+            "id": "n34",
+            "label": "[L15]: index = 0"
+          },
+          {
+            "id": "n48",
+            "label": "(formal-out)%values"
+          },
+          {
+            "id": "n46",
+            "label": "[L23]: return total"
+          },
+          {
+            "id": "n35",
+            "label": "[L16]: total = 0"
+          },
+          {
+            "id": "n43",
+            "label": "[L21]: index = index + 1"
+          },
+          {
+            "id": "n54",
+            "label": "FinalUse(%transformed)"
+          },
+          {
+            "id": "n52",
+            "label": "FinalUse(%values)"
+          },
+          {
+            "id": "n36",
+            "label": "[L17]: <Loop_cond> (index < values)"
+          },
+          {
+            "id": "n51",
+            "label": "FinalUse(%index)"
+          },
+          {
+            "id": "n47",
+            "label": "(formal-in)%values"
+          },
+          {
+            "id": "n41",
+            "label": "[L19]: transformed = transform(value)"
+          },
+          {
+            "id": "n21",
+            "label": "FinalUse(%lower)"
+          },
+          {
+            "id": "n17",
+            "label": "(formal-out)%lower"
+          },
+          {
+            "id": "n10",
+            "label": "[L6]: return upper"
+          },
+          {
+            "id": "n14",
+            "label": "(formal-in)%value"
+          },
+          {
+            "id": "n19",
+            "label": "(formal-out)%upper"
+          },
+          {
+            "id": "n7",
+            "label": "[L5]: <Cond> (value > upper)"
+          },
+          {
+            "id": "n23",
+            "label": "FinalUse(%upper)"
+          },
+          {
+            "id": "n15",
+            "label": "(formal-out)%value"
+          },
+          {
+            "id": "n16",
+            "label": "(formal-in)%lower"
+          },
+          {
+            "id": "n22",
+            "label": "FinalUse(%value)"
+          },
+          {
+            "id": "n18",
+            "label": "(formal-in)%upper"
+          },
+          {
+            "id": "n4",
+            "label": "[L3]: return lower"
+          },
+          {
+            "id": "n1",
+            "label": "[L2]: <Cond> (value < lower)"
+          },
+          {
+            "id": "n13",
+            "label": "[L8]: return value"
+          },
+          {
+            "id": "n27",
+            "label": "[L12]: return bounded * bounded"
+          },
+          {
+            "id": "n31",
+            "label": "FinalUse(%value)"
+          },
+          {
+            "id": "n32",
+            "label": "FinalUse(%bounded)"
+          },
+          {
+            "id": "n28",
+            "label": "(formal-in)%value"
+          },
+          {
+            "id": "n26",
+            "label": "[L11]: bounded = clamp(value, -10, 10)"
+          },
+          {
+            "id": "n29",
+            "label": "(formal-out)%value"
+          }
+        ]
+      }
+    ],
+    "message": "Completed with 0 item(s) and 1 artifact(s).",
+    "output_dir": "/workspace/artifacts/sympas_depgraph_pi9pzep5",
+    "preview": {
+      "dot_download_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+      "dot_source": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_2 {\n    label=\"[\\\"l3_calls.cj:14\\\"]@aggregate\";\n    style=dashed;\n    color=gray;\n    n39 [label=\"[L18]: value = values\", shape=box, fillcolor=white, style=filled];\n    n53 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n42 [label=\"[L20]: total = total + transformed\", shape=box, fillcolor=white, style=filled];\n    n50 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n34 [label=\"[L15]: index = 0\", shape=box, fillcolor=white, style=filled];\n    n48 [label=\"(formal-out)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n46 [label=\"[L23]: return total\", shape=box, fillcolor=white, style=filled];\n    n35 [label=\"[L16]: total = 0\", shape=box, fillcolor=white, style=filled];\n    n43 [label=\"[L21]: index = index + 1\", shape=box, fillcolor=white, style=filled];\n    n54 [label=\"FinalUse(%transformed)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n52 [label=\"FinalUse(%values)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n36 [label=\"[L17]: <Loop_cond> (index < values)\", shape=box, fillcolor=white, style=filled];\n    n51 [label=\"FinalUse(%index)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n47 [label=\"(formal-in)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n41 [label=\"[L19]: transformed = transform(value)\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_0 {\n    label=\"[\\\"l3_calls.cj:1\\\"]@clamp\";\n    style=dashed;\n    color=gray;\n    n21 [label=\"FinalUse(%lower)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n17 [label=\"(formal-out)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n10 [label=\"[L6]: return upper\", shape=box, fillcolor=white, style=filled];\n    n14 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n19 [label=\"(formal-out)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"[L5]: <Cond> (value > upper)\", shape=box, fillcolor=white, style=filled];\n    n23 [label=\"FinalUse(%upper)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n15 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n16 [label=\"(formal-in)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n22 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n18 [label=\"(formal-in)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"[L3]: return lower\", shape=box, fillcolor=white, style=filled];\n    n1 [label=\"[L2]: <Cond> (value < lower)\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"[L8]: return value\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_3 {\n    label=\"[\\\"l3_calls.cj:25\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l3_calls.cj:10\\\"]@transform\";\n    style=dashed;\n    color=gray;\n    n27 [label=\"[L12]: return bounded * bounded\", shape=box, fillcolor=white, style=filled];\n    n31 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n32 [label=\"FinalUse(%bounded)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n28 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n26 [label=\"[L11]: bounded = clamp(value, -10, 10)\", shape=box, fillcolor=white, style=filled];\n    n29 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n  }\n\n\n  n42 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n54 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n48 -> n52 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n50 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n41 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n35 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n34 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n32 [label=\"data\", style=solid, color=sandybrown];\n  n29 -> n31 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n26 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n19 -> n23 [label=\"data\", style=solid, color=sandybrown];\n  n15 -> n22 [label=\"data\", style=solid, color=sandybrown];\n  n17 -> n21 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n10 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n4 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n19 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n17 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n15 [label=\"data\", style=solid, color=sandybrown];\n}\n",
+      "dot_source_truncated": false,
+      "dot_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+      "json_download_url": "/artifacts/sympas_depgraph_pi9pzep5/dep_graphs.json?[REDACTED]",
+      "json_source": "{\"graphs\": [{\"graph_type\": \"Ddg\", \"node_count\": 35, \"edge_count\": 51, \"nodes\": [{\"id\": \"n39\", \"label\": \"[L18]: value = values\"}, {\"id\": \"n53\", \"label\": \"FinalUse(%total)\"}, {\"id\": \"n42\", \"label\": \"[L20]: total = total + transformed\"}, {\"id\": \"n50\", \"label\": \"FinalUse(%value)\"}, {\"id\": \"n34\", \"label\": \"[L15]: index = 0\"}, {\"id\": \"n48\", \"label\": \"(formal-out)%values\"}, {\"id\": \"n46\", \"label\": \"[L23]: return total\"}, {\"id\": \"n35\", \"label\": \"[L16]: total = 0\"}, {\"id\": \"n43\", \"label\": \"[L21]: index = index + 1\"}, {\"id\": \"n54\", \"label\": \"FinalUse(%transformed)\"}, {\"id\": \"n52\", \"label\": \"FinalUse(%values)\"}, {\"id\": \"n36\", \"label\": \"[L17]: <Loop_cond> (index < values)\"}, {\"id\": \"n51\", \"label\": \"FinalUse(%index)\"}, {\"id\": \"n47\", \"label\": \"(formal-in)%values\"}, {\"id\": \"n41\", \"label\": \"[L19]: transformed = transform(value)\"}, {\"id\": \"n21\", \"label\": \"FinalUse(%lower)\"}, {\"id\": \"n17\", \"label\": \"(formal-out)%lower\"}, {\"id\": \"n10\", \"label\": \"[L6]: return upper\"}, {\"id\": \"n14\", \"label\": \"(formal-in)%value\"}, {\"id\": \"n19\", \"label\": \"(formal-out)%upper\"}, {\"id\": \"n7\", \"label\": \"[L5]: <Cond> (value > upper)\"}, {\"id\": \"n23\", \"label\": \"FinalUse(%upper)\"}, {\"id\": \"n15\", \"label\": \"(formal-out)%value\"}, {\"id\": \"n16\", \"label\": \"(formal-in)%lower\"}, {\"id\": \"n22\", \"label\": \"FinalUse(%value)\"}, {\"id\": \"n18\", \"label\": \"(formal-in)%upper\"}, {\"id\": \"n4\", \"label\": \"[L3]: return lower\"}, {\"id\": \"n1\", \"label\": \"[L2]: <Cond> (value < lower)\"}, {\"id\": \"n13\", \"label\": \"[L8]: return value\"}, {\"id\": \"n27\", \"label\": \"[L12]: return bounded * bounded\"}, {\"id\": \"n31\", \"label\": \"FinalUse(%value)\"}, {\"id\": \"n32\", \"label\": \"FinalUse(%bounded)\"}, {\"id\": \"n28\", \"label\": \"(formal-in)%value\"}, {\"id\": \"n26\", \"label\": \"[L11]: bounded = clamp(value, -10, 10)\"}, {\"id\": \"n29\", \"label\": \"(formal-out)%value\"}], \"edges\": [{\"from\": \"n42\", \"to\": \"n46\"}, {\"from\": \"n35\", \"to\": \"n46\"}, {\"from\": \"n34\", \"to\": \"n43\"}, {\"from\": \"n41\", \"to\": \"n42\"}, {\"from\": \"n35\", \"to\": \"n42\"}, {\"from\": \"n43\", \"to\": \"n39\"}, {\"from\": \"n34\", \"to\": \"n39\"}, {\"from\": \"n43\", \"to\": \"n36\"}, {\"from\": \"n34\", \"to\": \"n36\"}, {\"from\": \"n41\", \"to\": \"n54\"}, {\"from\": \"n42\", \"to\": \"n53\"}, {\"from\": \"n35\", \"to\": \"n53\"}, {\"from\": \"n48\", \"to\": \"n52\"}, {\"from\": \"n43\", \"to\": \"n51\"}, {\"from\": \"n34\", \"to\": \"n51\"}, {\"from\": \"n39\", \"to\": \"n50\"}, {\"from\": \"n47\", \"to\": \"n46\"}, {\"from\": \"n43\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n43\"}, {\"from\": \"n42\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n42\"}, {\"from\": \"n41\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n41\"}, {\"from\": \"n39\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n39\"}, {\"from\": \"n47\", \"to\": \"n36\"}, {\"from\": \"n35\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n35\"}, {\"from\": \"n34\", \"to\": \"n48\"}, {\"from\": \"n47\", \"to\": \"n34\"}, {\"from\": \"n47\", \"to\": \"n48\"}, {\"from\": \"n26\", \"to\": \"n27\"}, {\"from\": \"n26\", \"to\": \"n32\"}, {\"from\": \"n29\", \"to\": \"n31\"}, {\"from\": \"n28\", \"to\": \"n27\"}, {\"from\": \"n26\", \"to\": \"n29\"}, {\"from\": \"n28\", \"to\": \"n26\"}, {\"from\": \"n28\", \"to\": \"n29\"}, {\"from\": \"n19\", \"to\": \"n23\"}, {\"from\": \"n15\", \"to\": \"n22\"}, {\"from\": \"n17\", \"to\": \"n21\"}, {\"from\": \"n14\", \"to\": \"n13\"}, {\"from\": \"n18\", \"to\": \"n10\"}, {\"from\": \"n14\", \"to\": \"n7\"}, {\"from\": \"n18\", \"to\": \"n7\"}, {\"from\": \"n16\", \"to\": \"n4\"}, {\"from\": \"n14\", \"to\": \"n1\"}, {\"from\": \"n16\", \"to\": \"n1\"}, {\"from\": \"n18\", \"to\": \"n19\"}, {\"from\": \"n16\", \"to\": \"n17\"}, {\"from\": \"n14\", \"to\": \"n15\"}]}]}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_depgraph_pi9pzep5/dep_graphs.json?[REDACTED]"
+    },
+    "report": {
+      "engine": "sympas-gs",
+      "formats": [
+        "dot"
+      ],
+      "generated_count": 1,
+      "graph_count": 1,
+      "graph_types": [
+        "Ddg"
+      ],
+      "graphs": [
+        {
+          "dot": {
+            "artifact_path": "sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+            "download_url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]",
+            "name": "l3_calls_ddg.dot",
+            "path": "/workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot",
+            "preview": {
+              "available": true,
+              "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_2 {\n    label=\"[\\\"l3_calls.cj:14\\\"]@aggregate\";\n    style=dashed;\n    color=gray;\n    n39 [label=\"[L18]: value = values\", shape=box, fillcolor=white, style=filled];\n    n53 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n42 [label=\"[L20]: total = total + transformed\", shape=box, fillcolor=white, style=filled];\n    n50 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n34 [label=\"[L15]: index = 0\", shape=box, fillcolor=white, style=filled];\n    n48 [label=\"(formal-out)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n46 [label=\"[L23]: return total\", shape=box, fillcolor=white, style=filled];\n    n35 [label=\"[L16]: total = 0\", shape=box, fillcolor=white, style=filled];\n    n43 [label=\"[L21]: index = index + 1\", shape=box, fillcolor=white, style=filled];\n    n54 [label=\"FinalUse(%transformed)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n52 [label=\"FinalUse(%values)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n36 [label=\"[L17]: <Loop_cond> (index < values)\", shape=box, fillcolor=white, style=filled];\n    n51 [label=\"FinalUse(%index)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n47 [label=\"(formal-in)%values\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n41 [label=\"[L19]: transformed = transform(value)\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_0 {\n    label=\"[\\\"l3_calls.cj:1\\\"]@clamp\";\n    style=dashed;\n    color=gray;\n    n21 [label=\"FinalUse(%lower)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n17 [label=\"(formal-out)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n10 [label=\"[L6]: return upper\", shape=box, fillcolor=white, style=filled];\n    n14 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n19 [label=\"(formal-out)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"[L5]: <Cond> (value > upper)\", shape=box, fillcolor=white, style=filled];\n    n23 [label=\"FinalUse(%upper)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n15 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n16 [label=\"(formal-in)%lower\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n22 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n18 [label=\"(formal-in)%upper\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"[L3]: return lower\", shape=box, fillcolor=white, style=filled];\n    n1 [label=\"[L2]: <Cond> (value < lower)\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"[L8]: return value\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_3 {\n    label=\"[\\\"l3_calls.cj:25\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l3_calls.cj:10\\\"]@transform\";\n    style=dashed;\n    color=gray;\n    n27 [label=\"[L12]: return bounded * bounded\", shape=box, fillcolor=white, style=filled];\n    n31 [label=\"FinalUse(%value)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n32 [label=\"FinalUse(%bounded)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n28 [label=\"(formal-in)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n26 [label=\"[L11]: bounded = clamp(value, -10, 10)\", shape=box, fillcolor=white, style=filled];\n    n29 [label=\"(formal-out)%value\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n  }\n\n\n  n42 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n54 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n53 [label=\"data\", style=solid, color=sandybrown];\n  n48 -> n52 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n51 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n50 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n46 [label=\"data\", style=solid, color=sandybrown];\n  n43 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n43 [label=\"data\", style=solid, color=sandybrown];\n  n42 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n42 [label=\"data\", style=solid, color=sandybrown];\n  n41 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n41 [label=\"data\", style=solid, color=sandybrown];\n  n39 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n39 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n36 [label=\"data\", style=solid, color=sandybrown];\n  n35 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n35 [label=\"data\", style=solid, color=sandybrown];\n  n34 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n34 [label=\"data\", style=solid, color=sandybrown];\n  n47 -> n48 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n32 [label=\"data\", style=solid, color=sandybrown];\n  n29 -> n31 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n27 [label=\"data\", style=solid, color=sandybrown];\n  n26 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n26 [label=\"data\", style=solid, color=sandybrown];\n  n28 -> n29 [label=\"data\", style=solid, color=sandybrown];\n  n19 -> n23 [label=\"data\", style=solid, color=sandybrown];\n  n15 -> n22 [label=\"data\", style=solid, color=sandybrown];\n  n17 -> n21 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n10 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n4 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n18 -> n19 [label=\"data\", style=solid, color=sandybrown];\n  n16 -> n17 [label=\"data\", style=solid, color=sandybrown];\n  n14 -> n15 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+            },
+            "url": "/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot?[REDACTED]"
+          },
+          "engine_log": "解析 runtime/sympas_src_fa356c/l3_calls.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 150.0 (Average: 15)\nVariable      SrcLineNumbers\n------------------------------\nbounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nindex@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\nlower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\ntotal@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\ntransformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\nupper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalue@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\nvalues@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.dot, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.svg, workspace/artifacts/sympas_depgraph_pi9pzep5/l3_calls_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_pi9pzep5",
+          "generated": true,
+          "graph_type": "Ddg",
+          "name": "ddg"
+        }
+      ],
+      "json_graphs": [
+        {
+          "edge_count": 51,
+          "edges": [
+            {
+              "from": "n42",
+              "to": "n46"
+            },
+            {
+              "from": "n35",
+              "to": "n46"
+            },
+            {
+              "from": "n34",
+              "to": "n43"
+            },
+            {
+              "from": "n41",
+              "to": "n42"
+            },
+            {
+              "from": "n35",
+              "to": "n42"
+            },
+            {
+              "from": "n43",
+              "to": "n39"
+            },
+            {
+              "from": "n34",
+              "to": "n39"
+            },
+            {
+              "from": "n43",
+              "to": "n36"
+            },
+            {
+              "from": "n34",
+              "to": "n36"
+            },
+            {
+              "from": "n41",
+              "to": "n54"
+            },
+            {
+              "from": "n42",
+              "to": "n53"
+            },
+            {
+              "from": "n35",
+              "to": "n53"
+            },
+            {
+              "from": "n48",
+              "to": "n52"
+            },
+            {
+              "from": "n43",
+              "to": "n51"
+            },
+            {
+              "from": "n34",
+              "to": "n51"
+            },
+            {
+              "from": "n39",
+              "to": "n50"
+            },
+            {
+              "from": "n47",
+              "to": "n46"
+            },
+            {
+              "from": "n43",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n43"
+            },
+            {
+              "from": "n42",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n42"
+            },
+            {
+              "from": "n41",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n41"
+            },
+            {
+              "from": "n39",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n39"
+            },
+            {
+              "from": "n47",
+              "to": "n36"
+            },
+            {
+              "from": "n35",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n35"
+            },
+            {
+              "from": "n34",
+              "to": "n48"
+            },
+            {
+              "from": "n47",
+              "to": "n34"
+            },
+            {
+              "from": "n47",
+              "to": "n48"
+            },
+            {
+              "from": "n26",
+              "to": "n27"
+            },
+            {
+              "from": "n26",
+              "to": "n32"
+            },
+            {
+              "from": "n29",
+              "to": "n31"
+            },
+            {
+              "from": "n28",
+              "to": "n27"
+            },
+            {
+              "from": "n26",
+              "to": "n29"
+            },
+            {
+              "from": "n28",
+              "to": "n26"
+            },
+            {
+              "from": "n28",
+              "to": "n29"
+            },
+            {
+              "from": "n19",
+              "to": "n23"
+            },
+            {
+              "from": "n15",
+              "to": "n22"
+            },
+            {
+              "from": "n17",
+              "to": "n21"
+            },
+            {
+              "from": "n14",
+              "to": "n13"
+            },
+            {
+              "from": "n18",
+              "to": "n10"
+            },
+            {
+              "from": "n14",
+              "to": "n7"
+            },
+            {
+              "from": "n18",
+              "to": "n7"
+            },
+            {
+              "from": "n16",
+              "to": "n4"
+            },
+            {
+              "from": "n14",
+              "to": "n1"
+            },
+            {
+              "from": "n16",
+              "to": "n1"
+            },
+            {
+              "from": "n18",
+              "to": "n19"
+            },
+            {
+              "from": "n16",
+              "to": "n17"
+            },
+            {
+              "from": "n14",
+              "to": "n15"
+            }
+          ],
+          "graph_type": "Ddg",
+          "node_count": 35,
+          "nodes": [
+            {
+              "id": "n39",
+              "label": "[L18]: value = values"
+            },
+            {
+              "id": "n53",
+              "label": "FinalUse(%total)"
+            },
+            {
+              "id": "n42",
+              "label": "[L20]: total = total + transformed"
+            },
+            {
+              "id": "n50",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n34",
+              "label": "[L15]: index = 0"
+            },
+            {
+              "id": "n48",
+              "label": "(formal-out)%values"
+            },
+            {
+              "id": "n46",
+              "label": "[L23]: return total"
+            },
+            {
+              "id": "n35",
+              "label": "[L16]: total = 0"
+            },
+            {
+              "id": "n43",
+              "label": "[L21]: index = index + 1"
+            },
+            {
+              "id": "n54",
+              "label": "FinalUse(%transformed)"
+            },
+            {
+              "id": "n52",
+              "label": "FinalUse(%values)"
+            },
+            {
+              "id": "n36",
+              "label": "[L17]: <Loop_cond> (index < values)"
+            },
+            {
+              "id": "n51",
+              "label": "FinalUse(%index)"
+            },
+            {
+              "id": "n47",
+              "label": "(formal-in)%values"
+            },
+            {
+              "id": "n41",
+              "label": "[L19]: transformed = transform(value)"
+            },
+            {
+              "id": "n21",
+              "label": "FinalUse(%lower)"
+            },
+            {
+              "id": "n17",
+              "label": "(formal-out)%lower"
+            },
+            {
+              "id": "n10",
+              "label": "[L6]: return upper"
+            },
+            {
+              "id": "n14",
+              "label": "(formal-in)%value"
+            },
+            {
+              "id": "n19",
+              "label": "(formal-out)%upper"
+            },
+            {
+              "id": "n7",
+              "label": "[L5]: <Cond> (value > upper)"
+            },
+            {
+              "id": "n23",
+              "label": "FinalUse(%upper)"
+            },
+            {
+              "id": "n15",
+              "label": "(formal-out)%value"
+            },
+            {
+              "id": "n16",
+              "label": "(formal-in)%lower"
+            },
+            {
+              "id": "n22",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n18",
+              "label": "(formal-in)%upper"
+            },
+            {
+              "id": "n4",
+              "label": "[L3]: return lower"
+            },
+            {
+              "id": "n1",
+              "label": "[L2]: <Cond> (value < lower)"
+            },
+            {
+              "id": "n13",
+              "label": "[L8]: return value"
+            },
+            {
+              "id": "n27",
+              "label": "[L12]: return bounded * bounded"
+            },
+            {
+              "id": "n31",
+              "label": "FinalUse(%value)"
+            },
+            {
+              "id": "n32",
+              "label": "FinalUse(%bounded)"
+            },
+            {
+              "id": "n28",
+              "label": "(formal-in)%value"
+            },
+            {
+              "id": "n26",
+              "label": "[L11]: bounded = clamp(value, -10, 10)"
+            },
+            {
+              "id": "n29",
+              "label": "(formal-out)%value"
+            }
+          ]
+        }
+      ],
+      "output_dir": "/workspace/artifacts/sympas_depgraph_pi9pzep5",
+      "requested_graph_types": [
+        "Ddg"
+      ],
+      "target": "runtime/sympas_src_fa356c/l3_calls.cj"
+    },
+    "request_id": "25e28acb4beb03d9",
+    "requested_graph_types": [
+      "Ddg"
+    ],
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 551.8
+    },
+    "server_timing_ms": 551.8,
+    "status": "success",
+    "target": "runtime/sympas_src_fa356c/l3_calls.cj",
+    "tool": "sympas_dep_graph"
+  },
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "tool": "sympas_dep_graph",
+  "transport": "group_http_tools"
+}

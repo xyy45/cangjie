@@ -1,0 +1,311 @@
+{
+  "task_id": "bc41e269129f42a3a0cfd498a2030f21",
+  "candidate_id": "c_52fa5c37651d45e4b585106bb0322570",
+  "status": "PARTIAL",
+  "impact_id": "59907aee9f2d411cad1ad776858a0b47",
+  "elapsed_ms": 31641,
+  "source_binding": "EXACT_BYTES",
+  "new_model_calls": 0,
+  "acceptances": 0,
+  "baseline_unchanged": true,
+  "files": [
+    {
+      "path": "src/quantity.cj",
+      "changes": {
+        "after_lines": [
+          4
+        ],
+        "before_lines": [
+          4
+        ],
+        "functions": [
+          {
+            "end_line": 5,
+            "name": "validQuantity",
+            "origin": "SOURCE_TEXT",
+            "side": "before",
+            "start_line": 3
+          },
+          {
+            "end_line": 5,
+            "name": "validQuantity",
+            "origin": "SOURCE_TEXT",
+            "side": "after",
+            "start_line": 3
+          }
+        ],
+        "hunks": [
+          {
+            "after_at": 4,
+            "after_lines": [
+              4
+            ],
+            "before_at": 4,
+            "before_lines": [
+              4
+            ],
+            "kind": "replace"
+          }
+        ]
+      },
+      "sides": {
+        "before": {
+          "analysis_id": "dcd1c76ca70b47729a7c0da2e50ed631",
+          "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+          "slice_criterion": {
+            "direction": "Bwd",
+            "line": 4,
+            "method": "SymPas"
+          },
+          "status": "PARTIAL",
+          "reused": false,
+          "tools": [
+            {
+              "raw_sha256": "c7a48c1c9620116911fc1d9089b42cc08e33251c4b34d62c1c12ee7f0b1ca9f0",
+              "reason": "工具内部分析失败；查看原始证据",
+              "status": "FAILED",
+              "tool": "sympas_slice"
+            },
+            {
+              "raw_sha256": "16cd72659b33b61de5380b3b13d0acbacc329f05005e351953df40084747442f",
+              "reason": "未返回非空DDG",
+              "status": "EMPTY",
+              "tool": "sympas_dep_graph"
+            },
+            {
+              "raw_sha256": "634fd7d8a6c45cb2e0d9814200ac9133383091a66bea8579e25afd0057bd13ce",
+              "reason": "结构线索已返回",
+              "status": "VALID",
+              "tool": "ast_symbol_extractor"
+            }
+          ]
+        },
+        "after": {
+          "analysis_id": "5d16f32def8d448680573a6b8ff3d1c7",
+          "source_sha256": "6e67a3253e74e5436506bfc0ad0994559ed064604947d34698d51c9bbda3c458",
+          "slice_criterion": {
+            "direction": "Bwd",
+            "line": 4,
+            "method": "SymPas"
+          },
+          "status": "PARTIAL",
+          "reused": false,
+          "tools": [
+            {
+              "raw_sha256": "096f95edca2ec5346a709a5452d47e39802ee335ffd867e09ecf6987489bddca",
+              "reason": "工具内部分析失败；查看原始证据",
+              "status": "FAILED",
+              "tool": "sympas_slice"
+            },
+            {
+              "raw_sha256": "ed0c34489632d9700214544d23d93c8edc90236de0a7ab42a6e844ddb124d289",
+              "reason": "未返回非空DDG",
+              "status": "EMPTY",
+              "tool": "sympas_dep_graph"
+            },
+            {
+              "raw_sha256": "8a45c2fecc5248173784077fa51481e70d5417d7b616a7c1af8cf6c7c1cbad7d",
+              "reason": "结构线索已返回",
+              "status": "VALID",
+              "tool": "ast_symbol_extractor"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "src/fee.cj",
+      "changes": {
+        "after_lines": [
+          4
+        ],
+        "before_lines": [
+          4
+        ],
+        "functions": [
+          {
+            "end_line": 5,
+            "name": "calculateFee",
+            "origin": "SOURCE_TEXT",
+            "side": "before",
+            "start_line": 3
+          },
+          {
+            "end_line": 5,
+            "name": "calculateFee",
+            "origin": "SOURCE_TEXT",
+            "side": "after",
+            "start_line": 3
+          }
+        ],
+        "hunks": [
+          {
+            "after_at": 4,
+            "after_lines": [
+              4
+            ],
+            "before_at": 4,
+            "before_lines": [
+              4
+            ],
+            "kind": "replace"
+          }
+        ]
+      },
+      "sides": {
+        "before": {
+          "analysis_id": "de5bef72de5b41138eb2ced1e3774c43",
+          "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+          "slice_criterion": {
+            "direction": "Bwd",
+            "line": 4,
+            "method": "SymPas"
+          },
+          "status": "PARTIAL",
+          "reused": false,
+          "tools": [
+            {
+              "raw_sha256": "976d8727f8ad193cd9e5c4bd4c5949e22314a05310ccb17b838aa75eaf06a321",
+              "reason": "静态切片已返回",
+              "status": "VALID",
+              "tool": "sympas_slice"
+            },
+            {
+              "raw_sha256": "ec8e97d88e03c4e203c16fcd27a0b5cbdff6f60b2d1513980980269cfed06a17",
+              "reason": "未返回非空DDG",
+              "status": "EMPTY",
+              "tool": "sympas_dep_graph"
+            },
+            {
+              "raw_sha256": "4cef70553ec6be65da23ce588a7711b795f0053ac91471486b70f74c833bf92c",
+              "reason": "结构线索已返回",
+              "status": "VALID",
+              "tool": "ast_symbol_extractor"
+            }
+          ]
+        },
+        "after": {
+          "analysis_id": "fd43815df3ec42959f5e308b46f11a66",
+          "source_sha256": "88b235f8be2872be45873df31c6029aa9834f546dfc8d8905f8e01ee50b0e9dc",
+          "slice_criterion": {
+            "direction": "Bwd",
+            "line": 4,
+            "method": "SymPas"
+          },
+          "status": "PARTIAL",
+          "reused": false,
+          "tools": [
+            {
+              "raw_sha256": "a9e86397a432855cfe39caced4d5e517e2eefcba8b2948337173a6bebcf88508",
+              "reason": "静态切片已返回",
+              "status": "VALID",
+              "tool": "sympas_slice"
+            },
+            {
+              "raw_sha256": "4b163df7a8aeb8ba0e67c1ec4023ba6f779337e34b91e708368171236796a244",
+              "reason": "未返回非空DDG",
+              "status": "EMPTY",
+              "tool": "sympas_dep_graph"
+            },
+            {
+              "raw_sha256": "38d770a6764179ddd1a0eb20648beccb4b4a1fb4c0972854ee2903126392ffe7",
+              "reason": "结构线索已返回",
+              "status": "VALID",
+              "tool": "ast_symbol_extractor"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "actual_requests": [
+    {
+      "tool": "sympas_slice",
+      "analysis_id": "dcd1c76ca70b47729a7c0da2e50ed631",
+      "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+      "line": 4,
+      "raw_sha256": "c7a48c1c9620116911fc1d9089b42cc08e33251c4b34d62c1c12ee7f0b1ca9f0"
+    },
+    {
+      "tool": "sympas_dep_graph",
+      "analysis_id": "dcd1c76ca70b47729a7c0da2e50ed631",
+      "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+      "line": null,
+      "raw_sha256": "16cd72659b33b61de5380b3b13d0acbacc329f05005e351953df40084747442f"
+    },
+    {
+      "tool": "ast_symbol_extractor",
+      "analysis_id": "dcd1c76ca70b47729a7c0da2e50ed631",
+      "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+      "line": null,
+      "raw_sha256": "634fd7d8a6c45cb2e0d9814200ac9133383091a66bea8579e25afd0057bd13ce"
+    },
+    {
+      "tool": "sympas_slice",
+      "analysis_id": "5d16f32def8d448680573a6b8ff3d1c7",
+      "source_sha256": "6e67a3253e74e5436506bfc0ad0994559ed064604947d34698d51c9bbda3c458",
+      "line": 4,
+      "raw_sha256": "096f95edca2ec5346a709a5452d47e39802ee335ffd867e09ecf6987489bddca"
+    },
+    {
+      "tool": "sympas_dep_graph",
+      "analysis_id": "5d16f32def8d448680573a6b8ff3d1c7",
+      "source_sha256": "6e67a3253e74e5436506bfc0ad0994559ed064604947d34698d51c9bbda3c458",
+      "line": null,
+      "raw_sha256": "ed0c34489632d9700214544d23d93c8edc90236de0a7ab42a6e844ddb124d289"
+    },
+    {
+      "tool": "ast_symbol_extractor",
+      "analysis_id": "5d16f32def8d448680573a6b8ff3d1c7",
+      "source_sha256": "6e67a3253e74e5436506bfc0ad0994559ed064604947d34698d51c9bbda3c458",
+      "line": null,
+      "raw_sha256": "8a45c2fecc5248173784077fa51481e70d5417d7b616a7c1af8cf6c7c1cbad7d"
+    },
+    {
+      "tool": "sympas_slice",
+      "analysis_id": "de5bef72de5b41138eb2ced1e3774c43",
+      "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+      "line": 4,
+      "raw_sha256": "976d8727f8ad193cd9e5c4bd4c5949e22314a05310ccb17b838aa75eaf06a321"
+    },
+    {
+      "tool": "sympas_dep_graph",
+      "analysis_id": "de5bef72de5b41138eb2ced1e3774c43",
+      "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+      "line": null,
+      "raw_sha256": "ec8e97d88e03c4e203c16fcd27a0b5cbdff6f60b2d1513980980269cfed06a17"
+    },
+    {
+      "tool": "ast_symbol_extractor",
+      "analysis_id": "de5bef72de5b41138eb2ced1e3774c43",
+      "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+      "line": null,
+      "raw_sha256": "4cef70553ec6be65da23ce588a7711b795f0053ac91471486b70f74c833bf92c"
+    },
+    {
+      "tool": "sympas_slice",
+      "analysis_id": "fd43815df3ec42959f5e308b46f11a66",
+      "source_sha256": "88b235f8be2872be45873df31c6029aa9834f546dfc8d8905f8e01ee50b0e9dc",
+      "line": 4,
+      "raw_sha256": "a9e86397a432855cfe39caced4d5e517e2eefcba8b2948337173a6bebcf88508"
+    },
+    {
+      "tool": "sympas_dep_graph",
+      "analysis_id": "fd43815df3ec42959f5e308b46f11a66",
+      "source_sha256": "88b235f8be2872be45873df31c6029aa9834f546dfc8d8905f8e01ee50b0e9dc",
+      "line": null,
+      "raw_sha256": "4b163df7a8aeb8ba0e67c1ec4023ba6f779337e34b91e708368171236796a244"
+    },
+    {
+      "tool": "ast_symbol_extractor",
+      "analysis_id": "fd43815df3ec42959f5e308b46f11a66",
+      "source_sha256": "88b235f8be2872be45873df31c6029aa9834f546dfc8d8905f8e01ee50b0e9dc",
+      "line": null,
+      "raw_sha256": "38d770a6764179ddd1a0eb20648beccb4b4a1fb4c0972854ee2903126392ffe7"
+    }
+  ],
+  "download_verified": true,
+  "download_sha256": "24ae98e79dc133a2924abb59ec74d24c8e3ef20852f4a4ae265db82ad65f0b51",
+  "report_ref": "records/59907aee9f2d411cad1ad776858a0b47.analysis.impact.json",
+  "report_sha256": "ba9083eb1bef406a1e7d0876d3e89aab1faa65d222251ccd113f03eec6ecf91d"
+}

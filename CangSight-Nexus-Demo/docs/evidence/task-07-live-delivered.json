@@ -1,0 +1,46 @@
+{
+  "origin": "LIVE",
+  "task_id": "e5b31b3b0b284d368458593602e32798",
+  "run_directory": "/Users/jadya/Documents/CangSight-Workspace/02-\u5f00\u53d1\u5de5\u7a0b/CangSight-Nexus/.runtime/live/f48e2ddc7dce4ec2bc4e9f4ff5d96ed5",
+  "attempts": 1,
+  "model_ids": [
+    "deepseek-flash"
+  ],
+  "usage": [
+    {
+      "completion_tokens": 137,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2961,
+      "prompt_tokens": 2961,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3098
+    }
+  ],
+  "checks": [
+    {
+      "kind": "build",
+      "state": "PASS",
+      "counts": {}
+    },
+    {
+      "kind": "test",
+      "state": "PASS",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 11,
+        "skipped": 0,
+        "total": 11
+      }
+    }
+  ],
+  "export": {
+    "export_id": "f302c29b1ca9434f902a52f93a4f6138",
+    "status": "DELIVERED",
+    "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+    "download_ref": "exports/f302c29b1ca9434f902a52f93a4f6138.zip"
+  },
+  "archive": "/Users/jadya/Documents/CangSight-Workspace/02-\u5f00\u53d1\u5de5\u7a0b/CangSight-Nexus/.runtime/live/f48e2ddc7dce4ec2bc4e9f4ff5d96ed5/exports/f302c29b1ca9434f902a52f93a4f6138.zip"
+}

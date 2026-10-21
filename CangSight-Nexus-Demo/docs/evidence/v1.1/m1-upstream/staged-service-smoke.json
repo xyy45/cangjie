@@ -1,0 +1,28 @@
+{
+  "source_commit": "2580e62",
+  "service": "http://127.0.0.1:8765",
+  "http": {
+    "/": {
+      "status": 200,
+      "operator_page": true
+    },
+    "/api/tasks": {
+      "status": 403
+    },
+    "/agents/runs/missing": {
+      "status": 403
+    }
+  },
+  "before": {
+    "tasks": 9,
+    "model_records": 4
+  },
+  "after": {
+    "tasks": 9,
+    "model_records": 4
+  },
+  "task_and_model_record_counts_unchanged": true,
+  "operator_key_submitted_by_agent": false,
+  "private_backup": ".runtime/backups/workbench-before-staged-runner-20261018T004548Z.sqlite3",
+  "backup_mode": "0o600"
+}

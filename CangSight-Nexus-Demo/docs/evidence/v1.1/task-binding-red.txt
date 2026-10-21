@@ -1,0 +1,89 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+________ test_v11_task_binds_original_confirmed_spec_baseline_and_plan _________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_v11_task_binds_original_c0')
+
+    def test_v11_task_binds_original_confirmed_spec_baseline_and_plan(tmp_path):
+>       store,service,ws,task=bound_task(tmp_path)
+                              ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_task_requirements.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_v11_task_binds_original_c0')
+
+    def bound_task(tmp_path):
+        store=RunStore(tmp_path)
+        service=RequirementService(store)
+        source=ROOT/'fixtures/order-demo-bug'
+        ws=WorkspaceStore(tmp_path,registered=[source])
+        baseline=ws.import_project(source,'.')
+        draft=service.prepare_requirement('order-demo-bug','Fix quantity, retain price and total')
+        spec=service.confirm_requirement(draft['id'],dict(schema_version=1,expected_version=1,
+            requirements=draft['requirements'],allowed_paths=draft['allowed_paths']),actor_id='local-user')
+>       task=service.prepare_task('order-demo-bug',spec.id,baseline)
+             ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'RequirementService' object has no attribute 'prepare_task'
+
+tests/test_task_requirements.py:21: AttributeError
+________ test_candidate_requirement_refs_and_plan_binding_are_enforced _________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_candidate_requirement_ref0')
+
+    def test_candidate_requirement_refs_and_plan_binding_are_enforced(tmp_path):
+>       store,service,ws,task=bound_task(tmp_path)
+                              ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_task_requirements.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_candidate_requirement_ref0')
+
+    def bound_task(tmp_path):
+        store=RunStore(tmp_path)
+        service=RequirementService(store)
+        source=ROOT/'fixtures/order-demo-bug'
+        ws=WorkspaceStore(tmp_path,registered=[source])
+        baseline=ws.import_project(source,'.')
+        draft=service.prepare_requirement('order-demo-bug','Fix quantity, retain price and total')
+        spec=service.confirm_requirement(draft['id'],dict(schema_version=1,expected_version=1,
+            requirements=draft['requirements'],allowed_paths=draft['allowed_paths']),actor_id='local-user')
+>       task=service.prepare_task('order-demo-bug',spec.id,baseline)
+             ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'RequirementService' object has no attribute 'prepare_task'
+
+tests/test_task_requirements.py:21: AttributeError
+_________ test_unknown_task_schema_and_changed_bound_goal_are_rejected _________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_unknown_task_schema_and_c0')
+
+    def test_unknown_task_schema_and_changed_bound_goal_are_rejected(tmp_path):
+        import json
+>       store,service,ws,task=bound_task(tmp_path)
+                              ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_task_requirements.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-82/test_unknown_task_schema_and_c0')
+
+    def bound_task(tmp_path):
+        store=RunStore(tmp_path)
+        service=RequirementService(store)
+        source=ROOT/'fixtures/order-demo-bug'
+        ws=WorkspaceStore(tmp_path,registered=[source])
+        baseline=ws.import_project(source,'.')
+        draft=service.prepare_requirement('order-demo-bug','Fix quantity, retain price and total')
+        spec=service.confirm_requirement(draft['id'],dict(schema_version=1,expected_version=1,
+            requirements=draft['requirements'],allowed_paths=draft['allowed_paths']),actor_id='local-user')
+>       task=service.prepare_task('order-demo-bug',spec.id,baseline)
+             ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'RequirementService' object has no attribute 'prepare_task'
+
+tests/test_task_requirements.py:21: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_task_requirements.py::test_v11_task_binds_original_confirmed_spec_baseline_and_plan
+FAILED tests/test_task_requirements.py::test_candidate_requirement_refs_and_plan_binding_are_enforced
+FAILED tests/test_task_requirements.py::test_unknown_task_schema_and_changed_bound_goal_are_rejected
+3 failed in 0.08s

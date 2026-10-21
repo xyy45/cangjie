@@ -1,0 +1,150 @@
+TAP version 13
+# Subtest: replay stops for explicit review and never auto-accepts
+ok 1 - replay stops for explicit review and never auto-accepts
+  ---
+  duration_ms: 0.518125
+  ...
+# Subtest: policy denial cannot advance to review or delivery
+ok 2 - policy denial cannot advance to review or delivery
+  ---
+  duration_ms: 0.071584
+  ...
+# Subtest: pause, resume and reset do not retain acceptance
+ok 3 - pause, resume and reset do not retain acceptance
+  ---
+  duration_ms: 0.117125
+  ...
+# Subtest: rejection is terminal until reset
+ok 4 - rejection is terminal until reset
+  ---
+  duration_ms: 0.060458
+  ...
+# Subtest: real startup blocks mode, case and reset before a task id exists
+ok 5 - real startup blocks mode, case and reset before a task id exists
+  ---
+  duration_ms: 49.072041
+  ...
+# Subtest: successful real cancellation clears running and returns to a reset workspace
+ok 6 - successful real cancellation clears running and returns to a reset workspace
+  ---
+  duration_ms: 1.369834
+  ...
+# Subtest: late history selection cannot restore order delivery over the policy case
+ok 7 - late history selection cannot restore order delivery over the policy case
+  ---
+  duration_ms: 1.113208
+  ...
+# Subtest: BUILDING does not mark unverified real requirements satisfied
+ok 8 - BUILDING does not mark unverified real requirements satisfied
+  ---
+  duration_ms: 0.743167
+  ...
+# Subtest: real pending-review task is indexed so it survives workspace switches
+ok 9 - real pending-review task is indexed so it survives workspace switches
+  ---
+  duration_ms: 1.219583
+  ...
+# Subtest: an unexecuted or denied native policy does not appear allowed
+ok 10 - an unexecuted or denied native policy does not appear allowed
+  ---
+  duration_ms: 0.606833
+  ...
+# Subtest: real rejection locks mode switching until its response is settled
+ok 11 - real rejection locks mode switching until its response is settled
+  ---
+  duration_ms: 0.902833
+  ...
+# Subtest: new cases route generation to their registered project instead of the order fixture
+ok 12 - new cases route generation to their registered project instead of the order fixture
+  ---
+  duration_ms: 2.353042
+  ...
+# Subtest: policy probes never call the model repair run endpoint
+ok 13 - policy probes never call the model repair run endpoint
+  ---
+  duration_ms: 2.047125
+  ...
+# Subtest: operator credential is cleared immediately and sent only to explicit authorization route
+ok 14 - operator credential is cleared immediately and sent only to explicit authorization route
+  ---
+  duration_ms: 1.457375
+  ...
+# Subtest: failed pairing neither reloads nor retains or echoes credential
+ok 15 - failed pairing neither reloads nor retains or echoes credential
+  ---
+  duration_ms: 0.376416
+  ...
+# Subtest: late task response cannot overwrite a newly started task
+ok 16 - late task response cannot overwrite a newly started task
+  ---
+  duration_ms: 5.241375
+  ...
+# Subtest: late candidate details cannot replace newer selection on the same task
+ok 17 - late candidate details cannot replace newer selection on the same task
+  ---
+  duration_ms: 2.90175
+  ...
+# Subtest: late errors do not replace the current task message
+ok 18 - late errors do not replace the current task message
+  ---
+  duration_ms: 0.844959
+  ...
+# Subtest: start invalidates pending refresh immediately, before POST resolves
+ok 19 - start invalidates pending refresh immediately, before POST resolves
+  ---
+  duration_ms: 0.85525
+  ...
+# Subtest: late acceptance cannot export a candidate from a previous task
+ok 20 - late acceptance cannot export a candidate from a previous task
+  ---
+  duration_ms: 0.893208
+  ...
+# Subtest: late export cannot restore a previous task download link
+ok 21 - late export cannot restore a previous task download link
+  ---
+  duration_ms: 1.179583
+  ...
+# Subtest: draft is displayed before explicit confirmation and task creation
+ok 22 - draft is displayed before explicit confirmation and task creation
+  ---
+  duration_ms: 1.266125
+  ...
+# Subtest: reject is bound to current revision and late details cannot restore acceptance
+ok 23 - reject is bound to current revision and late details cannot restore acceptance
+  ---
+  duration_ms: 1.18175
+  ...
+# Subtest: cancel keeps the selected task and revision without starting a new task
+ok 24 - cancel keeps the selected task and revision without starting a new task
+  ---
+  duration_ms: 1.259791
+  ...
+# Subtest: V1.1 acceptance sends frozen candidate revision
+ok 25 - V1.1 acceptance sends frozen candidate revision
+  ---
+  duration_ms: 1.235583
+  ...
+# Subtest: browsing an older candidate cannot accept it or restore stale details
+ok 26 - browsing an older candidate cannot accept it or restore stale details
+  ---
+  duration_ms: 0.902333
+  ...
+# Subtest: history task switch invalidates old task response without creating a run
+ok 27 - history task switch invalidates old task response without creating a run
+  ---
+  duration_ms: 0.73925
+  ...
+# Subtest: user can narrow source scope before confirming and cannot edit pending approval
+ok 28 - user can narrow source scope before confirming and cannot edit pending approval
+  ---
+  duration_ms: 0.9615
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 127.758

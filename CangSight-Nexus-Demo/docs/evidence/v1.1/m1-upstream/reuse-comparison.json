@@ -1,0 +1,5 @@
+{
+  "exact_python_file_matches": [],
+  "identical_ast_function_matches": [],
+  "limits": "Exact bytes and AST function equality only; absence does not prove no adapted reuse. Manual import/interface review required."
+}

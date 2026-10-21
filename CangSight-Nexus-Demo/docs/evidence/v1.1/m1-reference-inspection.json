@@ -1,0 +1,85 @@
+{
+  "reference_root": "/Users/jadya/Documents/CangSight-Workspace/01-原始代码/Sympas-Nexus-GitHub",
+  "files": 453,
+  "original_unchanged": true,
+  "snapshot_manifest_sha256": "8284982d803b30488a853108f9c0ac821e71879c762f6dc8ddc524fae917d107",
+  "git_commit": "UNVERIFIED_NO_GIT_METADATA",
+  "declared_plugin_version": "1.0.0",
+  "declared_license": "MIT",
+  "license_notice_files": [],
+  "is_design_new_sympas_version": "UNCONFIRMED",
+  "direct_source_reuse_in_current_product": false,
+  "inspected_interfaces": {
+    "nexus/gateway/run_store.py": [
+      {
+        "class": "RunState",
+        "methods": [
+          "to_dict"
+        ]
+      },
+      {
+        "class": "RunEvent",
+        "methods": [
+          "to_dict"
+        ]
+      },
+      {
+        "class": "RunStateStore",
+        "methods": [
+          "create_run",
+          "update_run",
+          "get_run",
+          "append_event",
+          "get_events",
+          "recover_running_runs",
+          "cleanup_expired"
+        ]
+      }
+    ],
+    "nexus/gateway/app.py": [],
+    "nexus/core/dag_planner.py": [
+      {
+        "class": "DAGValidationError",
+        "methods": []
+      },
+      {
+        "class": "DAGCycleError",
+        "methods": []
+      },
+      {
+        "class": "DAGNode",
+        "methods": []
+      },
+      {
+        "class": "DAGPlanner",
+        "methods": [
+          "add_node",
+          "execute_async",
+          "execute_sync",
+          "export_state",
+          "summary",
+          "export_dot",
+          "build_security_pipeline"
+        ]
+      }
+    ],
+    "nexus/audit/eat_db.py": [
+      {
+        "class": "EATDatabase",
+        "methods": [
+          "persist_frame",
+          "persist_chain",
+          "load_session_frames",
+          "load_leaves",
+          "list_sessions"
+        ]
+      }
+    ]
+  },
+  "reference_files_sha256": {
+    "nexus/gateway/run_store.py": "c64fe9eb997a650e2405f0e6164660e442c627c40a05e9f764e4626475fe73cc",
+    "nexus/gateway/app.py": "420b78df711af7f2e4e7de2437736460bb37bb1312da81a396051ee6a98ab89c",
+    "nexus/core/dag_planner.py": "9da196799dea19fc379d796cf833448a6c57524390c35706be11c61a99b8fc99",
+    "nexus/audit/eat_db.py": "08e15cd0ef3882699b7c37a9fbc76ad1464bb7242af76b9cb72f2ec43f869953"
+  }
+}

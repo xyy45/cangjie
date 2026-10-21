@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "task_id": "792bf4cdaa5b4fc0b1333e8b2e738c9b",
+  "status": "REVIEW_PENDING",
+  "baseline_id": "b_7df4c736c2624ee2bc0fa6b49d1974f8",
+  "baseline_hash": "6e3788770e2ffdcbb477276c937103c1573fb93d9ab19d897fd00cafbb131f93",
+  "analysis_status": "PARTIAL",
+  "files": [
+    {
+      "path": "src/quantity.cj",
+      "analysis_id": "acc206153ef34c8ea2f3f1fb3096bf49",
+      "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+      "result_sha256": "2b77280073211568ffadf40f31118351bb8aa74e083f2c62ce35b2ffa1dd28cb",
+      "status": "PARTIAL",
+      "tools": [
+        {
+          "tool": "sympas_slice",
+          "status": "FAILED",
+          "reason": "工具内部分析失败；查看原始证据",
+          "included": false,
+          "evidence_id": "acc206153ef34c8ea2f3f1fb3096bf49:sympas_slice",
+          "raw_sha256": "fa78d7d9f1e5c049a08ca040c24d65d4fbef0fe7f014ac6e61a81e6a9d998f2d",
+          "record_ref": "records/acc206153ef34c8ea2f3f1fb3096bf49.analysis.observations.sympas_slice.json"
+        },
+        {
+          "tool": "sympas_dep_graph",
+          "status": "EMPTY",
+          "reason": "未返回非空DDG",
+          "included": false,
+          "evidence_id": "acc206153ef34c8ea2f3f1fb3096bf49:sympas_dep_graph",
+          "raw_sha256": "a7a8c72e8830a07962d969e9edbc5d1e1f87f51dc23a4501cbebb19434792408",
+          "record_ref": "records/acc206153ef34c8ea2f3f1fb3096bf49.analysis.observations.sympas_dep_graph.json"
+        },
+        {
+          "tool": "ast_symbol_extractor",
+          "status": "VALID",
+          "reason": "结构线索已返回",
+          "included": true,
+          "evidence_id": "acc206153ef34c8ea2f3f1fb3096bf49:ast_symbol_extractor",
+          "raw_sha256": "ec9186fd254b1754b99135f17d0e807949e1dd3637f61f3ce2e194d7762aebac",
+          "record_ref": "records/acc206153ef34c8ea2f3f1fb3096bf49.analysis.observations.ast_symbol_extractor.json",
+          "data": {
+            "symbols": [
+              {
+                "symbol": "(formal-in)%quantity",
+                "appears_in": [
+                  "Pdg"
+                ]
+              },
+              {
+                "symbol": "ENTER validQuantity",
+                "appears_in": [
+                  "Cdg",
+                  "Pdg"
+                ]
+              },
+              {
+                "symbol": "[L4]: quantity >= 0(quantity <= 1000)",
+                "appears_in": [
+                  "Cdg",
+                  "Pdg"
+                ]
+              }
+            ],
+            "dependency_count": 3
+          }
+        }
+      ]
+    },
+    {
+      "path": "src/fee.cj",
+      "analysis_id": "7dc78bbd58054cd5b7c90eef82ef57ea",
+      "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+      "result_sha256": "1681ad382b521f95325c4d863e858c6d4517ab0e11b7b5cbc53ba1f6c03b98c1",
+      "status": "PARTIAL",
+      "tools": [
+        {
+          "tool": "sympas_slice",
+          "status": "VALID",
+          "reason": "静态切片已返回",
+          "included": true,
+          "evidence_id": "7dc78bbd58054cd5b7c90eef82ef57ea:sympas_slice",
+          "raw_sha256": "5eb5623590f1e682616a509ff6267a82c559e1e957965a13179d5f41e227f69e",
+          "record_ref": "records/7dc78bbd58054cd5b7c90eef82ef57ea.analysis.observations.sympas_slice.json",
+          "data": {
+            "slices": {
+              "quantity@calculateFee": [
+                3,
+                4
+              ],
+              "unitPrice@calculateFee": [
+                3,
+                4
+              ]
+            }
+          }
+        },
+        {
+          "tool": "sympas_dep_graph",
+          "status": "EMPTY",
+          "reason": "未返回非空DDG",
+          "included": false,
+          "evidence_id": "7dc78bbd58054cd5b7c90eef82ef57ea:sympas_dep_graph",
+          "raw_sha256": "7b7fb12cc13a0fd46999a9c7eba0e96247ae0ce4dfe65e12fd0651a8a37c84ed",
+          "record_ref": "records/7dc78bbd58054cd5b7c90eef82ef57ea.analysis.observations.sympas_dep_graph.json"
+        },
+        {
+          "tool": "ast_symbol_extractor",
+          "status": "VALID",
+          "reason": "结构线索已返回",
+          "included": true,
+          "evidence_id": "7dc78bbd58054cd5b7c90eef82ef57ea:ast_symbol_extractor",
+          "raw_sha256": "baac429f940a337b676c62c934a3fbc6be0a3210d437c5e889ff1a1e5a6c1f9e",
+          "record_ref": "records/7dc78bbd58054cd5b7c90eef82ef57ea.analysis.observations.ast_symbol_extractor.json",
+          "data": {
+            "symbols": [
+              {
+                "symbol": "(formal-in)%quantity",
+                "appears_in": [
+                  "Pdg"
+                ]
+              },
+              {
+                "symbol": "(formal-in)%unitPrice",
+                "appears_in": [
+                  "Pdg"
+                ]
+              },
+              {
+                "symbol": "ENTER calculateFee",
+                "appears_in": [
+                  "Cdg",
+                  "Pdg"
+                ]
+              },
+              {
+                "symbol": "[L4]: quantity(unitPrice)",
+                "appears_in": [
+                  "Cdg",
+                  "Pdg"
+                ]
+              }
+            ],
+            "dependency_count": 4
+          }
+        }
+      ]
+    }
+  ],
+  "analysis_context_hash": "41010cfb72c3c02eaeccd602aa3a192c4e8bb8f3e2c302ef1c5d12c2a7a3d019",
+  "model_request_sha256": "65e9e5aede6188bbf2c8192e332cdeed05ffe59e6cffb0a563334a3e67a33f70",
+  "model_response_sha256": "8f7c2a7c7ff3e73a1ca2394f9c3b943b30d28df2853bf6f4bf4b2055edd8c36b",
+  "model_id": "deepseek-flash",
+  "usage": {
+    "completion_tokens": 627,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 6220,
+    "prompt_tokens": 6220,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "total_tokens": 6847
+  },
+  "model_requests": 1,
+  "analysis_tool_requests": 6,
+  "citations": [
+    "7dc78bbd58054cd5b7c90eef82ef57ea:sympas_slice",
+    "acc206153ef34c8ea2f3f1fb3096bf49:ast_symbol_extractor"
+  ],
+  "checks": [
+    {
+      "kind": "build",
+      "state": "PASS",
+      "counts": {},
+      "tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75"
+    },
+    {
+      "kind": "test",
+      "state": "PASS",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 9,
+        "skipped": 0,
+        "total": 9
+      },
+      "tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75"
+    }
+  ],
+  "approval_probe": {
+    "request": {
+      "schema_version": 1,
+      "policy_version": "1.1",
+      "request_id": "ba1b62169d8d4831ad1acbfaae76197b",
+      "task_id": "792bf4cdaa5b4fc0b1333e8b2e738c9b",
+      "action": "candidate.export",
+      "paths": [],
+      "input_tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75",
+      "arguments_hash": "5ec4339f81c97c400f260ea8dda85384be5bd4b3395666c7830609d416f6d791",
+      "remaining_budget": 0,
+      "accepted": false,
+      "approval_binding": "",
+      "deadline_at": 1792468385979
+    },
+    "decision": {
+      "schema_version": 1,
+      "policy_version": "1.1",
+      "request_id": "ba1b62169d8d4831ad1acbfaae76197b",
+      "input_tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75",
+      "arguments_hash": "5ec4339f81c97c400f260ea8dda85384be5bd4b3395666c7830609d416f6d791",
+      "approval_binding": "",
+      "decision": "NeedApproval",
+      "reason": "ACCEPTANCE_REQUIRED",
+      "policy_component_hash": "80a0cf08fa49e0fa4b9083f5264cb3087e97e84f8df1b07ad845790cccf888c9",
+      "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+    }
+  },
+  "native_deny": {
+    "task_id": "c149d7cec0604ccd84bcae343dcf84ef",
+    "decision": {
+      "schema_version": 1,
+      "policy_version": "1.1",
+      "request_id": "82086632808d44bfa3cd430df385be48",
+      "input_tree_hash": "340ba9b06c34626e3b2820632bb3d28dad9ffe876bae78cd897dd6d2ff3893e0",
+      "arguments_hash": "953294ba8733372729da6285b7e4fda662c9db26c18e1141fbad61b0d9f40859",
+      "approval_binding": "",
+      "decision": "Deny",
+      "reason": "PROTECTED_PATH",
+      "policy_component_hash": "80a0cf08fa49e0fa4b9083f5264cb3087e97e84f8df1b07ad845790cccf888c9",
+      "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+    },
+    "candidate_writes": 0,
+    "baseline_unchanged": true
+  },
+  "acceptances": 0,
+  "limits": [
+    "This main case returned no nonempty DDG",
+    "quantity slice failed internally",
+    "Static observations do not prove semantic correctness",
+    "No effect comparison was performed",
+    "Real candidate remains awaiting human review"
+  ]
+}

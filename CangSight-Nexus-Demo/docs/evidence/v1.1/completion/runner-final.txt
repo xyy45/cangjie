@@ -1,0 +1,78 @@
+.....FF                                                                  [100%]
+=================================== FAILURES ===================================
+___ test_candidate_process_cannot_connect_to_workbench_approval_ports[8765] ____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-145/test_candidate_process_cannot_0')
+port = 8765
+
+    @pytest.mark.parametrize('port',[8765,8766])
+    def test_candidate_process_cannot_connect_to_workbench_approval_ports(tmp_path,port):
+        project=tmp_path/'project';project.mkdir()
+        # Only attempt TCP connect, never submit an HTTP request or touch user state.
+        script='''import socket,sys
+    s=socket.socket();s.settimeout(1)
+    try:
+        s.connect(('127.0.0.1',int(sys.argv[1])))
+    except PermissionError:
+        pass
+    except OSError as error:
+        raise AssertionError('Connection was not blocked by the execution profile') from error
+    else:
+        raise AssertionError('Candidate can reach a workbench approval endpoint')
+    finally:
+        s.close()
+    '''
+        result=subprocess.run(['/usr/bin/sandbox-exec','-p',sandbox_profile(project),'/usr/bin/python3','-c',script,str(port)],
+            capture_output=True,text=True,timeout=5,cwd=project)
+>       assert result.returncode==0,result.stdout+result.stderr
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 10, in <module>
+E         AssertionError: Candidate can reach a workbench approval endpoint
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/usr/bin/sandbox-exec', '-p', '(version 1)(allow default)(deny network*)(deny file-write*)(all... last):\n  File "<string>", line 10, in <module>\nAssertionError: Candidate can reach a workbench approval endpoint\n').returncode
+
+tests/test_runner.py:106: AssertionError
+___ test_candidate_process_cannot_connect_to_workbench_approval_ports[8766] ____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-145/test_candidate_process_cannot_1')
+port = 8766
+
+    @pytest.mark.parametrize('port',[8765,8766])
+    def test_candidate_process_cannot_connect_to_workbench_approval_ports(tmp_path,port):
+        project=tmp_path/'project';project.mkdir()
+        # Only attempt TCP connect, never submit an HTTP request or touch user state.
+        script='''import socket,sys
+    s=socket.socket();s.settimeout(1)
+    try:
+        s.connect(('127.0.0.1',int(sys.argv[1])))
+    except PermissionError:
+        pass
+    except OSError as error:
+        raise AssertionError('Connection was not blocked by the execution profile') from error
+    else:
+        raise AssertionError('Candidate can reach a workbench approval endpoint')
+    finally:
+        s.close()
+    '''
+        result=subprocess.run(['/usr/bin/sandbox-exec','-p',sandbox_profile(project),'/usr/bin/python3','-c',script,str(port)],
+            capture_output=True,text=True,timeout=5,cwd=project)
+>       assert result.returncode==0,result.stdout+result.stderr
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 4, in <module>
+E         ConnectionRefusedError: [Errno 61] Connection refused
+E         
+E         The above exception was the direct cause of the following exception:
+E         
+E         Traceback (most recent call last):
+E           File "<string>", line 8, in <module>
+E         AssertionError: Connection was not blocked by the execution profile
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/usr/bin/sandbox-exec', '-p', '(version 1)(allow default)(deny network*)(deny file-write*)(all...last):\n  File "<string>", line 8, in <module>\nAssertionError: Connection was not blocked by the execution profile\n').returncode
+
+tests/test_runner.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_runner.py::test_candidate_process_cannot_connect_to_workbench_approval_ports[8765]
+FAILED tests/test_runner.py::test_candidate_process_cannot_connect_to_workbench_approval_ports[8766]
+2 failed, 5 passed in 5.37s

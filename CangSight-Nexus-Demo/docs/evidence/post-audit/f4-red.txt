@@ -1,0 +1,104 @@
+✖ late task response cannot overwrite a newly started task (3.172167ms)
+✖ late candidate details cannot replace newer selection on the same task (1.045542ms)
+✖ late errors do not replace the current task message (0.722542ms)
+✖ start invalidates pending refresh immediately, before POST resolves (0.527667ms)
+✔ late acceptance cannot export a candidate from a previous task (0.69125ms)
+✖ late export cannot restore a previous task download link (0.927083ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 1
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.082166
+
+✖ failing tests:
+
+test at tests/workbench-race.test.cjs:49:1
+✖ late task response cannot overwrite a newly started task (3.172167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '运行受阻' !== '等待审阅'
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:57:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '运行受阻',
+    expected: '等待审阅',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/workbench-race.test.cjs:61:1
+✖ late candidate details cannot replace newer selection on the same task (1.045542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'diff first'
+  - 'diff second'
+          ^
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:70:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'diff first',
+    expected: 'diff second',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/workbench-race.test.cjs:81:1
+✖ late errors do not replace the current task message (0.722542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'stale error' !== ''
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:88:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'stale error',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/workbench-race.test.cjs:91:1
+✖ start invalidates pending refresh immediately, before POST resolves (0.527667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:95:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/workbench-race.test.cjs:119:1
+✖ late export cannot restore a previous task download link (0.927083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:135:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

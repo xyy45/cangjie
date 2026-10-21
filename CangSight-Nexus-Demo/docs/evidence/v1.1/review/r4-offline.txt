@@ -1,0 +1,66 @@
+........................................................................ [ 68%]
+....F............................                                        [100%]
+=================================== FAILURES ===================================
+_________ test_timeout_and_output_limit_are_unknown_and_reap_processes _________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-112/test_timeout_and_output_limit_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1086ec230>
+
+    def test_timeout_and_output_limit_are_unknown_and_reap_processes(tmp_path,monkeypatch):
+        import asyncio
+        from nexus.execution.runner import run_command
+        project=tmp_path/'project'
+        project.mkdir()
+        fake=project/'cjpm'
+        monkeypatch.setattr('nexus.execution.runner.sdk_environment',lambda:{'PATH':str(project)+':/usr/bin:/bin'})
+        async def run():
+            fake.write_text('#!/bin/sh\n/bin/sleep 30 &\necho $! > target/child.pid\nwait\n')
+            fake.chmod(0o700)
+            code,log,problem=await run_command(project,['cjpm','test'],timeout=2)
+            assert code is None and problem=='TimeoutError'
+            child=(project/'target/child.pid').read_text().strip()
+            state=subprocess.run(['/bin/ps','-o','stat=','-p',child],capture_output=True,text=True).stdout.strip()
+            assert not state or state.startswith('Z'),state
+            fake.write_text('#!/bin/sh\nwhile true; do echo 123456789012345678901234567890; done\n')
+            code,log,problem=await run_command(project,['cjpm','test'],output_limit=100)
+            assert code is None and problem=='OverflowError' and len(log.encode())<=100
+>       asyncio.run(run())
+
+tests/test_runner.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests/test_runner.py:50: in run
+    child=(project/'target/child.pid').read_text().strip()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-112/test_timeout_and_output_limit_0/project/target/child.pid')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-112/test_timeout_and_output_limit_0/project/target/child.pid'
+
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_runner.py::test_timeout_and_output_limit_are_unknown_and_reap_processes
+1 failed, 104 passed, 8 deselected in 19.91s

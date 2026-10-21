@@ -1,0 +1,25 @@
+{
+  "scope": "Owned target with synthetic marker in arguments AND environment; marker match proves process-data access, not environment-specific access. No real controller/key inspected.",
+  "target_source": "#include <stdio.h>\n#include <stdlib.h>\n#include <unistd.h>\nint main(int argc,char **argv){puts(getenv(\"CANGSIGHT_OWNED_SYNTHETIC\")?\"SYNTHETIC_ENV_SET\":\"ENV_MISSING\");fflush(stdout);sleep(30);return 0;}\n",
+  "probe_source": "\n#include <sys/types.h>\n#include <sys/sysctl.h>\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <errno.h>\nint main(int argc,char **argv){\n if(argc!=2)return 10;\n int mib[3]={CTL_KERN,KERN_PROCARGS2,atoi(argv[1])};int limit=0;size_t q=sizeof(limit);int argmax[2]={CTL_KERN,KERN_ARGMAX};\n if(sysctl(argmax,2,&limit,&q,NULL,0))return 12;\n size_t size=(size_t)limit;\n char *data=malloc(size);if(!data)return 11;\n if(sysctl(mib,3,data,&size,NULL,0)){printf(\"READ_DENIED errno=%d\\n\",errno);free(data);return 0;}\n const char *marker=\"SYNTHETIC_ONLY_PROCESS_ENV_MARKER\";int found=0;\n for(size_t i=0;i+strlen(marker)<=size;i++)if(memcmp(data+i,marker,strlen(marker))==0)found=1;\n printf(\"BYTES_READ=%zu\\n\",size);free(data);puts(found?\"SYNTHETIC_OTHER_ENV_READABLE\":\"SYNTHETIC_MARKER_NOT_FOUND\");return 0;\n}\n",
+  "results": [
+    {
+      "label": "unsandboxed",
+      "exit_code": 0,
+      "stdout": "BYTES_READ=876\nSYNTHETIC_OTHER_ENV_READABLE\n",
+      "stderr": ""
+    },
+    {
+      "label": "current",
+      "exit_code": 0,
+      "stdout": "BYTES_READ=876\nSYNTHETIC_OTHER_ENV_READABLE\n",
+      "stderr": ""
+    },
+    {
+      "label": "experimental-deny-other-info",
+      "exit_code": 0,
+      "stdout": "BYTES_READ=876\nSYNTHETIC_OTHER_ENV_READABLE\n",
+      "stderr": ""
+    }
+  ]
+}

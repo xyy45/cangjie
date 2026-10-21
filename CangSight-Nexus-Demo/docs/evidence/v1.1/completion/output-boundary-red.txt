@@ -1,0 +1,95 @@
+..FFF                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target] _
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-136/test_runner_rejects_output_sym0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107654950>
+relative = 'target'
+
+    @pytest.mark.parametrize('relative',['target','target/.runner-tmp','target/.runner-tmp/home'])
+    def test_runner_rejects_output_symlinks_before_any_external_write_or_spawn(tmp_path,monkeypatch,relative):
+        import asyncio
+        from nexus.execution.runner import run_command, sandbox_profile
+        project=tmp_path/'project';project.mkdir()
+        outside=tmp_path/'outside';outside.mkdir()
+        marker=outside/'keep.txt';marker.write_text('unchanged')
+        link=project/relative;link.parent.mkdir(parents=True,exist_ok=True)
+        link.symlink_to(outside,target_is_directory=True)
+        calls=[]
+        async def forbidden(*args,**kwargs):
+            calls.append(args)
+            raise OSError('Reproduction intercepted the unsafe command before launch')
+        monkeypatch.setattr('nexus.execution.runner.asyncio.create_subprocess_exec',forbidden)
+        code,log,problem=asyncio.run(run_command(project,['cjpm','test']))
+>       assert {p.relative_to(outside).as_posix() for p in outside.rglob('*')}=={'keep.txt'}
+E       AssertionError: assert {'.runner-tmp...', 'keep.txt'} == {'keep.txt'}
+E         
+E         Extra items in the left set:
+E         '.runner-tmp/home'
+E         '.runner-tmp'
+E         Use -v to get more diff
+
+tests/test_runner.py:80: AssertionError
+_ test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target/.runner-tmp] _
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-136/test_runner_rejects_output_sym1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1075cc2c0>
+relative = 'target/.runner-tmp'
+
+    @pytest.mark.parametrize('relative',['target','target/.runner-tmp','target/.runner-tmp/home'])
+    def test_runner_rejects_output_symlinks_before_any_external_write_or_spawn(tmp_path,monkeypatch,relative):
+        import asyncio
+        from nexus.execution.runner import run_command, sandbox_profile
+        project=tmp_path/'project';project.mkdir()
+        outside=tmp_path/'outside';outside.mkdir()
+        marker=outside/'keep.txt';marker.write_text('unchanged')
+        link=project/relative;link.parent.mkdir(parents=True,exist_ok=True)
+        link.symlink_to(outside,target_is_directory=True)
+        calls=[]
+        async def forbidden(*args,**kwargs):
+            calls.append(args)
+            raise OSError('Reproduction intercepted the unsafe command before launch')
+        monkeypatch.setattr('nexus.execution.runner.asyncio.create_subprocess_exec',forbidden)
+        code,log,problem=asyncio.run(run_command(project,['cjpm','test']))
+>       assert {p.relative_to(outside).as_posix() for p in outside.rglob('*')}=={'keep.txt'}
+E       AssertionError: assert {'home', 'keep.txt'} == {'keep.txt'}
+E         
+E         Extra items in the left set:
+E         'home'
+E         Use -v to get more diff
+
+tests/test_runner.py:80: AssertionError
+_ test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target/.runner-tmp/home] _
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-136/test_runner_rejects_output_sym2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1075970b0>
+relative = 'target/.runner-tmp/home'
+
+    @pytest.mark.parametrize('relative',['target','target/.runner-tmp','target/.runner-tmp/home'])
+    def test_runner_rejects_output_symlinks_before_any_external_write_or_spawn(tmp_path,monkeypatch,relative):
+        import asyncio
+        from nexus.execution.runner import run_command, sandbox_profile
+        project=tmp_path/'project';project.mkdir()
+        outside=tmp_path/'outside';outside.mkdir()
+        marker=outside/'keep.txt';marker.write_text('unchanged')
+        link=project/relative;link.parent.mkdir(parents=True,exist_ok=True)
+        link.symlink_to(outside,target_is_directory=True)
+        calls=[]
+        async def forbidden(*args,**kwargs):
+            calls.append(args)
+            raise OSError('Reproduction intercepted the unsafe command before launch')
+        monkeypatch.setattr('nexus.execution.runner.asyncio.create_subprocess_exec',forbidden)
+        code,log,problem=asyncio.run(run_command(project,['cjpm','test']))
+        assert {p.relative_to(outside).as_posix() for p in outside.rglob('*')}=={'keep.txt'}
+>       assert calls==[]
+E       assert [('/usr/bin/s...jpm', 'test')] == []
+E         
+E         Left contains one more item: ('/usr/bin/sandbox-exec', '-p', '(version 1)(allow default)(deny network*)(deny file-write*)(allow network-bind)(allow...hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-136/test_runner_rejects_output_sym2/project/src"))', 'cjpm', 'test')
+E         Use -v to get more diff
+
+tests/test_runner.py:81: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_runner.py::test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target]
+FAILED tests/test_runner.py::test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target/.runner-tmp]
+FAILED tests/test_runner.py::test_runner_rejects_output_symlinks_before_any_external_write_or_spawn[target/.runner-tmp/home]
+3 failed, 2 passed in 5.32s

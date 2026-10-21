@@ -1,0 +1,26 @@
+{
+  "product_source_unchanged": true,
+  "checked_source_files": 9,
+  "original_reference_unchanged": true,
+  "original_reference_files": 453,
+  "paid_model_requests": 0,
+  "software_installed": false,
+  "container_executed": false,
+  "assessment_sections": 10,
+  "report_sha256": "2969ce50a84c39f05b7c562b01076538195c9cca079dc579342bbe36510eb392",
+  "evidence_files": {
+    "approval-boundary-probe.json": "58135ceb6d48e82ea435fb772ba83f0b2030219e47f8bb1c6d8c77b3f5c8886f",
+    "host-and-source-inspection.json": "4a3b106be1bf6767e4e484202de6ec6aa8b2807e7d497861866f679c321a0fc2"
+  },
+  "original_investigation_report_sha256": "a110c91883efd63832d835f58d677396fc6bd280052fa2bbc73df611e3684748",
+  "scope_decision": {
+    "date": "2026-10-18",
+    "docker_integration": "EXCLUDED_FROM_V1_1_BY_USER",
+    "software_installation_authorized": false,
+    "stable_chain_changed": false,
+    "approval_isolation_requirement": "NOT_SATISFIED",
+    "future_implementation_requires_explicit_authorization": true,
+    "docker_is_prerequisite": false,
+    "native_security_report": "docs/v1.1/native-security-fix-report.md"
+  }
+}

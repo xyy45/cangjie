@@ -1,0 +1,50 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_context_byte_limit_blocks_before_any_http_or_model_record ________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-76/test_context_byte_limit_blocks0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1090ce9c0>
+
+    def test_context_byte_limit_blocks_before_any_http_or_model_record(tmp_path,monkeypatch):
+        for key,value in [('DEEPSEEK_API_KEY','synthetic-not-a-key'),
+                          ('DEEPSEEK_BASE_URL','https://example.invalid'),
+                          ('DEEPSEEK_MODEL','synthetic-limit-test')]:
+            monkeypatch.setenv(key,value)
+        def unexpected_http(*args,**kwargs):
+            raise AssertionError('HTTP must not be initialized for oversized context')
+        monkeypatch.setattr('nexus.llm.provider.httpx.AsyncClient',unexpected_http)
+        store=RunStore(tmp_path)
+        task=store.create_task('base','fix',['src/a.cj'])
+        async def run():
+            with pytest.raises(ProviderUnavailable,match='256 KiB'):
+                await ModelProvider(store,task.id).propose({'required_goal':'仓'*100000})
+>       asyncio.run(run())
+
+tests/test_provider_limits.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests/test_provider_limits.py:20: in run
+    await ModelProvider(store,task.id).propose({'required_goal':'仓'*100000})
+nexus/llm/provider.py:49: in propose
+    async with httpx.AsyncClient(timeout=120, follow_redirects=False) as client:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (), kwargs = {'timeout': 120, 'follow_redirects': False}
+
+    def unexpected_http(*args,**kwargs):
+>       raise AssertionError('HTTP must not be initialized for oversized context')
+E       AssertionError: HTTP must not be initialized for oversized context
+
+tests/test_provider_limits.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_provider_limits.py::test_context_byte_limit_blocks_before_any_http_or_model_record
+1 failed in 0.12s

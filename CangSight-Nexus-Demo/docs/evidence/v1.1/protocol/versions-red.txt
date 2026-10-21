@@ -1,0 +1,87 @@
+F.F.                                                                     [100%]
+=================================== FAILURES ===================================
+_______ test_real_stdio_explicit_versions_and_unknown_versions_rejected ________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-93/test_real_stdio_explicit_versi0')
+
+    def test_real_stdio_explicit_versions_and_unknown_versions_rejected(tmp_path):
+        fixture=ROOT/'fixtures/order-demo'
+        baseline=WorkspaceStore(tmp_path,registered=[fixture]).import_project(fixture,'.')
+        async def run():
+            async with ToolClient(tmp_path) as client:
+                good=await client.call_tool('workspace.read_file',dict(baseline_id=baseline,path='src/quantity.cj'))
+                assert good.operation_status=='OK' and good.schema_version==1
+                for changed in ({'schema_version':999},{'tool_version':'obsolete'},{'unexpected_permission':True}):
+                    bad=await client.call_tool('workspace.read_file',dict(baseline_id=baseline,path='src/quantity.cj',**changed))
+                    assert bad.operation_status=='ERROR'
+                raw=await client.session.call_tool('workspace.read_file',dict(baseline_id=baseline,path='src/quantity.cj'))
+                assert raw.isError or json.loads(raw.content[0].text)['operation_status']=='ERROR'
+>       asyncio.run(run())
+
+tests/integration/test_protocol_versions.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+tests/integration/test_protocol_versions.py:29: in run
+    assert good.operation_status=='OK' and good.schema_version==1
+                                           ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = ToolResult(operation_status='OK', data={'content': 'package orderdemo\n\npublic func validQuantity(quantity: Int64): B...line': 5, 'file_hash': '0b6bed26a940b4ee2bc3bdf019544a8d6ac8b174a1d85c0b03eb688ef5c73cf0'}, error=None, record_refs=[])
+item = 'schema_version'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra and item in pydantic_extra:
+                return pydantic_extra[item]
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'ToolResult' object has no attribute 'schema_version'. Did you mean: 'schema_json'?
+
+.venv/lib/python3.12/site-packages/pydantic/main.py:1026: AttributeError
+____ test_policy_decision_binds_version_tree_approval_and_actual_component _____
+
+    def test_policy_decision_binds_version_tree_approval_and_actual_component():
+        request=policy_request()
+        result=asyncio.run(PolicyClient(ROOT).decide(request))
+>       assert result['decision']=='Allow',result
+E       AssertionError: {'request_id': 'native-version-test', 'arguments_hash': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'decision': 'Deny', 'reason': 'INVALID_REQUEST'}
+E       assert 'Deny' == 'Allow'
+E         
+E         - Allow
+E         + Deny
+
+tests/integration/test_protocol_versions.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_protocol_versions.py::test_real_stdio_explicit_versions_and_unknown_versions_rejected
+FAILED tests/integration/test_protocol_versions.py::test_policy_decision_binds_version_tree_approval_and_actual_component
+2 failed, 2 passed in 0.83s

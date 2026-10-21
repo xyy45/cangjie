@@ -1,0 +1,7 @@
+{
+  "actual_api_key_found_in_publishable_files": false,
+  "forbidden_environment_or_runtime_files": [],
+  "publishable_files_scanned": 151,
+  "git_ignores_dotenv": true,
+  "key_value_printed_or_recorded": false
+}

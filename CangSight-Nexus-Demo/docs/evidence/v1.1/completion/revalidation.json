@@ -1,0 +1,14 @@
+{
+  "live_record_revalidated": true,
+  "approval_and_check_set_current": true,
+  "archive_sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+  "actual_model_requests": 1,
+  "model_results": 1,
+  "original_exact_file_map_unchanged": true,
+  "reference_files": 453,
+  "current_code_change_scope": [
+    "nexus/web/app.py"
+  ],
+  "additional_paid_calls": 0,
+  "main_service_backup": ".runtime/backups/workbench-before-v11-api-errors.sqlite3"
+}

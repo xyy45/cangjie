@@ -1,0 +1,325 @@
+[
+  {
+    "project": "order-demo-bug",
+    "task_id": "9d65d9a6c9c84fe89f05af7822385d0a",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/quantity.cj",
+        "analysis_id": "cf722d9f7b9f498d9e9ce2d879b8a376",
+        "source_sha256": "87665e774ea74e270a42dcbd6b2f69fa4a6f6755c13c478b799f25c459cec08d",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "5ea30d766ebbff363baaba6996d0029c27a155592fbbeb3e9c723b3f3099dd61"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "f9f9050434116b6dfa4c73e4afaad03115acbf9521eca2ca7262e367458d0666"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "1c7fc20d8f18bf10457f9346b6d43e8083789e2a09fe80e47867446647eeabe7"
+          }
+        ]
+      },
+      {
+        "path": "src/fee.cj",
+        "analysis_id": "8b59f9dab92448eeb53be6126bd8bb99",
+        "source_sha256": "25eca535a33b17caa70e27e86d96e57fb0fe7a6b758501a20c6e809d1baacadb",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "eb03044fb522a35dcf4f87f88f9f4d8b4ca2a74f7ff9dc5732296d182d6e3bd6"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "02251a3bd7b83f71c5a0f452f948e697d3e74dff89afeb065c3daadfa6bf4c0a"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "0482a4cc1e4c6a0dffd9cead7da8fefcb275e975c48a0391883a4bfa63afe6bb"
+          }
+        ]
+      },
+      {
+        "path": "src/order.cj",
+        "analysis_id": "722c214e1ee445608698dbed89d12463",
+        "source_sha256": "c86d3dac41c56e73c5b6768d291c13ff41a6a788359fa9ed655f787376fc9b70",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "06383e4e6889dfb33d3456b4a17fd57770c53fd56ec03b305ce3701700c670a4"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "8432c1f1b658f6718ea9b357ca246222ccf88f3d3f7fe880296608de40651874"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "82018026ce5fa50deb17743edfb4b1cbaafbffcd44166a9ee190ced2f8cee9b1"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  },
+  {
+    "project": "order-price",
+    "task_id": "3fbca694fb5e45f7a49694132002546d",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/price.cj",
+        "analysis_id": "4ca0271e32cf4a3ab050ac677266565e",
+        "source_sha256": "7537f677a8ac078533be28cea21a9b4e6eaf0d3c0fdd619e6d564106f2b4f7c6",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "f73d9e4f9b8b59dd5a27b02d5a86cd6db024463d4db440011c9bf345de77e18d"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "29a234407dc57009f1611f3af1ae96930913a1093a98e5e0d345c0d6a69924e3"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "a57a35b5ab23b2e8633d0aa09b77669c077304e0edf03d0e4ae999e7209bbd93"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  },
+  {
+    "project": "order-discount",
+    "task_id": "76ddd98a52ac4c1898b5da0046a45c63",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/discount.cj",
+        "analysis_id": "be1850f0eb4f4bf398aa6b9a51a1562b",
+        "source_sha256": "8f7cf5f3e5bcfbe6b07ddfc20ad4a4f2f09fcdbb02b95bfab4744ac9c8ae27ca",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "0aa7230dc88d35eb42105a52146ef2442f031fc17e1a3dcefbc444734f7a1d69"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "587a922264174670d0e6e342ec1d5b0cfb915f772f591eeaf6391b47c378685c"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "2bd727bad4f4e782ea1067613b153b2d477b6ba2d3f2e41e9bd243ab6343a7a0"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  },
+  {
+    "project": "cross-validation",
+    "task_id": "c455d1bb328d4d6daba75f34454d4df6",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/quantity.cj",
+        "analysis_id": "3d63806231cf4e2caba0eb918d5e2728",
+        "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "d7a1355edcc2382b8e676df8f041fa7fb1f1fe3e5633bda94487f6a151f83067"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "226d7caf3bab7b08a05676314e3f2c285800982028db74706da8c12e6afabe7c"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "cc297d1846c8f08c47d516d59567aca62e713c0a83a32a6d6cb33fbb7957d454"
+          }
+        ]
+      },
+      {
+        "path": "src/fee.cj",
+        "analysis_id": "3da826938e7f4be2ac0f55404d728455",
+        "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "46d9c1cf14f05bfb6a18711645de8fecdfe58f5b714ccd086765284479a9cada"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "3fd21186816f8a7da57d19d9619c7f01f00d107fb1c641aabbd1d5d0b7c2c896"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "03a70cf3b97079978c278bacb5fa87d3e066247676bb5eb2b09143680822acb2"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  },
+  {
+    "project": "cross-discount",
+    "task_id": "eb9876dae04343608ca3149fff555dba",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/discount.cj",
+        "analysis_id": "f673a84458f249299a0562e09dcfe978",
+        "source_sha256": "0d8a31b2938bc0faa644d7d53b0c43497d9bfad1370bc7b64f6b2a86b6125381",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "70f100fc298a729eb25c84371f0bd3abe95f751f62e92c12a8f0cc64fd231364"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "38e640d608376c4883a1863b8ba09953e3b10f5de01087526e5f0133af705e4a"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "d13e752143a7e82eccce88acac425164f365bbede87a0a03c5c613c70aead87c"
+          }
+        ]
+      },
+      {
+        "path": "src/checkout.cj",
+        "analysis_id": "0a5f3edbc30843cc925cc8a2ed7bb254",
+        "source_sha256": "a0c1d5556f12a9e8f06883cf7d60f8bc2e150649ca91ba076e5b000139d862b5",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "c1597d51fd58ab19f7e5613f4e6a1c1037c228f28adc3056f5613669c4d1139e"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "9e98bc150e5a48810f2f086f56bba90d00e07a33ed69479e3b81da15f62a6dc7"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "768f657a0b10bdf9f07baf99e19b3fab7fa6492879d56782f06eb5ef0bbbd375"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  },
+  {
+    "project": "cross-stock",
+    "task_id": "e8a69af8134d49c49b0f3848852c997c",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/stock.cj",
+        "analysis_id": "c870308450244009b5deeb62b334bcde",
+        "source_sha256": "057b94182f3baa56207e9dc013993d48d8b5dc90fd12882c926ed9273ffb342b",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "included": false,
+            "raw_sha256": "de2e39993aae986898adc763bb9c54e1da89d7f380f287ac4d8db5c6fd12aa50"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "included": false,
+            "raw_sha256": "1673c892c23a8ea47a36ced5ff860815e7f50c4b92db7fc74fb019faa36e6a0c"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "426eed5e3be4709d3cec98d88f62ae11deab1540f98a0265870dafbf731e8ff7"
+          }
+        ]
+      },
+      {
+        "path": "src/inventory.cj",
+        "analysis_id": "b195439f6d3240e1975538b2d4037754",
+        "source_sha256": "0fe3d49e7ebe26072b29afe6803c043e9c96a16bc09871851760e2fc848a8feb",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "5223569597e50ef40cc85cc6ea66a23537e0dad73a55627e05425c5102fb598d"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "ce83e7afea070a2524e39fe902c9f86e84e2fc3e6217481fff72ef84e26a8d13"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "included": true,
+            "raw_sha256": "1881338b0433418a875de253b9bfdb0ad66367e21401e12172dd81acb5bf394f"
+          }
+        ]
+      }
+    ],
+    "model_calls": 0
+  }
+]

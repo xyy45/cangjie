@@ -1,0 +1,67 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+[33mwarning[0m: function 'start' is deprecated. Use global function `public func launch(command: String, arguments: Array<String>, workingDirectory!: ?Path = None, environment!: ?Map<String, String> = None, stdIn!: ProcessRedirect = Inherit, stdOut!: ProcessRedirect = Inherit, stdErr!: ProcessRedirect = Inherit): SubProcess` instead.
+  [36m==>[0m /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/candidates/c_68b64d33fdd14c079f1d57148cfe9153/src/quantity.cj:10:29:
+   [36m| [0m
+[36m10[0m [36m| [0m        let child = Process.start("/bin/sh", ["-c", "printf UNEXPECTED_SHELL"])[0m
+   [36m| [0m                            [33m^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/candidates/c_68b64d33fdd14c079f1d57148cfe9153/src/quantity.cj:18:9:
+   [36m| [0m
+[36m18[0m [36m| [0m    if (Console.stdIn.readln() != None) {[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: unused variable:'ignored'
+  [36m==>[0m /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/candidates/c_68b64d33fdd14c079f1d57148cfe9153/src/quantity.cj:11:13:
+   [36m| [0m
+[36m11[0m [36m| [0m        let ignored = child.wait()[0m
+   [36m| [0m            [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'ignored'
+  [36m==>[0m /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/candidates/c_68b64d33fdd14c079f1d57148cfe9153/src/quantity.cj:22:13:
+   [36m| [0m
+[36m22[0m [36m| [0m        let ignored = File.readFrom("/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/.operator-key")[0m
+   [36m| [0m            [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+4 warnings generated, 4 warnings printed.
+   Finished `test` profile compilation
+   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0/candidates/c_68b64d33fdd14c079f1d57148cfe9153/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 15420000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 15420000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (2766000 ns)
+    [[32m PASSED [0m] CASE: two (1466000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (1353000 ns)
+    [[32m PASSED [0m] CASE: zeroQuantity (1452000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (1293000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (1204000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (1048000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (974000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (813000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (977000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (906000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 15959000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 15926000 ns, RESULT:
+    PASSED:
+    TP: [33morderdemo[0m, time elapsed: 15420000 ns
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

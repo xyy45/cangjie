@@ -1,0 +1,23 @@
+{
+  "kind": "actual_browser_frame_capture",
+  "method": "CUA screenshots with file timestamps; waits longer than 1 second shortened; one black edge pixel padded for H264",
+  "continuous_unedited_recording": false,
+  "audio": false,
+  "frames": 227,
+  "captured_dimensions": [
+    1265,
+    988
+  ],
+  "trimmed_intervals": 7,
+  "duration_seconds": 25.796,
+  "video_path": "/Users/jadya/Documents/CangSight-Workspace/02-\u5f00\u53d1\u5de5\u7a0b/CangSight-Nexus/.runtime/releases/CangSight-Nexus-LIVE-demo.mp4",
+  "video_bytes": 427965,
+  "video_sha256": "e17160f398e0db60a734fc71689368777ed9d86d3bb064cf1d3526efc1a5568b",
+  "frame_manifest": "/Users/jadya/Documents/CangSight-Workspace/02-\u5f00\u53d1\u5de5\u7a0b/CangSight-Nexus/.runtime/capture/live-ui-20261017/frame-manifest.json",
+  "encoder": "imageio-ffmpeg 0.6.0",
+  "captured_format": "JPEG",
+  "encoded_dimensions": [
+    1266,
+    988
+  ]
+}

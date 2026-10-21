@@ -1,0 +1,14 @@
+{
+  "original_reference_files": 453,
+  "original_reference_unchanged": true,
+  "actual_api_key_scan": "NO_MATCH",
+  "actual_operator_credentials_scan": "NO_MATCH",
+  "operator_file_mode": "0600",
+  "formal_unauthorized_tasks_http_status": 403,
+  "formal_operator_page_http_status": 200,
+  "new_model_requests": 0,
+  "docker_installed": false,
+  "docker_is_prerequisite": false,
+  "current_revalidation_archive_sha256": "56a7145441ce7558067735b73a2bd417e6959f4c62e913fdfeb8b9611b2e8c59",
+  "ui_preview": "Synthetic operator credential, no tasks/model writes; stopped"
+}

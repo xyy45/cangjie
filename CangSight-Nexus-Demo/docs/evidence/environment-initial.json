@@ -1,0 +1,30 @@
+{
+  "python": {
+    "path": "/Users/jadya/Documents/CangSight-Workspace/02-\u5f00\u53d1\u5de5\u7a0b/CangSight-Nexus/.venv/bin/python",
+    "version": "3.12.14"
+  },
+  "platform": {
+    "system": "Darwin",
+    "machine": "arm64"
+  },
+  "sdk": {
+    "state": "unavailable",
+    "tools": {
+      "cjc": {
+        "path": null,
+        "version": null,
+        "state": "unavailable"
+      },
+      "cjpm": {
+        "path": null,
+        "version": null,
+        "state": "unavailable"
+      }
+    }
+  },
+  "model_config": {
+    "api_key_present": false,
+    "base_url_present": false,
+    "model_present": false
+  }
+}

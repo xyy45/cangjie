@@ -1,0 +1,1 @@
+{"origin": "REVALIDATION_OF_RECORDED_LIVE_PROPOSAL", "task_id": "fef1dc9768f04afbba05cc432c64f7a8", "status": "DELIVERED", "new_model_requests": 0, "elapsed_seconds": 9.635, "archive_sha256": "9cf9d79d77e95665c2f16006b891155cae1b79a171c4e10016fb349fb94517ea"}

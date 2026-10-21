@@ -1,0 +1,70 @@
+{
+  "objective": "登记样例及上传.cj经真实课题组MCP生成源码对应切片、依赖图和结构，前端可交互查看与追溯",
+  "requirements": [
+    {
+      "id": "REAL_SAMPLE_MCP",
+      "state": "VERIFIED",
+      "evidence": "fixtures/analysis/snapshots/*/observations/*.json; 9 actual group tool requests"
+    },
+    {
+      "id": "UPLOAD_SOURCE",
+      "state": "VERIFIED",
+      "evidence": "browser actual upload and saved-source reanalysis; analysis-upload-live.json"
+    },
+    {
+      "id": "SLICE_SOURCE_HIGHLIGHT",
+      "state": "VERIFIED",
+      "evidence": "browser c@sum3 rows [1,3,4,6,7], finalAmount@netPrice selected; Node actual-script tests"
+    },
+    {
+      "id": "REAL_DEPENDENCY_GRAPH",
+      "state": "VERIFIED",
+      "evidence": "3 sample DDGs and uploaded 11 nodes/14 edges; node-to-source and zoom browser interaction"
+    },
+    {
+      "id": "TRUTHFUL_FAILURE",
+      "state": "VERIFIED",
+      "evidence": "L2/L3 HTTP200 internal SIL failure -> FAILED slice/PARTIAL report"
+    },
+    {
+      "id": "SOURCE_EVIDENCE_HASHES",
+      "state": "VERIFIED",
+      "evidence": "downloaded ZIP source/raw/result/manifest hashes; exact stored result regression"
+    },
+    {
+      "id": "PERMISSIONS_LIMITS_RECOVERY",
+      "state": "VERIFIED",
+      "evidence": "tests/analysis tests and real server restart/history recovery"
+    },
+    {
+      "id": "UNCHANGED_REPAIR_BEHAVIOR",
+      "state": "VERIFIED",
+      "evidence": "237 Python full regression plus35 Node tests; no new local model requests"
+    },
+    {
+      "id": "DOCUMENTED_HANDOFF",
+      "state": "VERIFIED",
+      "evidence": "README-DEMO.md; docs/demo/analysis-verification.md; source ZIP after exclusion audit"
+    }
+  ],
+  "validation": {
+    "python_passed": 237,
+    "python_live_deselected": 1,
+    "node_passed": 35,
+    "independent_review": "Two reproduced P2 findings fixed, regression tests passed, focused recheck found no remaining important defects"
+  },
+  "source_sha256": {
+    "nexus/analysis/service.py": "08c9d8af31a615d2044df8b908bc92e382343bce32621979db6db1a9a51e3733",
+    "nexus/analysis/normalize.py": "0c2d88d84ebbf844b1ee17b842856d70fecc4f61cd22116ac9bb1be4e35b9e21",
+    "nexus/analysis/client.py": "8d2a423e88716d348954eda53c180f50ae419ee2fd7f020e9659402d2f6c349f",
+    "nexus/analysis/__init__.py": "719f555f822c7230ad73236107a827d493cb9768d6043b13b3b466007576dc67",
+    "nexus/analysis/samples.py": "6debb361bc5e4727771ec76753c1b3d3230c427ef0a5ad939889c87d978a7a3d",
+    "nexus/analysis/routes.py": "f630923af747e662145d19b638c748b18140d4c7e1d545def485794d5af21fb3",
+    "nexus/demo/app.py": "864c5ea161f8c2c31d9311dfe2fed13063779f2bc27bf4adda441f197286db2e",
+    "nexus/demo/static/demo.js": "cb4ed84db85990c9edf42b5eaa13ef17b7dd0ec7b08b5910f3d915757b4cc832",
+    "nexus/demo/static/analysis.js": "019eb90a4161ea2cfa8c98098964ef2b4681b07a62bc3f52caaa2383ba5ae701",
+    "nexus/demo/static/analysis-core.js": "3b01d94624787a683d1b094d5dd0f22394ef8ea8e111b735c4e1b893631e158e",
+    "nexus/demo/static/demo.css": "ad9573edff3b248f66a46c3757d698fc1c6eeaefa0c02b4d6a820260689585ca",
+    "nexus/demo/templates/demo.html": "9755e30784ac5a28fdef364dd99f23af30e498b3d3da56644f40cd1f23af4354"
+  }
+}

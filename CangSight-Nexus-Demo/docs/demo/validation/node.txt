@@ -1,0 +1,140 @@
+TAP version 13
+# Subtest: replay stops for explicit review and never auto-accepts
+ok 1 - replay stops for explicit review and never auto-accepts
+  ---
+  duration_ms: 0.503625
+  ...
+# Subtest: policy denial cannot advance to review or delivery
+ok 2 - policy denial cannot advance to review or delivery
+  ---
+  duration_ms: 0.071917
+  ...
+# Subtest: pause, resume and reset do not retain acceptance
+ok 3 - pause, resume and reset do not retain acceptance
+  ---
+  duration_ms: 0.202542
+  ...
+# Subtest: rejection is terminal until reset
+ok 4 - rejection is terminal until reset
+  ---
+  duration_ms: 0.080708
+  ...
+# Subtest: real startup blocks mode, case and reset before a task id exists
+ok 5 - real startup blocks mode, case and reset before a task id exists
+  ---
+  duration_ms: 21.354709
+  ...
+# Subtest: successful real cancellation clears running and returns to a reset workspace
+ok 6 - successful real cancellation clears running and returns to a reset workspace
+  ---
+  duration_ms: 1.271958
+  ...
+# Subtest: late history selection cannot restore order delivery over the policy case
+ok 7 - late history selection cannot restore order delivery over the policy case
+  ---
+  duration_ms: 1.109291
+  ...
+# Subtest: BUILDING does not mark unverified real requirements satisfied
+ok 8 - BUILDING does not mark unverified real requirements satisfied
+  ---
+  duration_ms: 0.870792
+  ...
+# Subtest: real pending-review task is indexed so it survives workspace switches
+ok 9 - real pending-review task is indexed so it survives workspace switches
+  ---
+  duration_ms: 1.479416
+  ...
+# Subtest: an unexecuted or denied native policy does not appear allowed
+ok 10 - an unexecuted or denied native policy does not appear allowed
+  ---
+  duration_ms: 0.869792
+  ...
+# Subtest: real rejection locks mode switching until its response is settled
+ok 11 - real rejection locks mode switching until its response is settled
+  ---
+  duration_ms: 0.919458
+  ...
+# Subtest: operator credential is cleared immediately and sent only to explicit authorization route
+ok 12 - operator credential is cleared immediately and sent only to explicit authorization route
+  ---
+  duration_ms: 1.640875
+  ...
+# Subtest: failed pairing neither reloads nor retains or echoes credential
+ok 13 - failed pairing neither reloads nor retains or echoes credential
+  ---
+  duration_ms: 0.45775
+  ...
+# Subtest: late task response cannot overwrite a newly started task
+ok 14 - late task response cannot overwrite a newly started task
+  ---
+  duration_ms: 5.744375
+  ...
+# Subtest: late candidate details cannot replace newer selection on the same task
+ok 15 - late candidate details cannot replace newer selection on the same task
+  ---
+  duration_ms: 2.418834
+  ...
+# Subtest: late errors do not replace the current task message
+ok 16 - late errors do not replace the current task message
+  ---
+  duration_ms: 0.9775
+  ...
+# Subtest: start invalidates pending refresh immediately, before POST resolves
+ok 17 - start invalidates pending refresh immediately, before POST resolves
+  ---
+  duration_ms: 1.221959
+  ...
+# Subtest: late acceptance cannot export a candidate from a previous task
+ok 18 - late acceptance cannot export a candidate from a previous task
+  ---
+  duration_ms: 1.545084
+  ...
+# Subtest: late export cannot restore a previous task download link
+ok 19 - late export cannot restore a previous task download link
+  ---
+  duration_ms: 1.7475
+  ...
+# Subtest: draft is displayed before explicit confirmation and task creation
+ok 20 - draft is displayed before explicit confirmation and task creation
+  ---
+  duration_ms: 1.302
+  ...
+# Subtest: reject is bound to current revision and late details cannot restore acceptance
+ok 21 - reject is bound to current revision and late details cannot restore acceptance
+  ---
+  duration_ms: 1.215958
+  ...
+# Subtest: cancel keeps the selected task and revision without starting a new task
+ok 22 - cancel keeps the selected task and revision without starting a new task
+  ---
+  duration_ms: 1.408375
+  ...
+# Subtest: V1.1 acceptance sends frozen candidate revision
+ok 23 - V1.1 acceptance sends frozen candidate revision
+  ---
+  duration_ms: 1.487834
+  ...
+# Subtest: browsing an older candidate cannot accept it or restore stale details
+ok 24 - browsing an older candidate cannot accept it or restore stale details
+  ---
+  duration_ms: 1.01425
+  ...
+# Subtest: history task switch invalidates old task response without creating a run
+ok 25 - history task switch invalidates old task response without creating a run
+  ---
+  duration_ms: 0.775958
+  ...
+# Subtest: user can narrow source scope before confirming and cannot edit pending approval
+ok 26 - user can narrow source scope before confirming and cannot edit pending approval
+  ---
+  duration_ms: 1.1555
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.067792

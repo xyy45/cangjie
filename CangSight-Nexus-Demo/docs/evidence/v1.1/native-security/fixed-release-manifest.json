@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "source_commit": "a19f6d7",
+  "source_sha256": "5fe9556a935093656c2c835dcb24f3c9168dde7e39471cd556dcbca1cd939fad",
+  "native_only": true,
+  "docker_prerequisite": false,
+  "offline": "133 passed, 9 deselected in 25.77s",
+  "sdk": "8 passed in 61.02s",
+  "no_git": "133 passed, 9 deselected in 26.07s",
+  "no_git_details": {
+    "source_commit": "a19f6d7",
+    "source": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-native-source-a19f6d7.zip",
+    "source_sha256": "5fe9556a935093656c2c835dcb24f3c9168dde7e39471cd556dcbca1cd939fad",
+    "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-native-repro-v6gfbup4/CangSight-Nexus",
+    "interpreter": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.venv/bin/python",
+    "git_metadata": false,
+    "env_file": false,
+    "note": "Same-host no-Git source regression; existing test interpreter and pinned SDK/stdx only; not teammate reproduction"
+  },
+  "new_model_requests": 0,
+  "historical_v11_live_requests": 1,
+  "current_revalidation_archive_sha256": "56a7145441ce7558067735b73a2bd417e6959f4c62e913fdfeb8b9611b2e8c59",
+  "m1": "PARTIAL",
+  "external_reproduction": "PENDING",
+  "competition_submission": "PENDING",
+  "general_native_isolation": "NOT_VERIFIED",
+  "files": {
+    "source/CangSight-Nexus-v1.1-native-source-a19f6d7.zip": {
+      "sha256": "5fe9556a935093656c2c835dcb24f3c9168dde7e39471cd556dcbca1cd939fad",
+      "bytes": 1607786
+    },
+    "evidence/current-native-revalidated-project-and-records.zip": {
+      "sha256": "56a7145441ce7558067735b73a2bd417e6959f4c62e913fdfeb8b9611b2e8c59",
+      "bytes": 119841
+    },
+    "evidence/historical-authorized-LIVE.zip": {
+      "sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+      "bytes": 73890
+    },
+    "evidence/no-git-offline.txt": {
+      "sha256": "17e363342eda4c3e0b00e9f1008bf0ace3c6bd40fa738dc1e435981c2f8e3fec",
+      "bytes": 195
+    },
+    "evidence/fresh-native-policy-build.txt": {
+      "sha256": "d4f0d9bb582e9d952db5a961488f652028ea0ce30f5242d435aabe0df8816e16",
+      "bytes": 1280
+    },
+    "evidence/native-security/revalidate-recorded-proposal.py": {
+      "sha256": "b967a7cea0e660492243faf52a3fec239fd32518e03d5be2fdadde9e2f5e443b",
+      "bytes": 7046
+    },
+    "evidence/native-security/operator-auth-red.txt": {
+      "sha256": "07a2ef322bf388cb7ebf35db2f1b9155e838a2f99fe11f291a4d34872d9cbbea",
+      "bytes": 3399
+    },
+    "evidence/native-security/recorded-proposal-revalidation.txt": {
+      "sha256": "e8fd489b74b1dfece2f83a1a7ac44b2d9e1f3905e6f08686b23f8e5b19423fab",
+      "bytes": 261
+    },
+    "evidence/native-security/final-integrity.json": {
+      "sha256": "37a62fc087159d81ae9610451be82b987cd2b37d760008cf7cac118a31e2d652",
+      "bytes": 568
+    },
+    "evidence/native-security/cangjie-boundary-summary.json": {
+      "sha256": "f89fc24e0c48982f192cbaed9b9592043064f27d364f36437f72b873d86171c5",
+      "bytes": 8607
+    },
+    "evidence/native-security/operator-auth-green.txt": {
+      "sha256": "b9cabc541230c872975a35c0e1c86211c1d09a39fd228c0a2df84fc43d1ef4c7",
+      "bytes": 98
+    },
+    "evidence/native-security/operator-page.png": {
+      "sha256": "208991e4f65e517c1e2008505c5c5853139aafd90b4c7d876e0580694db1aac0",
+      "bytes": 30095
+    },
+    "evidence/native-security/operator-auth-regression.txt": {
+      "sha256": "d76d999124e41578e9f8539d6300542a3e41b4593b69d9d418fe973959331150",
+      "bytes": 99
+    },
+    "evidence/native-security/cangjie-boundary-final.txt": {
+      "sha256": "b9af193e7a615e78fb3a4350736da86e2a982b0bac970340d62487b20cc98af6",
+      "bytes": 20
+    },
+    "evidence/native-security/node-ui.txt": {
+      "sha256": "b7531f20c7a041d640801fca3a1c62f7d04f4f782facd6707b90db4f5809cd19",
+      "bytes": 1371
+    },
+    "evidence/native-security/native-control-final.txt": {
+      "sha256": "0f9b0dae63a9b5d4454ceb29fc2d4f48403b1c516343ad5497e40ea67db21733",
+      "bytes": 99
+    },
+    "evidence/native-security/cangjie-boundary-first.txt": {
+      "sha256": "1a2dbd7b1cf43aee2fb991c9ce03758c932614c5ecbda82ac5452a37d70d09be",
+      "bytes": 20
+    },
+    "evidence/native-security/formal-operator-page.png": {
+      "sha256": "208991e4f65e517c1e2008505c5c5853139aafd90b4c7d876e0580694db1aac0",
+      "bytes": 30095
+    },
+    "evidence/native-security/paired-workbench.png": {
+      "sha256": "4a5d409c5370c9d5a651841980602ede4eba81e4f6cba7ed539d0f07217259e1",
+      "bytes": 29784
+    },
+    "evidence/native-security/sdk-final.txt": {
+      "sha256": "c67679ec101d2efa4252f50bca76ce75c9013b29daea98d7315e9a2faf4a60ac",
+      "bytes": 109
+    },
+    "evidence/native-security/signal-red-green-probe.json": {
+      "sha256": "02230b14a43ade18d510e5371ea6a1fc1e35c2eaac98a5b5b9119271ecbb0c12",
+      "bytes": 278
+    },
+    "evidence/native-security/offline-intermediate.txt": {
+      "sha256": "3724a548ebddc2549bac42a096a01498421fcd12e87ecd67623529cf55c486a1",
+      "bytes": 195
+    },
+    "evidence/native-security/offline-final.txt": {
+      "sha256": "8dccf60800678b14de0d91bbf9d0e4229c22735a213b80ee55415b1041a9cd7c",
+      "bytes": 195
+    },
+    "evidence/native-security/operator-native-boundary.txt": {
+      "sha256": "07f3f4001b8f3d50d1956a217abccc42c10ba31040cf7fdeb68433ca7ae7d369",
+      "bytes": 99
+    },
+    "evidence/native-security/offline-import-failure.txt": {
+      "sha256": "73149389575055eca6f6404ea60833fb9cbd61a9428006c78a5fe015f7211a1f",
+      "bytes": 1822
+    },
+    "evidence/native-security/current-executor-revalidation.json": {
+      "sha256": "178e94c35a53cc3d30a5c54caf666eab7775f7d6c4c6eb72ce18c870f4a1f1de",
+      "bytes": 16560
+    },
+    "evidence/native-security/cangjie-native-records/20f356debb9e41bfbaa72ac54a7d11b6.mcp-operation.json": {
+      "sha256": "e8e916b5b7c343e18ac21ee4ad0cefb87601a135f5f97b2a0f6e9f94cee6a200",
+      "bytes": 5207
+    },
+    "evidence/native-security/cangjie-native-records/b4bc5fddc0074e94ab4338ecce3e6a44.log": {
+      "sha256": "e7ebc3271db7f1946f172d5eba0fdbb5d32d2f0b90cb4ebeec748207e4e6145f",
+      "bytes": 2748
+    },
+    "evidence/native-security/cangjie-native-records/c4bb71b05eba489d84495e118c5f53d8.tool.json": {
+      "sha256": "9c387cf910859ac0c69a2b4a21ed0f399fdf78599ae444946daeb91033ac741a",
+      "bytes": 4613
+    },
+    "evidence/native-security/cangjie-native-records/c4bb71b05eba489d84495e118c5f53d8.tool-request.json": {
+      "sha256": "f5f82db2d23b725d5692194002a3e908b337b4e98b557991f7347aa3d4d9eb1f",
+      "bytes": 356
+    },
+    "evidence/native-security/cangjie-native-records/284414700710464f895bb1703f4e721b.json": {
+      "sha256": "ac56321ea8d58b0d3c00c94c9a64d3b2a6ae8f6ed7eca07a708a738415efaea2",
+      "bytes": 594
+    },
+    "evidence/native-security/cangjie-native-records/94aea282147c4ea996bee3df9f5c9330.json": {
+      "sha256": "e6147552f161cb716b33499343c9cb07c776166a8c38b150834b55f5637a759e",
+      "bytes": 1878
+    },
+    "evidence/native-security/cangjie-native-records/6c0e1b363652497388fda1fb31922f82.mcp-request.json": {
+      "sha256": "8285365841d8e65234cf2a675ca59dfe3430f4be476764f455bfead4f715fa0b",
+      "bytes": 444
+    },
+    "evidence/native-security/cangjie-native-records/9b710cfd85114687a207e8952ef5a665.json": {
+      "sha256": "9c03658c5792281a38729aaf77266ce5507b46944ee80482383e017f98b576a5",
+      "bytes": 4556
+    },
+    "evidence/native-security/cangjie-native-records/bcb22de26f42418fb86e222069ceca07.tool-request.json": {
+      "sha256": "b87fe2a3678dca68904ce93dee048c3985035c0f093a088a2ac2f177ea7fd742",
+      "bytes": 357
+    },
+    "evidence/native-security/cangjie-native-records/b4bc5fddc0074e94ab4338ecce3e6a44.report.json": {
+      "sha256": "3de13966cc6d057dd86f10edbbff805ab94896292862f7449ae2206d2c342280",
+      "bytes": 4484
+    },
+    "evidence/native-security/cangjie-native-records/bd2f6ce8468a454eb7ca4d282f99ff14.mcp-request.json": {
+      "sha256": "2a699d32e3430889c062c085a759a2e32125b8414add2c6e384c037d4055139d",
+      "bytes": 443
+    },
+    "evidence/native-security/cangjie-native-records/bcb22de26f42418fb86e222069ceca07.tool.json": {
+      "sha256": "0d0e37e6b0e90b8e3a923fa151343af3bc28f52529eed43f3328c1dc91d8c755",
+      "bytes": 3131
+    },
+    "evidence/native-security/cangjie-native-records/3638a3c21df44fe1bd31aee12ccc1615.json": {
+      "sha256": "e3dc7b702be88da8852438cd36c3234859e9c748d8524da744ee0c032a8f6865",
+      "bytes": 1263
+    },
+    "evidence/native-security/cangjie-native-records/380b4f5872ba41e48ca997066cc77b27.log": {
+      "sha256": "b2d02453ab784a4ffce0768b0557027363edc21c37f4195a1d957ce2db80d27d",
+      "bytes": 2054
+    },
+    "evidence/native-security/cangjie-native-records/11b24ad9a25f45b6a9d43542a539cdbe.mcp-request.json": {
+      "sha256": "244b3fffd7cd68bc23ecc06d3704a664fe7b1e456696d845d76a2ea5f97e77ca",
+      "bytes": 1793
+    },
+    "evidence/native-security/cangjie-native-records/40c4bcfa484e41d090b157e62b9290b9.tool.json": {
+      "sha256": "5a3ce32c19b3c89db06a6c957cf750fff6434e1c3fb9083d5166f71c28cf9984",
+      "bytes": 1981
+    },
+    "evidence/native-security/cangjie-native-records/380b4f5872ba41e48ca997066cc77b27.report.json": {
+      "sha256": "1b136890664e66054247cbf93f36044ecf832901fa88ddf5c1736b9988a6efad",
+      "bytes": 3002
+    },
+    "evidence/native-security/cangjie-native-records/480e2f3161fd41fda82009e35dac4d71.json": {
+      "sha256": "4ad6d3dee7fd12bf9ee0af6b608225f915ad79ae710a694941631ce150b70c0e",
+      "bytes": 1247
+    },
+    "evidence/native-security/cangjie-native-records/40c4bcfa484e41d090b157e62b9290b9.tool-request.json": {
+      "sha256": "88e8f8c4c98e2ebda452198a6bcb4ea66392f92fe3b0f13739165fdf92966f9a",
+      "bytes": 1706
+    },
+    "evidence/native-security/cangjie-native-records/ec4f032cf4b64b1a9e2b558d83aff4b6.json": {
+      "sha256": "b99cf267c30184196f4650a887af2b3717d4fb69adcb753d417e207c4fc6fff8",
+      "bytes": 1245
+    },
+    "evidence/native-security/cangjie-native-records/bf188d4fbaa8429c8250d8f30f7caa07.mcp-operation.json": {
+      "sha256": "704972a2ffb32d93666350c6c86c057ab8b3fc5ebec8bd90329b56d109c1a9ad",
+      "bytes": 3696
+    },
+    "evidence/native-security/cangjie-native-records/d4ba94f2793f46fc9278a404b576520e.json": {
+      "sha256": "7a36e083e5b2e1e0eb8bdf691c61d23f5a61ec7a794782e82a8768114f20dbf4",
+      "bytes": 593
+    },
+    "evidence/native-security/cangjie-native-records/c_215c03da0fa3451390f1d142f706b29f.diff": {
+      "sha256": "0fe775d1e740fc8fd40e788900e871c0128a0b38f906cd75f5df53cbbe3f1fe5",
+      "bytes": 1385
+    },
+    "evidence/native-security/cangjie-native-records/55994f46131b46ed92388fd5bb325f2d.mcp-operation.json": {
+      "sha256": "e9314ce04d016c488fa4ef8134d3c9dd89e57d9fe6fe1f11b5f8f6360f2e3f20",
+      "bytes": 2408
+    },
+    "evidence/native-security/cangjie-native-records/40b9362ba1194756a0a17d4862994f1e.json": {
+      "sha256": "61e23e9092f98060999ba217202af41b934d3e9efacd62ff61ebb338a1dab07d",
+      "bytes": 562
+    },
+    "evidence/native-security/cangjie-native-records/fd264c5eefef428f95d000ce19b4fd49.json": {
+      "sha256": "73707a5fbfb7fe8a36f1c372e7300301996f68bf05a9dd5d9266f6da9befeb23",
+      "bytes": 3045
+    },
+    "reports/native-security-fix-report.md": {
+      "sha256": "1758b4597270921a9cc072de58b7278490da1640fe5b4a878560468b2aab0ac6",
+      "bytes": 8028
+    },
+    "reports/m1-reuse-review.md": {
+      "sha256": "670abc58b96d68cd4a163f64d9f36b3cc721d8b49c86eea8293167934a3d685b",
+      "bytes": 3806
+    },
+    "reports/completion-audit.md": {
+      "sha256": "9789cfc5ece0098db917aedb4686bd7ef0dd5274586d0b1f81573d3c760b4a12",
+      "bytes": 7823
+    },
+    "reports/runbook.md": {
+      "sha256": "fc8c2d4f73cd265f5f09d18ca299d07dcdb3adbc66be5b2b29d2c02c6b81804b",
+      "bytes": 10625
+    },
+    "reports/independent-reproduction.md": {
+      "sha256": "4fc69a93350555e3da7c2d5162a7f0a77427fcc699dad2b920b895d387962250",
+      "bytes": 4062
+    },
+    "README-先读我.md": {
+      "sha256": "3fbc32e3e171023d9941902f537660d3ed5c5dca12f9e3f714eace9b44ea8f6f",
+      "bytes": 2175
+    }
+  },
+  "package": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-Native技术复核包-a19f6d7.zip",
+  "package_sha256": "428eb20ee3740c90bc69ee8b121cac0f075324829f35dea45be4a2f6ce6f0c60",
+  "recursive_integrity": "PASS",
+  "actual_credentials_scan": "NO_MATCH"
+}

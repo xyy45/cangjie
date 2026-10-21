@@ -1,0 +1,11 @@
+{
+  "endpoint": "http://127.0.0.1:2266/health",
+  "reachable": false,
+  "tools": {
+    "sympas_slice": "excluded: manifest explicitly describes C/C++",
+    "code_scan": "excluded: no reachable service; Cangjie behavior unverified",
+    "ast_symbol_extractor": "excluded: no reachable service; Cangjie behavior unverified",
+    "sympas_dep_graph": "excluded: no reachable service; Cangjie behavior unverified"
+  },
+  "semantic_support_claimed": false
+}

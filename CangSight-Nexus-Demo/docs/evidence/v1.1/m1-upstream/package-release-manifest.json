@@ -1,0 +1,159 @@
+{
+  "schema_version": 2,
+  "source_commit": "21eec3604c32c083e72bc93add9538828a07c7d6",
+  "application_commit": "9a41097",
+  "source_sha256": "607a0a99395ef26ca914378c23a2629d2664117fd6b36da9a04e39d4d747e76f",
+  "native_only": true,
+  "docker_prerequisite": false,
+  "offline": "144 passed, 12 deselected in 27.83s",
+  "sdk_http": "11 passed in 73.00s",
+  "node": "15 passed",
+  "no_git": "144 passed, 12 deselected in 27.04s",
+  "no_git_details": {
+    "source_commit": "21eec3604c32c083e72bc93add9538828a07c7d6",
+    "application_commit": "9a41097",
+    "source": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-Native-M1-source-21eec36.zip",
+    "source_sha256": "607a0a99395ef26ca914378c23a2629d2664117fd6b36da9a04e39d4d747e76f",
+    "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-m1-repro-nir11nl8/CangSight-Nexus",
+    "interpreter": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.venv/bin/python",
+    "git_metadata": false,
+    "env_file": false,
+    "reused_dependencies": "Same-host test interpreter and pinned SDK/stdx links only; policy compiled fresh; not teammate independent reproduction",
+    "imported_adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+    "policy-build": {
+      "exit_code": 0,
+      "log": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/v11-21eec36-policy-build.txt"
+    },
+    "no-git-offline": {
+      "exit_code": 0,
+      "log": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/v11-21eec36-no-git-offline.txt"
+    }
+  },
+  "m1": "PASS_MINIMAL_SOURCE_PINNED_GATEWAY_AND_DISPATCH",
+  "current_new_live": "NOT_EXECUTED",
+  "current_revalidation": "EXACT_HISTORICAL_MODEL_PROPOSAL_REVALIDATED_NOT_NEW_LIVE",
+  "current_revalidation_archive_sha256": "9cf9d79d77e95665c2f16006b891155cae1b79a171c4e10016fb349fb94517ea",
+  "revalidation_approval_actor": "EXECUTOR_REVALIDATION_OPERATOR",
+  "new_model_requests": 0,
+  "historical_v11_authorized_requests": 1,
+  "external_reproduction": "PENDING",
+  "competition_submission": "PENDING",
+  "general_native_isolation": "NOT_VERIFIED",
+  "current_realtime_demo": "NOT_VERIFIED",
+  "integrity": "Recursive ZIP CRC and path checks passed",
+  "credential_scan": "Exact configured API/operator/session/owner credential values: NO_MATCH; values never printed",
+  "archive_scan": {
+    "zip_archives": 4,
+    "entries": 772,
+    "bytes_checked": 5951902
+  },
+  "files": {
+    "README-先读我.md": {
+      "sha256": "010b14d758474eb148ad3b9edb69ba0efefddc7729efbc2441b2d44f88c7cef3",
+      "size": 1995
+    },
+    "evidence/current-executor-revalidation.json": {
+      "sha256": "54e33d7d7a378781a1a2b0957a3d35650ff2cae3fef03ab13e88f7683ff1445c",
+      "size": 18030
+    },
+    "evidence/current-recorded-proposal-revalidated-export.zip": {
+      "sha256": "9cf9d79d77e95665c2f16006b891155cae1b79a171c4e10016fb349fb94517ea",
+      "size": 122907
+    },
+    "evidence/dispatcher-node.txt": {
+      "sha256": "687567b04f3eb727b4bad25ed5d9fe4864525f11ed25b9b94f59cde14aefc9fb",
+      "size": 1378
+    },
+    "evidence/dispatcher-offline-final.txt": {
+      "sha256": "1d725949bc4aefb4c42434f30f1497a8835d8086880e94629b8e2049d80f5ce8",
+      "size": 196
+    },
+    "evidence/dispatcher-original-integrity.json": {
+      "sha256": "1681fc8752ac6db2d92027204baf9c94a8c187c93d583a3856315acd7862a5ba",
+      "size": 40
+    },
+    "evidence/dispatcher-real-loop-summary.json": {
+      "sha256": "1fc5f5467ea631f8a5208191cc5f77e2203f8b5468bec0848f42b52ebb6f753b",
+      "size": 43928
+    },
+    "evidence/dispatcher-sdk-final.txt": {
+      "sha256": "64516552510b374f6dc0f772476adee1698d7bdc0e745c78ed51356e09c46339",
+      "size": 110
+    },
+    "evidence/dispatcher-service-smoke.json": {
+      "sha256": "d962915828a5fb69bf4f574662882a2b600dd2b97d4f0b48e8248d777e6475cd",
+      "size": 726
+    },
+    "evidence/dispatcher-source-diff.patch": {
+      "sha256": "b2510570ca33110d5e8ce39ebe0c24f3431e77170b5c327eed3e6acbaf85b1f9",
+      "size": 3578
+    },
+    "evidence/dispatcher-source-provenance.json": {
+      "sha256": "e26963115ef9990df1221f3a1e7f08f8ae67f8b5fe7f67eaf6b26a766977d7d7",
+      "size": 906
+    },
+    "evidence/fresh-policy-build.txt": {
+      "sha256": "d4f0d9bb582e9d952db5a961488f652028ea0ce30f5242d435aabe0df8816e16",
+      "size": 1280
+    },
+    "evidence/historical-authorized-LIVE-original.zip": {
+      "sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+      "size": 73890
+    },
+    "evidence/no-git-offline.txt": {
+      "sha256": "9ff753cdd5abfa22431c940dc676b17590599a064ea17b326eec1571394904e6",
+      "size": 196
+    },
+    "evidence/pack-current-revalidation.txt": {
+      "sha256": "30ea0263f494409a7d1fba15e4b49c5593f498d438090bfb038c6998a93fde14",
+      "size": 260
+    },
+    "reports/README.md": {
+      "sha256": "7fdd3b6203ed2d73d186c2d17922fa6a516631fb732480bf75fbb13f9dea0c60",
+      "size": 2159
+    },
+    "reports/docs/independent-reproduction.md": {
+      "sha256": "cafba2070962fa3cedf1c671b9bf62328413536022d143589ffabdf44ca27f66",
+      "size": 5126
+    },
+    "reports/docs/runbook.md": {
+      "sha256": "7d20ce7e80d5855cc8745452c6df4bc2d3cd655babc75876bb77f78567d08a38",
+      "size": 11294
+    },
+    "reports/docs/third-party/sympas/LICENSE": {
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size": 11357
+    },
+    "reports/docs/third-party/sympas/SOURCE.md": {
+      "sha256": "20c7194507643cd7244f937d915a756938366290da66f403b47362f3d72599fe",
+      "size": 1624
+    },
+    "reports/docs/v1.1/completion-audit.md": {
+      "sha256": "0cb588da297a01d3ddad0fa4fce3ec27d2ddbd34496eb9409f075bb8339e1575",
+      "size": 10308
+    },
+    "reports/docs/v1.1/m1-dispatch-acceptance.md": {
+      "sha256": "8632920dd31e7fef300b51235e7477d0a67fb1bd06665f940b2685ff93de7aec",
+      "size": 6242
+    },
+    "reports/docs/v1.1/native-execution-staging.md": {
+      "sha256": "449bf81df8b0d9ee39cca62d44878e21811c176eddd0c9a8f0281c3d1d2fdc35",
+      "size": 5153
+    },
+    "source/CangSight-Nexus-v1.1-Native-M1-source-21eec36.zip": {
+      "sha256": "607a0a99395ef26ca914378c23a2629d2664117fd6b36da9a04e39d4d747e76f",
+      "size": 1785189
+    },
+    "video/historical-only/V1.1-LIVE-record-replay.mp4": {
+      "sha256": "48a9f1de1e1c05165d852ce2f4a3dd7bc2f1b39fa9ee53a93f5f77388b97b93c",
+      "size": 320687
+    },
+    "video/historical-only/video-provenance.json": {
+      "sha256": "d744b526c40ed2dc56c74f733610679e1a30ec95e110e66fda23dbd6abb6beff",
+      "size": 1257
+    }
+  },
+  "package": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-团队技术复核包-21eec36.zip",
+  "package_sha256": "93d760f6821137f44ecf990a455429383a7da54ab0a60cdc80b5e59d0e6d4635",
+  "internal_manifest_sha256": "f30d4a0f092963bf2f8e8753f47e973a1f20a7a9b84efbd64c6131a89e45adc7"
+}

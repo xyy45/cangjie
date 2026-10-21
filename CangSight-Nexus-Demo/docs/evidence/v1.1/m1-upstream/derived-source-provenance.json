@@ -1,0 +1,19 @@
+{
+  "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+  "original": "Sympas-Nexus/nexus/gateway/app.py",
+  "original_sha256": "420b78df711af7f2e4e7de2437736460bb37bb1312da81a396051ee6a98ab89c",
+  "derived": "nexus/integrations/sympas_runtime.py",
+  "derived_sha256": "6cc2d0a7c44a03ec24beb5157b50d38c4e03fb9f3071881684e45925807547ae",
+  "identical_ast_functions": [
+    "_is_sensitive_field",
+    "_public_value"
+  ],
+  "modifications": [
+    "Selected gateway routes extracted as Blueprint",
+    "Creation delegates to existing controller transaction",
+    "Native RunStore read projection, no secondary database",
+    "Set-Cookie field normalization correction",
+    "Local operator/CSRF/owner guard inherited from workbench"
+  ],
+  "whole_upstream_application": false
+}

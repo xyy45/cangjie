@@ -1,0 +1,17 @@
+{
+  "probe": "new_local_http_session_approval_on_isolated_copy",
+  "source_task": "c76fb4b85a834c0393f6d3e4d4bb5fcf",
+  "source_run_unchanged": true,
+  "uses_previously_verified_checks": true,
+  "new_builds": 0,
+  "new_model_requests": 0,
+  "page_status": 200,
+  "candidate_get_status": 200,
+  "accept_status": 200,
+  "approval_actor_matches_new_session": true,
+  "original_approval_actor": "EXECUTOR_REVALIDATION_OPERATOR",
+  "new_session_is_original_operator": false,
+  "container_test": false,
+  "note": "Flask in-process HTTP route probe, not actual candidate exploit or Docker test; only isolated copied runtime changed; no export invoked",
+  "review_record_created": true
+}

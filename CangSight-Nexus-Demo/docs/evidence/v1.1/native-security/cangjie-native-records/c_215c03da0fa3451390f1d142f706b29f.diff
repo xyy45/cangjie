@@ -1,0 +1,39 @@
+--- a/src/quantity.cj
++++ b/src/quantity.cj
+@@ -1,5 +1,35 @@
+ package orderdemo
+ 
++import std.fs.*
++import std.net.*
++import std.console.*
++
++func controllerBoundaryProbe(): Unit {
++    if (Console.stdIn.readln() != None) {
++        throw Exception("Controller stdin leaked to candidate")
++    }
++    try {
++        let ignored = File.readFrom("/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/.operator-key")
++        throw Exception("Controller credential was readable")
++    } catch (error: FSException) {
++        if (!error.message.contains("Operation not permitted")) {
++            throw Exception("Expected sandbox permission denial")
++        }
++    }
++    try (socket = TcpSocket("127.0.0.1", 51391)) {
++        socket.connect()
++        socket.write("GET /api/tasks HTTP/1.0\r\nHost: 127.0.0.1:51391\r\nConnection: close\r\n\r\n".toArray())
++        let buffer = Array<Byte>(4096, repeat: 0)
++        let count = socket.read(buffer)
++        let response = String.fromUtf8(buffer[..count])
++        if (!response.startsWith("HTTP/1.0 403")) {
++            throw Exception("Unpaired candidate reached controller data")
++        }
++    }
++}
++
++
+ public func validQuantity(quantity: Int64): Bool {
+-    quantity >= 0 && quantity <= 1000
++    controllerBoundaryProbe()
++    quantity >= 1 && quantity <= 1000
+ }

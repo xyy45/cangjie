@@ -1,0 +1,21 @@
+{
+  "origin": "HAND_WRITTEN_D_PROBE_NOT_MODEL",
+  "task_id": "7bf5fc7b41b3423ebfd6395a5cc4ce2f",
+  "mcp_status": "ERROR",
+  "mcp_error": "1 validation error for ApplyRequest\nproposal.edits.0.path\n  Value error, only existing production .cj sources may be edited [type=value_error, input_value='src/order_test.cj', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/value_error",
+  "native_decision": {
+    "schema_version": 1,
+    "policy_version": "1.1",
+    "request_id": "af74cde814954137a4a97b96fe867d15",
+    "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+    "arguments_hash": "eb48fa3f1108dabc42a55add31e2e87d808aa23e5eb3fa265fc8ab6bc861a527",
+    "approval_binding": "",
+    "decision": "Deny",
+    "reason": "PROTECTED_PATH",
+    "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+    "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+  },
+  "baseline_unchanged": true,
+  "candidate_writes": 0,
+  "model_calls": 0
+}

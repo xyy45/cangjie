@@ -1,0 +1,312 @@
+{
+  "scope": "DERIVED_GATEWAY_HAND_WRITTEN_MCP_PROBE_NOT_LIVE",
+  "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+  "task_id": "80049cbea1a4469cbb3c324dc0cf703e",
+  "candidate_id": "c_9e432ac5ac514362b371df7a07223554",
+  "tool_calls": [
+    {
+      "candidate_id": null,
+      "id": "20a17bac3d224e41aadba1e2fa400e43",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": "records/0b2d0db929ad4bef9148d3aa2371483c.json",
+      "replayed": false,
+      "request_id": "1505d1b196804c6ab09ed423881e56b4",
+      "request_ref": "records/20a17bac3d224e41aadba1e2fa400e43.tool-request.json",
+      "result_ref": "records/20a17bac3d224e41aadba1e2fa400e43.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "80049cbea1a4469cbb3c324dc0cf703e",
+      "tool": "project.diagnose",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "0d894914f897451385d8dc6e6aee2576",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": "records/1b7523334be54f1ab47fbde2f243c394.json",
+      "replayed": false,
+      "request_id": "35d159de7c404bc4bae21a68ed93b4e7",
+      "request_ref": "records/0d894914f897451385d8dc6e6aee2576.tool-request.json",
+      "result_ref": "records/0d894914f897451385d8dc6e6aee2576.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "80049cbea1a4469cbb3c324dc0cf703e",
+      "tool": "candidate.apply",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": "c_9e432ac5ac514362b371df7a07223554",
+      "id": "385135a472984a3f90ec2da45a38c76c",
+      "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "policy_ref": "records/cc4705b20f2b41c0b14a6e89612f97ed.json",
+      "replayed": false,
+      "request_id": "76af5357c6984ad9b3475c9820b327f6",
+      "request_ref": "records/385135a472984a3f90ec2da45a38c76c.tool-request.json",
+      "result_ref": "records/385135a472984a3f90ec2da45a38c76c.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "80049cbea1a4469cbb3c324dc0cf703e",
+      "tool": "candidate.build",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": "c_9e432ac5ac514362b371df7a07223554",
+      "id": "7eef76f1c75d46d39b0830976f9e65de",
+      "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "policy_ref": "records/b3758784ba724aa8892b3f1f9ad9f6cb.json",
+      "replayed": false,
+      "request_id": "6a5b5d59939e432ba7c3aa7e8cc164a0",
+      "request_ref": "records/7eef76f1c75d46d39b0830976f9e65de.tool-request.json",
+      "result_ref": "records/7eef76f1c75d46d39b0830976f9e65de.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "80049cbea1a4469cbb3c324dc0cf703e",
+      "tool": "candidate.test",
+      "tool_version": "1.1"
+    }
+  ],
+  "checks": [
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/baselines/b_ffb8249bc8fd43f58116f37c852cc0da/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/baselines/b_ffb8249bc8fd43f58116f37c852cc0da/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/baselines/b_ffb8249bc8fd43f58116f37c852cc0da/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 348,
+      "exit_code": 0,
+      "id": "469d6cadbf0a46838f8031c50acb61f2",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/469d6cadbf0a46838f8031c50acb61f2.log",
+      "plan_hash": "4b0aa5e0a199e8acb1017076c5e3c397b6e65de851cf5683c4d05538fe097046",
+      "report_ref": "records/469d6cadbf0a46838f8031c50acb61f2.report.json",
+      "schema_version": 2,
+      "spec_hash": "348a6d50fb41907f3cf9a83688aff4251ddc179a6d92e3f4c9aefed765def6f0",
+      "state": "PASS",
+      "subject_id": "b_ffb8249bc8fd43f58116f37c852cc0da",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "8284042d721cef6904930e793617468263c3cd7bd3143dd617ee5dace403b642",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "FAIL"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 10,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1693000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1693000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (212000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (8000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (39000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (11000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (5000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (60000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2212000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2176000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1693000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1693000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (60000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hError: cjpm test failed\n",
+      "duration_ms": 3206,
+      "exit_code": 1,
+      "id": "8ea323ef95a44fc491b3324c9a5ba538",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/8ea323ef95a44fc491b3324c9a5ba538.log",
+      "plan_hash": "4b0aa5e0a199e8acb1017076c5e3c397b6e65de851cf5683c4d05538fe097046",
+      "report_ref": "records/8ea323ef95a44fc491b3324c9a5ba538.report.json",
+      "schema_version": 2,
+      "spec_hash": "348a6d50fb41907f3cf9a83688aff4251ddc179a6d92e3f4c9aefed765def6f0",
+      "state": "FAIL",
+      "subject_id": "b_ffb8249bc8fd43f58116f37c852cc0da",
+      "suite_results": {
+        "order-regression": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "8284042d721cef6904930e793617468263c3cd7bd3143dd617ee5dace403b642",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/candidates/c_9e432ac5ac514362b371df7a07223554/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/candidates/c_9e432ac5ac514362b371df7a07223554/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0/candidates/c_9e432ac5ac514362b371df7a07223554/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 270,
+      "exit_code": 0,
+      "id": "e8603a53d4994e8482c4b297eb159f8e",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/e8603a53d4994e8482c4b297eb159f8e.log",
+      "plan_hash": "4b0aa5e0a199e8acb1017076c5e3c397b6e65de851cf5683c4d05538fe097046",
+      "report_ref": "records/e8603a53d4994e8482c4b297eb159f8e.report.json",
+      "schema_version": 2,
+      "spec_hash": "348a6d50fb41907f3cf9a83688aff4251ddc179a6d92e3f4c9aefed765def6f0",
+      "state": "PASS",
+      "subject_id": "c_9e432ac5ac514362b371df7a07223554",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "8284042d721cef6904930e793617468263c3cd7bd3143dd617ee5dace403b642",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "PASS"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 11,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 4538000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 4538000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (191000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (12000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (14000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroQuantity (8000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (8000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (6000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 5212000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 5171000 ns, RESULT:\n    PASSED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 4538000 ns\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hcjpm test success\n",
+      "duration_ms": 3253,
+      "exit_code": 0,
+      "id": "f714dce44744423586e7c231240e4271",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/f714dce44744423586e7c231240e4271.log",
+      "plan_hash": "4b0aa5e0a199e8acb1017076c5e3c397b6e65de851cf5683c4d05538fe097046",
+      "report_ref": "records/f714dce44744423586e7c231240e4271.report.json",
+      "schema_version": 2,
+      "spec_hash": "348a6d50fb41907f3cf9a83688aff4251ddc179a6d92e3f4c9aefed765def6f0",
+      "state": "PASS",
+      "subject_id": "c_9e432ac5ac514362b371df7a07223554",
+      "suite_results": {
+        "order-regression": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "8284042d721cef6904930e793617468263c3cd7bd3143dd617ee5dace403b642",
+      "working_root": "."
+    }
+  ],
+  "model_calls": 0,
+  "original_upstream_application_started": false
+}

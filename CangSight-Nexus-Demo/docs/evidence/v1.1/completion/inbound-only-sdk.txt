@@ -1,0 +1,61 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_real_mcp_apply_build_test ________________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-152/test_real_mcp_apply_build_test0')
+
+    def test_real_mcp_apply_build_test(tmp_path):
+        from nexus.mcp.client import ToolClient
+        ws = WorkspaceStore(tmp_path, registered=[ROOT/'fixtures/order-demo'])
+        baseline = ws.import_project(ROOT/'fixtures/order-demo', '.')
+        task = RunStore(tmp_path).create_task(baseline, 'check candidate', ['src/quantity.cj'])
+        content = ws.read_file(baseline, 'src/quantity.cj')
+        async def run():
+            async with ToolClient(tmp_path) as client:
+                diagnosed = await client.call_tool('project.diagnose', dict(task_id=task.id, request_id='diagnose', subject_id=baseline))
+                assert diagnosed.data['build']['state'] == 'PASS', diagnosed
+                applied = await client.call_tool('candidate.apply', dict(task_id=task.id, request_id='apply', proposal=dict(
+                    edits=[dict(path='src/quantity.cj', before_hash=file_hash(content), content=content+'\n// real candidate\n')], requirement_refs=['goal'])))
+                assert applied.operation_status == 'OK', applied
+                args = dict(task_id=task.id, candidate_id=applied.data['id'], expected_tree_hash=applied.data['tree_hash'])
+                build = await client.call_tool('candidate.build', dict(**args, request_id='build'))
+                assert build.data['state'] == 'PASS', build
+                test = await client.call_tool('candidate.test', dict(**args, request_id='test'))
+                assert test.data['state'] == 'PASS' and test.data['counts']['total'] == 11, test
+>       asyncio.run(run())
+
+tests/sdk/test_verification_tools.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def run():
+        async with ToolClient(tmp_path) as client:
+            diagnosed = await client.call_tool('project.diagnose', dict(task_id=task.id, request_id='diagnose', subject_id=baseline))
+            assert diagnosed.data['build']['state'] == 'PASS', diagnosed
+            applied = await client.call_tool('candidate.apply', dict(task_id=task.id, request_id='apply', proposal=dict(
+                edits=[dict(path='src/quantity.cj', before_hash=file_hash(content), content=content+'\n// real candidate\n')], requirement_refs=['goal'])))
+            assert applied.operation_status == 'OK', applied
+            args = dict(task_id=task.id, candidate_id=applied.data['id'], expected_tree_hash=applied.data['tree_hash'])
+            build = await client.call_tool('candidate.build', dict(**args, request_id='build'))
+            assert build.data['state'] == 'PASS', build
+            test = await client.call_tool('candidate.test', dict(**args, request_id='test'))
+>           assert test.data['state'] == 'PASS' and test.data['counts']['total'] == 11, test
+E           AssertionError: ToolResult(schema_version=1, operation_status='OK', data={'schema_version': 1, 'argv': ['cjpm', 'test'], 'working_root...r=None, record_refs=['records/cc4112443d924b95aea13f50e40f770f.json', 'records/db66b19d1a364acc80435d5a3d88502a.json'])
+E           assert ('UNKNOWN' == 'PASS'
+E             
+E             - PASS
+E             + UNKNOWN)
+
+tests/sdk/test_verification_tools.py:51: AssertionError
+=========================== short test summary info ============================
+FAILED tests/sdk/test_verification_tools.py::test_real_mcp_apply_build_test
+1 failed in 26.45s

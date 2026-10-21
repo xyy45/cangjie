@@ -1,0 +1,18 @@
+{
+  "viewport": 390,
+  "clientWidth": 375,
+  "scrollWidth": 375,
+  "panels": [
+    {
+      "left": 19.5,
+      "top": 877,
+      "width": 336
+    },
+    {
+      "left": 19.5,
+      "top": 1216,
+      "width": 336
+    }
+  ],
+  "source": "Read-only DOM geometry from current workbench at 390x844; historical V1 task, not another LIVE run"
+}

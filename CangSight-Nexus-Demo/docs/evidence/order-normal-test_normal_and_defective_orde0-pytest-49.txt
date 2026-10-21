@@ -1,0 +1,30 @@
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 1537000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 1537000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (196000 ns)
+    [[32m PASSED [0m] CASE: two (10000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (10000 ns)
+    [[32m PASSED [0m] CASE: zeroQuantity (6000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (9000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (6000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (11000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (8000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (10000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (9000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (6000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 2226000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 2182000 ns, RESULT:
+    PASSED:
+    TP: [33morderdemo[0m, time elapsed: 1537000 ns
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

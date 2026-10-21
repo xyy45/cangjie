@@ -1,0 +1,15 @@
+{
+  "package_sha256": "93d760f6821137f44ecf990a455429383a7da54ab0a60cdc80b5e59d0e6d4635",
+  "source_sha256": "607a0a99395ef26ca914378c23a2629d2664117fd6b36da9a04e39d4d747e76f",
+  "source_commit": "21eec3604c32c083e72bc93add9538828a07c7d6",
+  "source_files_verified_against_git": 485,
+  "outer_file_hashes_verified": 26,
+  "license_preserved": true,
+  "manifest_complete": true,
+  "source_zip_integrity": "PASS",
+  "package_integrity": "PASS",
+  "no_git_regression": "144 passed, 12 deselected in 27.04s",
+  "external_reproduction": "PENDING",
+  "current_new_live": "NOT_EXECUTED",
+  "competition_submission": "PENDING"
+}

@@ -1,0 +1,76 @@
+{
+  "elapsed_ms": 2741,
+  "http_status": 200,
+  "input": {
+    "code": "func clamp(value: Int64, lower: Int64, upper: Int64): Int64 {\n    if (value < lower) {\n        return lower\n    }\n    if (value > upper) {\n        return upper\n    }\n    return value\n}\nfunc transform(value: Int64): Int64 {\n    let bounded = clamp(value, -10, 10)\n    return bounded * bounded\n}\nfunc aggregate(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        let transformed = transform(value)\n        total = total + transformed\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(aggregate([2, -3, 20]))\n    println(aggregate([0]))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l3_calls.cj",
+    "format": "json",
+    "lang": "cangjie",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "observed_at": "2026-10-19T15:40:35.255443+00:00",
+  "request_id": "53e1d0029142463986b01b86e8e68aee-sympas_slice",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_analysis_lyfuitzb/slice.json",
+        "download_url": "/artifacts/sympas_analysis_lyfuitzb/slice.json?[REDACTED]",
+        "format": "json",
+        "name": "slice.json",
+        "path": "/workspace/artifacts/sympas_analysis_lyfuitzb/slice.json",
+        "preview": {
+          "available": true,
+          "content": "{\"version\": \"1.0\", \"tool\": \"SymSlicer/SymPas\", \"backward_slices\": {}}"
+        },
+        "url": "/artifacts/sympas_analysis_lyfuitzb/slice.json?[REDACTED]"
+      }
+    ],
+    "cache": "miss",
+    "data": {
+      "backward_slices": {},
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "engine": "analysis-engine",
+    "engine_log": "Found 0 source files to analyze in workspace/artifacts/sympas_capture_hi28bhdr/analysis-results\nJSON report written to workspace/artifacts/sympas_analysis_lyfuitzb/slice.json",
+    "engine_warnings": [
+      "runtime/sympas_src_d1b21d/l3_calls.cj, line 139, column 34: SIL syntax error: unexpected token )"
+    ],
+    "findings": [],
+    "issue_count": 0,
+    "issues": [],
+    "message": "Analysis completed: 0 item(s), 1 artifact(s).",
+    "output_dir": "/workspace/artifacts/sympas_analysis_lyfuitzb",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_analysis_lyfuitzb/slice.json?[REDACTED]",
+      "json_source": "{\"version\": \"1.0\", \"tool\": \"Sympas Symbolic Engine/SymPas\", \"backward_slices\": {}}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_analysis_lyfuitzb/slice.json?[REDACTED]"
+    },
+    "raw_output": "Scanner mode=file discovered 1 source files (1 language buckets) under runtime/sympas_src_d1b21d\n  Cangjie: 1 files (sympas-gs)\nDiscovered 1 source files\n解析 runtime/sympas_src_d1b21d/l3_calls.cj...\nCall Graph已生成: ./output/l3_calls_cg.dot, ./output/l3_calls_cg.svg\n切片表已生成 (参考格式): ./output/l3_calls.SliceResult_Bwd-SDG\n\nBackward Static SliceTable:\n\t#Insts_sliced = 150.0 (Average: 15)\n\n Variable      SrcLineNumbers  \n------------------------------\n bounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n index@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\n lower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n total@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\n transformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\n upper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n values@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\n\nTextual SIL exported: runtime/sympas-se_5ac259/l3_calls.sil (4241 bytes)\nRun Sympas Formal Verifier: sympas-fv --sympas-hv-only -- --capture-textual runtime/sympas-se_5ac259/l3_calls.sil\n完成. 输出目录: ./output\n[slicer] mode=precise (full interprocedural)",
+    "report": {
+      "backward_slices": {},
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "25a3bbb7413803d8",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 2675.3
+    },
+    "result": {
+      "backward_slices": {},
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "server_timing_ms": 2675.3,
+    "status": "success",
+    "tool": "sympas_slice"
+  },
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "tool": "sympas_slice",
+  "transport": "group_http_tools"
+}

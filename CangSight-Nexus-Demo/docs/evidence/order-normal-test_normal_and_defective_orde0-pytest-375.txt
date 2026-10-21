@@ -1,0 +1,10 @@
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8[?25hAn exception has occurred:
+SocketException: Failed to bind 1: Operation not permitted.
+	 at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)
+	 at std.net.SocketCommon<...>::bind::lambda.0()(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/net/socket_impl_common.cj:420)
+	 at std.net.TcpServerSocket::bind()(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/net/tcp_server.cj:182)
+	 at std.unittest.Transport::fromDefaultConfiguration()(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/unittest/transport.cj:173)
+	 at std.unittest.testRunnerEntryMain()(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/unittest/entry_main.cj:77)
+	 at std.testrunner.main()(/private/var/folders/c2/j5zsr_lj7mlb796sb3fngdv40000gn/T/pytest-of-jxy/pytest-375/test_normal_and_defective_orde0/order/target/release/unittest_bin/testrunner.cj:3)
+Error: cjpm test failed

@@ -1,0 +1,25 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m cangjie/policy/src/main.cj:65:20:
+   [36m| [0m
+[36m65[0m [36m| [0m        let line = Console.stdIn.readln()[0m
+   [36m| [0m                   [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m cangjie/policy/src/main.cj:85:9:
+   [36m| [0m
+[36m85[0m [36m| [0m        Console.stdOut.writeln(response.toString())[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m cangjie/policy/src/main.cj:86:9:
+   [36m| [0m
+[36m86[0m [36m| [0m        Console.stdOut.flush()[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+3 warnings generated, 3 warnings printed.

@@ -1,0 +1,102 @@
+{
+  "assessed_at": "2026-10-18T02:57:40.833077+08:00",
+  "source_commit": "5fcc53c42dcf47e7b1eace09b619530f1df37c7b",
+  "checks": [
+    {
+      "argv": [
+        "uname",
+        "-m"
+      ],
+      "exit_code": 0,
+      "stdout": "arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sw_vers"
+      ],
+      "exit_code": 0,
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5\nBuildVersion:\t\t25F71\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sysctl",
+        "-n",
+        "hw.memsize",
+        "hw.logicalcpu",
+        "kern.hv_support",
+        "machdep.cpu.brand_string"
+      ],
+      "exit_code": 0,
+      "stdout": "17179869184\n10\n1\nApple M5\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "df",
+        "-h",
+        "/System/Volumes/Data"
+      ],
+      "exit_code": 0,
+      "stdout": "Filesystem      Size    Used   Avail Capacity iused ifree %iused  Mounted on\n/dev/disk3s5   460Gi   216Gi   218Gi    50%    1.9M  2.3G    0%   /System/Volumes/Data\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "vm_stat"
+      ],
+      "exit_code": 0,
+      "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    29445.\nPages active:                                 209661.\nPages inactive:                               204699.\nPages speculative:                              4015.\nPages throttled:                                   0.\nPages wired down:                             164249.\nPages purgeable:                                 737.\n\"Translation faults\":                      746878637.\nPages copy-on-write:                        18383111.\nPages zero filled:                         492599358.\nPages reactivated:                          56658725.\nPages purged:                               13379416.\nFile-backed pages:                            140312.\nAnonymous pages:                              278063.\nPages stored in compressor:                   942581.\nPages occupied by compressor:                 394731.\nDecompressions:                             45739512.\nCompressions:                               54482952.\nPageins:                                    28275948.\nPageouts:                                     142018.\nSwapins:                                       94290.\nSwapouts:                                     251748.\nPages tagged:                                 103701.\nPages tagged resident:                         73630.\nPages tagged compressed:                       30071.\nPages tag-storage:                             32768.\nPages tag-storage holding tags:                 3846.\nPages tag-storage free:                          168.\nPages tag-storage non-tag pageable:            28733.\nPages tag-storage non-tag wired:                  21.\nBytes of compressed tags:                    4653760.\nTagged compressions:                         2413684.\nTagged decompressions:                       2242890.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "memory_pressure",
+        "-Q"
+      ],
+      "exit_code": 0,
+      "stdout": "The system has 17179869184 (1048576 pages with a page size of 16384).\nSystem-wide memory free percentage: 44%\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sysctl",
+        "vm.swapusage"
+      ],
+      "exit_code": 0,
+      "stdout": "vm.swapusage: total = 3072.00M  used = 2018.19M  free = 1053.81M  (encrypted)\n",
+      "stderr": ""
+    }
+  ],
+  "runtime_cli": {
+    "docker": null,
+    "podman": null,
+    "colima": null,
+    "limactl": null,
+    "container": null,
+    "qemu-system-aarch64": null
+  },
+  "known_installations_or_sockets": {
+    "/Applications/Docker.app": false,
+    "/Applications/OrbStack.app": false,
+    "/Applications/UTM.app": false,
+    "/Users/jadya/.docker/bin/docker": false,
+    "/var/run/docker.sock": false,
+    "/Users/jadya/.docker/run/docker.sock": false
+  },
+  "source_sha256": {
+    "nexus/execution/runner.py": "f448c1d987f3a5319f484dd8f7f568bdde14a4ebdd3cadd3fd907f80ce0ff5c0",
+    "nexus/adapters/cangjie/verifier.py": "367942406c14081d22e1243b2ec95217dcc48ffdc998cc86e3d028cbdf4956f7",
+    "nexus/adapters/cangjie/sdk.py": "5ea1cf5dfe5ce48b8af993a5eeafd9715e9ecec1975530dd3fb6d28bac37c641",
+    "nexus/execution/delivery.py": "88f802a08c8ea75c76ace250b5829608b408650b8b4f8edee18be550d62ec955",
+    "nexus/web/app.py": "72fae89b6f6fac70e67a59b93c895bd60dada8aa17a067de4750c47ba6370f6e",
+    "nexus/mcp/client.py": "2501906832895d2bd7ded1445962446c383b3fc3faf91cfcc0734b05a1f7dc8c",
+    "cang_sight_server/server.py": "650da04ea806c48fe8db3903e61997efe71ad383b21035288f1683c01ace4695",
+    "nexus/execution/ownership.py": "0a9c8697ccb2e0ebf714878f33dfd199a20b6e23b2f5dececaee1adeb5a7b2e0",
+    "nexus/requirements/service.py": "42012ea5912db88704125ca173212208f5ac278bf20c099e314557d124285d4c"
+  },
+  "software_installations": 0,
+  "paid_model_requests": 0,
+  "docker_commands_executed": 0
+}

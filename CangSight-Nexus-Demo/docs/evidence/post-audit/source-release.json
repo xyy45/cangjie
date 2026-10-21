@@ -1,0 +1,18 @@
+{
+  "source_commit": "a20b21f84ff1cd87b452cfa111f279a9da0f4386",
+  "source_zip": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-source-post-audit-a20b21f.zip",
+  "sha256": "42c50916b9ee132b113304586bd60ba61c65efe1106386cc20636ceae0b65964",
+  "bytes": 794081,
+  "members": 167,
+  "sensitive_scan": {
+    "actual_key_found": false,
+    "forbidden_files_found": false
+  },
+  "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-post-audit-repro-apr08yng/CangSight-Nexus",
+  "git_metadata_present": false,
+  "parent_git_repository_detected": false,
+  "git_probe_exit": 128,
+  "dotenv_present": false,
+  "runtime_setup": "Reuse only pinned SDK/stdx directories by symlink; compile fresh native Policy; no model configuration or prior run records copied",
+  "python": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.venv/bin/python"
+}

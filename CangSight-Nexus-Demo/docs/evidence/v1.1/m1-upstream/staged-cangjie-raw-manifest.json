@@ -1,0 +1,21 @@
+{
+  "original_root": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-staged-final/test_real_cangjie_cannot_read_0",
+  "files": {
+    "records/15f5e7fe90ee44f5885487e83e4327f1.log": {
+      "sha256": "2afb3417f18727643fba81ca1a6ca239f57dacb72b738986a9b39f32e35988b7",
+      "size": 4603
+    },
+    "records/15f5e7fe90ee44f5885487e83e4327f1.report.json": {
+      "sha256": "ad09054e6662446949c519c1f5012a4cf3276e76c38f80728a91eb49dcef15e1",
+      "size": 6624
+    },
+    "records/1ff87159581143828f6dd9d1cc9f87aa.report.json": {
+      "sha256": "f63e7c423ef2481bd1b1b053da10c6ecdef8cf425b1a21261baa3d72d57db15a",
+      "size": 4858
+    },
+    "records/1ff87159581143828f6dd9d1cc9f87aa.log": {
+      "sha256": "7f677fd7ba055eb2396102c2ee8c8448517232ce9d41a6f78da63ac08af3857b",
+      "size": 3630
+    }
+  }
+}

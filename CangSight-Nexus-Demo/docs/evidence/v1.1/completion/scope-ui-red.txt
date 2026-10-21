@@ -1,0 +1,40 @@
+✔ late task response cannot overwrite a newly started task (3.233292ms)
+✔ late candidate details cannot replace newer selection on the same task (1.511917ms)
+✔ late errors do not replace the current task message (0.638417ms)
+✔ start invalidates pending refresh immediately, before POST resolves (0.5845ms)
+✔ late acceptance cannot export a candidate from a previous task (1.105166ms)
+✔ late export cannot restore a previous task download link (0.797584ms)
+✔ draft is displayed before explicit confirmation and task creation (0.871167ms)
+✔ reject is bound to current revision and late details cannot restore acceptance (0.813833ms)
+✔ cancel keeps the selected task and revision without starting a new task (0.655208ms)
+✔ V1.1 acceptance sends frozen candidate revision (0.792125ms)
+✔ browsing an older candidate cannot accept it or restore stale details (0.503458ms)
+✔ history task switch invalidates old task response without creating a run (0.399416ms)
+✖ user can narrow source scope before confirming and cannot edit pending approval (0.960125ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 75.992916
+
+✖ failing tests:
+
+test at tests/workbench-race.test.cjs:255:1
+✖ user can narrow source scope before confirming and cannot edit pending approval (0.960125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at TestContext.<anonymous> (/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/tests/workbench-race.test.cjs:262:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
