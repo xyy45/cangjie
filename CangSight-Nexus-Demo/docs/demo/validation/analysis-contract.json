@@ -1,0 +1,123 @@
+{
+  "sympas_slice": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "内联源代码（与 file 二选一）"
+      },
+      "direction": {
+        "type": "string",
+        "description": "切片方向 (Bwd/Fwd/Both)",
+        "enum": [
+          "Bwd",
+          "Fwd",
+          "Both"
+        ]
+      },
+      "file": {
+        "type": "string",
+        "description": "待切片文件路径"
+      },
+      "filename": {
+        "type": "string",
+        "description": "内联代码的虚拟文件名（决定扩展名）"
+      },
+      "format": {
+        "type": "string",
+        "description": "输出格式",
+        "enum": [
+          "sarif",
+          "json",
+          "text",
+          "csv",
+          "markdown"
+        ]
+      },
+      "lang": {
+        "type": "string",
+        "description": "代码语言（c/cpp/java/python/ts/js/arkts/cangjie 等）"
+      },
+      "line": {
+        "type": "integer",
+        "description": "切片准则行号"
+      },
+      "method": {
+        "type": "string",
+        "description": "切片算法 (SymPas/SDG/Hybrid, 默认 SymPas)",
+        "enum": [
+          "SymPas",
+          "SDG",
+          "Hybrid"
+        ]
+      }
+    },
+    "required": [],
+    "additionalProperties": true
+  },
+  "sympas_dep_graph": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "内联源代码（与 file 二选一）"
+      },
+      "file": {
+        "type": "string",
+        "description": "待分析源文件路径"
+      },
+      "filename": {
+        "type": "string",
+        "description": "内联代码的虚拟文件名"
+      },
+      "formats": {
+        "type": "array",
+        "description": "输出格式列表: [\"dot\"] 或 [\"dot\",\"svg\"] (默认 dot+svg)",
+        "items": {
+          "type": "string",
+          "enum": [
+            "dot",
+            "svg"
+          ]
+        }
+      },
+      "graph_types": {
+        "type": "string",
+        "description": "生成的图类型: \"All\" 或 [\"Cfg\",\"Ddg\"] 等 (Cfg/Cg/Cdg/Ddg/Pdg/Sdg/Dfg/All)"
+      },
+      "lang": {
+        "type": "string",
+        "description": "代码语言"
+      },
+      "output_dir": {
+        "type": "string",
+        "description": "图文件输出目录 (默认自动分配)"
+      }
+    },
+    "required": [],
+    "additionalProperties": true
+  },
+  "ast_symbol_extractor": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "内联源码"
+      },
+      "file": {
+        "type": "string",
+        "description": "源文件路径"
+      },
+      "filename": {
+        "type": "string",
+        "description": "内联代码虚拟文件名"
+      },
+      "lang": {
+        "type": "string",
+        "description": "代码语言"
+      }
+    },
+    "required": [],
+    "additionalProperties": true
+  }
+}

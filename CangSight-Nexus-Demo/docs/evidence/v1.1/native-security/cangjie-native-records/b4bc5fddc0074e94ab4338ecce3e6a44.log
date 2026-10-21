@@ -1,0 +1,47 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+ [36m==>[0m /private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/src/quantity.cj:8:9:
+  [36m| [0m
+[36m8[0m [36m| [0m    if (Console.stdIn.readln() != None) {[0m
+  [36m| [0m        [33m^^^^^^^ deprecated[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: unused variable:'ignored'
+  [36m==>[0m /private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/src/quantity.cj:12:13:
+   [36m| [0m
+[36m12[0m [36m| [0m        let ignored = File.readFrom("/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/.operator-key")[0m
+   [36m| [0m            [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+2 warnings generated, 2 warnings printed.
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 9820000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 9820000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (2835000 ns)
+    [[32m PASSED [0m] CASE: two (774000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (861000 ns)
+    [[32m PASSED [0m] CASE: zeroQuantity (704000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (575000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (509000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (481000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (452000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (436000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (440000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (422000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 10571000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 10538000 ns, RESULT:
+    PASSED:
+    TP: [33morderdemo[0m, time elapsed: 9820000 ns
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

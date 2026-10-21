@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1bae9623548a42bcbd367c06dd97cfa2",
+    "status": "PARTIAL",
+    "slice_criterion": {
+      "line": 7,
+      "direction": "Bwd",
+      "method": "SymPas"
+    },
+    "actual_request_line": 7,
+    "source_sha256": "ccaeb442901f842664a80b6344348766964bb8cc50df7bce5e53d241f597dfe7",
+    "tools": [
+      {
+        "tool": "sympas_slice",
+        "status": "FAILED",
+        "raw_sha256": "229c8280b317b5563cfb4d9a3efeed206f4de14297da555bdd37d026e30f2de8"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID",
+        "raw_sha256": "e46901678af110f17c35ef11bfdc4734fcbb2bebdf061e302aefa84464692be6"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID",
+        "raw_sha256": "34bdcf699c1cc4db04939eea43424ce367ae80191da7bf219ae622ac854bd794"
+      }
+    ],
+    "derived_status": "RECOVERED",
+    "graph_nodes": 64
+  },
+  {
+    "id": "3d4c7afa018e4bde900309958a336b58",
+    "status": "PARTIAL",
+    "slice_criterion": {
+      "line": 43,
+      "direction": "Bwd",
+      "method": "SymPas"
+    },
+    "actual_request_line": 43,
+    "source_sha256": "ccaeb442901f842664a80b6344348766964bb8cc50df7bce5e53d241f597dfe7",
+    "tools": [
+      {
+        "tool": "sympas_slice",
+        "status": "FAILED",
+        "raw_sha256": "c1bb137cf0e6f95dc737663815d535dac9a3b904f62a5b0b7525968f15cb7bcc"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID",
+        "raw_sha256": "b91a101604cf031cc8433b7d52c9463c513788f436c953c5d1c23b307bc53060"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID",
+        "raw_sha256": "d69e544e4aaa4a7dabe7c964219dfb76ce65de6739ec5a606552da367e691614"
+      }
+    ],
+    "derived_status": "RECOVERED",
+    "graph_nodes": 64
+  }
+]

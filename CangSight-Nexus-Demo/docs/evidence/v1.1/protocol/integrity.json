@@ -1,0 +1,15 @@
+{
+  "original_reference_files": 453,
+  "changed_original_files": [],
+  "original_unchanged": true,
+  "active_main_tasks": {},
+  "paid_api_calls_this_phase": 0,
+  "restarted_service_precheck": {
+    "compiler_version": "Cangjie Compiler: 1.0.5 (cjnative)\nTarget: aarch64-apple-darwin",
+    "missing": [],
+    "model_connectivity": "NOT_PROBED",
+    "package_manager_version": "Cangjie Package Manager: 1.0.5",
+    "ready": true
+  },
+  "runtime_backup": ".runtime/backups/workbench-before-v11-protocol.sqlite3"
+}

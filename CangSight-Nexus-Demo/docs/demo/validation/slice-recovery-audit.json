@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "remote_analysis_requests": 0,
+  "model_requests": 0,
+  "samples": [
+    {
+      "id": "sum3",
+      "original_status": "COMPLETE",
+      "original_slice_status": "VALID",
+      "recovery_status": null,
+      "variables": null,
+      "parser_version": null,
+      "derived_sha256": null,
+      "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+      "raw_sha256": null,
+      "original_files_verified": true
+    },
+    {
+      "id": "loop",
+      "original_status": "PARTIAL",
+      "original_slice_status": "FAILED",
+      "recovery_status": "RECOVERED",
+      "variables": 4,
+      "parser_version": "sympas-text-v1",
+      "derived_sha256": "c6d195dc1cb6ccb6a08243095179d44619c6f048480b27f7b19e36eba1bd4348",
+      "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+      "raw_sha256": "331a5704ccdb643e13fbf32bd453c4db3fdd2f491b26c2692462e48a575eaf00",
+      "original_files_verified": true
+    },
+    {
+      "id": "calls",
+      "original_status": "PARTIAL",
+      "original_slice_status": "FAILED",
+      "recovery_status": "RECOVERED",
+      "variables": 10,
+      "parser_version": "sympas-text-v1",
+      "derived_sha256": "3e85375dd40d4c7f835f88dffbdfa4316f68e7ab53e44c5e7aecbecda59b736b",
+      "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+      "raw_sha256": "a5c08f1e310971b9e1f368ea137e93f0c3de523d2ddccda5803beefb040d684b",
+      "original_files_verified": true
+    }
+  ],
+  "browser_validation": {
+    "calls_variables": 10,
+    "loop_variables": 4,
+    "native_sum3_variables": 5,
+    "selected_variable": "index@aggregate",
+    "highlight_lines": [
+      14,
+      15,
+      17,
+      21,
+      23,
+      25,
+      26,
+      27
+    ],
+    "original_and_derived_download_verified": true
+  },
+  "validation": {
+    "python_full": "267 passed, 1 deselected, 231.15 seconds",
+    "focused": "70 passed",
+    "node": "44 passed",
+    "independent_review": "No blocking new issue; recovery tests 18 passed, analysis UI tests 8 passed"
+  }
+}

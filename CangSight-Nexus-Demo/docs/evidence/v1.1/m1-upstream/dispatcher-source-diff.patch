@@ -1,0 +1,92 @@
+--- upstream/app.py:_execute_run@5db0c7eeeb6a62812fc04e9e88497339fed5e11f
++++ nexus/integrations/sympas_runtime.py:_execute_run
+@@ -1,40 +1,23 @@
+-def _execute_run(
+-    run_id: str,
+-    team_profile: str,
+-    payload: Dict[str, Any],
+-    store: Optional[RunStateStore] = None,
+-) -> None:
+-    run_store = store or _get_module_run_store()
+-    handler = _TEAM_HANDLERS.get(team_profile)
++def _execute_run(run_id, team_profile, payload, store, handler):
++    """Derived from upstream app.py:_execute_run; handler/store are injected.
++
++    Removed global domain registry/default database; redact exception messages.
++    The upstream queued/running/completed states describe dispatch only.
++    """
++    run_store = store
++    handler = handler if team_profile == 'cangjie-repair' else None
+     if handler is None:
+-        _update_run(
+-            run_id,
+-            store=run_store,
+-            status="failed",
+-            error=f"Unknown team_profile: {team_profile}",
+-        )
+-        _append_run_event(
+-            run_id,
+-            "run_failed",
+-            {"error": f"Unknown team_profile: {team_profile}"},
+-            store=run_store,
+-        )
++        _update_run(run_id, store=run_store, status='failed', error='Unknown capability')
++        _append_run_event(run_id, 'run_failed', {'error':'Unknown capability'}, store=run_store)
+         return
+ 
+     _update_run(
+-        run_id,
+-        store=run_store,
+-        status="running",
++        run_id, store=run_store, status="running",
+         started_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+     )
+-    _append_run_event(
+-        run_id,
+-        "run_started",
+-        {"team_profile": team_profile},
+-        store=run_store,
+-    )
++    _append_run_event(run_id, "run_started", {"team_profile":team_profile}, store=run_store)
+ 
+-    def emit_run_event(event_type: str, payload_data: Dict[str, Any]) -> None:
++    def emit_run_event(event_type: str, payload_data: dict) -> None:
+         _append_run_event(run_id, event_type, payload_data, store=run_store)
+ 
+     handler_payload = dict(payload)
+@@ -44,24 +27,16 @@
+     try:
+         result = handler(handler_payload)
+         _update_run(
+-            run_id,
+-            store=run_store,
+-            status="completed",
++            run_id, store=run_store, status="completed",
++            finished_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), result=result,
++        )
++        _append_run_event(run_id, "run_finished", {"result":result}, store=run_store)
++    except Exception as exc:
++        # Do not copy upstream logger.exception/str(exc): errors may contain credentials.
++        logger.warning('Gateway dispatch failed: %s', type(exc).__name__)
++        _update_run(
++            run_id, store=run_store, status="failed",
+             finished_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+-            result=result,
++            error=type(exc).__name__,
+         )
+-        _append_run_event(
+-            run_id, "run_finished", {"result": result}, store=run_store
+-        )
+-    except Exception as exc:
+-        logger.exception("Run %s failed", run_id)
+-        _update_run(
+-            run_id,
+-            store=run_store,
+-            status="failed",
+-            finished_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+-            error=str(exc),
+-        )
+-        _append_run_event(
+-            run_id, "run_failed", {"error": str(exc)}, store=run_store
+-        )
++        _append_run_event(run_id, "run_failed", {"error":type(exc).__name__}, store=run_store)

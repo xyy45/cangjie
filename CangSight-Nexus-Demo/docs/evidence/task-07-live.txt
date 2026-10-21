@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________________ test_live_main_case ______________________________
+
+    def test_live_main_case():
+        root = ROOT / '.runtime/live' / uid()
+        source = ROOT / 'fixtures/order-demo-bug'
+        baseline = WorkspaceStore(root, registered=[source]).import_project(source, '.')
+        store = RunStore(root)
+        task = store.create_task(baseline,
+            'Fix order validation. Quantity must be 1–1000; unit price 0–1000000. Invalid inputs return -1. '
+            'Valid order total is quantity multiplied by unit price. Preserve all frozen tests.',
+            ['src/quantity.cj', 'src/fee.cj', 'src/order.cj'])
+        result = asyncio.run(RepairLoop(store).run(task.id))
+>       assert result.status == 'REVIEW_PENDING', f'LIVE {result.status}; records: {root}'
+E       AssertionError: LIVE BLOCKED; records: /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/live/91f70eb5c4b94129817760adb29de6fe
+E       assert 'BLOCKED' == 'REVIEW_PENDING'
+E         
+E         - REVIEW_PENDING
+E         + BLOCKED
+
+tests/live/test_repair_live.py:22: AssertionError
+=========================== short test summary info ============================
+FAILED tests/live/test_repair_live.py::test_live_main_case - AssertionError: ...
+1 failed in 3.85s

@@ -1,0 +1,41 @@
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8[0J7[;r8
+
+
+[3F7[9999E[2F📦 group orderdemo                   100% [90m[[0m[32m|[0m[32m||[0m[32m||[0m[31m||[0m[32m||[0m[32m|[0m[32m||[0m[32m||[0m[32m||[0m[32m||[0m[32m||[0m[90m[0m[90m][0m [31m✗   [0m (00:00:00)
+   [31mFAIL[0m orderdemo.OrderTests.zeroQuantity               
+passed: [32m10[0m, failed: [31m1[0m               100% [90m[[0m[32m|[0m[32m||[0m[32m||[0m[31m||[0m[32m||[0m[32m|[0m[32m||[0m[32m||[0m[32m||[0m[32m||[0m[32m||[0m[90m[0m[90m][0m 11/11 (00:00:00) 8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 1961000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 1961000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (260000 ns)
+    [[32m PASSED [0m] CASE: two (11000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (9000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (7000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (12000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (8000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (7000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (9000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (6000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (7000 ns)
+    [[31m FAILED [0m] CASE: zeroQuantity (68000 ns)
+    Expect Failed: `([33mprocessOrder(0, 100)[0m == [33m- 1[0m)`
+       left: 0
+      right: -1
+
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1, listed below:
+            TCS: [33mOrderTests[0m, CASE: zeroQuantity
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 3010000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 2932000 ns, RESULT:
+    FAILED:
+    TP: [33morderdemo[0m, time elapsed: 1961000 ns, RESULT:
+        TCS: [33mOrderTests[0m, time elapsed: 1961000 ns, RESULT:
+        [[31m FAILED [0m] CASE: zeroQuantity (68000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

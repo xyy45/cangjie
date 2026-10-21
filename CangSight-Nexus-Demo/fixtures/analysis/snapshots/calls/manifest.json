@@ -1,0 +1,13 @@
+{
+  "files": {
+    "observations/ast_symbol_extractor.json": "93655f176704869d2564e2ccd4e4bb10f0563aacc008e7f372c48caba6d9a627",
+    "observations/sympas_dep_graph.json": "20052e47ad0048eb52e14eb6750922cfdda4d803de6fdcdeb42070d14a9272a0",
+    "observations/sympas_slice.json": "d78ef0bfa6890df596467e07d72e87be4501b88f58be6316e9879d03f594e76e",
+    "result.json": "03733dc4902ea360f7e3571a82fed7b7da4d6b7d0355980aa53736476faf15a1",
+    "source.cj": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5"
+  },
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "status": "PARTIAL"
+}

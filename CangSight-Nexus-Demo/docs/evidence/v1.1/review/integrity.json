@@ -1,0 +1,19 @@
+{
+  "original_unchanged": true,
+  "original_reference_files": 453,
+  "active_tasks_before_restart": [],
+  "paid_api_calls_this_phase": 0,
+  "runtime_backup": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/backups/workbench-before-v11-review.sqlite3",
+  "restarted_service_precheck": {
+    "compiler_version": "Cangjie Compiler: 1.0.5 (cjnative)\nTarget: aarch64-apple-darwin",
+    "missing": [],
+    "model_connectivity": "NOT_PROBED",
+    "package_manager_version": "Cangjie Package Manager: 1.0.5",
+    "ready": true
+  },
+  "tasks_after_browser_read_only_check": 9,
+  "model_records_after_browser_read_only_check": 4,
+  "browser_actions": "reload/read history only; no requirement confirmation, repair, acceptance or paid call",
+  "persistent_session_key_mode": "0o600",
+  "runtime_owner_confirmed": true
+}

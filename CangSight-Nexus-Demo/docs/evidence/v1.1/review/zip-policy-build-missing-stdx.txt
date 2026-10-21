@@ -1,0 +1,13 @@
+[33mwarning[0m: No such directory: '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-repro-d3jzld7a/CangSight-Nexus/.runtime/stdx/darwin_aarch64_cjnative/static'. The argument is ignored.
+ [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff driver-arg`
+[33mwarning[0m: No such directory: '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-repro-d3jzld7a/CangSight-Nexus/.runtime/stdx/darwin_aarch64_cjnative/static/stdx'. The argument is ignored.
+ [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff driver-arg`
+[31merror[0m: can not find package 'stdx.encoding.json'
+ [36m==>[0m cangjie/policy/src/main.cj:4:8:
+  [36m| [0m
+[36m4[0m [36m| [0mimport stdx.encoding.json.*[0m
+  [36m| [0m       [31m^^^^^^^^^^^^^^^^^^ [0m
+  [36m| [0m
+  [36m#[0m [0mhelp[0m: check if the .cjo file of the package exists in CANGJIE_PATH or CANGJIE_HOME, or use '--import-path' to specify the .cjo file path
+
+1 error generated, 1 error printed.

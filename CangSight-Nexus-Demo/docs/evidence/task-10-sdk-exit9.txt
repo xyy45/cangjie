@@ -1,0 +1,43 @@
+F...                                                                     [100%]
+=================================== FAILURES ===================================
+_____________________ test_normal_and_defective_order_demo _____________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-47/test_normal_and_defective_orde0')
+
+    def test_normal_and_defective_order_demo(tmp_path):
+        project = tmp_path / 'order'
+        shutil.copytree(ROOT / 'fixtures/order-demo', project,
+                        ignore=shutil.ignore_patterns('target', '.git', 'cjpm.lock'))
+        build = run_sdk(project, ['cjpm', 'build', '-V'])
+        assert build.returncode == 0, build.stdout + build.stderr
+        result = run_sdk(project, ['cjpm', 'test'])
+        (ROOT / 'docs/evidence/order-normal-test.txt').write_text(result.stdout + result.stderr)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: [?25l[0J7[;r8
+E         [1F7[9999E8[0J7[;r8
+E         [1F7[9999E8[0J7[;r8
+E         [1F7[9999E8--------------------------------------------------------------------------------------------------
+E         TP: [33morderdemo[0m, RESULT:
+E             REASON: failed to run package (exit code = 9)
+E         Summary: TOTAL: 1
+E             [32mPASSED[0m: 0, [32mSKIPPED[0m: 0, ERROR: 1
+E             [31mFAILED[0m: 0, listed below:
+E         --------------------------------------------------------------------------------------------------
+E         Project tests finished, time elapsed: 3291000 ns, RESULT:
+E         TP: [33morderdemo[0m.*, time elapsed: 3110000 ns, RESULT:
+E             ERROR:
+E             TP: [33morderdemo[0m, RESULT:
+E                 REASON: failed to run package (exit code = 9)
+E         Summary: TOTAL: 1
+E             [32mPASSED[0m: 0, [32mSKIPPED[0m: 0, ERROR: 1
+E             [31mFAILED[0m: 0
+E         --------------------------------------------------------------------------------------------------
+E         [0J7[;r8[?25hError: cjpm test failed
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['cjpm', 'test'], returncode=1, stdout='\x1b[?25l\x1b[0J\x1b7\x1b[;r\x1b8\n\x1b[1F\x1b7\x1b[9999...----------------------------------------------\n\x1b[0J\x1b7\x1b[;r\x1b8\x1b[?25h', stderr='Error: cjpm test failed\n').returncode
+
+tests/sdk/test_order_demo.py:31: AssertionError
+=========================== short test summary info ============================
+FAILED tests/sdk/test_order_demo.py::test_normal_and_defective_order_demo - AssertionError: [?25l[0J7[;r8
+1 failed, 3 passed in 18.85s

@@ -1,0 +1,37 @@
+{
+  "original_root": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0",
+  "files": {
+    "c6671ba2f0434af2b6a41be9e465c6b2.log": {
+      "sha256": "4b036f46d4546285eb3d7206bd8f4f55211e514513c460f52adecb5e92a2373f",
+      "size": 930
+    },
+    "a88d268a089c410aaf70ba515bddebe9.report.json": {
+      "sha256": "d9d80c278dfb83fe13f554593ab7597041f15415585bf70560e7273ebb689e59",
+      "size": 4842
+    },
+    "c6671ba2f0434af2b6a41be9e465c6b2.report.json": {
+      "sha256": "9b45b5bf94d46ec29f8692d7b7a9d8f316bcfa3120ed96d1e9a463e7e353bc9e",
+      "size": 2005
+    },
+    "0ae00c3c86ac48f8b57dcfc8fa08b957.report.json": {
+      "sha256": "76476b605f9455e91b4e499effb3d4bdfbbf27dbecf12421813e986c30a15d8b",
+      "size": 2008
+    },
+    "0ae00c3c86ac48f8b57dcfc8fa08b957.log": {
+      "sha256": "45a81be8a30e0853023d42a7d02e5598d3769e3d8309abdf5e035b1c609c7e14",
+      "size": 933
+    },
+    "a88d268a089c410aaf70ba515bddebe9.log": {
+      "sha256": "db46b13ef76fd82c769219d84c4bbfa4da769b8fb590d9b960c2f717b9e84226",
+      "size": 2188
+    },
+    "c5f0e016bb644684befe710bec5b0965.report.json": {
+      "sha256": "d12baa26283638f23e2a8e7dd5dd544a7575c157f67a2de0e7fb2d5656f3f3eb",
+      "size": 4475
+    },
+    "c5f0e016bb644684befe710bec5b0965.log": {
+      "sha256": "3675015cd739f277574f720c1aeba2007e73ca4bbb070be588155ca1e5b3f1c2",
+      "size": 1878
+    }
+  }
+}

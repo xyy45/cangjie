@@ -1,0 +1,11 @@
+
+==================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_runner.py _____________________
+tests/test_runner.py:64: in <module>
+    @pytest.mark.parametrize('relative',['target','target/.runner-tmp','target/.runner-tmp/home'])
+     ^^^^^^
+E   NameError: name 'pytest' is not defined
+=========================== short test summary info ============================
+ERROR tests/test_runner.py - NameError: name 'pytest' is not defined
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.04s

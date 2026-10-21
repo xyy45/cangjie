@@ -1,0 +1,23 @@
+✔ operator credential is cleared immediately and sent only to explicit authorization route (1.488208ms)
+✔ failed pairing neither reloads nor retains or echoes credential (0.29125ms)
+✔ late task response cannot overwrite a newly started task (3.332917ms)
+✔ late candidate details cannot replace newer selection on the same task (1.360584ms)
+✔ late errors do not replace the current task message (0.544ms)
+✔ start invalidates pending refresh immediately, before POST resolves (0.460417ms)
+✔ late acceptance cannot export a candidate from a previous task (0.899375ms)
+✔ late export cannot restore a previous task download link (0.537709ms)
+✔ draft is displayed before explicit confirmation and task creation (0.627167ms)
+✔ reject is bound to current revision and late details cannot restore acceptance (0.549209ms)
+✔ cancel keeps the selected task and revision without starting a new task (0.497083ms)
+✔ V1.1 acceptance sends frozen candidate revision (0.614ms)
+✔ browsing an older candidate cannot accept it or restore stale details (0.533ms)
+✔ history task switch invalidates old task response without creating a run (0.368125ms)
+✔ user can narrow source scope before confirming and cannot edit pending approval (0.475292ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.823958

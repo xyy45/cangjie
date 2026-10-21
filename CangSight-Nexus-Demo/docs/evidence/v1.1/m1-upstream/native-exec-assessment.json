@@ -1,0 +1,383 @@
+{
+  "scope": "Owned temporary registered fixture; no model, no credentials, no controller API. Exploratory profile only; production unchanged.",
+  "project": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project",
+  "results": [
+    {
+      "label": "current-shell",
+      "command": [
+        "/bin/sh",
+        "-c",
+        "printf NATIVE_SHELL_EXEC_ALLOWED"
+      ],
+      "exit_code": 0,
+      "stdout": "NATIVE_SHELL_EXEC_ALLOWED",
+      "stderr": ""
+    },
+    {
+      "label": "restricted-shell",
+      "command": [
+        "/bin/sh",
+        "-c",
+        "printf SHOULD_NOT_RUN"
+      ],
+      "exit_code": 71,
+      "stdout": "",
+      "stderr": "sandbox-exec: execvp() of '/bin/sh' failed: Operation not permitted\n"
+    },
+    {
+      "label": "restricted-build",
+      "command": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "exit_code": 71,
+      "stdout": "",
+      "stderr": "sandbox-exec: execvp() of 'cjpm' failed: Operation not permitted\n"
+    },
+    {
+      "label": "except-sdk-shell",
+      "command": [
+        "/bin/sh",
+        "-c",
+        "printf SHOULD_NOT_RUN"
+      ],
+      "exit_code": 71,
+      "stdout": "",
+      "stderr": "sandbox-exec: execvp() of '/bin/sh' failed: Operation not permitted\n"
+    },
+    {
+      "label": "except-sdk-build",
+      "command": [
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/tools/bin/cjpm",
+        "build",
+        "-V"
+      ],
+      "exit_code": 71,
+      "stdout": "",
+      "stderr": "sandbox-exec: execvp() of '/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/tools/bin/cjpm' failed: Operation not permitted\n"
+    },
+    {
+      "label": "utf8-shell",
+      "command": [
+        "/bin/sh",
+        "-c",
+        "printf SHOULD_NOT_RUN"
+      ],
+      "exit_code": 71,
+      "stdout": "",
+      "stderr": "sandbox-exec: execvp() of '/bin/sh' failed: Operation not permitted\n"
+    },
+    {
+      "label": "utf8-sdk-version",
+      "command": [
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/tools/bin/cjpm",
+        "--version"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Created process failed, errMessage: \"Operation not permitted\".\n\nError: cjpm failed\n"
+    },
+    {
+      "label": "utf8-sdk-build",
+      "command": [
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/tools/bin/cjpm",
+        "build",
+        "-V"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Created process failed, errMessage: \"Operation not permitted\".\n\nError: cjpm build failed\n"
+    },
+    {
+      "label": "utf8-plus-system-binaries",
+      "extra": [
+        "/usr/bin",
+        "/bin",
+        "/usr/libexec",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 0,
+      "stdout": "Cangjie Package Manager: 1.0.5\n",
+      "stderr": ""
+    },
+    {
+      "label": "utf8-plus-shell",
+      "extra": [
+        "/bin/sh",
+        "/bin/bash",
+        "/bin/zsh"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Created process failed, errMessage: \"Operation not permitted\".\n\nError: cjpm failed\n"
+    },
+    {
+      "label": "utf8-plus-uname",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd"
+      ],
+      "exit_code": 0,
+      "stdout": "Cangjie Package Manager: 1.0.5\n",
+      "stderr": ""
+    },
+    {
+      "label": "utf8-minimal-build",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/src --output-type=staticlib -o=liborderdemo.a\n",
+      "stderr": "\u001b[31merror\u001b[0m: not found `ar` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: cjpm build failed\n"
+    },
+    {
+      "label": "utf8-minimal-test",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "\u001b[31merror\u001b[0m: not found `ar` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: please execute 'cjpm build -i' successfully first\nError: cjpm test failed\n"
+    },
+    {
+      "label": "utf8-toolchain-build",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/src --output-type=staticlib -o=liborderdemo.a\n",
+      "stderr": "\u001b[31merror\u001b[0m: not found `dsymutil` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: cjpm build failed\n"
+    },
+    {
+      "label": "utf8-toolchain-test",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "\u001b[31merror\u001b[0m: not found `dsymutil` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: please execute 'cjpm build -i' successfully first\nError: cjpm test failed\n"
+    },
+    {
+      "label": "utf8-dsymutil-build",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/usr/bin/dsymutil",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/src --output-type=staticlib -o=liborderdemo.a\n",
+      "stderr": "\u001b[31merror\u001b[0m: not found `strip` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: cjpm build failed\n"
+    },
+    {
+      "label": "utf8-dsymutil-test",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/usr/bin/dsymutil",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "\u001b[31merror\u001b[0m: not found `strip` in search paths. You may add search path by `-B` option.\nError: failed to compile package `orderdemo`, return code is 1\nError: please execute 'cjpm build -i' successfully first\nError: cjpm test failed\n"
+    },
+    {
+      "label": "utf8-strip-build",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/usr/bin/dsymutil",
+        "/usr/bin/strip",
+        "/usr/bin/ranlib",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 0,
+      "stdout": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "stderr": ""
+    },
+    {
+      "label": "utf8-strip-test",
+      "extra": [
+        "/usr/bin/uname",
+        "/usr/bin/arch",
+        "/usr/bin/which",
+        "/bin/pwd",
+        "/usr/bin/ar",
+        "/usr/bin/ld",
+        "/usr/bin/clang",
+        "/usr/bin/xcrun",
+        "/usr/bin/dsymutil",
+        "/usr/bin/strip",
+        "/usr/bin/ranlib",
+        "/Library/Developer/CommandLineTools"
+      ],
+      "exit_code": 1,
+      "stdout": "\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1669000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1669000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (219000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (10000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (11000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (7000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (58000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2441000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2405000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1669000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1669000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (58000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25h",
+      "stderr": "Error: cjpm test failed\n"
+    },
+    {
+      "label": "utf8-target-shell-copy-bypass",
+      "scope": "Actual native process under exploratory production-derived profile, not Cangjie/MCP/model; copy and exec happen inside sandbox.",
+      "command": [
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/exec-copy-probe",
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/copied-shell"
+      ],
+      "exit_code": -9,
+      "stdout": "",
+      "stderr": "",
+      "source": "/* Owned harmless native process probe. No model, credentials or network. */\n#include <stdio.h>\n#include <sys/stat.h>\n#include <unistd.h>\nint main(int argc, char **argv) {\n  if(argc!=2)return 2;\n  FILE *in=fopen(\"/bin/sh\",\"rb\"), *out=fopen(argv[1],\"wb\");\n  if(!in||!out){perror(\"open\");return 3;}\n  unsigned char b[8192]; size_t n;\n  while((n=fread(b,1,sizeof b,in))>0)if(fwrite(b,1,n,out)!=n)return 4;\n  fclose(in);fclose(out);\n  if(chmod(argv[1],0700)){perror(\"chmod\");return 5;}\n  char *args[]={argv[1],\"-c\",\"printf TARGET_COPY_SHELL_EXECUTED\",NULL};\n  execv(argv[1],args);perror(\"execv\");return 6;\n}\n"
+    },
+    {
+      "label": "compile-only",
+      "argv": [
+        "test",
+        "--no-run"
+      ],
+      "exit_code": 0,
+      "stdout": "   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/unittest_bin`\ncjpm test success\n",
+      "stderr": ""
+    },
+    {
+      "label": "frozen-test",
+      "argv": [
+        "test",
+        "--skip-build"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-artifacts-writable-tmp-exact-executables",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-runtime-options",
+      "options": [
+        "--no-capture-output"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-runtime-options",
+      "options": [
+        "--report-path",
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/.runner-tmp"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-runtime-options",
+      "options": [
+        "--no-capture-output",
+        "--report-path",
+        "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/.runner-tmp"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "instrumented-owned-mkstemp-diagnostic-not-validation",
+      "scope": "Instrumented trusted SDK in owned fixture solely to locate temporary file, not production or acceptance.",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\nint observed_mkstemp(char *pattern){fprintf(stderr,\"OWNED_MKSTEMP_PATH=%s\\n\",pattern);return mkstemp(pattern);}\n__attribute__((used)) static struct {const void *newfn;const void *oldfn;} entry\n__attribute__((section(\"__DATA,__interpose\")))={(const void *)observed_mkstemp,(const void *)mkstemp};\n",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "instrumented-owned-mkstemp-post-sandbox-env-diagnostic-not-validation",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "OWNED_MKSTEMP_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/unittest_bin/tmpFileXXXXXX\nAn exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-narrow-cjpm-temp-files",
+      "temp_regex": "^/Users/jadya/Documents/CangSight\\-Workspace/02\\-开发工程/CangSight\\-Nexus/\\.runtime/native\\-exec\\-assessment\\-6pc0l3wz/project/target/release/unittest_bin/tmpFile[A-Za-z0-9]{6}$",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-unitdir-metadata-exception",
+      "temp_regex": "^/Users/jadya/Documents/CangSight\\-Workspace/02\\-开发工程/CangSight\\-Nexus/\\.runtime/native\\-exec\\-assessment\\-6pc0l3wz/project/target/release/unittest_bin/tmpFile[A-Za-z0-9]{6}$",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "An exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "instrumented-owned-mkstemp-errno-diagnostic-not-validation",
+      "source": "#include <stdio.h>\n#include <stdlib.h>\n#include <errno.h>\nint observed_mkstemp(char *pattern){int r=mkstemp(pattern);int e=errno;fprintf(stderr,\"OWNED_MKSTEMP_RESULT=%d ERRNO=%d PATH=%s\\n\",r,e,pattern);errno=e;return r;}\n__attribute__((used)) static struct {const void *newfn;const void *oldfn;} entry __attribute__((section(\"__DATA,__interpose\")))={(const void *)observed_mkstemp,(const void *)mkstemp};\n",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "OWNED_MKSTEMP_RESULT=-1 ERRNO=1 PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-exec-assessment-6pc0l3wz/project/target/release/unittest_bin/tmpFiletw9cFw\nAn exception has occurred:\nFSException: Failed to create the temporary file!\n\t at std.io.IOException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/io/io_exception.cj:19)\n\t at std.fs.FSException::init(std.core::String)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/fs_exception.cj:18)\n\t at _CNan12SymbolicLink8readFromHRNan4PathEb.exception_outlined_func.32(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/symboliclink.cj:197)\n\t at std.fs.File::createTemp(std.fs::Path)(/opt/cangjieBuildWorkSpace/cangjie_runtime/std/libs/std/fs/file.cj:346)\n\t at cjpm.implement.TestRunner::exec(cjpm.config::TestConfig, cjpm.implement::ExecutableTestProject)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1140)\n\t at cjpm.implement.execAllTests(std.collection::HashMap<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:1191)\n\t at cjpm.implement.parallelTest(cjpm.config::TestConfig, std.collection::HashMap<...>, std.collection::HashMap<...>)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:493)\n\t at cjpm.implement.startTest(cjpm.config::TestConfig, cjpm.config::ScriptConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:198)\n\t at cjpm.implement.doTest(std.core::Array<...>, cjpm.config::TestConfig)(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/implement/test.cj:170)\n\t at cjpm.command.TestCommand::handleCommand()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/command/test.cj:101)\n\t at cjpm.main()(/opt/cangjieBuildWorkSpace/cangjie_tools/cjpm/src/main.cj:36)\n"
+    },
+    {
+      "label": "frozen-test-expanded-temp-regex",
+      "temp_regex": "^/Users/jadya/Documents/CangSight\\-Workspace/02\\-开发工程/CangSight\\-Nexus/\\.runtime/native\\-exec\\-assessment\\-6pc0l3wz/project/target/release/unittest_bin/tmpFile[A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9][A-Za-z0-9]$",
+      "exit_code": 1,
+      "stdout": "\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1634000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1634000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (223000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (10000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (3000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (7000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (58000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2460000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2415000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1634000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1634000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (58000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25h",
+      "stderr": "Error: cjpm test failed\n"
+    },
+    {
+      "label": "frozen-native-shell-and-hardlink-boundary",
+      "scope": "Owned C native probe; real sandbox, not Cangjie/MCP/model.",
+      "source": "#include <stdio.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <sys/stat.h>\n#include <stdlib.h>\n#include <errno.h>\nint main(int argc,char **argv){\n if(argc!=4)return 10;\n int fd=open(argv[1],O_WRONLY|O_APPEND);printf(\"DIRECT_OPEN=%d ERRNO=%d\\n\",fd,errno);if(fd>=0){close(fd);return 11;}\n int link_rc=link(argv[1],argv[2]);printf(\"HARDLINK=%d ERRNO=%d\\n\",link_rc,errno);\n if(link_rc==0){fd=open(argv[2],O_WRONLY|O_APPEND);printf(\"ALIAS_OPEN=%d ERRNO=%d\\n\",fd,errno);if(fd>=0){close(fd);return 12;}}\n int r=system(\"printf UNEXPECTED_SHELL_EXECUTION\");printf(\"SHELL_STATUS=%d\\n\",r);if(r==0)return 13;\n fd=open(argv[3],O_WRONLY|O_CREAT,0600);printf(\"TEMP_OPEN=%d ERRNO=%d\\n\",fd,errno);if(fd<0)return 14;close(fd);\n return 0;\n}",
+      "exit_code": 0,
+      "stdout": "DIRECT_OPEN=-1 ERRNO=1\nHARDLINK=-1 ERRNO=1\nSHELL_STATUS=32512\nTEMP_OPEN=3 ERRNO=1\n",
+      "stderr": ""
+    }
+  ],
+  "correction": "Prior exploratory execution-filter paths used JSON ASCII unicode escapes in Scheme and did not name the actual Chinese path. These results do not establish SDK incompatibility. Corrected UTF-8 paths below."
+}

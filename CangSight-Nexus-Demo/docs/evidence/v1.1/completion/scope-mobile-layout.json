@@ -1,0 +1,26 @@
+{
+  "cards": [
+    {
+      "left": 20.5,
+      "top": 651,
+      "width": 334
+    },
+    {
+      "left": 20.5,
+      "top": 842.15625,
+      "width": 334
+    },
+    {
+      "left": 20.5,
+      "top": 1055.90625,
+      "width": 334
+    }
+  ],
+  "clientWidth": 375,
+  "scopeWidth": 294,
+  "scrollWidth": 375,
+  "selectedPaths": [
+    "src/quantity.cj"
+  ],
+  "viewport": 390
+}

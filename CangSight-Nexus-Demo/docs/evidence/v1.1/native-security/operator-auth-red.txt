@@ -1,0 +1,55 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+________ test_fresh_local_session_cannot_read_or_review_with_valid_csrf ________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-156/test_fresh_local_session_canno0')
+
+    def test_fresh_local_session_cannot_read_or_review_with_valid_csrf(tmp_path):
+        ws,store,c,delivery=checked(tmp_path)
+>       app=create_app(store,Loop(),delivery,operator_key=KEY)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: create_app() got an unexpected keyword argument 'operator_key'
+
+tests/test_operator_authorization.py:17: TypeError
+____ test_pairing_requires_real_credential_and_csrf_and_never_echoes_secret ____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-156/test_pairing_requires_real_cre0')
+
+    def test_pairing_requires_real_credential_and_csrf_and_never_echoes_secret(tmp_path):
+        ws,store,c,delivery=checked(tmp_path)
+>       app=create_app(store,Loop(),delivery,operator_key=KEY)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: create_app() got an unexpected keyword argument 'operator_key'
+
+tests/test_operator_authorization.py:32: TypeError
+____ test_restart_invalidates_old_paired_cookie_even_with_same_signing_key _____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-156/test_restart_invalidates_old_p0')
+
+    def test_restart_invalidates_old_paired_cookie_even_with_same_signing_key(tmp_path):
+        ws,store,c,delivery=checked(tmp_path)
+>       app=create_app(store,Loop(),delivery,operator_key=KEY,session_key=b's'*32)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: create_app() got an unexpected keyword argument 'operator_key'
+
+tests/test_operator_authorization.py:52: TypeError
+__________ test_default_app_never_implicitly_authorizes_local_session __________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-156/test_default_app_never_implici0')
+
+    def test_default_app_never_implicitly_authorizes_local_session(tmp_path):
+        ws,store,c,delivery=checked(tmp_path)
+        client=create_app(store,Loop(),delivery).test_client();headers(client)
+>       assert client.get('/api/tasks').status_code==403
+E       AssertionError: assert 200 == 403
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+E        +    where <WrapperTestResponse streamed [200 OK]> = get('/api/tasks')
+E        +      where get = <FlaskClient <Flask 'nexus.web.app'>>.get
+
+tests/test_operator_authorization.py:64: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_operator_authorization.py::test_fresh_local_session_cannot_read_or_review_with_valid_csrf
+FAILED tests/test_operator_authorization.py::test_pairing_requires_real_credential_and_csrf_and_never_echoes_secret
+FAILED tests/test_operator_authorization.py::test_restart_invalidates_old_paired_cookie_even_with_same_signing_key
+FAILED tests/test_operator_authorization.py::test_default_app_never_implicitly_authorizes_local_session
+4 failed in 0.63s

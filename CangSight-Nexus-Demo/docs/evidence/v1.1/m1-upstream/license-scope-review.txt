@@ -1,0 +1,10 @@
+Fixed commit: 5db0c7eeeb6a62812fc04e9e88497339fed5e11f
+Scope: root README; Sympas-Nexus README, pyproject, plugin, nexus init/config and all gateway source. All repository LICENSE/COPYING/NOTICE paths were separately enumerated in source-comparison.json.
+Command: git -C /tmp/cangsight-upstream-m1-20261018 grep -n -I -E SPDX|Copyright|copyright|[Ll]icen[sc]e|MIT|Apache 5db0c7eeeb6a62812fc04e9e88497339fed5e11f -- README.md Sympas-Nexus/nexus/gateway Sympas-Nexus/nexus/__init__.py Sympas-Nexus/nexus/config.py Sympas-Nexus/README.md Sympas-Nexus/pyproject.toml Sympas-Nexus/.claude-plugin/plugin.json
+Exit: 0
+5db0c7eeeb6a62812fc04e9e88497339fed5e11f:Sympas-Nexus/.claude-plugin/plugin.json:6:  "license": "MIT",
+5db0c7eeeb6a62812fc04e9e88497339fed5e11f:Sympas-Nexus/nexus/gateway/rate_limiter.py:19:        maximum = max(1, int(os.environ.get("NEXUS_RATE_LIMIT_REQUESTS", "120")))
+5db0c7eeeb6a62812fc04e9e88497339fed5e11f:Sympas-Nexus/nexus/gateway/rate_limiter.py:20:        window = max(1.0, float(os.environ.get("NEXUS_RATE_LIMIT_WINDOW_SEC", "60")))
+5db0c7eeeb6a62812fc04e9e88497339fed5e11f:Sympas-Nexus/nexus/gateway/run_store.py:273:        query += " ORDER BY event_id ASC LIMIT ? OFFSET ?"
+
+Engineering conclusion under user instruction: root Apache-2.0 applies in the absence of an explicit gateway-specific exception. No gateway-specific exception or copyright notice found. MIT is declared only in plugin metadata within this reviewed scope; it is retained as a metadata discrepancy, not used to relicense gateway source. This does not establish authorship or legal ownership.

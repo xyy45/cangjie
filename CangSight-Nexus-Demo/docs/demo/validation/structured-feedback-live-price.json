@@ -1,0 +1,47 @@
+{
+  "task_id": "2d98615b6fda4826a3336bbd2541f06a",
+  "status": "REVIEW_PENDING",
+  "attempts": 1,
+  "analysis_status": "PARTIAL",
+  "baseline_hash": "2e6c84513bbe530bfd2fecf809003a61176ef72c505860224737fbb5b4dae152",
+  "model_context_matches_evidence": true,
+  "model_requests": 1,
+  "references": [
+    "1eab92ba7aeb465598bec4c98f2ff8dc:ast_symbol_extractor"
+  ],
+  "checks": [
+    {
+      "kind": "build",
+      "state": "PASS",
+      "counts": {}
+    },
+    {
+      "kind": "test",
+      "state": "FAIL",
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 4,
+        "skipped": 0,
+        "total": 5
+      }
+    },
+    {
+      "kind": "build",
+      "state": "PASS",
+      "counts": {}
+    },
+    {
+      "kind": "test",
+      "state": "PASS",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 5,
+        "skipped": 0,
+        "total": 5
+      }
+    }
+  ],
+  "acceptance_count": 0
+}

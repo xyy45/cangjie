@@ -1,0 +1,570 @@
+{
+  "elapsed_ms": 592,
+  "http_status": 200,
+  "input": {
+    "code": "func sum3(a: Int64, b: Int64, c: Int64): Int64 {\n    let first = a + b\n    let total = first + c\n    return total\n}\nmain(): Int64 {\n    println(sum3(2, 3, 4))\n    return 0\n}\n",
+    "filename": "l1_sum3.cj",
+    "formats": [
+      "dot"
+    ],
+    "graph_types": "Ddg",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-19T15:40:21.472000+00:00",
+  "request_id": "3ed46dd94ad3489082be471a98b17558-sympas_dep_graph",
+  "response": {
+    "artifacts": [
+      {
+        "dot": {
+          "artifact_path": "sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+          "download_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+          "name": "l1_sum3_ddg.dot",
+          "path": "/workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+          "preview": {
+            "available": true,
+            "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_0 {\n    label=\"[\\\"l1_sum3.cj:1\\\"]@sum3\";\n    style=dashed;\n    color=gray;\n    n3 [label=\"[L4]: return total\", shape=box, fillcolor=white, style=filled];\n    n5 [label=\"(formal-out)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n14 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n12 [label=\"FinalUse(%c)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n11 [label=\"FinalUse(%a)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n8 [label=\"(formal-in)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"(formal-out)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n9 [label=\"(formal-out)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n15 [label=\"FinalUse(%first)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n6 [label=\"(formal-in)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"(formal-in)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n1 [label=\"[L2]: first = a + b\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"FinalUse(%b)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n2 [label=\"[L3]: total = first + c\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l1_sum3.cj:6\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n\n  n2 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n15 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n14 [label=\"data\", style=solid, color=sandybrown];\n  n7 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n9 -> n12 [label=\"data\", style=solid, color=sandybrown];\n  n5 -> n11 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n5 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+          },
+          "url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]"
+        },
+        "engine_log": "解析 runtime/sympas_src_93036c/l1_sum3.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 25.0 (Average: 5)\nVariable      SrcLineNumbers\n------------------------------\na@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nb@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nc@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nfirst@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\ntotal@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.svg, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_5zu61lu8",
+        "generated": true,
+        "graph_type": "Ddg",
+        "name": "ddg"
+      }
+    ],
+    "cache": "miss",
+    "data": {
+      "engine": "sympas-gs",
+      "formats": [
+        "dot"
+      ],
+      "generated_count": 1,
+      "graph_count": 1,
+      "graph_types": [
+        "Ddg"
+      ],
+      "graphs": [
+        {
+          "dot": {
+            "artifact_path": "sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+            "download_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+            "name": "l1_sum3_ddg.dot",
+            "path": "/workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+            "preview": {
+              "available": true,
+              "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_0 {\n    label=\"[\\\"l1_sum3.cj:1\\\"]@sum3\";\n    style=dashed;\n    color=gray;\n    n3 [label=\"[L4]: return total\", shape=box, fillcolor=white, style=filled];\n    n5 [label=\"(formal-out)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n14 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n12 [label=\"FinalUse(%c)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n11 [label=\"FinalUse(%a)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n8 [label=\"(formal-in)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"(formal-out)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n9 [label=\"(formal-out)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n15 [label=\"FinalUse(%first)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n6 [label=\"(formal-in)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"(formal-in)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n1 [label=\"[L2]: first = a + b\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"FinalUse(%b)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n2 [label=\"[L3]: total = first + c\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l1_sum3.cj:6\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n\n  n2 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n15 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n14 [label=\"data\", style=solid, color=sandybrown];\n  n7 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n9 -> n12 [label=\"data\", style=solid, color=sandybrown];\n  n5 -> n11 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n5 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+            },
+            "url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]"
+          },
+          "engine_log": "解析 runtime/sympas_src_93036c/l1_sum3.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 25.0 (Average: 5)\nVariable      SrcLineNumbers\n------------------------------\na@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nb@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nc@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nfirst@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\ntotal@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.svg, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_5zu61lu8",
+          "generated": true,
+          "graph_type": "Ddg",
+          "name": "ddg"
+        }
+      ],
+      "json_graphs": [
+        {
+          "edge_count": 17,
+          "edges": [
+            {
+              "from": "n2",
+              "to": "n3"
+            },
+            {
+              "from": "n1",
+              "to": "n2"
+            },
+            {
+              "from": "n1",
+              "to": "n15"
+            },
+            {
+              "from": "n2",
+              "to": "n14"
+            },
+            {
+              "from": "n7",
+              "to": "n13"
+            },
+            {
+              "from": "n9",
+              "to": "n12"
+            },
+            {
+              "from": "n5",
+              "to": "n11"
+            },
+            {
+              "from": "n8",
+              "to": "n3"
+            },
+            {
+              "from": "n2",
+              "to": "n9"
+            },
+            {
+              "from": "n8",
+              "to": "n2"
+            },
+            {
+              "from": "n1",
+              "to": "n9"
+            },
+            {
+              "from": "n8",
+              "to": "n1"
+            },
+            {
+              "from": "n4",
+              "to": "n1"
+            },
+            {
+              "from": "n6",
+              "to": "n1"
+            },
+            {
+              "from": "n8",
+              "to": "n9"
+            },
+            {
+              "from": "n6",
+              "to": "n7"
+            },
+            {
+              "from": "n4",
+              "to": "n5"
+            }
+          ],
+          "graph_type": "Ddg",
+          "node_count": 14,
+          "nodes": [
+            {
+              "id": "n3",
+              "label": "[L4]: return total"
+            },
+            {
+              "id": "n5",
+              "label": "(formal-out)%a"
+            },
+            {
+              "id": "n14",
+              "label": "FinalUse(%total)"
+            },
+            {
+              "id": "n12",
+              "label": "FinalUse(%c)"
+            },
+            {
+              "id": "n11",
+              "label": "FinalUse(%a)"
+            },
+            {
+              "id": "n8",
+              "label": "(formal-in)%c"
+            },
+            {
+              "id": "n7",
+              "label": "(formal-out)%b"
+            },
+            {
+              "id": "n9",
+              "label": "(formal-out)%c"
+            },
+            {
+              "id": "n15",
+              "label": "FinalUse(%first)"
+            },
+            {
+              "id": "n6",
+              "label": "(formal-in)%b"
+            },
+            {
+              "id": "n4",
+              "label": "(formal-in)%a"
+            },
+            {
+              "id": "n1",
+              "label": "[L2]: first = a + b"
+            },
+            {
+              "id": "n13",
+              "label": "FinalUse(%b)"
+            },
+            {
+              "id": "n2",
+              "label": "[L3]: total = first + c"
+            }
+          ]
+        }
+      ],
+      "output_dir": "/workspace/artifacts/sympas_depgraph_5zu61lu8",
+      "requested_graph_types": [
+        "Ddg"
+      ],
+      "target": "runtime/sympas_src_93036c/l1_sum3.cj"
+    },
+    "engine": "sympas-gs",
+    "formats": [
+      "dot"
+    ],
+    "generated_count": 1,
+    "graph_count": 1,
+    "graph_types": [
+      "Ddg"
+    ],
+    "graphs": [
+      {
+        "dot": {
+          "artifact_path": "sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+          "download_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+          "name": "l1_sum3_ddg.dot",
+          "path": "/workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+          "preview": {
+            "available": true,
+            "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_0 {\n    label=\"[\\\"l1_sum3.cj:1\\\"]@sum3\";\n    style=dashed;\n    color=gray;\n    n3 [label=\"[L4]: return total\", shape=box, fillcolor=white, style=filled];\n    n5 [label=\"(formal-out)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n14 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n12 [label=\"FinalUse(%c)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n11 [label=\"FinalUse(%a)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n8 [label=\"(formal-in)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"(formal-out)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n9 [label=\"(formal-out)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n15 [label=\"FinalUse(%first)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n6 [label=\"(formal-in)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"(formal-in)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n1 [label=\"[L2]: first = a + b\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"FinalUse(%b)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n2 [label=\"[L3]: total = first + c\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l1_sum3.cj:6\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n\n  n2 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n15 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n14 [label=\"data\", style=solid, color=sandybrown];\n  n7 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n9 -> n12 [label=\"data\", style=solid, color=sandybrown];\n  n5 -> n11 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n5 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+          },
+          "url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]"
+        },
+        "engine_log": "解析 runtime/sympas_src_93036c/l1_sum3.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 25.0 (Average: 5)\nVariable      SrcLineNumbers\n------------------------------\na@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nb@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nc@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nfirst@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\ntotal@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.svg, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_5zu61lu8",
+        "generated": true,
+        "graph_type": "Ddg",
+        "name": "ddg"
+      }
+    ],
+    "issue_count": 0,
+    "issues": [],
+    "json_graphs": [
+      {
+        "edge_count": 17,
+        "edges": [
+          {
+            "from": "n2",
+            "to": "n3"
+          },
+          {
+            "from": "n1",
+            "to": "n2"
+          },
+          {
+            "from": "n1",
+            "to": "n15"
+          },
+          {
+            "from": "n2",
+            "to": "n14"
+          },
+          {
+            "from": "n7",
+            "to": "n13"
+          },
+          {
+            "from": "n9",
+            "to": "n12"
+          },
+          {
+            "from": "n5",
+            "to": "n11"
+          },
+          {
+            "from": "n8",
+            "to": "n3"
+          },
+          {
+            "from": "n2",
+            "to": "n9"
+          },
+          {
+            "from": "n8",
+            "to": "n2"
+          },
+          {
+            "from": "n1",
+            "to": "n9"
+          },
+          {
+            "from": "n8",
+            "to": "n1"
+          },
+          {
+            "from": "n4",
+            "to": "n1"
+          },
+          {
+            "from": "n6",
+            "to": "n1"
+          },
+          {
+            "from": "n8",
+            "to": "n9"
+          },
+          {
+            "from": "n6",
+            "to": "n7"
+          },
+          {
+            "from": "n4",
+            "to": "n5"
+          }
+        ],
+        "graph_type": "Ddg",
+        "node_count": 14,
+        "nodes": [
+          {
+            "id": "n3",
+            "label": "[L4]: return total"
+          },
+          {
+            "id": "n5",
+            "label": "(formal-out)%a"
+          },
+          {
+            "id": "n14",
+            "label": "FinalUse(%total)"
+          },
+          {
+            "id": "n12",
+            "label": "FinalUse(%c)"
+          },
+          {
+            "id": "n11",
+            "label": "FinalUse(%a)"
+          },
+          {
+            "id": "n8",
+            "label": "(formal-in)%c"
+          },
+          {
+            "id": "n7",
+            "label": "(formal-out)%b"
+          },
+          {
+            "id": "n9",
+            "label": "(formal-out)%c"
+          },
+          {
+            "id": "n15",
+            "label": "FinalUse(%first)"
+          },
+          {
+            "id": "n6",
+            "label": "(formal-in)%b"
+          },
+          {
+            "id": "n4",
+            "label": "(formal-in)%a"
+          },
+          {
+            "id": "n1",
+            "label": "[L2]: first = a + b"
+          },
+          {
+            "id": "n13",
+            "label": "FinalUse(%b)"
+          },
+          {
+            "id": "n2",
+            "label": "[L3]: total = first + c"
+          }
+        ]
+      }
+    ],
+    "message": "Completed with 0 item(s) and 1 artifact(s).",
+    "output_dir": "/workspace/artifacts/sympas_depgraph_5zu61lu8",
+    "preview": {
+      "dot_download_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+      "dot_source": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_0 {\n    label=\"[\\\"l1_sum3.cj:1\\\"]@sum3\";\n    style=dashed;\n    color=gray;\n    n3 [label=\"[L4]: return total\", shape=box, fillcolor=white, style=filled];\n    n5 [label=\"(formal-out)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n14 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n12 [label=\"FinalUse(%c)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n11 [label=\"FinalUse(%a)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n8 [label=\"(formal-in)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"(formal-out)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n9 [label=\"(formal-out)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n15 [label=\"FinalUse(%first)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n6 [label=\"(formal-in)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"(formal-in)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n1 [label=\"[L2]: first = a + b\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"FinalUse(%b)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n2 [label=\"[L3]: total = first + c\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l1_sum3.cj:6\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n\n  n2 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n15 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n14 [label=\"data\", style=solid, color=sandybrown];\n  n7 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n9 -> n12 [label=\"data\", style=solid, color=sandybrown];\n  n5 -> n11 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n5 [label=\"data\", style=solid, color=sandybrown];\n}\n",
+      "dot_source_truncated": false,
+      "dot_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+      "json_download_url": "/artifacts/sympas_depgraph_5zu61lu8/dep_graphs.json?[REDACTED]",
+      "json_source": "{\"graphs\": [{\"graph_type\": \"Ddg\", \"node_count\": 14, \"edge_count\": 17, \"nodes\": [{\"id\": \"n3\", \"label\": \"[L4]: return total\"}, {\"id\": \"n5\", \"label\": \"(formal-out)%a\"}, {\"id\": \"n14\", \"label\": \"FinalUse(%total)\"}, {\"id\": \"n12\", \"label\": \"FinalUse(%c)\"}, {\"id\": \"n11\", \"label\": \"FinalUse(%a)\"}, {\"id\": \"n8\", \"label\": \"(formal-in)%c\"}, {\"id\": \"n7\", \"label\": \"(formal-out)%b\"}, {\"id\": \"n9\", \"label\": \"(formal-out)%c\"}, {\"id\": \"n15\", \"label\": \"FinalUse(%first)\"}, {\"id\": \"n6\", \"label\": \"(formal-in)%b\"}, {\"id\": \"n4\", \"label\": \"(formal-in)%a\"}, {\"id\": \"n1\", \"label\": \"[L2]: first = a + b\"}, {\"id\": \"n13\", \"label\": \"FinalUse(%b)\"}, {\"id\": \"n2\", \"label\": \"[L3]: total = first + c\"}], \"edges\": [{\"from\": \"n2\", \"to\": \"n3\"}, {\"from\": \"n1\", \"to\": \"n2\"}, {\"from\": \"n1\", \"to\": \"n15\"}, {\"from\": \"n2\", \"to\": \"n14\"}, {\"from\": \"n7\", \"to\": \"n13\"}, {\"from\": \"n9\", \"to\": \"n12\"}, {\"from\": \"n5\", \"to\": \"n11\"}, {\"from\": \"n8\", \"to\": \"n3\"}, {\"from\": \"n2\", \"to\": \"n9\"}, {\"from\": \"n8\", \"to\": \"n2\"}, {\"from\": \"n1\", \"to\": \"n9\"}, {\"from\": \"n8\", \"to\": \"n1\"}, {\"from\": \"n4\", \"to\": \"n1\"}, {\"from\": \"n6\", \"to\": \"n1\"}, {\"from\": \"n8\", \"to\": \"n9\"}, {\"from\": \"n6\", \"to\": \"n7\"}, {\"from\": \"n4\", \"to\": \"n5\"}]}]}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_depgraph_5zu61lu8/dep_graphs.json?[REDACTED]"
+    },
+    "report": {
+      "engine": "sympas-gs",
+      "formats": [
+        "dot"
+      ],
+      "generated_count": 1,
+      "graph_count": 1,
+      "graph_types": [
+        "Ddg"
+      ],
+      "graphs": [
+        {
+          "dot": {
+            "artifact_path": "sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+            "download_url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]",
+            "name": "l1_sum3_ddg.dot",
+            "path": "/workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot",
+            "preview": {
+              "available": true,
+              "content": "digraph DDG {\n  compound=true;\n  rankdir=TB;\n  fontname=\"Helvetica\";\n  node [fontname=\"Helvetica\", fontsize=10];\n  edge [fontname=\"Helvetica\", fontsize=8];\n\n  label=\"DDG (Data Dependence Graph)\";\n  labelloc=t;\n\n  subgraph cluster_0 {\n    label=\"[\\\"l1_sum3.cj:1\\\"]@sum3\";\n    style=dashed;\n    color=gray;\n    n3 [label=\"[L4]: return total\", shape=box, fillcolor=white, style=filled];\n    n5 [label=\"(formal-out)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n14 [label=\"FinalUse(%total)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n12 [label=\"FinalUse(%c)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n11 [label=\"FinalUse(%a)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n8 [label=\"(formal-in)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n7 [label=\"(formal-out)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n9 [label=\"(formal-out)%c\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n15 [label=\"FinalUse(%first)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n6 [label=\"(formal-in)%b\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n4 [label=\"(formal-in)%a\", shape=parallelogram, fillcolor=lightyellow, style=filled];\n    n1 [label=\"[L2]: first = a + b\", shape=box, fillcolor=white, style=filled];\n    n13 [label=\"FinalUse(%b)\", shape=ellipse, fillcolor=lightgreen, style=filled];\n    n2 [label=\"[L3]: total = first + c\", shape=box, fillcolor=white, style=filled];\n  }\n\n  subgraph cluster_1 {\n    label=\"[\\\"l1_sum3.cj:6\\\"]@main\";\n    style=dashed;\n    color=gray;\n  }\n\n\n  n2 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n15 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n14 [label=\"data\", style=solid, color=sandybrown];\n  n7 -> n13 [label=\"data\", style=solid, color=sandybrown];\n  n9 -> n12 [label=\"data\", style=solid, color=sandybrown];\n  n5 -> n11 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n3 [label=\"data\", style=solid, color=sandybrown];\n  n2 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n2 [label=\"data\", style=solid, color=sandybrown];\n  n1 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n1 [label=\"data\", style=solid, color=sandybrown];\n  n8 -> n9 [label=\"data\", style=solid, color=sandybrown];\n  n6 -> n7 [label=\"data\", style=solid, color=sandybrown];\n  n4 -> n5 [label=\"data\", style=solid, color=sandybrown];\n}\n"
+            },
+            "url": "/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot?[REDACTED]"
+          },
+          "engine_log": "解析 runtime/sympas_src_93036c/l1_sum3.cj...\nCall Graph已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_cg.svg\n切片表已生成 (参考格式): workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3.SliceResult_Bwd-SDG\nBackward Static SliceTable:\n#Insts_sliced = 25.0 (Average: 5)\nVariable      SrcLineNumbers\n------------------------------\na@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nb@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\nc@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nfirst@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\ntotal@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\nDDG已生成: workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.dot, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.svg, workspace/artifacts/sympas_depgraph_5zu61lu8/l1_sum3_ddg.html\n完成. 输出目录: workspace/artifacts/sympas_depgraph_5zu61lu8",
+          "generated": true,
+          "graph_type": "Ddg",
+          "name": "ddg"
+        }
+      ],
+      "json_graphs": [
+        {
+          "edge_count": 17,
+          "edges": [
+            {
+              "from": "n2",
+              "to": "n3"
+            },
+            {
+              "from": "n1",
+              "to": "n2"
+            },
+            {
+              "from": "n1",
+              "to": "n15"
+            },
+            {
+              "from": "n2",
+              "to": "n14"
+            },
+            {
+              "from": "n7",
+              "to": "n13"
+            },
+            {
+              "from": "n9",
+              "to": "n12"
+            },
+            {
+              "from": "n5",
+              "to": "n11"
+            },
+            {
+              "from": "n8",
+              "to": "n3"
+            },
+            {
+              "from": "n2",
+              "to": "n9"
+            },
+            {
+              "from": "n8",
+              "to": "n2"
+            },
+            {
+              "from": "n1",
+              "to": "n9"
+            },
+            {
+              "from": "n8",
+              "to": "n1"
+            },
+            {
+              "from": "n4",
+              "to": "n1"
+            },
+            {
+              "from": "n6",
+              "to": "n1"
+            },
+            {
+              "from": "n8",
+              "to": "n9"
+            },
+            {
+              "from": "n6",
+              "to": "n7"
+            },
+            {
+              "from": "n4",
+              "to": "n5"
+            }
+          ],
+          "graph_type": "Ddg",
+          "node_count": 14,
+          "nodes": [
+            {
+              "id": "n3",
+              "label": "[L4]: return total"
+            },
+            {
+              "id": "n5",
+              "label": "(formal-out)%a"
+            },
+            {
+              "id": "n14",
+              "label": "FinalUse(%total)"
+            },
+            {
+              "id": "n12",
+              "label": "FinalUse(%c)"
+            },
+            {
+              "id": "n11",
+              "label": "FinalUse(%a)"
+            },
+            {
+              "id": "n8",
+              "label": "(formal-in)%c"
+            },
+            {
+              "id": "n7",
+              "label": "(formal-out)%b"
+            },
+            {
+              "id": "n9",
+              "label": "(formal-out)%c"
+            },
+            {
+              "id": "n15",
+              "label": "FinalUse(%first)"
+            },
+            {
+              "id": "n6",
+              "label": "(formal-in)%b"
+            },
+            {
+              "id": "n4",
+              "label": "(formal-in)%a"
+            },
+            {
+              "id": "n1",
+              "label": "[L2]: first = a + b"
+            },
+            {
+              "id": "n13",
+              "label": "FinalUse(%b)"
+            },
+            {
+              "id": "n2",
+              "label": "[L3]: total = first + c"
+            }
+          ]
+        }
+      ],
+      "output_dir": "/workspace/artifacts/sympas_depgraph_5zu61lu8",
+      "requested_graph_types": [
+        "Ddg"
+      ],
+      "target": "runtime/sympas_src_93036c/l1_sum3.cj"
+    },
+    "request_id": "24f1e790c10f03d3",
+    "requested_graph_types": [
+      "Ddg"
+    ],
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 522.0
+    },
+    "server_timing_ms": 522.0,
+    "status": "success",
+    "target": "runtime/sympas_src_93036c/l1_sum3.cj",
+    "tool": "sympas_dep_graph"
+  },
+  "schema_version": 1,
+  "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+  "tool": "sympas_dep_graph",
+  "transport": "group_http_tools"
+}

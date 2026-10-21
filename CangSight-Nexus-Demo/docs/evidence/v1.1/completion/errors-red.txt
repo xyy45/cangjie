@@ -1,0 +1,68 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_check_failure_has_business_code_and_keeps_raw_reason_in_evidence _____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-128/test_check_failure_has_busines0')
+
+    def test_check_failure_has_business_code_and_keeps_raw_reason_in_evidence(tmp_path):
+        store,c,delivery,client,headers,actor=user_app(tmp_path)
+        original=delivery.check_set_hash(c.id)
+        (tmp_path/'records/test.log').write_text('incomplete native report')
+        response=client.post('/api/candidates/'+c.id+'/accept',json={'check_set_hash':original},headers=headers)
+        assert response.status_code==400
+>       assert response.json['code']=='CHECKS_NOT_PASS'
+E       AssertionError: assert 'INVALID_REQUEST' == 'CHECKS_NOT_PASS'
+E         
+E         - CHECKS_NOT_PASS
+E         + INVALID_REQUEST
+
+tests/test_workbench_errors.py:24: AssertionError
+_________ test_unconfirmed_export_outcome_is_explicit_and_not_retried __________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-128/test_unconfirmed_export_outcom0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1090aca70>
+
+    def test_unconfirmed_export_outcome_is_explicit_and_not_retried(tmp_path,monkeypatch):
+        store,c,delivery,client,headers,actor=user_app(tmp_path)
+        approval=delivery.accept(c.id,delivery.check_set_hash(c.id),actor_id=actor)
+        calls=[]
+        class Disconnected:
+            def __init__(self,*args):pass
+            async def __aenter__(self):return self
+            async def __aexit__(self,*args):pass
+            async def call_tool(self,name,args):
+                calls.append(name)
+                return ToolResult(operation_status='IN_DOUBT',error='CONNECTION_LOST_AFTER_WRITE')
+        monkeypatch.setattr('nexus.web.app.ToolClient',Disconnected)
+        response=client.post('/api/candidates/'+c.id+'/export',json={'acceptance_id':approval.id},headers=headers)
+>       assert response.status_code==409 and response.json['code']=='RESULT_IN_DOUBT'
+                                             ^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'code'
+
+tests/test_workbench_errors.py:45: KeyError
+______ test_expired_approval_reports_actionable_code_without_new_mcp_call ______
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-128/test_expired_approval_reports_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x109129ca0>
+
+    def test_expired_approval_reports_actionable_code_without_new_mcp_call(tmp_path,monkeypatch):
+        store,c,delivery,client,headers,actor=user_app(tmp_path)
+        approval=delivery.accept(c.id,delivery.check_set_hash(c.id),actor_id=actor)
+        approval.expires_at=0.0
+        with store.connect() as db:db.execute('UPDATE acceptances SET payload=? WHERE id=?',(approval.model_dump_json(),approval.id))
+        def forbidden(*args):raise AssertionError('MCP must not start for an expired approval')
+        monkeypatch.setattr('nexus.web.app.ToolClient',forbidden)
+        response=client.post('/api/candidates/'+c.id+'/export',json={'acceptance_id':approval.id},headers=headers)
+>       assert response.status_code==400 and response.json['code']=='APPROVAL_INVALID'
+E       AssertionError: assert (400 == 400 and 'INVALID_REQUEST' == 'APPROVAL_INVALID'
+E        +  where 400 = <WrapperTestResponse 76 bytes [400 BAD REQUEST]>.status_code
+E         
+E         - APPROVAL_INVALID
+E         + INVALID_REQUEST)
+
+tests/test_workbench_errors.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_workbench_errors.py::test_check_failure_has_business_code_and_keeps_raw_reason_in_evidence
+FAILED tests/test_workbench_errors.py::test_unconfirmed_export_outcome_is_explicit_and_not_retried
+FAILED tests/test_workbench_errors.py::test_expired_approval_reports_actionable_code_without_new_mcp_call
+3 failed, 1 passed in 1.00s

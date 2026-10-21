@@ -1,0 +1,34 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/candidates/c_9241ab00516348c39f4e7e62e671cf02/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 1527000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 1527000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (210000 ns)
+    [[32m PASSED [0m] CASE: two (9000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (7000 ns)
+    [[32m PASSED [0m] CASE: zeroQuantity (5000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (5000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (4000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (6000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (6000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (7000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (5000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (5000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 2403000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 2346000 ns, RESULT:
+    PASSED:
+    TP: [33morderdemo[0m, time elapsed: 1527000 ns
+Summary: TOTAL: 11
+    [32mPASSED[0m: 11, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

@@ -1,0 +1,222 @@
+{
+  "task_id": "bc41e269129f42a3a0cfd498a2030f21",
+  "status": "REVIEW_PENDING",
+  "origin": "LIVE_DEEPSEEK_REAL_MCP_SDK",
+  "attempts": 1,
+  "model_requests": 1,
+  "model_results": [
+    {
+      "id": "e1af7dbb94fe4d8dbdcf15701ad5f830-result",
+      "model_id": "deepseek-flash",
+      "status": "SUCCEEDED",
+      "usage": {
+        "completion_tokens": 552,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 6360,
+        "prompt_tokens": 6360,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "total_tokens": 6912
+      }
+    }
+  ],
+  "analysis": {
+    "schema_version": 1,
+    "baseline_id": "b_890e92d900d945508f50a6d8d5532faf",
+    "baseline_hash": "6e3788770e2ffdcbb477276c937103c1573fb93d9ab19d897fd00cafbb131f93",
+    "status": "PARTIAL",
+    "files": [
+      {
+        "path": "src/quantity.cj",
+        "analysis_id": "00da4809248a411686f1dfc9f7d361de",
+        "source_sha256": "dfcfc3e34ba4a00f4a58bdf56684443fd323f00245581e30c2b70544c60d8f55",
+        "result_sha256": "93ca8f657c95780819fd41b1ec8cfd356db4a0a4268b4d0c277cef418258e033",
+        "status": "PARTIAL",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "FAILED",
+            "reason": "工具内部分析失败；查看原始证据",
+            "included": false,
+            "evidence_id": "00da4809248a411686f1dfc9f7d361de:sympas_slice",
+            "raw_sha256": "55fb28b68c7b2819be513d1a93fc810da94df30436d012d91dfa7d99df5f907b",
+            "record_ref": "records/00da4809248a411686f1dfc9f7d361de.analysis.observations.sympas_slice.json"
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "reason": "未返回非空DDG",
+            "included": false,
+            "evidence_id": "00da4809248a411686f1dfc9f7d361de:sympas_dep_graph",
+            "raw_sha256": "11b5160e438896afb63cca24870c522246a36afe9c2d6fc83fd57946d103ed45",
+            "record_ref": "records/00da4809248a411686f1dfc9f7d361de.analysis.observations.sympas_dep_graph.json"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "reason": "结构线索已返回",
+            "included": true,
+            "evidence_id": "00da4809248a411686f1dfc9f7d361de:ast_symbol_extractor",
+            "raw_sha256": "73df15d954eaa147ccfdd4dfec2051c73716827fd17c61e109818394e605fe20",
+            "record_ref": "records/00da4809248a411686f1dfc9f7d361de.analysis.observations.ast_symbol_extractor.json",
+            "data": {
+              "symbols": [
+                {
+                  "symbol": "(formal-in)%quantity",
+                  "appears_in": [
+                    "Pdg"
+                  ]
+                },
+                {
+                  "symbol": "ENTER validQuantity",
+                  "appears_in": [
+                    "Cdg",
+                    "Pdg"
+                  ]
+                },
+                {
+                  "symbol": "[L4]: quantity >= 0(quantity <= 1000)",
+                  "appears_in": [
+                    "Cdg",
+                    "Pdg"
+                  ]
+                }
+              ],
+              "dependency_count": 3
+            }
+          }
+        ]
+      },
+      {
+        "path": "src/fee.cj",
+        "analysis_id": "48f67a6176e7472d9997b69b404e61b3",
+        "source_sha256": "051d4c691a250475d94d8b6f29bccb70c1f3a0ff120aa9946157996fff5e05cc",
+        "result_sha256": "d19914cee282ab3c72ecc71dd9a5274afbed231cf3856a9c7fbe4aa83a0fcfcd",
+        "status": "PARTIAL",
+        "tools": [
+          {
+            "tool": "sympas_slice",
+            "status": "VALID",
+            "reason": "静态切片已返回",
+            "included": true,
+            "evidence_id": "48f67a6176e7472d9997b69b404e61b3:sympas_slice",
+            "raw_sha256": "af1391b982fce023fca1bf29290ecbbaf9463ba95b6eea869002f6be3fb8351f",
+            "record_ref": "records/48f67a6176e7472d9997b69b404e61b3.analysis.observations.sympas_slice.json",
+            "data": {
+              "slices": {
+                "quantity@calculateFee": [
+                  3,
+                  4
+                ],
+                "unitPrice@calculateFee": [
+                  3,
+                  4
+                ]
+              }
+            }
+          },
+          {
+            "tool": "sympas_dep_graph",
+            "status": "EMPTY",
+            "reason": "未返回非空DDG",
+            "included": false,
+            "evidence_id": "48f67a6176e7472d9997b69b404e61b3:sympas_dep_graph",
+            "raw_sha256": "27858b79b851b7ca99b28593376e1258e4bf910ce696c672b7846977cdad3de2",
+            "record_ref": "records/48f67a6176e7472d9997b69b404e61b3.analysis.observations.sympas_dep_graph.json"
+          },
+          {
+            "tool": "ast_symbol_extractor",
+            "status": "VALID",
+            "reason": "结构线索已返回",
+            "included": true,
+            "evidence_id": "48f67a6176e7472d9997b69b404e61b3:ast_symbol_extractor",
+            "raw_sha256": "3b6b758485d4f3c79cd4d1892638779634582ecec0ac86b0f7091112bf24ba5f",
+            "record_ref": "records/48f67a6176e7472d9997b69b404e61b3.analysis.observations.ast_symbol_extractor.json",
+            "data": {
+              "symbols": [
+                {
+                  "symbol": "(formal-in)%quantity",
+                  "appears_in": [
+                    "Pdg"
+                  ]
+                },
+                {
+                  "symbol": "(formal-in)%unitPrice",
+                  "appears_in": [
+                    "Pdg"
+                  ]
+                },
+                {
+                  "symbol": "ENTER calculateFee",
+                  "appears_in": [
+                    "Cdg",
+                    "Pdg"
+                  ]
+                },
+                {
+                  "symbol": "[L4]: quantity(unitPrice)",
+                  "appears_in": [
+                    "Cdg",
+                    "Pdg"
+                  ]
+                }
+              ],
+              "dependency_count": 4
+            }
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+      "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+      "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+      "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "c_52fa5c37651d45e4b585106bb0322570",
+      "attempt": 1,
+      "tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75",
+      "model_call_id": "e1af7dbb94fe4d8dbdcf15701ad5f830-result"
+    }
+  ],
+  "candidate_checks": [
+    {
+      "id": "dcfe20fc2bbb48eeb9b9c73cbd248163",
+      "subject_id": "c_52fa5c37651d45e4b585106bb0322570",
+      "kind": "build",
+      "state": "PASS",
+      "counts": {},
+      "tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75"
+    },
+    {
+      "id": "ead07ac952b24dd1b1d1d2ba7d563a84",
+      "subject_id": "c_52fa5c37651d45e4b585106bb0322570",
+      "kind": "test",
+      "state": "PASS",
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 9,
+        "skipped": 0,
+        "total": 9
+      },
+      "tree_hash": "b9c504d9fe58521a93ab41e104fafab4b6478adeb09c13ae3032db0571ed9c75"
+    }
+  ],
+  "acceptances": 0,
+  "note": "First real model candidate passed; no forced or fabricated second round.",
+  "records": [
+    {
+      "ref": "records/e1af7dbb94fe4d8dbdcf15701ad5f830.request.json",
+      "sha256": "6b0ed305331bcdaf199debb4edde0c793bf6eb915c67c8771eed094a2acefbcd"
+    },
+    {
+      "ref": "records/e1af7dbb94fe4d8dbdcf15701ad5f830.response.json",
+      "sha256": "8e5cbb8507a26129d34694cdb70e87a2716f0e6a7a83f7ee5ae7aad2ad3ff889"
+    }
+  ]
+}

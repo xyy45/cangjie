@@ -1,0 +1,21 @@
+✔ late task response cannot overwrite a newly started task (3.533291ms)
+✔ late candidate details cannot replace newer selection on the same task (1.803666ms)
+✔ late errors do not replace the current task message (0.626292ms)
+✔ start invalidates pending refresh immediately, before POST resolves (0.528333ms)
+✔ late acceptance cannot export a candidate from a previous task (0.989208ms)
+✔ late export cannot restore a previous task download link (0.646667ms)
+✔ draft is displayed before explicit confirmation and task creation (0.657417ms)
+✔ reject is bound to current revision and late details cannot restore acceptance (0.656625ms)
+✔ cancel keeps the selected task and revision without starting a new task (0.513417ms)
+✔ V1.1 acceptance sends frozen candidate revision (0.605791ms)
+✔ browsing an older candidate cannot accept it or restore stale details (0.507708ms)
+✔ history task switch invalidates old task response without creating a run (0.345958ms)
+✔ user can narrow source scope before confirming and cannot edit pending approval (0.458791ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 74.76225

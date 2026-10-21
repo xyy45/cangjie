@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "origin": "REVALIDATION_OF_RECORDED_LIVE_PROPOSAL",
+  "task_id": "5a3ebecffd644870b32ac792fe00ac4f",
+  "candidate_id": "c_de33b7ccdf9d4d27bb8372050b25032e",
+  "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+  "run_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562",
+  "source_task_id": "752d3444ebc14479a604be1816a7042b",
+  "source_candidate_id": "c_e197d277c7a94f4a841cf170ad8842aa",
+  "source_model_call_id": "46963a3341d143cf802d5396338f8bdf-result",
+  "source_model_id": "deepseek-flash",
+  "source_archive_sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+  "proposal_edits_identical_to_recorded_response": true,
+  "new_model_requests": 0,
+  "total_paid_requests_in_goal": 1,
+  "old_approval_invalidated": true,
+  "invalidation_reason": "acceptance expired or evidence changed",
+  "old_plan_hashes": [
+    "cd4ec187b535521bc838121b416b7d0b1d4cc7702544df32e2a6d8e63510e900"
+  ],
+  "current_old_task_plan_hash": "36428a21855941cb73a6f1c2630baa946dba2ae0a43f340ebf25e5e86eb91c43",
+  "executor_source_sha256": "a7352a2603348e0254e515b11a58edb96287667cc17892f2f9755785057498ab",
+  "status": "DELIVERED",
+  "baseline_test": {
+    "total": 11,
+    "passed": 10,
+    "skipped": 0,
+    "errors": 0,
+    "failed": 1
+  },
+  "candidate_test": {
+    "total": 11,
+    "passed": 11,
+    "skipped": 0,
+    "errors": 0,
+    "failed": 0
+  },
+  "current_checks": [
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"build\", \"-V\"]\nCompiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/baselines/b_2f214758498c4dde8165372468c57d82/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/baselines/b_2f214758498c4dde8165372468c57d82/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/baselines/b_2f214758498c4dde8165372468c57d82/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 450,
+      "execution_argv": [
+        [
+          "cjpm",
+          "build",
+          "-V"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "28e47ff317204b34b94e16df14aa47bb",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/28e47ff317204b34b94e16df14aa47bb.log",
+      "plan_hash": "0614816ecbef78c343778b8adc3278fbead2d295b4abaeeb5de06362bc7bb117",
+      "report_ref": "records/28e47ff317204b34b94e16df14aa47bb.report.json",
+      "schema_version": 2,
+      "spec_hash": "302ae10f8c2a75aa7afcd36b7537179affa505f2f08de8c8e4542d8d2b7d56a5",
+      "state": "PASS",
+      "subject_id": "b_2f214758498c4dde8165372468c57d82",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "274a181c3be5f9e9e06aef7779c02ec38233dff8e9daa49e30170301d69909f8",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "FAIL"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 10,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"test\", \"--no-run\"]\n   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/baselines/b_2f214758498c4dde8165372468c57d82/target/release/unittest_bin`\ncjpm test success\nNEXUS_EXECUTION_PHASE test: [\"cjpm\", \"test\", \"--skip-build\"]\n\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1588000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1588000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (232000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (6000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (59000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2379000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2332000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1588000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1588000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (59000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hError: cjpm test failed\n",
+      "duration_ms": 2617,
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build"
+        ]
+      ],
+      "exit_code": 1,
+      "id": "ac166f8dc1c04417a34fe83fda8b0c98",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/ac166f8dc1c04417a34fe83fda8b0c98.log",
+      "plan_hash": "0614816ecbef78c343778b8adc3278fbead2d295b4abaeeb5de06362bc7bb117",
+      "report_ref": "records/ac166f8dc1c04417a34fe83fda8b0c98.report.json",
+      "schema_version": 2,
+      "spec_hash": "302ae10f8c2a75aa7afcd36b7537179affa505f2f08de8c8e4542d8d2b7d56a5",
+      "state": "FAIL",
+      "subject_id": "b_2f214758498c4dde8165372468c57d82",
+      "suite_results": {
+        "order-regression": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "274a181c3be5f9e9e06aef7779c02ec38233dff8e9daa49e30170301d69909f8",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"build\", \"-V\"]\nCompiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/candidates/c_de33b7ccdf9d4d27bb8372050b25032e/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/candidates/c_de33b7ccdf9d4d27bb8372050b25032e/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/candidates/c_de33b7ccdf9d4d27bb8372050b25032e/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 251,
+      "execution_argv": [
+        [
+          "cjpm",
+          "build",
+          "-V"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "57208a0e480b44b9b0b1744d923b7dc0",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/57208a0e480b44b9b0b1744d923b7dc0.log",
+      "plan_hash": "0614816ecbef78c343778b8adc3278fbead2d295b4abaeeb5de06362bc7bb117",
+      "report_ref": "records/57208a0e480b44b9b0b1744d923b7dc0.report.json",
+      "schema_version": 2,
+      "spec_hash": "302ae10f8c2a75aa7afcd36b7537179affa505f2f08de8c8e4542d8d2b7d56a5",
+      "state": "PASS",
+      "subject_id": "c_de33b7ccdf9d4d27bb8372050b25032e",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "274a181c3be5f9e9e06aef7779c02ec38233dff8e9daa49e30170301d69909f8",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "PASS"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 11,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"test\", \"--no-run\"]\n   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/candidates/c_de33b7ccdf9d4d27bb8372050b25032e/target/release/unittest_bin`\ncjpm test success\nNEXUS_EXECUTION_PHASE test: [\"cjpm\", \"test\", \"--skip-build\"]\n\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1489000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1489000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (224000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (5000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2331000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2289000 ns, RESULT:\n    PASSED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1489000 ns\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hcjpm test success\n",
+      "duration_ms": 2145,
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "70b167bc1747483cb40cc98598ce415b",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/70b167bc1747483cb40cc98598ce415b.log",
+      "plan_hash": "0614816ecbef78c343778b8adc3278fbead2d295b4abaeeb5de06362bc7bb117",
+      "report_ref": "records/70b167bc1747483cb40cc98598ce415b.report.json",
+      "schema_version": 2,
+      "spec_hash": "302ae10f8c2a75aa7afcd36b7537179affa505f2f08de8c8e4542d8d2b7d56a5",
+      "state": "PASS",
+      "subject_id": "c_de33b7ccdf9d4d27bb8372050b25032e",
+      "suite_results": {
+        "order-regression": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "274a181c3be5f9e9e06aef7779c02ec38233dff8e9daa49e30170301d69909f8",
+      "working_root": "."
+    }
+  ],
+  "export_id": "d497b6c73a3540348f84bee724955809",
+  "archive": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/revalidation/628689fc67af4e24907acfe6cea28562/exports/d497b6c73a3540348f84bee724955809.zip",
+  "archive_sha256": "b5cdb90d2ff31d63be33f26402554d410643f3bd7d013b41a30efae28670b48d",
+  "approval_actor": "EXECUTOR_REVALIDATION_OPERATOR",
+  "elapsed_seconds": 9.783,
+  "external_reproduction": "PENDING",
+  "m1_status": "NOT_EXERCISED_BY_THIS_MANUAL_REVALIDATION"
+}

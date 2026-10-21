@@ -1,0 +1,20 @@
+{
+  "actual_key_found": false,
+  "key_printed": false,
+  "original_reference_unchanged": true,
+  "original_reference_files": 453,
+  "paid_model_requests": 1,
+  "live_tasks_run": 1,
+  "automatic_paid_retries": 0,
+  "model_actual_id": "deepseek-flash",
+  "usage": {
+    "prompt_tokens": 4210,
+    "completion_tokens": 103,
+    "total_tokens": 4313
+  },
+  "fee": "UNKNOWN",
+  "live_approval": "LIVE_TEST_OPERATOR",
+  "m1_status": "PARTIAL",
+  "external_reproduction": "PENDING",
+  "competition_submission": "PENDING"
+}

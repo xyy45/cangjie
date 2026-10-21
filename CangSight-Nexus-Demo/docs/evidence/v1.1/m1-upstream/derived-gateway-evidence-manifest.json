@@ -1,0 +1,85 @@
+{
+  "original_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-derived-sdk-final/test_derived_gateway_task_has_0",
+  "files": {
+    "records/0b2d0db929ad4bef9148d3aa2371483c.json": {
+      "sha256": "e77a687b741d907cf54df4f9cffa54edbda69274e995fc141d6b6993f3862bd4",
+      "size": 1247
+    },
+    "records/0d894914f897451385d8dc6e6aee2576.tool-request.json": {
+      "sha256": "289410c8b702897832c45889eb8a5518fbd68a8ff440cfd02dfea9ff1bd55d07",
+      "size": 513
+    },
+    "records/0d894914f897451385d8dc6e6aee2576.tool.json": {
+      "sha256": "fac6a4daafbbfb1b3dd4d3a02b61ea91736d647fe16ea55feb2d4d91511d022e",
+      "size": 909
+    },
+    "records/1b7523334be54f1ab47fbde2f243c394.json": {
+      "sha256": "71c08c085fc7b22bc646991ba6138b9c1b4ade80a55211fde77c4e0972f5fa14",
+      "size": 1263
+    },
+    "records/20a17bac3d224e41aadba1e2fa400e43.tool-request.json": {
+      "sha256": "fb5c29fc362110a624824b5268de415e9412908575861f309996ca2b185e2b71",
+      "size": 266
+    },
+    "records/20a17bac3d224e41aadba1e2fa400e43.tool.json": {
+      "sha256": "755d63cff4953c284b2d0f143f5449f50999101ae1475272e217c72fe077c621",
+      "size": 6672
+    },
+    "records/385135a472984a3f90ec2da45a38c76c.tool-request.json": {
+      "sha256": "1c2581ca1a8c616a0e05c05ff517b0b8d8ba735b147417f1babbf67603acc0d8",
+      "size": 357
+    },
+    "records/385135a472984a3f90ec2da45a38c76c.tool.json": {
+      "sha256": "84191bb8a58273d3fef3f1f2e7542b34c805f0ab22a6d4dfa660ede747148dfc",
+      "size": 2043
+    },
+    "records/469d6cadbf0a46838f8031c50acb61f2.log": {
+      "sha256": "bc6f6986d170540a1625a88d83e17af2f3c05086dcb5d229323bc9a9d038228d",
+      "size": 884
+    },
+    "records/469d6cadbf0a46838f8031c50acb61f2.report.json": {
+      "sha256": "cfc81eb74ca9dc1b651b5b110539b4b49822fb1080c2a849075eba5bce0ab230",
+      "size": 1911
+    },
+    "records/7eef76f1c75d46d39b0830976f9e65de.tool-request.json": {
+      "sha256": "beb69832f10252e11caef2bf8e75ab9c9713598c3b22560bcf8d6b1d0fd9f825",
+      "size": 356
+    },
+    "records/7eef76f1c75d46d39b0830976f9e65de.tool.json": {
+      "sha256": "b414ed6711daea94fbadbe3573c1eb9c18470fd0d87b498ec4c89c3a5ab48490",
+      "size": 4308
+    },
+    "records/8ea323ef95a44fc491b3324c9a5ba538.log": {
+      "sha256": "ea9af6c561df299538a9406364de4390a71e10b785dd5998613b32c548f08203",
+      "size": 1868
+    },
+    "records/8ea323ef95a44fc491b3324c9a5ba538.report.json": {
+      "sha256": "e579c71afb5ee659f0a600656958cc48f0284beae9c1be92e17c59e3498552f5",
+      "size": 4551
+    },
+    "records/b3758784ba724aa8892b3f1f9ad9f6cb.json": {
+      "sha256": "7453f44b8943071f5c2d55901a64cdf5c1b08afb880b734e84af58e9dc34153b",
+      "size": 1245
+    },
+    "records/cc4705b20f2b41c0b14a6e89612f97ed.json": {
+      "sha256": "7538a997ed4302710876004bd5fdba8172286879fc9eed37bf4630aaf5073f60",
+      "size": 1247
+    },
+    "records/e8603a53d4994e8482c4b297eb159f8e.log": {
+      "sha256": "8c5cdff5665b4420e998844c30ebbb654fbe93dfe2dee0eba8b650e8067876b4",
+      "size": 887
+    },
+    "records/e8603a53d4994e8482c4b297eb159f8e.report.json": {
+      "sha256": "1e4a7a2e43bc840cab3f942607bd98f883aed10ef4e6945e7c1501c8545e4f18",
+      "size": 1914
+    },
+    "records/f714dce44744423586e7c231240e4271.log": {
+      "sha256": "fdfe36fd94da924c284458caf6400308ba7a9a59c7f549578717fb92dc399062",
+      "size": 1553
+    },
+    "records/f714dce44744423586e7c231240e4271.report.json": {
+      "sha256": "383086a72ff0a6c5f45a4498172dbacd3d102046461bcd7440bb5e702ab740d3",
+      "size": 4179
+    }
+  }
+}

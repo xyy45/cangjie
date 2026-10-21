@@ -1,0 +1,37 @@
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 1600000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 1600000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (205000 ns)
+    [[32m PASSED [0m] CASE: two (10000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (7000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (5000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (6000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (7000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (6000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (5000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (5000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (25000 ns)
+    [[31m FAILED [0m] CASE: zeroQuantity (60000 ns)
+    Expect Failed: `([33mprocessOrder(0, 100)[0m == [33m- 1[0m)`
+       left: 0
+      right: -1
+
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1, listed below:
+            TCS: [33mOrderTests[0m, CASE: zeroQuantity
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 2391000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 2339000 ns, RESULT:
+    FAILED:
+    TP: [33morderdemo[0m, time elapsed: 1600000 ns, RESULT:
+        TCS: [33mOrderTests[0m, time elapsed: 1600000 ns, RESULT:
+        [[31m FAILED [0m] CASE: zeroQuantity (60000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

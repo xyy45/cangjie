@@ -1,0 +1,74 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+____________ test_paid_request_disconnect_is_in_doubt_without_retry ____________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-140/test_paid_request_disconnect_i0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108bbb4a0>
+
+    def test_paid_request_disconnect_is_in_doubt_without_retry(tmp_path,monkeypatch):
+        store=RunStore(tmp_path);task=store.create_task('base','fix',['src/a.cj'])
+        monkeypatch.setenv('DEEPSEEK_API_KEY','unit-fixture')
+        monkeypatch.setenv('DEEPSEEK_BASE_URL','https://fixture.invalid')
+        monkeypatch.setenv('DEEPSEEK_MODEL','TEST_TRANSPORT')
+        calls=[]
+        class Disconnected:
+            def __init__(self,**kwargs):pass
+            async def __aenter__(self):return self
+            async def __aexit__(self,*args):pass
+            async def post(self,*args,**kwargs):
+                calls.append(True)
+                raise httpx.ReadTimeout('Synthetic connection lost after submission')
+        monkeypatch.setattr('nexus.llm.provider.httpx.AsyncClient',Disconnected)
+        result=asyncio.run(RepairLoop(store,provider_factory=ModelProvider,client_factory=Client).run(task.id))
+>       assert result.status=='IN_DOUBT' and result.attempt_count==0
+E       AssertionError: assert ('BLOCKED' == 'IN_DOUBT'
+E         
+E         - IN_DOUBT
+E         + BLOCKED)
+
+tests/test_failure_states.py:26: AssertionError
+________ test_proposal_outside_confirmed_scope_is_rejected_before_apply ________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-140/test_proposal_outside_confirme0')
+
+    def test_proposal_outside_confirmed_scope_is_rejected_before_apply(tmp_path):
+        store=RunStore(tmp_path);task=store.create_task('base','fix',['src/a.cj'])
+        class Outside(Provider):
+            async def propose(self,context):
+                return CandidateProposal(edits=[dict(path='src/b.cj',before_hash='a'*64,content='outside')],requirement_refs=['goal'])
+        class NoApply(Client):
+            async def call_tool(self,name,args):
+                assert name!='candidate.apply','Outside scope must not be materialized'
+                return await super().call_tool(name,args)
+        result=asyncio.run(RepairLoop(store,provider_factory=Outside,client_factory=NoApply).run(task.id))
+>       assert result.status=='REJECTED' and result.attempt_count==0
+E       AssertionError: assert ('IN_DOUBT' == 'REJECTED'
+E         
+E         - REJECTED
+E         + IN_DOUBT)
+
+tests/test_failure_states.py:42: AssertionError
+__________ test_outer_timeout_with_started_model_request_is_in_doubt ___________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-140/test_outer_timeout_with_starte0')
+
+    def test_outer_timeout_with_started_model_request_is_in_doubt(tmp_path):
+        store=RunStore(tmp_path);task=store.create_task('base','fix',['src/a.cj'])
+        class TimedOut(Provider):
+            async def propose(self,context):
+                store.append_record(task.id,'model_call',dict(id='pending',task_id=task.id,origin='TEST',
+                    model_id='NO_API',request_ref='records/synthetic.json',status='STARTED'))
+                raise asyncio.TimeoutError('Synthetic outer deadline after request was recorded')
+        result=asyncio.run(RepairLoop(store,provider_factory=TimedOut,client_factory=Client).run(task.id))
+>       assert result.status=='IN_DOUBT' and result.attempt_count==0
+E       AssertionError: assert ('BLOCKED' == 'IN_DOUBT'
+E         
+E         - IN_DOUBT
+E         + BLOCKED)
+
+tests/test_failure_states.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_failure_states.py::test_paid_request_disconnect_is_in_doubt_without_retry
+FAILED tests/test_failure_states.py::test_proposal_outside_confirmed_scope_is_rejected_before_apply
+FAILED tests/test_failure_states.py::test_outer_timeout_with_started_model_request_is_in_doubt
+3 failed in 0.24s

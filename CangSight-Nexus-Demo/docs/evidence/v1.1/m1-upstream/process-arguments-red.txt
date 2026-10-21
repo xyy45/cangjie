@@ -1,0 +1,61 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_candidate_cannot_read_owned_peer_or_ancestor_arguments __________
+
+tmp_path = PosixPath('/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/process-arguments-red/test_candidate_cannot_read_own0')
+
+    def test_candidate_cannot_read_owned_peer_or_ancestor_arguments(tmp_path):
+        project=tmp_path/'project';unit=project/'target/release/unittest_bin'
+        unit.mkdir(parents=True)
+        reader=unit/'owned-reader';target=unit/'owned-target'
+        reader_source=unit/'owned-reader.c'
+        reader_source.write_text(r'''
+    #include <sys/types.h>
+    #include <sys/sysctl.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <errno.h>
+    int main(int argc,char **argv){
+     if(argc!=2)return 10;
+     int mib[3]={CTL_KERN,KERN_PROCARGS2,atoi(argv[1])};size_t size=262144;
+     char *data=malloc(size);if(!data)return 11;
+     if(sysctl(mib,3,data,&size,NULL,0)){
+      int e=errno;free(data);
+      if(e==EPERM||e==EACCES){puts("PROCESS_ARGUMENT_READ_DENIED");return 0;}
+      printf("UNEXPECTED_READ_ERROR=%d\n",e);return 12;
+     }
+     const char *marker="SYNTHETIC_PROCESS_ARGUMENT_MARKER";int found=0;
+     for(size_t i=0;i+strlen(marker)<=size;i++)if(memcmp(data+i,marker,strlen(marker))==0)found=1;
+     free(data);
+     if(found){puts("SYNTHETIC_ARGUMENT_VISIBLE");return 23;}
+     puts("POSITIVE_CONTROL_MARKER_NOT_FOUND");return 13;
+    }
+    ''')
+        target_source=unit/'owned-target.c'
+        target_source.write_text('#include <stdio.h>\n#include <unistd.h>\n'
+            'int main(int argc,char **argv){puts("READY");fflush(stdout);sleep(30);return 0;}\n')
+        for source,binary in [(reader_source,reader),(target_source,target)]:
+            built=subprocess.run(['/usr/bin/clang',str(source),'-o',str(binary)],
+                capture_output=True,text=True,timeout=30)
+            assert built.returncode==0,built.stderr
+        profile=execution_profile(project,phase='test',executables=[reader],private_root=tmp_path)
+        env=sdk_environment()
+        peer=subprocess.Popen([str(target),MARKER],env={'PATH':'/usr/bin:/bin'},stdout=subprocess.PIPE,text=True)
+        try:
+            assert peer.stdout.readline().strip()=='READY'
+            positive=subprocess.run([str(reader),str(peer.pid)],env=env,cwd=project,
+                capture_output=True,text=True,timeout=10)
+            assert positive.returncode==23 and positive.stdout.strip()=='SYNTHETIC_ARGUMENT_VISIBLE'
+            restricted=subprocess.run(['/usr/bin/sandbox-exec','-p',profile,str(reader),str(peer.pid)],
+                env=env,cwd=project,capture_output=True,text=True,timeout=10)
+>           assert restricted.returncode==0,restricted.stdout+restricted.stderr
+E           AssertionError: SYNTHETIC_ARGUMENT_VISIBLE
+E             
+E           assert 23 == 0
+E            +  where 23 = CompletedProcess(args=['/usr/bin/sandbox-exec', '-p', '(version 1)(allow default)(deny network*)(deny file-write*)(den...t/target/release/unittest_bin/owned-reader', '23912'], returncode=23, stdout='SYNTHETIC_ARGUMENT_VISIBLE\n', stderr='').returncode
+
+tests/sdk/test_native_process_arguments.py:58: AssertionError
+=========================== short test summary info ============================
+FAILED tests/sdk/test_native_process_arguments.py::test_candidate_cannot_read_owned_peer_or_ancestor_arguments
+1 failed in 1.90s

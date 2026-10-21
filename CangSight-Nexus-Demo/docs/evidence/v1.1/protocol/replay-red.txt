@@ -1,0 +1,98 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__ test_completed_request_returns_same_candidate_across_real_server_sessions ___
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-96/test_completed_request_returns0')
+
+    def test_completed_request_returns_same_candidate_across_real_server_sessions(tmp_path):
+        ws,store,task,args=setup(tmp_path)
+        async def run():
+            async with ToolClient(tmp_path) as client:
+                first=await client.call_tool('candidate.apply',args)
+                assert first.operation_status=='OK'
+            async with ToolClient(tmp_path) as client:
+                repeated=await client.call_tool('candidate.apply',args)
+                assert repeated.operation_status=='OK',repeated
+                assert repeated.data['id']==first.data['id']
+                changed={**args,'proposal':{**args['proposal'],'requirement_refs':['changed']}}
+                denied=await client.call_tool('candidate.apply',changed)
+                assert denied.operation_status=='ERROR' and 'REQUEST_ID_REUSED' in denied.error
+            assert store.get_task(task.id).attempt_count==1
+            assert len(store.records(task.id,'candidate'))==1
+>       asyncio.run(run())
+
+tests/integration/test_request_replay.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def run():
+        async with ToolClient(tmp_path) as client:
+            first=await client.call_tool('candidate.apply',args)
+            assert first.operation_status=='OK'
+        async with ToolClient(tmp_path) as client:
+            repeated=await client.call_tool('candidate.apply',args)
+>           assert repeated.operation_status=='OK',repeated
+E           AssertionError: ToolResult(schema_version=1, operation_status='ERROR', data={}, error='duplicate or unchanged candidate', record_refs=['records/b2f49bbf69474a15ba2b4b11ad250d80.json'])
+E           assert 'ERROR' == 'OK'
+E             
+E             - OK
+E             + ERROR
+
+tests/integration/test_request_replay.py:31: AssertionError
+____________ test_missing_completed_artifact_never_reexecutes_write ____________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-96/test_missing_completed_artifac0')
+
+    def test_missing_completed_artifact_never_reexecutes_write(tmp_path):
+        ws,store,task,args=setup(tmp_path)
+        async def run():
+            async with ToolClient(tmp_path) as client:
+                first=await client.call_tool('candidate.apply',args)
+                assert first.operation_status=='OK'
+                diff=tmp_path/first.data['diff_ref']
+                diff.write_text('tampered')
+                result=await client.call_tool('candidate.apply',args)
+                assert result.operation_status=='IN_DOUBT'
+                assert store.get_task(task.id).attempt_count==1
+>       asyncio.run(run())
+
+tests/integration/test_request_replay.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:195: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:118: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../.cache/codex-runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def run():
+        async with ToolClient(tmp_path) as client:
+            first=await client.call_tool('candidate.apply',args)
+            assert first.operation_status=='OK'
+            diff=tmp_path/first.data['diff_ref']
+            diff.write_text('tampered')
+            result=await client.call_tool('candidate.apply',args)
+>           assert result.operation_status=='IN_DOUBT'
+E           AssertionError: assert 'ERROR' == 'IN_DOUBT'
+E             
+E             - IN_DOUBT
+E             + ERROR
+
+tests/integration/test_request_replay.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_request_replay.py::test_completed_request_returns_same_candidate_across_real_server_sessions
+FAILED tests/integration/test_request_replay.py::test_missing_completed_artifact_never_reexecutes_write
+2 failed in 1.76s

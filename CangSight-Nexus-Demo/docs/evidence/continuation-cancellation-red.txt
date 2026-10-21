@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_cancellation_between_phase_read_and_write_cannot_be_overwritten _____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-61/test_cancellation_between_phas0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10887e360>
+
+    def test_cancellation_between_phase_read_and_write_cannot_be_overwritten(tmp_path, monkeypatch):
+        store = RunStore(tmp_path)
+        task = store.create_task('base', 'fix', ['src/a.cj'])
+        store.update_task(task.id, status='GENERATING')
+        update = store.update_task
+        def cancel_before_commit(task_id, **changes):
+            update(task_id, status='CANCELLED')
+            return update(task_id, **changes)
+        monkeypatch.setattr(store, 'update_task', cancel_before_commit)
+>       assert RepairLoop(store).phase(task.id, 'APPLYING') is False
+E       AssertionError: assert True is False
+E        +  where True = phase('7ffd47ffc515431193b05c047ed17ce5', 'APPLYING')
+E        +    where phase = <nexus.repair.cegis_loop.RepairLoop object at 0x10887e420>.phase
+E        +      where <nexus.repair.cegis_loop.RepairLoop object at 0x10887e420> = RepairLoop(<nexus.store.RunStore object at 0x10887c680>)
+E        +    and   '7ffd47ffc515431193b05c047ed17ce5' = TaskRecord(id='7ffd47ffc515431193b05c047ed17ce5', baseline_id='base', goal='fix', allowed_paths=['src/a.cj'], test_plan={'build': ['cjpm', 'build', '-V'], 'test': ['cjpm', 'test']}, status='READY', attempt_count=0).id
+
+tests/test_repair_loop.py:104: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_repair_loop.py::test_cancellation_between_phase_read_and_write_cannot_be_overwritten
+1 failed in 0.23s

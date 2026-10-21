@@ -1,0 +1,315 @@
+TAP version 13
+# Subtest: a late initial sample catalog never replaces the source the user already uploaded
+ok 1 - a late initial sample catalog never replaces the source the user already uploaded
+  ---
+  duration_ms: 20.818792
+  ...
+# Subtest: selected source line becomes actual request criterion and old results stay labelled
+ok 2 - selected source line becomes actual request criterion and old results stay labelled
+  ---
+  duration_ms: 20.84375
+  ...
+# Subtest: restoring analysis restores its recorded target and rejects invalid edits
+ok 3 - restoring analysis restores its recorded target and rejects invalid edits
+  ---
+  duration_ms: 1.597292
+  ...
+# Subtest: diagram layout preserves every original node and dependency edge
+ok 4 - diagram layout preserves every original node and dependency edge
+  ---
+  duration_ms: 1.000667
+  ...
+# Subtest: cycles and self loops still produce finite visible positions without invented edges
+ok 5 - cycles and self loops still produce finite visible positions without invented edges
+  ---
+  duration_ms: 0.221166
+  ...
+# Subtest: source highlights come only from the selected valid tool slice
+ok 6 - source highlights come only from the selected valid tool slice
+  ---
+  duration_ms: 0.211125
+  ...
+# Subtest: source-bound log recovery can highlight while retaining original failure
+ok 7 - source-bound log recovery can highlight while retaining original failure
+  ---
+  duration_ms: 0.087375
+  ...
+# Subtest: native JSON remains preferred over a log recovery, and rejected recovery has no highlighter
+ok 8 - native JSON remains preferred over a log recovery, and rejected recovery has no highlighter
+  ---
+  duration_ms: 0.141125
+  ...
+# Subtest: late sample or upload response cannot overwrite a newer source selection
+ok 9 - late sample or upload response cannot overwrite a newer source selection
+  ---
+  duration_ms: 0.08875
+  ...
+# Subtest: startup and running states prevent changing source under an in-flight request
+ok 10 - startup and running states prevent changing source under an in-flight request
+  ---
+  duration_ms: 0.127792
+  ...
+# Subtest: a fresh upload clears every old slice and graph before its request starts
+ok 11 - a fresh upload clears every old slice and graph before its request starts
+  ---
+  duration_ms: 1.573416
+  ...
+# Subtest: replay stops for explicit review and never auto-accepts
+ok 12 - replay stops for explicit review and never auto-accepts
+  ---
+  duration_ms: 0.5205
+  ...
+# Subtest: policy denial cannot advance to review or delivery
+ok 13 - policy denial cannot advance to review or delivery
+  ---
+  duration_ms: 0.070958
+  ...
+# Subtest: pause, resume and reset do not retain acceptance
+ok 14 - pause, resume and reset do not retain acceptance
+  ---
+  duration_ms: 0.12125
+  ...
+# Subtest: rejection is terminal until reset
+ok 15 - rejection is terminal until reset
+  ---
+  duration_ms: 0.062375
+  ...
+# Subtest: real startup blocks mode, case and reset before a task id exists
+ok 16 - real startup blocks mode, case and reset before a task id exists
+  ---
+  duration_ms: 29.796542
+  ...
+# Subtest: successful real cancellation clears running and returns to a reset workspace
+ok 17 - successful real cancellation clears running and returns to a reset workspace
+  ---
+  duration_ms: 1.802667
+  ...
+# Subtest: late history selection cannot restore order delivery over the policy case
+ok 18 - late history selection cannot restore order delivery over the policy case
+  ---
+  duration_ms: 1.92175
+  ...
+# Subtest: BUILDING does not mark unverified real requirements satisfied
+ok 19 - BUILDING does not mark unverified real requirements satisfied
+  ---
+  duration_ms: 0.868292
+  ...
+# Subtest: revalidated candidate displays newest reports instead of obsolete unknown checks
+ok 20 - revalidated candidate displays newest reports instead of obsolete unknown checks
+  ---
+  duration_ms: 1.195541
+  ...
+# Subtest: new unknown or failed checks cannot inherit verified metrics from older passes
+ok 21 - new unknown or failed checks cannot inherit verified metrics from older passes
+  ---
+  duration_ms: 1.429375
+  ...
+# Subtest: real pending-review task is indexed so it survives workspace switches
+ok 22 - real pending-review task is indexed so it survives workspace switches
+  ---
+  duration_ms: 0.970875
+  ...
+# Subtest: an unexecuted or denied native policy does not appear allowed
+ok 23 - an unexecuted or denied native policy does not appear allowed
+  ---
+  duration_ms: 0.892291
+  ...
+# Subtest: NeedApproval is amber approval state, never an Allow badge
+ok 24 - NeedApproval is amber approval state, never an Allow badge
+  ---
+  duration_ms: 0.899417
+  ...
+# Subtest: real rejection locks mode switching until its response is settled
+ok 25 - real rejection locks mode switching until its response is settled
+  ---
+  duration_ms: 2.366667
+  ...
+# Subtest: new cases route generation to their registered project instead of the order fixture
+ok 26 - new cases route generation to their registered project instead of the order fixture
+  ---
+  duration_ms: 2.789542
+  ...
+# Subtest: policy probes never call the model repair run endpoint
+ok 27 - policy probes never call the model repair run endpoint
+  ---
+  duration_ms: 2.172917
+  ...
+# Subtest: historical failed round cannot be accepted or rejected
+ok 28 - historical failed round cannot be accepted or rejected
+  ---
+  duration_ms: 1.321166
+  ...
+# Subtest: late round selection cannot replace a newer selected round
+ok 29 - late round selection cannot replace a newer selected round
+  ---
+  duration_ms: 1.196042
+  ...
+# Subtest: a fresh browser starts generation directly without pairing
+ok 30 - a fresh browser starts generation directly without pairing
+  ---
+  duration_ms: 1.594958
+  ...
+# Subtest: later review probes do not inflate repair execution duration
+ok 31 - later review probes do not inflate repair execution duration
+  ---
+  duration_ms: 0.655625
+  ...
+# Subtest: missing records cannot turn task progress into an allowed native decision
+ok 32 - missing records cannot turn task progress into an allowed native decision
+  ---
+  duration_ms: 0.593833
+  ...
+# Subtest: controller fallback denial is distinguished from a native process response
+ok 33 - controller fallback denial is distinguished from a native process response
+  ---
+  duration_ms: 0.180958
+  ...
+# Subtest: NeedApproval and execution outcome remain distinct, joined by request id
+ok 34 - NeedApproval and execution outcome remain distinct, joined by request id
+  ---
+  duration_ms: 0.087
+  ...
+# Subtest: an Allow response without a completion record has unknown execution outcome
+ok 35 - an Allow response without a completion record has unknown execution outcome
+  ---
+  duration_ms: 0.067708
+  ...
+# Subtest: approval probe refresh keeps the selected task and restores review controls
+ok 36 - approval probe refresh keeps the selected task and restores review controls
+  ---
+  duration_ms: 5.192916
+  ...
+# Subtest: analysis entry is visible for every real repair case and absent for policy probes
+ok 37 - analysis entry is visible for every real repair case and absent for policy probes
+  ---
+  duration_ms: 1.628666
+  ...
+# Subtest: feedback renders real values and suite mapping without interpreting source as HTML
+ok 38 - feedback renders real values and suite mapping without interpreting source as HTML
+  ---
+  duration_ms: 1.412
+  ...
+# Subtest: missing fields stay unavailable and switching candidate clears stale feedback
+ok 39 - missing fields stay unavailable and switching candidate clears stale feedback
+  ---
+  duration_ms: 0.519583
+  ...
+# Subtest: pending candidate without feedback safely keeps the panel empty
+ok 40 - pending candidate without feedback safely keeps the panel empty
+  ---
+  duration_ms: 0.366583
+  ...
+# Subtest: viewing and switching candidates do not request fresh tool analysis
+ok 41 - viewing and switching candidates do not request fresh tool analysis
+  ---
+  duration_ms: 2.274292
+  ...
+# Subtest: late impact response cannot fill the newly selected candidate dialog
+ok 42 - late impact response cannot fill the newly selected candidate dialog
+  ---
+  duration_ms: 0.566167
+  ...
+# Subtest: explicit generation sends only one empty POST and cannot repeat a recorded run
+ok 43 - explicit generation sends only one empty POST and cannot repeat a recorded run
+  ---
+  duration_ms: 1.903459
+  ...
+# Subtest: operator credential is cleared immediately and sent only to explicit authorization route
+ok 44 - operator credential is cleared immediately and sent only to explicit authorization route
+  ---
+  duration_ms: 1.459875
+  ...
+# Subtest: failed pairing neither reloads nor retains or echoes credential
+ok 45 - failed pairing neither reloads nor retains or echoes credential
+  ---
+  duration_ms: 0.576458
+  ...
+# Subtest: preparing a file leaves expected values unknown until user supplies examples
+ok 46 - preparing a file leaves expected values unknown until user supplies examples
+  ---
+  duration_ms: 4.434667
+  ...
+# Subtest: confirmation requires consent and preserves exact JSON text then selects uploaded workspace
+ok 47 - confirmation requires consent and preserves exact JSON text then selects uploaded workspace
+  ---
+  duration_ms: 1.185333
+  ...
+# Subtest: closing a pending prepare prevents its late response from restoring a stale draft
+ok 48 - closing a pending prepare prevents its late response from restoring a stale draft
+  ---
+  duration_ms: 3.412417
+  ...
+# Subtest: late task response cannot overwrite a newly started task
+ok 49 - late task response cannot overwrite a newly started task
+  ---
+  duration_ms: 4.682416
+  ...
+# Subtest: late candidate details cannot replace newer selection on the same task
+ok 50 - late candidate details cannot replace newer selection on the same task
+  ---
+  duration_ms: 2.337
+  ...
+# Subtest: late errors do not replace the current task message
+ok 51 - late errors do not replace the current task message
+  ---
+  duration_ms: 0.938917
+  ...
+# Subtest: start invalidates pending refresh immediately, before POST resolves
+ok 52 - start invalidates pending refresh immediately, before POST resolves
+  ---
+  duration_ms: 1.166792
+  ...
+# Subtest: late acceptance cannot export a candidate from a previous task
+ok 53 - late acceptance cannot export a candidate from a previous task
+  ---
+  duration_ms: 1.093042
+  ...
+# Subtest: late export cannot restore a previous task download link
+ok 54 - late export cannot restore a previous task download link
+  ---
+  duration_ms: 1.834208
+  ...
+# Subtest: draft is displayed before explicit confirmation and task creation
+ok 55 - draft is displayed before explicit confirmation and task creation
+  ---
+  duration_ms: 1.418208
+  ...
+# Subtest: reject is bound to current revision and late details cannot restore acceptance
+ok 56 - reject is bound to current revision and late details cannot restore acceptance
+  ---
+  duration_ms: 1.055834
+  ...
+# Subtest: cancel keeps the selected task and revision without starting a new task
+ok 57 - cancel keeps the selected task and revision without starting a new task
+  ---
+  duration_ms: 2.031917
+  ...
+# Subtest: V1.1 acceptance sends frozen candidate revision
+ok 58 - V1.1 acceptance sends frozen candidate revision
+  ---
+  duration_ms: 1.487125
+  ...
+# Subtest: browsing an older candidate cannot accept it or restore stale details
+ok 59 - browsing an older candidate cannot accept it or restore stale details
+  ---
+  duration_ms: 1.139375
+  ...
+# Subtest: history task switch invalidates old task response without creating a run
+ok 60 - history task switch invalidates old task response without creating a run
+  ---
+  duration_ms: 0.969875
+  ...
+# Subtest: user can narrow source scope before confirming and cannot edit pending approval
+ok 61 - user can narrow source scope before confirming and cannot edit pending approval
+  ---
+  duration_ms: 1.3665
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 61
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 206.809709

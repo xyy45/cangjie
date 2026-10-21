@@ -1,0 +1,19 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+ [36m==>[0m /private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/src/quantity.cj:8:9:
+  [36m| [0m
+[36m8[0m [36m| [0m    if (Console.stdIn.readln() != None) {[0m
+  [36m| [0m        [33m^^^^^^^ deprecated[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: unused variable:'ignored'
+  [36m==>[0m /private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/src/quantity.cj:12:13:
+   [36m| [0m
+[36m12[0m [36m| [0m        let ignored = File.readFrom("/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/.operator-key")[0m
+   [36m| [0m            [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+2 warnings generated, 2 warnings printed.
+Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/target/release --no-sub-pkg --output-dir=/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/target/release/orderdemo -p /private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-164/test_real_cangjie_cannot_read_0/candidates/c_215c03da0fa3451390f1d142f706b29f/src --output-type=staticlib -o=liborderdemo.a
+cjpm build success

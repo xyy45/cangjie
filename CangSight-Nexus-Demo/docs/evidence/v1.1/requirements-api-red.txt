@@ -1,0 +1,81 @@
+.F.F.FF                                                                  [100%]
+=================================== FAILURES ===================================
+____________________ test_duplicate_start_returns_same_task ____________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-84/test_duplicate_start_returns_s0')
+
+    def test_duplicate_start_returns_same_task(tmp_path):
+        store, loop, client, headers = setup_app(tmp_path)
+>       spec=confirm_spec(client,headers)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_web.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = <FlaskClient <Flask 'nexus.web.app'>>
+headers = {'Origin': 'http://localhost', 'X-CSRF-Token': 'ewQnlH-cSwglRgJRBy0ogUXkWLe9wVQ85kLqGxrQ9cA'}
+goal = 'fix order'
+
+    def confirm_spec(client, headers, goal='fix order'):
+        response=client.post('/api/requirements/drafts',json={'project':'order-demo-bug','goal':goal},headers=headers)
+>       assert response.status_code==200,response.json
+E       AssertionError: None
+E       assert 404 == 200
+E        +  where 404 = <WrapperTestResponse streamed [404 NOT FOUND]>.status_code
+
+tests/test_web.py:33: AssertionError
+__________ test_optional_analysis_unavailable_does_not_disable_repair __________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-84/test_optional_analysis_unavail0')
+
+    def test_optional_analysis_unavailable_does_not_disable_repair(tmp_path):
+        store, loop, client, headers = setup_app(tmp_path)
+>       spec=confirm_spec(client,headers)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_web.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+client = <FlaskClient <Flask 'nexus.web.app'>>
+headers = {'Origin': 'http://localhost', 'X-CSRF-Token': 'ssoyJrY1PKpGu-ErN7fuuVdZzq6nlq19LqAjXtKq2ZM'}
+goal = 'fix order'
+
+    def confirm_spec(client, headers, goal='fix order'):
+        response=client.post('/api/requirements/drafts',json={'project':'order-demo-bug','goal':goal},headers=headers)
+>       assert response.status_code==200,response.json
+E       AssertionError: None
+E       assert 404 == 200
+E        +  where 404 = <WrapperTestResponse streamed [404 NOT FOUND]>.status_code
+
+tests/test_web.py:33: AssertionError
+______ test_unconfirmed_requirement_and_client_actor_or_goal_cannot_start ______
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-84/test_unconfirmed_requirement_a0')
+
+    def test_unconfirmed_requirement_and_client_actor_or_goal_cannot_start(tmp_path):
+        store,loop,client,headers=setup_app(tmp_path)
+        missing=client.post('/api/tasks',json=dict(project='order-demo-bug',spec_id='unknown',
+            idempotency_key='missing'),headers=headers)
+>       assert missing.status_code==400 and missing.json['code']=='REQUIREMENT_UNCONFIRMED'
+                                            ^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'code'
+
+tests/test_web.py:78: KeyError
+___ test_environment_and_requirement_draft_do_not_call_model_or_create_task ____
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-84/test_environment_and_requireme0')
+
+    def test_environment_and_requirement_draft_do_not_call_model_or_create_task(tmp_path):
+        store,loop,client,headers=setup_app(tmp_path)
+        status=client.get('/api/environment')
+>       assert status.status_code==200
+E       assert 404 == 200
+E        +  where 404 = <WrapperTestResponse streamed [404 NOT FOUND]>.status_code
+
+tests/test_web.py:98: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_web.py::test_duplicate_start_returns_same_task - AssertionE...
+FAILED tests/test_web.py::test_optional_analysis_unavailable_does_not_disable_repair
+FAILED tests/test_web.py::test_unconfirmed_requirement_and_client_actor_or_goal_cannot_start
+FAILED tests/test_web.py::test_environment_and_requirement_draft_do_not_call_model_or_create_task
+4 failed, 3 passed in 0.38s

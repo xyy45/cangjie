@@ -1,0 +1,82 @@
+{
+  "scope": "Actual unchanged registered baseline; expected 10 passed/1 failed, not repaired PASS; experimental rule not yet production",
+  "project": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-process-compat-8o6hqxwl/project",
+  "rule": "(deny sysctl-read (sysctl-name-prefix \"kern.procargs\"))(deny process-info*)(allow process-info* (target self))(allow process-info* (target children))",
+  "results": [
+    {
+      "label": "build",
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "exit_code": 0,
+      "stdout": "Compiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-process-compat-8o6hqxwl/project/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-process-compat-8o6hqxwl/project/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-process-compat-8o6hqxwl/project/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "stderr": ""
+    },
+    {
+      "label": "compile-test",
+      "argv": [
+        "cjpm",
+        "test",
+        "--no-run"
+      ],
+      "exit_code": 0,
+      "stdout": "   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/native-process-compat-8o6hqxwl/project/target/release/unittest_bin`\ncjpm test success\n",
+      "stderr": ""
+    },
+    {
+      "label": "test",
+      "argv": [
+        "cjpm",
+        "test",
+        "--skip-build"
+      ],
+      "exit_code": 1,
+      "stdout": "\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1598000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1598000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (201000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (12000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (8000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (9000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (49000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2295000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2264000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1598000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1598000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (49000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25h",
+      "stderr": "Error: cjpm test failed\n",
+      "parsed": {
+        "schema_version": 1,
+        "argv": [],
+        "execution_argv": [],
+        "working_root": null,
+        "toolchain_hash": null,
+        "duration_ms": null,
+        "report_ref": null,
+        "case_results": {
+          "OrderTests.three": "PASS",
+          "OrderTests.two": "PASS",
+          "OrderTests.zeroPrice": "PASS",
+          "OrderTests.negativeQuantity": "PASS",
+          "OrderTests.upperQuantity": "PASS",
+          "OrderTests.excessQuantity": "PASS",
+          "OrderTests.negativePrice": "PASS",
+          "OrderTests.upperPrice": "PASS",
+          "OrderTests.excessPrice": "PASS",
+          "OrderTests.differentPrice": "PASS",
+          "OrderTests.zeroQuantity": "FAIL"
+        },
+        "suite_results": {},
+        "spec_hash": null,
+        "verification_plan_hash": null,
+        "limitations": [],
+        "id": "",
+        "subject_id": "",
+        "plan_hash": "",
+        "tree_hash": "",
+        "kind": "test",
+        "state": "FAIL",
+        "exit_code": null,
+        "counts": {
+          "total": 11,
+          "passed": 10,
+          "skipped": 0,
+          "errors": 0,
+          "failed": 1
+        },
+        "log_ref": "",
+        "diagnostics": "\n\n\n--------------------------------------------------------------------------------------------------\nTP: orderdemo, time elapsed: 1598000 ns, RESULT:\n    TCS: OrderTests, time elapsed: 1598000 ns, RESULT:\n    [ PASSED ] CASE: three (201000 ns)\n    [ PASSED ] CASE: two (12000 ns)\n    [ PASSED ] CASE: zeroPrice (9000 ns)\n    [ PASSED ] CASE: negativeQuantity (9000 ns)\n    [ PASSED ] CASE: upperQuantity (8000 ns)\n    [ PASSED ] CASE: excessQuantity (9000 ns)\n    [ PASSED ] CASE: negativePrice (6000 ns)\n    [ PASSED ] CASE: upperPrice (6000 ns)\n    [ PASSED ] CASE: excessPrice (5000 ns)\n    [ PASSED ] CASE: differentPrice (9000 ns)\n    [ FAILED ] CASE: zeroQuantity (49000 ns)\n    Expect Failed: `(processOrder(0, 100) == - 1)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    PASSED: 10, SKIPPED: 0, ERROR: 0\n    FAILED: 1, listed below:\n            TCS: OrderTests, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2295000 ns, RESULT:\nTP: orderdemo.*, time elapsed: 2264000 ns, RESULT:\n    FAILED:\n    TP: orderdemo, time elapsed: 1598000 ns, RESULT:\n        TCS: OrderTests, time elapsed: 1598000 ns, RESULT:\n        [ FAILED ] CASE: zeroQuantity (49000 ns)\nSummary: TOTAL: 11\n    PASSED: 10, SKIPPED: 0, ERROR: 0\n    FAILED: 1\n--------------------------------------------------------------------------------------------------\nError: cjpm test failed\n"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "direct_upload_status": 202,
+  "restored_upload_status": 200,
+  "other_session_status": 404,
+  "pairing_endpoint_status": 404,
+  "operator_file_created": false,
+  "external_tool_calls": 0,
+  "model_calls": 0
+}

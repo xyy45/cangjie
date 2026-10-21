@@ -1,0 +1,45 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+___________________ test_two_file_edits_publish_all_or_none ____________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-7/test_two_file_edits_publish_al0')
+
+    def test_two_file_edits_publish_all_or_none(tmp_path):
+        ws, store, task = setup_workspace(tmp_path)
+        p = proposal(ws, task, ['src/quantity.cj', 'src/fee.cj'])
+        p.edits[1].before_hash = '0'*64
+        with pytest.raises(ValueError):
+>           ws.apply_candidate(task, p)
+            ^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'WorkspaceStore' object has no attribute 'apply_candidate'
+
+tests/test_workspace.py:29: AttributeError
+___________________ test_baseline_unchanged_after_candidate ____________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-7/test_baseline_unchanged_after_0')
+
+    def test_baseline_unchanged_after_candidate(tmp_path):
+        ws, store, task = setup_workspace(tmp_path)
+        before = tree_hash(ws.subject_path(task.baseline_id))
+>       c = ws.apply_candidate(task, proposal(ws, task, ['src/quantity.cj']))
+            ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'WorkspaceStore' object has no attribute 'apply_candidate'
+
+tests/test_workspace.py:37: AttributeError
+_______________ test_duplicate_diff_does_not_create_new_attempt ________________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-7/test_duplicate_diff_does_not_c0')
+
+    def test_duplicate_diff_does_not_create_new_attempt(tmp_path):
+        ws, store, task = setup_workspace(tmp_path)
+        p = proposal(ws, task, ['src/quantity.cj'])
+>       ws.apply_candidate(task, p)
+        ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'WorkspaceStore' object has no attribute 'apply_candidate'
+
+tests/test_workspace.py:47: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_workspace.py::test_two_file_edits_publish_all_or_none - Att...
+FAILED tests/test_workspace.py::test_baseline_unchanged_after_candidate - Att...
+FAILED tests/test_workspace.py::test_duplicate_diff_does_not_create_new_attempt
+3 failed, 1 passed in 0.36s

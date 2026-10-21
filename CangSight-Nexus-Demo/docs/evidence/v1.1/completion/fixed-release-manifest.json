@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "source_commit": "6d8784b",
+  "source_sha256": "8f940c8ad7fcefab3b411ca274aa76fde343ef9dab87ed12c3e241f2f733053d",
+  "offline_result": "125 passed, 8 deselected in 24.38s",
+  "sdk_result": "7 passed in 57.61s",
+  "no_git_result": "125 passed, 8 deselected in 24.46s",
+  "no_git_details": {
+    "source_commit": "6d8784b",
+    "source": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-source-6d8784b.zip",
+    "source_sha256": "8f940c8ad7fcefab3b411ca274aa76fde343ef9dab87ed12c3e241f2f733053d",
+    "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-completion-85mjb_lw/CangSight-Nexus",
+    "git_metadata": false,
+    "env_file": false,
+    "interpreter": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.venv/bin/python",
+    "shared_only_sdk_stdx": true,
+    "note": "Same-host release-directory check, not external member reproduction"
+  },
+  "current_revalidation_archive_sha256": "9f4a3f7bddac2d0f5018bdedc930f277d419776a6a564c8c34772194cbd01721",
+  "new_paid_requests": 0,
+  "total_authorized_live_requests": 1,
+  "m1": "PARTIAL",
+  "external_reproduction": "PENDING",
+  "competition_submission": "PENDING",
+  "control_port_isolation": "NOT_ACHIEVED",
+  "files": {
+    "source/CangSight-Nexus-v1.1-source-6d8784b.zip": {
+      "sha256": "8f940c8ad7fcefab3b411ca274aa76fde343ef9dab87ed12c3e241f2f733053d",
+      "bytes": 1440636
+    },
+    "evidence/original-authorized-LIVE.zip": {
+      "sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+      "bytes": 73890
+    },
+    "evidence/current-executor-revalidation.zip": {
+      "sha256": "9f4a3f7bddac2d0f5018bdedc930f277d419776a6a564c8c34772194cbd01721",
+      "bytes": 119849
+    },
+    "evidence/no-git-offline.txt": {
+      "sha256": "7c318f5f88224313e93895b3ad55892cac579dbe20247a9cb99a3c2d46739687",
+      "bytes": 195
+    },
+    "evidence/fresh-policy-build.txt": {
+      "sha256": "d4f0d9bb582e9d952db5a961488f652028ea0ce30f5242d435aabe0df8816e16",
+      "bytes": 1280
+    },
+    "evidence/completion/scope-mobile-layout.json": {
+      "sha256": "481d52126d7ae4cd7cf56e7d061db71252d3817a8881df550b3c4d6f6e7d8b09",
+      "bytes": 374
+    },
+    "evidence/completion/offline.txt": {
+      "sha256": "73892162a2a318fef665c8789404447317601aec5ff18bb897a679c3ee27aa1a",
+      "bytes": 195
+    },
+    "evidence/completion/inbound-only-sdk.txt": {
+      "sha256": "230746733ae98e9c9e9ec39a87d04815844191fff60cfead862744474c564337",
+      "bytes": 4410
+    },
+    "evidence/completion/revalidate-executor-final.txt": {
+      "sha256": "a2f94c5143a88b2289c2effa64e5b2a097a35ca257e70ccc09c82db5e7ffb6ee",
+      "bytes": 260
+    },
+    "evidence/completion/control-ports-tcp.txt": {
+      "sha256": "1d3d053ced995f719b3c9f9bec6f9f4e3d6e46ace8d66d88f902ff1a26dd9156",
+      "bytes": 4194
+    },
+    "evidence/completion/sensitive-scan.json": {
+      "sha256": "952df305a20d4895378c603396aa0df36ddc418b72421bc8054a2607af226d1b",
+      "bytes": 115
+    },
+    "evidence/completion/states-red.txt": {
+      "sha256": "7da301516eda12fff98a303a6220436dc6eef6914c89977867a16343e7920f50",
+      "bytes": 4244
+    },
+    "evidence/completion/scope-ui-red.txt": {
+      "sha256": "31f27303b00c4c0252d49370114a5927340e4e33f4bb518d319f4b08cc1452d1",
+      "bytes": 1875
+    },
+    "evidence/completion/scope-desktop.png": {
+      "sha256": "4669b05d8069325107ad6cb55b28799262e8f27fb6874ecc9ed1dd6a3f42b403",
+      "bytes": 128881
+    },
+    "evidence/completion/scope-ui-green.txt": {
+      "sha256": "4559e555eb8937263ea22eef0757fbf5d3aca95d5b1b4bc3f0c89ca1268a1412",
+      "bytes": 1192
+    },
+    "evidence/completion/scope-contract-import-failure.txt": {
+      "sha256": "45434d9e1503983ada3b47e93b7185e0c6c9340ea5ec5a5ddc67fefe479df55d",
+      "bytes": 1035
+    },
+    "evidence/completion/control-ports-inbound-filter.txt": {
+      "sha256": "6e893eb1e826589f303eee82f9e99b83c99596afd07524273f6896e8775e57e1",
+      "bytes": 4194
+    },
+    "evidence/completion/control-ports-red.txt": {
+      "sha256": "dbe84662d0b4d75428cca329c568c90127b98e3085e602d15dea19071fbed3ed",
+      "bytes": 4184
+    },
+    "evidence/completion/revalidate-executor-output-path-only.txt": {
+      "sha256": "f43e403a05b498611fa094d656204b30fe0c6656fcb048fc6736e27d0a19928b",
+      "bytes": 260
+    },
+    "evidence/completion/control-ports-explicit-deny.txt": {
+      "sha256": "cd308bdc9ec55967db29cf7386187941c452d8521930b683b4e4029095f9bf03",
+      "bytes": 4194
+    },
+    "evidence/completion/control-ports-ephemeral-bind.txt": {
+      "sha256": "e576d1b1480c69dab5b16ac681b9747da2988360fbd13e42f639b8cc86138442",
+      "bytes": 9158
+    },
+    "evidence/completion/errors-green.txt": {
+      "sha256": "a8c0a84b1b2d2e8f2b5aec7c2f4c545509a941a4f2cf535228f5906fcde50eed",
+      "bytes": 99
+    },
+    "evidence/completion/control-ports-without-wildcard-inbound.txt": {
+      "sha256": "d8f8f8f941a517143e68ae6013fe9119db4c4505bbfb0fb95b6fe476012f993f",
+      "bytes": 98
+    },
+    "evidence/completion/states-green.txt": {
+      "sha256": "084a25fd7fc57b69d76f16eaf5bf6197aefadfde1d0102d9db63b3ed8dd33a12",
+      "bytes": 99
+    },
+    "evidence/completion/final-offline.txt": {
+      "sha256": "77dec6a2fb7e63a52bac1eab61fe0610032bfe1a0e85ee81c2974ba2574c2099",
+      "bytes": 195
+    },
+    "evidence/completion/sdk-http.txt": {
+      "sha256": "fce4606da60d0201287db178250a7b4b86936686dcdc30a0cd3a564b7d1695bc",
+      "bytes": 99
+    },
+    "evidence/completion/errors-red.txt": {
+      "sha256": "ed808fb322f4619122029e3e6d50bbedf981f412d6e3ecb274ce5d36182dbb3d",
+      "bytes": 4155
+    },
+    "evidence/completion/cancel-notice-red.txt": {
+      "sha256": "e67062cb07243d647dd02460ddfb38d1bac447d0f20e4be73f082daa2eeb56fa",
+      "bytes": 1357
+    },
+    "evidence/completion/scope-contract-green.txt": {
+      "sha256": "7fd7e2cc4ad26ccd157048170991da626a273481114a026c73ce89b622ddc068",
+      "bytes": 99
+    },
+    "evidence/completion/guarded-offline.txt": {
+      "sha256": "958ccf645e0bb22f33d33218de8283672cf5e674688d705417f4c17282ee1266",
+      "bytes": 195
+    },
+    "evidence/completion/final-sdk.txt": {
+      "sha256": "8b98c7d027e42fd6d817ca1a8386aaca5ff6d1d21c00855a61a4d3a02adb7365",
+      "bytes": 99
+    },
+    "evidence/completion/executor-revalidation-output-path-only.json": {
+      "sha256": "6ed810a5906e97292b404dfaf74b2507ca5b607f2be23042b1829fa114d62d0a",
+      "bytes": 16558
+    },
+    "evidence/completion/release-offline.txt": {
+      "sha256": "49bab858cbebd096607c127c376948977f4ded63c1baa7065c7d5d1a4ac3052a",
+      "bytes": 195
+    },
+    "evidence/completion/output-boundary-red.txt": {
+      "sha256": "c8214e2aaf8d4fdea852b7c93cea9dbf9ee2ca52c8664b447790a5411ce8e22e",
+      "bytes": 5682
+    },
+    "evidence/completion/scope-mobile.png": {
+      "sha256": "4c68a8b859aeee938abfb6b163f13c6100e23d9a021dbae21c96dd911021a4e6",
+      "bytes": 103721
+    },
+    "evidence/completion/output-boundary-green.txt": {
+      "sha256": "5ce7a5fa8c53599d584e36166479d550bc7cd7a3d4c61fd62b64be3c76799f88",
+      "bytes": 98
+    },
+    "evidence/completion/errors-cancel-green.txt": {
+      "sha256": "5c14e8ec44623aa962c92b098cce4c21e374817dad5fbe8de125ec48528fdbc8",
+      "bytes": 99
+    },
+    "evidence/completion/revalidation.json": {
+      "sha256": "ef63db2440f967a11ff03741693b93ee29b1bca49e64b68e5956872320e00cd1",
+      "bytes": 466
+    },
+    "evidence/completion/revalidate-executor.py": {
+      "sha256": "c0954294bda1b3666a7e884db847a5a6878533267f98673c52f56191be0ce796",
+      "bytes": 7041
+    },
+    "evidence/completion/runner-final.txt": {
+      "sha256": "e37fe9418f132d48c0f5ca5fada90406aa375d6b3bbd711db795cb0012320314",
+      "bytes": 4194
+    },
+    "evidence/completion/mobile-history.png": {
+      "sha256": "c47b868843f8c7f42fd962554ca26dc59c76c94133c006b4f32559bf69b0bbb1",
+      "bytes": 74246
+    },
+    "evidence/completion/guarded-sdk.txt": {
+      "sha256": "1b71925bd0ebb465ead1e476d70fe72498f98547855a718793aad14750454e71",
+      "bytes": 99
+    },
+    "evidence/completion/current-executor-revalidation.json": {
+      "sha256": "d44ea4ec960c8137d9594fe8cd858f7f828ea15fc5bfd035c79b6e112e30b329",
+      "bytes": 16559
+    },
+    "evidence/completion/control-ports-sdk.txt": {
+      "sha256": "79f79d8200f2d73ea58d97eaaa07b0632c3d11e8d2a1eb1f447db8d14da4de79",
+      "bytes": 14717
+    },
+    "evidence/completion/output-boundary-import-failure.txt": {
+      "sha256": "bfe0393d4ab812505a89b93d27cd68dabaca6678b131c82aba280c5b6e5ecd92",
+      "bytes": 603
+    },
+    "evidence/completion/scope-preview-counts.json": {
+      "sha256": "958bb728166b709ae2668ced7d1c63659b7d5091f70f6f1b37f98f49f13e29f3",
+      "bytes": 89
+    },
+    "evidence/completion/states-final.txt": {
+      "sha256": "80cb615b2c424488baa365feb3bdb8326f89a3181efe5de241cb0e60798e0fe3",
+      "bytes": 99
+    },
+    "evidence/completion/mobile-layout.json": {
+      "sha256": "e52d5a0bc47c5eb3e43283d33366ca2264521a202bfc8e1dfa69eb1a642c0e8b",
+      "bytes": 338
+    },
+    "evidence/completion/integrity.json": {
+      "sha256": "8412a3240d197cc1670a717200c632c6b923005f88cd1e593d0e956d7efda083",
+      "bytes": 277
+    },
+    "reports/independent-reproduction.md": {
+      "sha256": "15b338c2c6313c1cdcf347c4562b00fcd6a98e16356eb7cc94489fade90b904c",
+      "bytes": 3776
+    },
+    "reports/runbook.md": {
+      "sha256": "9646461c66b7f71c2e4b67fcee36d012d290dc93002d76ee8b21ee0ee21ef4a4",
+      "bytes": 9508
+    },
+    "reports/completion-audit.md": {
+      "sha256": "19ffefcc64c4825c3bfbe62537af254da1970db55340fa8510173c6569e9433b",
+      "bytes": 5876
+    },
+    "reports/m1-reuse-review.md": {
+      "sha256": "670abc58b96d68cd4a163f64d9f36b3cc721d8b49c86eea8293167934a3d685b",
+      "bytes": 3806
+    },
+    "reports/validation-report.md": {
+      "sha256": "d94a11fda0b235fe2430296f11f473254516d7f81fb86d71ad67b09ad13e311f",
+      "bytes": 6709
+    },
+    "video/historical-LIVE-record-replay.mp4": {
+      "sha256": "48a9f1de1e1c05165d852ce2f4a3dd7bc2f1b39fa9ee53a93f5f77388b97b93c",
+      "bytes": 320687
+    },
+    "video/video-provenance.json": {
+      "sha256": "d744b526c40ed2dc56c74f733610679e1a30ec95e110e66fda23dbd6abb6beff",
+      "bytes": 1257
+    },
+    "README-先读我.md": {
+      "sha256": "b260397e6c4ca0e7d1e105c8c94a4e831f645885955a6c9a3bd610c2bc8d2b2a",
+      "bytes": 1827
+    }
+  },
+  "technical_package": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-技术复核包-6d8784b.zip",
+  "technical_package_sha256": "a8b1d79bda0d906d5d49ea3f8e3d965c6a8403ab02bb4f997e876aaadf0197a2",
+  "recursive_archive_integrity": "PASS",
+  "configured_key_scan": "NO_MATCH",
+  "release_env_exclusion": "PASS"
+}

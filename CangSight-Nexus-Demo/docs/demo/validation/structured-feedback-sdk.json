@@ -1,0 +1,73 @@
+{
+  "origin": "REAL_SDK_AND_MCP_WITH_TEST_MODEL_TRANSPORT",
+  "task_id": "35f127f0f33842ebb83dc909790c0f84",
+  "status": "REVIEW_PENDING",
+  "rounds": 2,
+  "model_requests": 2,
+  "paid_model_calls": 0,
+  "next_request_feedback_matches_event": true,
+  "feedback_hash": "2bb9dfdfef769ebd23d94d24e64cbe9e110b9d560fa60d6469d48a9609c52b9b",
+  "failure_cases": [
+    {
+      "kind": "test",
+      "test_id": "ValidationTests.multiply",
+      "expression": "calculateFee(3, 100)",
+      "input": "calculateFee(3, 100)",
+      "actual": "103",
+      "expected": "300",
+      "requirement_refs": [
+        "REQ-QUANTITY",
+        "REQ-FEE"
+      ],
+      "mapping_basis": "TEST_SUITE",
+      "source": {
+        "log_ref": "records/b0e9cc0b73954fa089913057bc19bd0b.log",
+        "coordinate": "ANSI_STRIPPED_CHECK_DIAGNOSTICS",
+        "start_char": 896,
+        "end_char": 981
+      }
+    },
+    {
+      "kind": "test",
+      "test_id": "ValidationTests.normal",
+      "expression": "processOrder(2, 100)",
+      "input": "processOrder(2, 100)",
+      "actual": "102",
+      "expected": "200",
+      "requirement_refs": [
+        "REQ-QUANTITY",
+        "REQ-FEE"
+      ],
+      "mapping_basis": "TEST_SUITE",
+      "source": {
+        "log_ref": "records/b0e9cc0b73954fa089913057bc19bd0b.log",
+        "coordinate": "ANSI_STRIPPED_CHECK_DIAGNOSTICS",
+        "start_char": 1020,
+        "end_char": 1105
+      }
+    },
+    {
+      "kind": "test",
+      "test_id": "ValidationTests.zeroPrice",
+      "expression": "processOrder(1, 0)",
+      "input": "processOrder(1, 0)",
+      "actual": "1",
+      "expected": "0",
+      "requirement_refs": [
+        "REQ-QUANTITY",
+        "REQ-FEE"
+      ],
+      "mapping_basis": "TEST_SUITE",
+      "source": {
+        "log_ref": "records/b0e9cc0b73954fa089913057bc19bd0b.log",
+        "coordinate": "ANSI_STRIPPED_CHECK_DIAGNOSTICS",
+        "start_char": 1147,
+        "end_char": 1224
+      }
+    }
+  ],
+  "previous_candidate_id": "c_ddf7fa15a3494b449d9c4763586c3fe1",
+  "tree_hash": "b1de0bc4d8c146ba2002a6a53b0e9b14bb6c0de50873756c2cea96501725a0ba",
+  "raw_log_sha256": "55f9bd95f723b677c41496534caceb6999f7454aa729ee2419fda2d7217ddaa4",
+  "raw_log_file": "structured-feedback-sdk-failed.log"
+}

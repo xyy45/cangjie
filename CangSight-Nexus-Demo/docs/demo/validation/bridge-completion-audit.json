@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": [
+    "source-bound MCP analysis in DeepSeek repair",
+    "native policy decisions and execution outcomes"
+  ],
+  "acceptance": {
+    "source_binding": true,
+    "valid_only_model_context": true,
+    "model_citations_validated": true,
+    "original_evidence_archived": true,
+    "read_only_bound_analysis_ui": true,
+    "allow_deny_needapproval_observed": true,
+    "approval_probe_no_action": true,
+    "no_auto_acceptance": true
+  },
+  "validation": {
+    "full_python": "248 passed, 1 deselected (227.38s)",
+    "focused_after_route_test": "74 passed (1.67s)",
+    "node": "42 passed",
+    "independent_review": "No blocking important findings; read-only reviewer, evidence UI 6/6 passed"
+  },
+  "live_summary": "docs/demo/validation/bridge-live.json",
+  "real_candidate_state": "REVIEW_PENDING",
+  "limits": [
+    "Main case DDG empty",
+    "quantity slice internal failure",
+    "Two files analyzed separately; not an inter-file dependency proof"
+  ]
+}

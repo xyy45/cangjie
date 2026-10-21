@@ -1,0 +1,14 @@
+✔ late task response cannot overwrite a newly started task (2.789083ms)
+✔ late candidate details cannot replace newer selection on the same task (1.538833ms)
+✔ late errors do not replace the current task message (0.638584ms)
+✔ start invalidates pending refresh immediately, before POST resolves (0.527917ms)
+✔ late acceptance cannot export a candidate from a previous task (0.469458ms)
+✔ late export cannot restore a previous task download link (0.531333ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.000542

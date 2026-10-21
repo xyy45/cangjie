@@ -1,0 +1,51 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/private/var/folders/c2/j5zsr_lj7mlb796sb3fngdv40000gn/T/pytest-of-jxy/pytest-416/test_failed_mcp_candidate_driv0/candidates/c_ddf7fa15a3494b449d9c4763586c3fe1/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33mcrossvalidation[0m, time elapsed: 1912000 ns, RESULT:
+    TCS: [33mValidationTests[0m, time elapsed: 1912000 ns, RESULT:
+    [[32m PASSED [0m] CASE: zeroQuantity (281000 ns)
+    [[32m PASSED [0m] CASE: minimum (11000 ns)
+    [[32m PASSED [0m] CASE: maximum (7000 ns)
+    [[32m PASSED [0m] CASE: negative (7000 ns)
+    [[32m PASSED [0m] CASE: tooMany (6000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (6000 ns)
+    [[31m FAILED [0m] CASE: multiply (31000 ns)
+    Expect Failed: `([33mcalculateFee(3, 100)[0m == [33m300[0m)`
+       left: 103
+      right: 300
+
+    [[31m FAILED [0m] CASE: normal (8000 ns)
+    Expect Failed: `([33mprocessOrder(2, 100)[0m == [33m200[0m)`
+       left: 102
+      right: 200
+
+    [[31m FAILED [0m] CASE: zeroPrice (6000 ns)
+    Expect Failed: `([33mprocessOrder(1, 0)[0m == [33m0[0m)`
+       left: 1
+      right: 0
+
+Summary: TOTAL: 9
+    [32mPASSED[0m: 6, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 3, listed below:
+            TCS: [33mValidationTests[0m, CASE: multiply
+            TCS: [33mValidationTests[0m, CASE: normal
+            TCS: [33mValidationTests[0m, CASE: zeroPrice
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 2914000 ns, RESULT:
+TP: [33mcrossvalidation[0m.*, time elapsed: 2856000 ns, RESULT:
+    FAILED:
+    TP: [33mcrossvalidation[0m, time elapsed: 1912000 ns, RESULT:
+        TCS: [33mValidationTests[0m, time elapsed: 1912000 ns, RESULT:
+        [[31m FAILED [0m] CASE: multiply (31000 ns)
+        [[31m FAILED [0m] CASE: normal (8000 ns)
+        [[31m FAILED [0m] CASE: zeroPrice (6000 ns)
+Summary: TOTAL: 9
+    [32mPASSED[0m: 6, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 3
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

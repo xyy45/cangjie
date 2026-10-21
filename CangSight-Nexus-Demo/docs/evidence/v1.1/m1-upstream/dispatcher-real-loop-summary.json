@@ -1,0 +1,1010 @@
+{
+  "scope": "ACTUAL_DERIVED_DISPATCH_REAL_LOOP_SCRIPTED_GENERATION_NOT_LIVE",
+  "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+  "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+  "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+  "status": "REVIEW_PENDING",
+  "run_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0",
+  "generated_proposals": 1,
+  "candidate_id": "c_9241ab00516348c39f4e7e62e671cf02",
+  "events": [
+    {
+      "type": "SYMPAS_RUN_QUEUED",
+      "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+      "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+      "dispatch_payload": {
+        "team_profile": "cangjie-repair"
+      },
+      "schema_version": 1,
+      "event_id": "d964e93f408743cb91e4c64ba32e0278",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 1,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "READY",
+      "occurred_at": 1792292149.33355,
+      "data": {
+        "type": "SYMPAS_RUN_QUEUED",
+        "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+        "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+        "dispatch_payload": {
+          "team_profile": "cangjie-repair"
+        }
+      }
+    },
+    {
+      "type": "SYMPAS_DISPATCH_STATE",
+      "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+      "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+      "dispatch_payload": {
+        "status": "running",
+        "started_at": "2026-10-18T02:55:49Z"
+      },
+      "schema_version": 1,
+      "event_id": "d466162c95414be9a3bda8915f23905f",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 2,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "READY",
+      "occurred_at": 1792292149.335592,
+      "data": {
+        "type": "SYMPAS_DISPATCH_STATE",
+        "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+        "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+        "dispatch_payload": {
+          "status": "running",
+          "started_at": "2026-10-18T02:55:49Z"
+        }
+      }
+    },
+    {
+      "type": "SYMPAS_RUN_STARTED",
+      "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+      "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+      "dispatch_payload": {
+        "team_profile": "cangjie-repair"
+      },
+      "schema_version": 1,
+      "event_id": "2e89546ea7014dfb864c9c60398f1518",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 3,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "READY",
+      "occurred_at": 1792292149.336571,
+      "data": {
+        "type": "SYMPAS_RUN_STARTED",
+        "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+        "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+        "dispatch_payload": {
+          "team_profile": "cangjie-repair"
+        }
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "READY",
+      "status": "DIAGNOSING",
+      "task_revision": 1,
+      "schema_version": 1,
+      "event_id": "8fa1d5cd6dc847ca89df54d864ad760e",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 4,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292149.337664,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "READY",
+        "status": "DIAGNOSING",
+        "task_revision": 1
+      }
+    },
+    {
+      "policy": {
+        "request": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "deadline_at": 1792292629525,
+          "approval_binding": "",
+          "action": "project.diagnose",
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "request_id": "aa71fea51afb45e2908d526a36c9711c",
+          "paths": [],
+          "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+          "arguments_hash": "a57d9fb137137e1eaf2d735f207789b54dc0c28038ff04211f6b02d2824f010f",
+          "remaining_budget": 3,
+          "accepted": false
+        },
+        "decision": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "aa71fea51afb45e2908d526a36c9711c",
+          "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+          "arguments_hash": "a57d9fb137137e1eaf2d735f207789b54dc0c28038ff04211f6b02d2824f010f",
+          "approval_binding": "",
+          "decision": "Allow",
+          "reason": "PERMITTED",
+          "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+          "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "c413c9dca4774038b4c929bb2afb9cf9",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 5,
+      "type": "POLICY_DECISION",
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "DIAGNOSING",
+      "occurred_at": 1792292149.988479,
+      "data": {
+        "policy": {
+          "request": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "deadline_at": 1792292629525,
+            "approval_binding": "",
+            "action": "project.diagnose",
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "request_id": "aa71fea51afb45e2908d526a36c9711c",
+            "paths": [],
+            "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+            "arguments_hash": "a57d9fb137137e1eaf2d735f207789b54dc0c28038ff04211f6b02d2824f010f",
+            "remaining_budget": 3,
+            "accepted": false
+          },
+          "decision": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "request_id": "aa71fea51afb45e2908d526a36c9711c",
+            "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+            "arguments_hash": "a57d9fb137137e1eaf2d735f207789b54dc0c28038ff04211f6b02d2824f010f",
+            "approval_binding": "",
+            "decision": "Allow",
+            "reason": "PERMITTED",
+            "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+            "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+          }
+        }
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "DIAGNOSING",
+      "status": "GENERATING",
+      "task_revision": 2,
+      "schema_version": 1,
+      "event_id": "37fddf1052ef49d9a3281c04a4bd7841",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 6,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292153.178307,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "DIAGNOSING",
+        "status": "GENERATING",
+        "task_revision": 2
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "GENERATING",
+      "status": "APPLYING",
+      "task_revision": 3,
+      "schema_version": 1,
+      "event_id": "492d77f42afa4c61a508c1136be4d154",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 7,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292153.179358,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "GENERATING",
+        "status": "APPLYING",
+        "task_revision": 3
+      }
+    },
+    {
+      "policy": {
+        "request": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "deadline_at": 1792292633180,
+          "approval_binding": "",
+          "action": "candidate.apply",
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "request_id": "e39a9608bbbb4878a5c7c5941cab391c",
+          "paths": [
+            "src/quantity.cj"
+          ],
+          "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+          "arguments_hash": "7bfc66c755583925de4ee7777a670373249c485cb38c814be4a6156edfb390c6",
+          "remaining_budget": 3,
+          "accepted": false
+        },
+        "decision": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "e39a9608bbbb4878a5c7c5941cab391c",
+          "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+          "arguments_hash": "7bfc66c755583925de4ee7777a670373249c485cb38c814be4a6156edfb390c6",
+          "approval_binding": "",
+          "decision": "Allow",
+          "reason": "PERMITTED",
+          "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+          "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "ca3850ae1ea54e9181f732e39fc80772",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 8,
+      "type": "POLICY_DECISION",
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "APPLYING",
+      "occurred_at": 1792292153.360258,
+      "data": {
+        "policy": {
+          "request": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "deadline_at": 1792292633180,
+            "approval_binding": "",
+            "action": "candidate.apply",
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "request_id": "e39a9608bbbb4878a5c7c5941cab391c",
+            "paths": [
+              "src/quantity.cj"
+            ],
+            "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+            "arguments_hash": "7bfc66c755583925de4ee7777a670373249c485cb38c814be4a6156edfb390c6",
+            "remaining_budget": 3,
+            "accepted": false
+          },
+          "decision": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "request_id": "e39a9608bbbb4878a5c7c5941cab391c",
+            "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+            "arguments_hash": "7bfc66c755583925de4ee7777a670373249c485cb38c814be4a6156edfb390c6",
+            "approval_binding": "",
+            "decision": "Allow",
+            "reason": "PERMITTED",
+            "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+            "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+          }
+        }
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "APPLYING",
+      "status": "BUILDING",
+      "task_revision": 5,
+      "schema_version": 1,
+      "event_id": "8e9d9cc540f8443f9837a8093647a0fe",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 9,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292153.441142,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "APPLYING",
+        "status": "BUILDING",
+        "task_revision": 5
+      }
+    },
+    {
+      "policy": {
+        "request": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "deadline_at": 1792292633441,
+          "approval_binding": "",
+          "action": "candidate.build",
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "request_id": "3528d12b961a46548d7831b274936354",
+          "paths": [],
+          "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+          "arguments_hash": "93d6e4f6dc932c7d1162c2a02907c7ea259d93e78bb288449cc1150506ee8455",
+          "remaining_budget": 2,
+          "accepted": false
+        },
+        "decision": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "3528d12b961a46548d7831b274936354",
+          "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+          "arguments_hash": "93d6e4f6dc932c7d1162c2a02907c7ea259d93e78bb288449cc1150506ee8455",
+          "approval_binding": "",
+          "decision": "Allow",
+          "reason": "PERMITTED",
+          "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+          "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "ae7cfca6fabf4da5ba55776eb888e444",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 10,
+      "type": "POLICY_DECISION",
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "BUILDING",
+      "occurred_at": 1792292153.842274,
+      "data": {
+        "policy": {
+          "request": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "deadline_at": 1792292633441,
+            "approval_binding": "",
+            "action": "candidate.build",
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "request_id": "3528d12b961a46548d7831b274936354",
+            "paths": [],
+            "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+            "arguments_hash": "93d6e4f6dc932c7d1162c2a02907c7ea259d93e78bb288449cc1150506ee8455",
+            "remaining_budget": 2,
+            "accepted": false
+          },
+          "decision": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "request_id": "3528d12b961a46548d7831b274936354",
+            "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+            "arguments_hash": "93d6e4f6dc932c7d1162c2a02907c7ea259d93e78bb288449cc1150506ee8455",
+            "approval_binding": "",
+            "decision": "Allow",
+            "reason": "PERMITTED",
+            "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+            "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+          }
+        }
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "BUILDING",
+      "status": "TESTING",
+      "task_revision": 6,
+      "schema_version": 1,
+      "event_id": "ec65301a2ce64c23a64e81b73b02e8f5",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 11,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292154.440958,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "BUILDING",
+        "status": "TESTING",
+        "task_revision": 6
+      }
+    },
+    {
+      "policy": {
+        "request": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "deadline_at": 1792292634441,
+          "approval_binding": "",
+          "action": "candidate.test",
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "request_id": "feb725a7ce9946f897d8d2673723073b",
+          "paths": [],
+          "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+          "arguments_hash": "83768d8d0f2cd4434e7bdcfebbb1a2a0c08b91a30a385c4342eaff10007b846f",
+          "remaining_budget": 2,
+          "accepted": false
+        },
+        "decision": {
+          "schema_version": 1,
+          "policy_version": "1.1",
+          "request_id": "feb725a7ce9946f897d8d2673723073b",
+          "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+          "arguments_hash": "83768d8d0f2cd4434e7bdcfebbb1a2a0c08b91a30a385c4342eaff10007b846f",
+          "approval_binding": "",
+          "decision": "Allow",
+          "reason": "PERMITTED",
+          "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+          "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "4e2c6c34814347b9bf3664eb2f0212d4",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 12,
+      "type": "POLICY_DECISION",
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "TESTING",
+      "occurred_at": 1792292154.819026,
+      "data": {
+        "policy": {
+          "request": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "deadline_at": 1792292634441,
+            "approval_binding": "",
+            "action": "candidate.test",
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "request_id": "feb725a7ce9946f897d8d2673723073b",
+            "paths": [],
+            "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+            "arguments_hash": "83768d8d0f2cd4434e7bdcfebbb1a2a0c08b91a30a385c4342eaff10007b846f",
+            "remaining_budget": 2,
+            "accepted": false
+          },
+          "decision": {
+            "schema_version": 1,
+            "policy_version": "1.1",
+            "request_id": "feb725a7ce9946f897d8d2673723073b",
+            "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+            "arguments_hash": "83768d8d0f2cd4434e7bdcfebbb1a2a0c08b91a30a385c4342eaff10007b846f",
+            "approval_binding": "",
+            "decision": "Allow",
+            "reason": "PERMITTED",
+            "policy_component_hash": "95a09dbb04d664f6366e1cc0b7a9e526d988b8e1cc66178ebba3ad5e0652c210",
+            "policy_source_hash": "13619646a04041b3eb3b8289bb783087a63eaacfb91a57cfb7ebbebdee8ecd2c"
+          }
+        }
+      }
+    },
+    {
+      "type": "TASK_STATE_CHANGED",
+      "previous_status": "TESTING",
+      "status": "REVIEW_PENDING",
+      "task_revision": 7,
+      "schema_version": 1,
+      "event_id": "70bfab97723942f1a3afe5be3999a97f",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 13,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "occurred_at": 1792292157.3053591,
+      "data": {
+        "type": "TASK_STATE_CHANGED",
+        "previous_status": "TESTING",
+        "status": "REVIEW_PENDING",
+        "task_revision": 7
+      }
+    },
+    {
+      "selected_candidate_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "schema_version": 1,
+      "event_id": "1c6b9c7cbe764a938ce08ea042e7a108",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 14,
+      "type": "CANDIDATE_SELECTED",
+      "candidate_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "REVIEW_PENDING",
+      "occurred_at": 1792292157.3066082,
+      "data": {
+        "selected_candidate_id": "c_9241ab00516348c39f4e7e62e671cf02"
+      }
+    },
+    {
+      "type": "SYMPAS_DISPATCH_STATE",
+      "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+      "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+      "dispatch_payload": {
+        "status": "completed",
+        "finished_at": "2026-10-18T02:55:57Z",
+        "result": {
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "status": "REVIEW_PENDING"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "21104e10dee746d78f23e85ecec875d1",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 15,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "REVIEW_PENDING",
+      "occurred_at": 1792292157.34218,
+      "data": {
+        "type": "SYMPAS_DISPATCH_STATE",
+        "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+        "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+        "dispatch_payload": {
+          "status": "completed",
+          "finished_at": "2026-10-18T02:55:57Z",
+          "result": {
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "status": "REVIEW_PENDING"
+          }
+        }
+      }
+    },
+    {
+      "type": "SYMPAS_RUN_FINISHED",
+      "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+      "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+      "dispatch_payload": {
+        "result": {
+          "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+          "status": "REVIEW_PENDING"
+        }
+      },
+      "schema_version": 1,
+      "event_id": "17f9be7be31f461dac83827480e541ff",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "sequence": 16,
+      "candidate_id": null,
+      "input_ref": null,
+      "output_ref": null,
+      "object_ref": null,
+      "status": "REVIEW_PENDING",
+      "occurred_at": 1792292157.343194,
+      "data": {
+        "type": "SYMPAS_RUN_FINISHED",
+        "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+        "adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+        "dispatch_payload": {
+          "result": {
+            "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+            "status": "REVIEW_PENDING"
+          }
+        }
+      }
+    }
+  ],
+  "tool_calls": [
+    {
+      "candidate_id": null,
+      "id": "33d8d8d483b14ae5b195ad1b1a96443a",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": "records/c413c9dca4774038b4c929bb2afb9cf9.json",
+      "replayed": false,
+      "request_id": "aa71fea51afb45e2908d526a36c9711c",
+      "request_ref": "records/33d8d8d483b14ae5b195ad1b1a96443a.tool-request.json",
+      "result_ref": "records/33d8d8d483b14ae5b195ad1b1a96443a.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "project.diagnose",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "3dc4f740a74d48bcbd95c6bfbc364556",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": null,
+      "replayed": false,
+      "request_id": "467b457e80a545539d7916274643342d",
+      "request_ref": "records/3dc4f740a74d48bcbd95c6bfbc364556.tool-request.json",
+      "result_ref": "records/3dc4f740a74d48bcbd95c6bfbc364556.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "workspace.list_files",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "dbf065fac4c44e3ca411e22cd44b83b7",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": null,
+      "replayed": false,
+      "request_id": "99501f1341064f589254361d6621ea9f",
+      "request_ref": "records/dbf065fac4c44e3ca411e22cd44b83b7.tool-request.json",
+      "result_ref": "records/dbf065fac4c44e3ca411e22cd44b83b7.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "workspace.read_file",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "4aac24d6eae5440d956c0a3b74544e81",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": null,
+      "replayed": false,
+      "request_id": "e35efe36c91249efae71f58b026f49ee",
+      "request_ref": "records/4aac24d6eae5440d956c0a3b74544e81.tool-request.json",
+      "result_ref": "records/4aac24d6eae5440d956c0a3b74544e81.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "workspace.read_file",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "be36a0c010324500919b1d7349c7e5a3",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": null,
+      "replayed": false,
+      "request_id": "0b004b36a8504823b75ec23a13298f42",
+      "request_ref": "records/be36a0c010324500919b1d7349c7e5a3.tool-request.json",
+      "result_ref": "records/be36a0c010324500919b1d7349c7e5a3.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "workspace.read_file",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "c582f8bc801a40d2bacfc2d541b6334a",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": null,
+      "replayed": false,
+      "request_id": "17cecca8817e4729a35647bed271b088",
+      "request_ref": "records/c582f8bc801a40d2bacfc2d541b6334a.tool-request.json",
+      "result_ref": "records/c582f8bc801a40d2bacfc2d541b6334a.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "workspace.read_file",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": null,
+      "id": "153e6838717d4d27b50b3c5ec7b77c2e",
+      "input_tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "policy_ref": "records/ca3850ae1ea54e9181f732e39fc80772.json",
+      "replayed": false,
+      "request_id": "e39a9608bbbb4878a5c7c5941cab391c",
+      "request_ref": "records/153e6838717d4d27b50b3c5ec7b77c2e.tool-request.json",
+      "result_ref": "records/153e6838717d4d27b50b3c5ec7b77c2e.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "candidate.apply",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "id": "147b72b4eab04213aa17fec83e332ec0",
+      "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "policy_ref": "records/ae7cfca6fabf4da5ba55776eb888e444.json",
+      "replayed": false,
+      "request_id": "3528d12b961a46548d7831b274936354",
+      "request_ref": "records/147b72b4eab04213aa17fec83e332ec0.tool-request.json",
+      "result_ref": "records/147b72b4eab04213aa17fec83e332ec0.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "candidate.build",
+      "tool_version": "1.1"
+    },
+    {
+      "candidate_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "id": "76fe0097709f4fbfacab2d318fd716fe",
+      "input_tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "policy_ref": "records/4e2c6c34814347b9bf3664eb2f0212d4.json",
+      "replayed": false,
+      "request_id": "feb725a7ce9946f897d8d2673723073b",
+      "request_ref": "records/76fe0097709f4fbfacab2d318fd716fe.tool-request.json",
+      "result_ref": "records/76fe0097709f4fbfacab2d318fd716fe.tool.json",
+      "schema_version": 1,
+      "status": "OK",
+      "task_id": "a39e159fe6714b9c9b3f9ddb1680d62f",
+      "tool": "candidate.test",
+      "tool_version": "1.1"
+    }
+  ],
+  "checks": [
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"build\", \"-V\"]\nCompiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/baselines/b_932943917345407fb80d53e1e33e9bee/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/baselines/b_932943917345407fb80d53e1e33e9bee/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/baselines/b_932943917345407fb80d53e1e33e9bee/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 261,
+      "execution_argv": [
+        [
+          "cjpm",
+          "build",
+          "-V"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "c6671ba2f0434af2b6a41be9e465c6b2",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/c6671ba2f0434af2b6a41be9e465c6b2.log",
+      "plan_hash": "16fbb591117a894d9a5fef4d46020f69efaad83ca6a457cf3348e30f1babbb0e",
+      "report_ref": "records/c6671ba2f0434af2b6a41be9e465c6b2.report.json",
+      "schema_version": 2,
+      "spec_hash": "70d028026d17c3d4dd0e163dbdfc0d84d2421e7337783d49f90b51d1f29df0bd",
+      "state": "PASS",
+      "subject_id": "b_932943917345407fb80d53e1e33e9bee",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "e862157502b9aeed959e5e7f197504bb1adfc65ae671043166e182d0d3eb5b37",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "FAIL"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 1,
+        "passed": 10,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"test\", \"--no-run\"]\n   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/baselines/b_932943917345407fb80d53e1e33e9bee/target/release/unittest_bin`\ncjpm test success\nNEXUS_EXECUTION_PHASE test: [\"cjpm\", \"test\", \"--skip-build\"]\n\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 833000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 833000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (116000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (2000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (3000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (3000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (3000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (3000 ns)\n    [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (30000 ns)\n    Expect Failed: `(\u001b[33mprocessOrder(0, 100)\u001b[0m == \u001b[33m- 1\u001b[0m)`\n       left: 0\n      right: -1\n\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1, listed below:\n            TCS: \u001b[33mOrderTests\u001b[0m, CASE: zeroQuantity\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 1344000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 1323000 ns, RESULT:\n    FAILED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 833000 ns, RESULT:\n        TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 833000 ns, RESULT:\n        [\u001b[31m FAILED \u001b[0m] CASE: zeroQuantity (30000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 10, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 1\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hError: cjpm test failed\n",
+      "duration_ms": 2215,
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build"
+        ]
+      ],
+      "exit_code": 1,
+      "id": "a88d268a089c410aaf70ba515bddebe9",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/a88d268a089c410aaf70ba515bddebe9.log",
+      "plan_hash": "16fbb591117a894d9a5fef4d46020f69efaad83ca6a457cf3348e30f1babbb0e",
+      "report_ref": "records/a88d268a089c410aaf70ba515bddebe9.report.json",
+      "schema_version": 2,
+      "spec_hash": "70d028026d17c3d4dd0e163dbdfc0d84d2421e7337783d49f90b51d1f29df0bd",
+      "state": "FAIL",
+      "subject_id": "b_932943917345407fb80d53e1e33e9bee",
+      "suite_results": {
+        "order-regression": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 1,
+          "passed": 10,
+          "skipped": 0,
+          "state": "FAIL",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "5eea58ef65456aa7b4cb08ca215751036894a117db0a774f73345a6d1f5466c1",
+      "verification_plan_hash": "e862157502b9aeed959e5e7f197504bb1adfc65ae671043166e182d0d3eb5b37",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "build",
+        "-V"
+      ],
+      "case_results": {},
+      "counts": {},
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"build\", \"-V\"]\nCompiling package `orderdemo`: DYLD_LIBRARY_PATH=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/sdk/cangjie/runtime/lib/darwin_aarch64_cjnative cjc -j10 --import-path=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/candidates/c_9241ab00516348c39f4e7e62e671cf02/target/release --no-sub-pkg --output-dir=/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/candidates/c_9241ab00516348c39f4e7e62e671cf02/target/release/orderdemo -p /Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/candidates/c_9241ab00516348c39f4e7e62e671cf02/src --output-type=staticlib -o=liborderdemo.a\ncjpm build success\n",
+      "duration_ms": 263,
+      "execution_argv": [
+        [
+          "cjpm",
+          "build",
+          "-V"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "0ae00c3c86ac48f8b57dcfc8fa08b957",
+      "kind": "build",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/0ae00c3c86ac48f8b57dcfc8fa08b957.log",
+      "plan_hash": "16fbb591117a894d9a5fef4d46020f69efaad83ca6a457cf3348e30f1babbb0e",
+      "report_ref": "records/0ae00c3c86ac48f8b57dcfc8fa08b957.report.json",
+      "schema_version": 2,
+      "spec_hash": "70d028026d17c3d4dd0e163dbdfc0d84d2421e7337783d49f90b51d1f29df0bd",
+      "state": "PASS",
+      "subject_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "suite_results": {},
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "e862157502b9aeed959e5e7f197504bb1adfc65ae671043166e182d0d3eb5b37",
+      "working_root": "."
+    },
+    {
+      "argv": [
+        "cjpm",
+        "test"
+      ],
+      "case_results": {
+        "OrderTests.differentPrice": "PASS",
+        "OrderTests.excessPrice": "PASS",
+        "OrderTests.excessQuantity": "PASS",
+        "OrderTests.negativePrice": "PASS",
+        "OrderTests.negativeQuantity": "PASS",
+        "OrderTests.three": "PASS",
+        "OrderTests.two": "PASS",
+        "OrderTests.upperPrice": "PASS",
+        "OrderTests.upperQuantity": "PASS",
+        "OrderTests.zeroPrice": "PASS",
+        "OrderTests.zeroQuantity": "PASS"
+      },
+      "counts": {
+        "errors": 0,
+        "failed": 0,
+        "passed": 11,
+        "skipped": 0,
+        "total": 11
+      },
+      "diagnostics": "NEXUS_EXECUTION_PHASE compile: [\"cjpm\", \"test\", \"--no-run\"]\n   Finished `test` profile compilation\n   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/candidates/c_9241ab00516348c39f4e7e62e671cf02/target/release/unittest_bin`\ncjpm test success\nNEXUS_EXECUTION_PHASE test: [\"cjpm\", \"test\", \"--skip-build\"]\n\u001b[?25l\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8\u001b[0J\u001b7\u001b[;r\u001b8\n\u001b[1F\u001b7\u001b[9999E\u001b8--------------------------------------------------------------------------------------------------\nTP: \u001b[33morderdemo\u001b[0m, time elapsed: 1527000 ns, RESULT:\n    TCS: \u001b[33mOrderTests\u001b[0m, time elapsed: 1527000 ns, RESULT:\n    [\u001b[32m PASSED \u001b[0m] CASE: three (210000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: two (9000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: zeroQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativeQuantity (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperQuantity (4000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessQuantity (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: negativePrice (6000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: upperPrice (7000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: excessPrice (5000 ns)\n    [\u001b[32m PASSED \u001b[0m] CASE: differentPrice (5000 ns)\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\nProject tests finished, time elapsed: 2403000 ns, RESULT:\nTP: \u001b[33morderdemo\u001b[0m.*, time elapsed: 2346000 ns, RESULT:\n    PASSED:\n    TP: \u001b[33morderdemo\u001b[0m, time elapsed: 1527000 ns\nSummary: TOTAL: 11\n    \u001b[32mPASSED\u001b[0m: 11, \u001b[32mSKIPPED\u001b[0m: 0, ERROR: 0\n    \u001b[31mFAILED\u001b[0m: 0\n--------------------------------------------------------------------------------------------------\n\u001b[0J\u001b7\u001b[;r\u001b8\u001b[?25hcjpm test success\n",
+      "duration_ms": 2135,
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build"
+        ]
+      ],
+      "exit_code": 0,
+      "id": "c5f0e016bb644684befe710bec5b0965",
+      "kind": "test",
+      "limitations": [
+        "Both projections use the same frozen 11-case OrderTests suite",
+        "No independent hidden-test evaluation; no formal correctness proof",
+        "No other platform or concurrent behavior verified"
+      ],
+      "log_ref": "records/c5f0e016bb644684befe710bec5b0965.log",
+      "plan_hash": "16fbb591117a894d9a5fef4d46020f69efaad83ca6a457cf3348e30f1babbb0e",
+      "report_ref": "records/c5f0e016bb644684befe710bec5b0965.report.json",
+      "schema_version": 2,
+      "spec_hash": "70d028026d17c3d4dd0e163dbdfc0d84d2421e7337783d49f90b51d1f29df0bd",
+      "state": "PASS",
+      "subject_id": "c_9241ab00516348c39f4e7e62e671cf02",
+      "suite_results": {
+        "order-regression": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        },
+        "order-target": {
+          "failed": 0,
+          "passed": 11,
+          "skipped": 0,
+          "state": "PASS",
+          "tests": [
+            "OrderTests.three",
+            "OrderTests.two",
+            "OrderTests.zeroPrice",
+            "OrderTests.zeroQuantity",
+            "OrderTests.negativeQuantity",
+            "OrderTests.upperQuantity",
+            "OrderTests.excessQuantity",
+            "OrderTests.negativePrice",
+            "OrderTests.upperPrice",
+            "OrderTests.excessPrice",
+            "OrderTests.differentPrice"
+          ],
+          "unknown": 0
+        }
+      },
+      "toolchain_hash": "084cddbc418df2e4bd437243a62cf9162fcc30cf59172a7fa3598761cc156611",
+      "tree_hash": "6c7243dd2726411ec419891d926919033b2fcd472b96d3708ddbbd9e25b96584",
+      "verification_plan_hash": "e862157502b9aeed959e5e7f197504bb1adfc65ae671043166e182d0d3eb5b37",
+      "working_root": "."
+    }
+  ],
+  "model_http_calls": 0,
+  "acceptances": 0
+}

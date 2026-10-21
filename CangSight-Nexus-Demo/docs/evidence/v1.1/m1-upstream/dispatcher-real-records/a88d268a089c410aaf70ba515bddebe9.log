@@ -1,0 +1,41 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/m1-dispatch-final/test_base_dispatcher_calls_one0/baselines/b_932943917345407fb80d53e1e33e9bee/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33morderdemo[0m, time elapsed: 833000 ns, RESULT:
+    TCS: [33mOrderTests[0m, time elapsed: 833000 ns, RESULT:
+    [[32m PASSED [0m] CASE: three (116000 ns)
+    [[32m PASSED [0m] CASE: two (5000 ns)
+    [[32m PASSED [0m] CASE: zeroPrice (4000 ns)
+    [[32m PASSED [0m] CASE: negativeQuantity (2000 ns)
+    [[32m PASSED [0m] CASE: upperQuantity (3000 ns)
+    [[32m PASSED [0m] CASE: excessQuantity (4000 ns)
+    [[32m PASSED [0m] CASE: negativePrice (4000 ns)
+    [[32m PASSED [0m] CASE: upperPrice (3000 ns)
+    [[32m PASSED [0m] CASE: excessPrice (3000 ns)
+    [[32m PASSED [0m] CASE: differentPrice (3000 ns)
+    [[31m FAILED [0m] CASE: zeroQuantity (30000 ns)
+    Expect Failed: `([33mprocessOrder(0, 100)[0m == [33m- 1[0m)`
+       left: 0
+      right: -1
+
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1, listed below:
+            TCS: [33mOrderTests[0m, CASE: zeroQuantity
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 1344000 ns, RESULT:
+TP: [33morderdemo[0m.*, time elapsed: 1323000 ns, RESULT:
+    FAILED:
+    TP: [33morderdemo[0m, time elapsed: 833000 ns, RESULT:
+        TCS: [33mOrderTests[0m, time elapsed: 833000 ns, RESULT:
+        [[31m FAILED [0m] CASE: zeroQuantity (30000 ns)
+Summary: TOTAL: 11
+    [32mPASSED[0m: 10, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 1
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

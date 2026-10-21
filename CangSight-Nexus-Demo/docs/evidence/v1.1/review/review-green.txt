@@ -1,0 +1,33 @@
+F..............                                                          [100%]
+=================================== FAILURES ===================================
+___________ test_user_reject_binds_identity_and_blocks_accept_export ___________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-103/test_user_reject_binds_identit0')
+
+    def test_user_reject_binds_identity_and_blocks_accept_export(tmp_path):
+        ws,store,c,delivery=checked(tmp_path)
+>       a=delivery.accept(c.id,delivery.check_set_hash(c.id))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_user_review.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+nexus/execution/delivery.py:98: in accept
+    self.store.append_record(task.id,'acceptance',acceptance.model_dump())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nexus.store.RunStore object at 0x108253c80>
+task_id = 'b7c952c49473484f9f45ffae0034848d', kind = 'acceptance'
+payload = {'schema_version': 1, 'task_id': None, 'spec_hash': None, 'verification_plan_hash': None, ...}
+
+    def append_record(self, task_id: str, kind: str, payload: dict[str, object]) -> str:
+        self.get_task(task_id)
+        if kind not in ('candidate', 'check', 'model_call', 'tool_call', 'acceptance', 'event', 'review'):
+            raise ValueError('unknown record kind')
+        if payload.get('task_id', task_id) != task_id:
+>           raise ValueError('foreign task')
+E           ValueError: foreign task
+
+nexus/store.py:112: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_user_review.py::test_user_reject_binds_identity_and_blocks_accept_export
+1 failed, 14 passed in 0.76s

@@ -1,0 +1,50 @@
+{
+  "name": "sympas-nexus",
+  "version": "1.0.0",
+  "description": "Sympas 程序分析能力的多智能体编排插件（AH-SecAgent / HW-CodeArts / SF-SuperAgent 三赛道通用）",
+  "author": { "name": "sympas-nexus" },
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "code-analysis",
+    "multi-agent",
+    "sympas",
+    "ooda",
+    "cegis",
+    "hitl",
+    "mcp"
+  ],
+  "skills": [
+    "./skills/sympas-vuln-closeloop",
+    "./skills/ah-secagent",
+    "./skills/hw-codearts",
+    "./skills/sf-superagent",
+    "./skills/sympas-toolbelt"
+  ],
+  "commands": [
+    "./commands/nexus-run.md",
+    "./commands/nexus-audit.md"
+  ],
+  "agents": [
+    "./agents/ah-secagent",
+    "./agents/sf-superagent",
+    "./agents/hw-codearts"
+  ],
+  "mcpServers": {
+    "sympas": {
+      "url": "${SYMPAS_MCP_URL:-http://10.166.33.67:2266}",
+      "transport": "http",
+      "headers": { "Authorization": "Bearer ${SYMPAS_MCP_TOKEN}" }
+    },
+    "cang-sight": {
+      "command": "python",
+      "args": ["-m", "cang_sight_server"],
+      "transport": "stdio",
+      "env": {
+        "SYMPAS_MCP_URL": "${SYMPAS_MCP_URL:-http://10.166.33.67:2266}",
+        "SYMPAS_MCP_TOKEN": "${SYMPAS_MCP_TOKEN}"
+      }
+    }
+  },
+  "hooks": "./hooks/hooks.json"
+}

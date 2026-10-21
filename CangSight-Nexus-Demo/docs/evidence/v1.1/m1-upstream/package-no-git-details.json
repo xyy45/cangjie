@@ -1,0 +1,20 @@
+{
+  "source_commit": "21eec3604c32c083e72bc93add9538828a07c7d6",
+  "application_commit": "9a41097",
+  "source": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-Native-M1-source-21eec36.zip",
+  "source_sha256": "607a0a99395ef26ca914378c23a2629d2664117fd6b36da9a04e39d4d747e76f",
+  "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-m1-repro-nir11nl8/CangSight-Nexus",
+  "interpreter": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.venv/bin/python",
+  "git_metadata": false,
+  "env_file": false,
+  "reused_dependencies": "Same-host test interpreter and pinned SDK/stdx links only; policy compiled fresh; not teammate independent reproduction",
+  "imported_adapter_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+  "policy-build": {
+    "exit_code": 0,
+    "log": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/v11-21eec36-policy-build.txt"
+  },
+  "no-git-offline": {
+    "exit_code": 0,
+    "log": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/v11-21eec36-no-git-offline.txt"
+  }
+}

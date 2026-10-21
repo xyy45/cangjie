@@ -1,0 +1,15 @@
+{
+  "original_reference_files": 453,
+  "original_unchanged": true,
+  "browser_preview_counts": {
+    "tasks": 0,
+    "requirement_drafts": 3,
+    "requirement_specs": 0
+  },
+  "browser_action": "prepare draft only; no confirmation, task start or model call",
+  "preview_port": 8766,
+  "preview_worker_enabled": false,
+  "paid_api_calls_this_phase": 0,
+  "main_service_restarted_after_no_active_task_check": true,
+  "runtime_backup": ".runtime/backups/workbench-before-v11-bindings.sqlite3"
+}

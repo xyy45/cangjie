@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source_commit": "32c00340bad99ca35c56a3b88ead1cce4305c8f0",
+  "application_behavior_commit": "948e96e61f8c9aacc2f8a195bd74d194e3783c96",
+  "source_zip": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-source-32c0034.zip",
+  "sha256": "7996511cd3e8d43375d5538c97e8c427cbdecb63498730b36b49c32a98696cab",
+  "bytes": 1140866,
+  "extracted_directory": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/.cangsight-v11-final-repro-pprjl65x/CangSight-Nexus",
+  "git_probe_exit": 128,
+  "dotenv_present": false,
+  "sensitive_key_found": false,
+  "forbidden_files_found": false,
+  "live_status": "PASS: one authorized task, one model request, first candidate, real MCP/Policy/cjpm and export",
+  "live_archive": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-LIVE-evidence-58193371f19d419fa05c7ab80ad58ec4.zip",
+  "live_archive_sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+  "paid_model_requests": 1,
+  "paid_api_calls_this_phase": 1,
+  "external_reproduction": "PENDING",
+  "m1_status": "PARTIAL",
+  "competition_submission": "PENDING",
+  "scope": "Verified bounded technical package for team reproduction, not formal competition submission",
+  "no_git_offline_regression": "108 passed, 8 deselected in 23.37s",
+  "no_git_offline_evidence": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/v11-32c0034-no-git-offline.txt",
+  "fresh_native_policy_build": "PASS",
+  "full_sdk_regression": "7 passed in 56.84s",
+  "v11_http_mcp_sdk": "1 passed in 13.00s",
+  "members_reproduction_status": "PENDING",
+  "formal_competition_submission_status": "PENDING",
+  "technical_scope_status": "READY_FOR_TEAM_REPRODUCTION_OF_VERIFIED_SCOPE",
+  "video": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-LIVE-record-replay.mp4",
+  "video_kind": "26-second frame-based replay of actual completed LIVE records; not real-time repair recording",
+  "files": {
+    "README-先读我.md": {
+      "sha256": "6bf41f5158e4fcb35d05889f5de05ba9ce7ce6a1ff76ff06b2a8f03ef1a88468",
+      "bytes": 2695
+    },
+    "live/order-demo-LIVE-project-and-evidence.zip": {
+      "sha256": "20f50e30eb0e587028d3e29ac571580f21668b5fa291252cc09595e2d3eb0765",
+      "bytes": 73890
+    },
+    "reports/current-live-summary.json": {
+      "sha256": "b09dc8e56eb79b4e53a4da902b6bc2b3cc01d25464b3eb477e3d4ecf115a9cf5",
+      "bytes": 17645
+    },
+    "reports/final-integrity.json": {
+      "sha256": "e44e949d975145fd8f4526a3f05e9c20b044a45171c4071b09c830d609cc9a0b",
+      "bytes": 515
+    },
+    "reports/fresh-policy-build.txt": {
+      "sha256": "d4f0d9bb582e9d952db5a961488f652028ea0ce30f5242d435aabe0df8816e16",
+      "bytes": 1280
+    },
+    "reports/independent-reproduction.md": {
+      "sha256": "15b338c2c6313c1cdcf347c4562b00fcd6a98e16356eb7cc94489fade90b904c",
+      "bytes": 3776
+    },
+    "reports/live-validation.txt": {
+      "sha256": "452d2077df187a803b08e03ef2742343c156ff83cfb5b4b2530ccc3cabb5b368",
+      "bytes": 168
+    },
+    "reports/m1-reuse-review.md": {
+      "sha256": "670abc58b96d68cd4a163f64d9f36b3cc721d8b49c86eea8293167934a3d685b",
+      "bytes": 3806
+    },
+    "reports/no-git-source-regression.txt": {
+      "sha256": "38c0445fd3afe68e5e1667f4b5b2dbd5e2362be64709bf2e355a5b73188c43e7",
+      "bytes": 195
+    },
+    "reports/offline-regression.txt": {
+      "sha256": "43cb8540a540d9f9284becda5a02fb46583848932163b076f46e46ddbfd1d2b8",
+      "bytes": 195
+    },
+    "reports/runbook.md": {
+      "sha256": "9646461c66b7f71c2e4b67fcee36d012d290dc93002d76ee8b21ee0ee21ef4a4",
+      "bytes": 9508
+    },
+    "reports/sdk-regression.txt": {
+      "sha256": "46728a1b5cc4cfeb57a430c9b7b89b654449e95cc3f1ec7fae057f3d1f737da4",
+      "bytes": 99
+    },
+    "reports/v11-http-mcp-sdk.txt": {
+      "sha256": "8826671191bf519de237a4b05315135991602bcc27424808bda9a1c4bd575665",
+      "bytes": 99
+    },
+    "reports/validation-report.md": {
+      "sha256": "2a9dcbe31abe84b95e64d300f932cf40b2805583f3727d17807ec43e37e5ad33",
+      "bytes": 5939
+    },
+    "reports/video-provenance.json": {
+      "sha256": "d744b526c40ed2dc56c74f733610679e1a30ec95e110e66fda23dbd6abb6beff",
+      "bytes": 1257
+    },
+    "source/CangSight-Nexus-v1.1-source-32c0034.zip": {
+      "sha256": "7996511cd3e8d43375d5538c97e8c427cbdecb63498730b36b49c32a98696cab",
+      "bytes": 1140866
+    },
+    "video/V1.1-LIVE-record-replay.mp4": {
+      "sha256": "48a9f1de1e1c05165d852ce2f4a3dd7bc2f1b39fa9ee53a93f5f77388b97b93c",
+      "bytes": 320687
+    }
+  },
+  "technical_package": "/Users/jadya/Documents/CangSight-Workspace/02-开发工程/CangSight-Nexus/.runtime/releases/CangSight-Nexus-v1.1-技术验收包-32c0034.zip",
+  "technical_package_sha256": "31f6b6ec78202013ac1a7193686518c9ded93bafa5fff751a2dd50692b5cbe24",
+  "technical_package_bytes": 1461825,
+  "manifest_hash": "d174a8d3df8073e0f5e6bed1fb949264b5fcec862a1aa5e3f605cf8465b3e87f"
+}

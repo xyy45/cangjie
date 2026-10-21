@@ -1,0 +1,508 @@
+[
+  {
+    "id": "order",
+    "project_id": "order-demo-bug",
+    "title": "订单边界修复",
+    "group": "order",
+    "category": "数量边界",
+    "kind": "repair",
+    "source": "fixtures/order-demo-bug",
+    "allowed_paths": [
+      "src/quantity.cj",
+      "src/fee.cj",
+      "src/order.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-QTY",
+        "text": "数量范围1–1000，包含上下界",
+        "observable_behavior": "数量0、负数、1001拒绝；1和1000允许",
+        "preserves": [
+          "合法数量继续参与费用计算"
+        ],
+        "uncovered": [
+          "不验证其他数量类型"
+        ]
+      },
+      {
+        "id": "REQ-PRICE",
+        "text": "单价范围0–1000000，非法订单返回-1",
+        "observable_behavior": "负单价和1000001拒绝；0和1000000允许",
+        "preserves": [
+          "数量校验继续生效"
+        ],
+        "uncovered": [
+          "不验证浮点价格"
+        ]
+      },
+      {
+        "id": "REQ-TOTAL",
+        "text": "合法订单总额为数量乘单价",
+        "observable_behavior": "3×100=300；2×100=200；7×23=161；零价格总额0",
+        "preserves": [
+          "合法订单乘法计算"
+        ],
+        "uncovered": [
+          "不证明任意输入的语义正确性"
+        ]
+      }
+    ],
+    "required_suites": [
+      "order-target",
+      "order-regression"
+    ],
+    "suite_tests": {
+      "order-target": [
+        "OrderTests.three",
+        "OrderTests.two",
+        "OrderTests.zeroPrice",
+        "OrderTests.zeroQuantity",
+        "OrderTests.negativeQuantity",
+        "OrderTests.upperQuantity",
+        "OrderTests.excessQuantity",
+        "OrderTests.negativePrice",
+        "OrderTests.upperPrice",
+        "OrderTests.excessPrice",
+        "OrderTests.differentPrice"
+      ],
+      "order-regression": [
+        "OrderTests.three",
+        "OrderTests.two",
+        "OrderTests.zeroPrice",
+        "OrderTests.zeroQuantity",
+        "OrderTests.negativeQuantity",
+        "OrderTests.upperQuantity",
+        "OrderTests.excessQuantity",
+        "OrderTests.negativePrice",
+        "OrderTests.upperPrice",
+        "OrderTests.excessPrice",
+        "OrderTests.differentPrice"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-QTY": [
+        "order-target",
+        "order-regression"
+      ],
+      "REQ-PRICE": [
+        "order-target",
+        "order-regression"
+      ],
+      "REQ-TOTAL": [
+        "order-target",
+        "order-regression"
+      ]
+    },
+    "limitations": [
+      "Both projections use the same frozen 11-case OrderTests suite",
+      "No independent hidden-test evaluation; no formal correctness proof",
+      "No other platform or concurrent behavior verified"
+    ]
+  },
+  {
+    "id": "order-price",
+    "project_id": "order-price",
+    "title": "价格边界修复",
+    "group": "order",
+    "category": "边界逻辑",
+    "kind": "repair",
+    "source": "fixtures/repair-cases/order-price",
+    "allowed_paths": [
+      "src/price.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-PRICE",
+        "text": "单价范围0–1000000，包含上下界",
+        "observable_behavior": "0、99、1000000允许；-1、1000001拒绝",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "required_suites": [
+      "target",
+      "regression"
+    ],
+    "suite_tests": {
+      "target": [
+        "PriceTests.upper"
+      ],
+      "regression": [
+        "PriceTests.zero",
+        "PriceTests.normal",
+        "PriceTests.negative",
+        "PriceTests.excess"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-PRICE": [
+        "target",
+        "regression"
+      ]
+    },
+    "limitations": [
+      "公开冻结测试",
+      "未验证并发或其他平台",
+      "测试通过不等于普遍正确"
+    ]
+  },
+  {
+    "id": "order-discount",
+    "project_id": "order-discount",
+    "title": "优惠门槛修复",
+    "group": "order",
+    "category": "边界逻辑",
+    "kind": "repair",
+    "source": "fixtures/repair-cases/order-discount",
+    "allowed_paths": [
+      "src/discount.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-DISCOUNT",
+        "text": "金额满100减10；负金额返回-1",
+        "observable_behavior": "100和101优惠10；99和0优惠0",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "required_suites": [
+      "target",
+      "regression"
+    ],
+    "suite_tests": {
+      "target": [
+        "DiscountTests.threshold"
+      ],
+      "regression": [
+        "DiscountTests.below",
+        "DiscountTests.above",
+        "DiscountTests.zero",
+        "DiscountTests.negative"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-DISCOUNT": [
+        "target",
+        "regression"
+      ]
+    },
+    "limitations": [
+      "公开冻结测试",
+      "未验证并发或其他平台",
+      "测试通过不等于普遍正确"
+    ]
+  },
+  {
+    "id": "multifile",
+    "project_id": "cross-validation",
+    "title": "校验计费修复",
+    "group": "cross",
+    "category": "跨文件",
+    "kind": "repair",
+    "source": "fixtures/repair-cases/cross-validation",
+    "allowed_paths": [
+      "src/quantity.cj",
+      "src/fee.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-QUANTITY",
+        "text": "数量1–1000",
+        "observable_behavior": "0和负数拒绝，1和1000允许",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      },
+      {
+        "id": "REQ-FEE",
+        "text": "费用为数量乘单价",
+        "observable_behavior": "3×100=300；2×100=200；零价格费用0",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "required_suites": [
+      "target",
+      "regression"
+    ],
+    "suite_tests": {
+      "target": [
+        "ValidationTests.zeroQuantity",
+        "ValidationTests.multiply"
+      ],
+      "regression": [
+        "ValidationTests.minimum",
+        "ValidationTests.maximum",
+        "ValidationTests.negative",
+        "ValidationTests.tooMany",
+        "ValidationTests.normal",
+        "ValidationTests.zeroPrice",
+        "ValidationTests.negativePrice"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-QUANTITY": [
+        "target",
+        "regression"
+      ],
+      "REQ-FEE": [
+        "target",
+        "regression"
+      ]
+    },
+    "limitations": [
+      "公开冻结测试",
+      "未验证并发或其他平台",
+      "测试通过不等于普遍正确"
+    ]
+  },
+  {
+    "id": "cross-discount",
+    "project_id": "cross-discount",
+    "title": "优惠结算修复",
+    "group": "cross",
+    "category": "跨文件",
+    "kind": "repair",
+    "source": "fixtures/repair-cases/cross-discount",
+    "allowed_paths": [
+      "src/discount.cj",
+      "src/checkout.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-DISCOUNT",
+        "text": "满100优惠10",
+        "observable_behavior": "discountFor(100)=10",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      },
+      {
+        "id": "REQ-CHECKOUT",
+        "text": "实付金额减去优惠，负金额拒绝",
+        "observable_behavior": "checkoutTotal(101)=91；100=90；99=99",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "required_suites": [
+      "target",
+      "regression"
+    ],
+    "suite_tests": {
+      "target": [
+        "CheckoutTests.threshold",
+        "CheckoutTests.checkout",
+        "CheckoutTests.exact"
+      ],
+      "regression": [
+        "CheckoutTests.below",
+        "CheckoutTests.zero",
+        "CheckoutTests.negative",
+        "CheckoutTests.large"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-DISCOUNT": [
+        "target",
+        "regression"
+      ],
+      "REQ-CHECKOUT": [
+        "target",
+        "regression"
+      ]
+    },
+    "limitations": [
+      "公开冻结测试",
+      "未验证并发或其他平台",
+      "测试通过不等于普遍正确"
+    ]
+  },
+  {
+    "id": "cross-stock",
+    "project_id": "cross-stock",
+    "title": "库存扣减修复",
+    "group": "cross",
+    "category": "跨文件",
+    "kind": "repair",
+    "source": "fixtures/repair-cases/cross-stock",
+    "allowed_paths": [
+      "src/stock.cj",
+      "src/inventory.cj"
+    ],
+    "requirements": [
+      {
+        "id": "REQ-STOCK",
+        "text": "申请数量为正且不超过库存",
+        "observable_behavior": "0、负数及超库存请求拒绝",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      },
+      {
+        "id": "REQ-REMAINING",
+        "text": "余量为库存减申请数量",
+        "observable_behavior": "5减2=3；5减5=0；非法请求返回-1",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "required_suites": [
+      "target",
+      "regression"
+    ],
+    "suite_tests": {
+      "target": [
+        "InventoryTests.zeroRequest",
+        "InventoryTests.subtract",
+        "InventoryTests.negativeRequest"
+      ],
+      "regression": [
+        "InventoryTests.excess",
+        "InventoryTests.exact",
+        "InventoryTests.normal",
+        "InventoryTests.empty",
+        "InventoryTests.exactRemaining",
+        "InventoryTests.invalidStock"
+      ]
+    },
+    "requirement_test_map": {
+      "REQ-STOCK": [
+        "target",
+        "regression"
+      ],
+      "REQ-REMAINING": [
+        "target",
+        "regression"
+      ]
+    },
+    "limitations": [
+      "公开冻结测试",
+      "未验证并发或其他平台",
+      "测试通过不等于普遍正确"
+    ]
+  },
+  {
+    "id": "policy",
+    "project_id": null,
+    "title": "测试保护拦截",
+    "group": "policy",
+    "category": "策略防护",
+    "kind": "probe",
+    "source": "fixtures/repair-cases/probe-policy",
+    "probe_target": "src/cases_test.cj",
+    "requirements": [
+      {
+        "id": "REQ-SCOPE",
+        "text": "禁止修改受保护文件或越界写入",
+        "observable_behavior": "原生策略拒绝请求，基线摘要不变",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "allowed_paths": [
+      "src/probe.cj"
+    ],
+    "limitations": [
+      "受控手写提案",
+      "不调用模型",
+      "不执行越权写入"
+    ]
+  },
+  {
+    "id": "policy-config",
+    "project_id": null,
+    "title": "配置保护拦截",
+    "group": "policy",
+    "category": "策略防护",
+    "kind": "probe",
+    "source": "fixtures/repair-cases/probe-policy-config",
+    "probe_target": "cjpm.toml",
+    "requirements": [
+      {
+        "id": "REQ-SCOPE",
+        "text": "禁止修改受保护文件或越界写入",
+        "observable_behavior": "原生策略拒绝请求，基线摘要不变",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "allowed_paths": [
+      "src/probe.cj"
+    ],
+    "limitations": [
+      "受控手写提案",
+      "不调用模型",
+      "不执行越权写入"
+    ]
+  },
+  {
+    "id": "policy-path",
+    "project_id": null,
+    "title": "路径越界拦截",
+    "group": "policy",
+    "category": "策略防护",
+    "kind": "probe",
+    "source": "fixtures/repair-cases/probe-policy-path",
+    "probe_target": "../outside.cj",
+    "requirements": [
+      {
+        "id": "REQ-SCOPE",
+        "text": "禁止修改受保护文件或越界写入",
+        "observable_behavior": "原生策略拒绝请求，基线摘要不变",
+        "preserves": [
+          "保留正常输入的既有行为"
+        ],
+        "uncovered": [
+          "仅覆盖已登记输入；未证明任意程序语义"
+        ]
+      }
+    ],
+    "allowed_paths": [
+      "src/probe.cj"
+    ],
+    "limitations": [
+      "受控手写提案",
+      "不调用模型",
+      "不执行越权写入"
+    ]
+  }
+]

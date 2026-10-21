@@ -1,0 +1,21 @@
+.....F                                                                   [100%]
+=================================== FAILURES ===================================
+___________ test_cancelled_inflight_task_displays_uncertain_effects ____________
+
+tmp_path = PosixPath('/private/var/folders/r5/1kz30hl136lgdq2ym67g62z00000gn/T/pytest-of-jadya/pytest-130/test_cancelled_inflight_task_d0')
+
+    def test_cancelled_inflight_task_displays_uncertain_effects(tmp_path):
+        store,loop,client,headers=setup_app(tmp_path)
+        task=store.create_task('base','goal',['src/a.cj'])
+        task=store.update_task(task.id,status='GENERATING')
+        store.append_record(task.id,'model_call',dict(id='pending',task_id=task.id,origin='TEST',
+            model_id='NO_NETWORK',request_ref='records/unit.json',status='STARTED'))
+        response=client.post('/api/tasks/'+task.id+'/cancel',json={'task_revision':task.revision},headers=headers)
+>       assert response.status_code==200 and response.json['code']=='RESULT_IN_DOUBT'
+                                             ^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'code'
+
+tests/test_workbench_errors.py:91: KeyError
+=========================== short test summary info ============================
+FAILED tests/test_workbench_errors.py::test_cancelled_inflight_task_displays_uncertain_effects
+1 failed, 5 passed in 0.85s

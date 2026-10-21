@@ -1,0 +1,225 @@
+{
+  "elapsed_ms": 2756,
+  "http_status": 200,
+  "input": {
+    "code": "func sum3(a: Int64, b: Int64, c: Int64): Int64 {\n    let first = a + b\n    let total = first + c\n    return total\n}\nmain(): Int64 {\n    println(sum3(2, 3, 4))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l1_sum3.cj",
+    "format": "json",
+    "lang": "cangjie",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "observed_at": "2026-10-19T15:40:19.471057+00:00",
+  "request_id": "3ed46dd94ad3489082be471a98b17558-sympas_slice",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_analysis_yfhv0ec4/slice.json",
+        "download_url": "/artifacts/sympas_analysis_yfhv0ec4/slice.json?[REDACTED]",
+        "format": "json",
+        "name": "slice.json",
+        "path": "/workspace/artifacts/sympas_analysis_yfhv0ec4/slice.json",
+        "preview": {
+          "available": true,
+          "content": "{\"version\": \"1.0\", \"tool\": \"SymSlicer/SymPas\", \"backward_slices\": {\"a@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"b@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"c@sum3\": {\"l1_sum3.cj\": [1, 3, 4, 6, 7]}, \"first@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"total@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}}}"
+        },
+        "url": "/artifacts/sympas_analysis_yfhv0ec4/slice.json?[REDACTED]"
+      }
+    ],
+    "cache": "miss",
+    "data": {
+      "backward_slices": {
+        "a@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "b@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "c@sum3": {
+          "l1_sum3.cj": [
+            1,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "first@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "total@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "engine": "analysis-engine",
+    "engine_log": "Found 1 source file to analyze in workspace/artifacts/sympas_capture_jima463o/analysis-results\nruntime/sympas_src_5b1ecc/l1_sum3.cj starting\nruntime/sympas_src_5b1ecc/l1_sum3.cj DONE\nJSON report written to workspace/artifacts/sympas_analysis_yfhv0ec4/slice.json",
+    "findings": [],
+    "format": "json",
+    "issue_count": 0,
+    "issues": [],
+    "line_filter": 3,
+    "message": "Analysis completed: 0 item(s), 1 artifact(s).",
+    "output_dir": "/workspace/artifacts/sympas_analysis_yfhv0ec4",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_analysis_yfhv0ec4/slice.json?[REDACTED]",
+      "json_source": "{\"version\": \"1.0\", \"tool\": \"Sympas Symbolic Engine/SymPas\", \"backward_slices\": {\"a@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"b@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"c@sum3\": {\"l1_sum3.cj\": [1, 3, 4, 6, 7]}, \"first@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"total@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}}}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_analysis_yfhv0ec4/slice.json?[REDACTED]"
+    },
+    "raw_output": "Scanner mode=file discovered 1 source files (1 language buckets) under runtime/sympas_src_5b1ecc\n  Cangjie: 1 files (sympas-gs)\nDiscovered 1 source files\n解析 runtime/sympas_src_5b1ecc/l1_sum3.cj...\nCall Graph已生成: ./output/l1_sum3_cg.dot, ./output/l1_sum3_cg.svg\n切片表已生成 (参考格式): ./output/l1_sum3.SliceResult_Bwd-SDG\n\nBackward Static SliceTable:\n\t#Insts_sliced = 25.0 (Average: 5)\n\n Variable      SrcLineNumbers  \n------------------------------\n a@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n b@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n c@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n first@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\n total@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n\nTextual SIL exported: runtime/sympas-se_efb6f9/l1_sum3.sil (2305 bytes)\nRun Sympas Formal Verifier: sympas-fv --sympas-hv-only -- --capture-textual runtime/sympas-se_efb6f9/l1_sum3.sil\n完成. 输出目录: ./output\n[slicer] mode=precise (full interprocedural)",
+    "report": {
+      "backward_slices": {
+        "a@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "b@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "c@sum3": {
+          "l1_sum3.cj": [
+            1,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "first@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "total@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "24b2b358986203d2",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 2681.5
+    },
+    "result": {
+      "backward_slices": {
+        "a@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "b@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "c@sum3": {
+          "l1_sum3.cj": [
+            1,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "first@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "total@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "tool": "Sympas Symbolic Engine/SymPas",
+      "version": "1.0"
+    },
+    "server_timing_ms": 2681.5,
+    "status": "success",
+    "tool": "sympas_slice"
+  },
+  "schema_version": 1,
+  "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+  "tool": "sympas_slice",
+  "transport": "group_http_tools"
+}

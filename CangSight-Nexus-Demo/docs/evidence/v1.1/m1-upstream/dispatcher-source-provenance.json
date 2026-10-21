@@ -1,0 +1,16 @@
+{
+  "base_commit": "5db0c7eeeb6a62812fc04e9e88497339fed5e11f",
+  "original_path": "Sympas-Nexus/nexus/gateway/app.py",
+  "original_file_sha256": "420b78df711af7f2e4e7de2437736460bb37bb1312da81a396051ee6a98ab89c",
+  "original_function_sha256": "d2b1ad2d388b6499da14f31d89bf75e2e249cfe0d5d97800f96eb6be70329c31",
+  "derived_path": "nexus/integrations/sympas_runtime.py",
+  "derived_file_sha256": "0cbe62bb631547fc1a6bcdaf0f3a0ebf77e9199c33b986a91da02013a5e3d1d7",
+  "changes": [
+    "Inject handler and required store instead of unrelated global domain registry/database",
+    "Keep dispatch lifecycle and handler run/event context",
+    "Project dispatch status as events; primary TaskRecord remains authoritative",
+    "Sanitize exception messages and logs",
+    "Queue/thread start retained from create_run; native task creation remains existing transaction"
+  ],
+  "whole_original_app_imported": false
+}

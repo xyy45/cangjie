@@ -1,0 +1,38 @@
+[
+  {
+    "name": "deny_exact",
+    "profile": "(version 1)(allow default)(deny network-outbound(remote tcp \"localhost:8765\"))",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "name": "deny_all",
+    "profile": "(version 1)(allow default)(deny network-outbound)",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "name": "allow_12345",
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound(remote tcp \"localhost:12345\"))",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "name": "allow_8765",
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound(remote tcp \"localhost:8765\"))",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "name": "negate_exact",
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound(require-not(remote tcp \"localhost:8765\")))",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  },
+  {
+    "name": "deny_loopback",
+    "profile": "(version 1)(allow default)(deny network-outbound(remote tcp \"localhost:*\"))",
+    "exit_code": 1,
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nPermissionError: [Errno 1] Operation not permitted\n"
+  }
+]
