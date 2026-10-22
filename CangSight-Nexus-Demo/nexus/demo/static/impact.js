@@ -1,7 +1,7 @@
 'use strict';
 const ImpactUI=(()=>{
  const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
- const names={sympas_slice:'切片',sympas_dep_graph:'DDG',ast_symbol_extractor:'结构线索'};
+ const names={sympas_slice_table:'静态切片表',sympas_slice:'切片',sympas_dep_graph:'DDG',ast_symbol_extractor:'结构线索'};
  const labels={NOT_STARTED:'本地改动预览',READY:'等待分析',RUNNING:'工具分析中',COMPLETE:'工具结果完整',PARTIAL:'部分工具结果',FAILED:'工具分析失败',IN_DOUBT:'中断待核实'};
  let identity=null,taskId=null,version=0,report=null,requestBusy=false,runningRepair=false,pollTimer;
  const active=()=>['READY','RUNNING'].includes(report?.status);
@@ -74,7 +74,7 @@ const ImpactUI=(()=>{
     if(observation){const view=make('button','text-button','原图与切片');view.onclick=()=>inspect(file,side);head.append(view);}
     column.append(head,codeSnippet(file[side+'_code'],file.changes[side+'_lines'],side));
     if(observation){
-     column.append(make('code','evidence-hash',observation.source_sha256),make('p','evidence-note','请求 L'+observation.slice_criterion.line+' · '+(observation.reused?'复用同版本同参数证据':'本次分析')+' · '+observation.status));
+     column.append(make('code','evidence-hash',observation.source_sha256),make('p','evidence-note',(observation.slice_scope==='VARIABLE_TABLE'?'变量切片表 · 定位 L':'请求 L')+observation.slice_criterion.line+' · '+(observation.reused?'复用同版本同参数证据':'本次分析')+' · '+observation.status));
      const tools=make('div','impact-tools');for(const t of observation.tools)tools.append(make('span','tiny-badge',names[t.tool]+' '+t.status));column.append(tools);
      const g=observation.graph;
      column.append(make('p','evidence-note','原图 '+g.total_nodes+' 节点 / '+g.total_edges+' 边 · 展示 '+g.nodes.length+' 相关节点'+(g.graph_count>1?' · 第 '+(g.graph_index+1)+'/'+g.graph_count+' 张 DDG':'')+(g.truncated?' · 已截断':'')));

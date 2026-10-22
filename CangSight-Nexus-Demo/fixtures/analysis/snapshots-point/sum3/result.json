@@ -1,0 +1,410 @@
+{
+  "active_tool": null,
+  "analysis_profile": 5,
+  "callgraph": {
+    "analysis_id": "6ba8db956875454bbe323056ef95a623",
+    "graph_type": "Cg",
+    "raw_ref": "observations/sympas_dep_graph.json",
+    "raw_sha256": "5c755b7bad263b46fcff6f91b55b45861a96c50d3f8d6d3f0e0e528b429b4388",
+    "ref": "artifacts/callgraph.svg",
+    "sha256": "e90f46979a1b4ecd0c9af0aade3bf416ad5824ce8845c8bb8b665217030274e2",
+    "size_bytes": 3299,
+    "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+    "status": "SAVED",
+    "upstream_path": "/artifacts/sympas_depgraph_9rvepzf0/l1_sum3_cg.svg"
+  },
+  "created_at": "2026-10-22T04:25:58.720176+00:00",
+  "elapsed_ms": 7070,
+  "id": "6ba8db956875454bbe323056ef95a623",
+  "limitations": [
+    "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+    "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+    "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+    "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+  ],
+  "observations": [
+    {
+      "data": {
+        "direction": "Bwd",
+        "method": "SymPas",
+        "scope": "VARIABLE_TABLE",
+        "slices": {
+          "a@sum3": [
+            1,
+            4,
+            6,
+            7
+          ],
+          "b@sum3": [
+            1,
+            4,
+            6,
+            7
+          ],
+          "c@sum3": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "first@sum3": [
+            1,
+            2,
+            4,
+            6,
+            7
+          ],
+          "total@sum3": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "elapsed_ms": 613,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:25:59.337548+00:00",
+      "raw_ref": "observations/sympas_slice_table.json",
+      "raw_sha256": "bd5fa133a7d7e46e0cced98cb40736367be3a7905c79d1d8fade89075b95b6db",
+      "reason": "静态切片表已返回",
+      "request_id": "6ba8db956875454bbe323056ef95a623-sympas_slice_table",
+      "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+      "status": "VALID",
+      "tool": "sympas_slice_table"
+    },
+    {
+      "data": {
+        "graphs": [
+          {
+            "edges": [
+              {
+                "from": "n2",
+                "to": "n3"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n15"
+              },
+              {
+                "from": "n2",
+                "to": "n14"
+              },
+              {
+                "from": "n7",
+                "to": "n13"
+              },
+              {
+                "from": "n9",
+                "to": "n12"
+              },
+              {
+                "from": "n5",
+                "to": "n11"
+              },
+              {
+                "from": "n8",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n1"
+              },
+              {
+                "from": "n4",
+                "to": "n1"
+              },
+              {
+                "from": "n6",
+                "to": "n1"
+              },
+              {
+                "from": "n8",
+                "to": "n9"
+              },
+              {
+                "from": "n6",
+                "to": "n7"
+              },
+              {
+                "from": "n4",
+                "to": "n5"
+              }
+            ],
+            "graph_type": "Ddg",
+            "nodes": [
+              {
+                "id": "n3",
+                "label": "[L4]: return total",
+                "line": 4
+              },
+              {
+                "id": "n5",
+                "label": "(formal-out)%a",
+                "line": null
+              },
+              {
+                "id": "n14",
+                "label": "FinalUse(%total)",
+                "line": null
+              },
+              {
+                "id": "n12",
+                "label": "FinalUse(%c)",
+                "line": null
+              },
+              {
+                "id": "n11",
+                "label": "FinalUse(%a)",
+                "line": null
+              },
+              {
+                "id": "n8",
+                "label": "(formal-in)%c",
+                "line": null
+              },
+              {
+                "id": "n7",
+                "label": "(formal-out)%b",
+                "line": null
+              },
+              {
+                "id": "n9",
+                "label": "(formal-out)%c",
+                "line": null
+              },
+              {
+                "id": "n15",
+                "label": "FinalUse(%first)",
+                "line": null
+              },
+              {
+                "id": "n6",
+                "label": "(formal-in)%b",
+                "line": null
+              },
+              {
+                "id": "n4",
+                "label": "(formal-in)%a",
+                "line": null
+              },
+              {
+                "id": "n1",
+                "label": "[L2]: first = a + b",
+                "line": 2
+              },
+              {
+                "id": "n13",
+                "label": "FinalUse(%b)",
+                "line": null
+              },
+              {
+                "id": "n2",
+                "label": "[L3]: total = first + c",
+                "line": 3
+              }
+            ]
+          }
+        ]
+      },
+      "elapsed_ms": 1824,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:02.565224+00:00",
+      "raw_ref": "observations/sympas_dep_graph.json",
+      "raw_sha256": "5c755b7bad263b46fcff6f91b55b45861a96c50d3f8d6d3f0e0e528b429b4388",
+      "reason": "数据依赖结构已返回",
+      "request_id": "6ba8db956875454bbe323056ef95a623-sympas_dep_graph",
+      "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+      "status": "VALID",
+      "tool": "sympas_dep_graph"
+    },
+    {
+      "data": {
+        "dependency_count": 57,
+        "symbols": [
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%a"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%b"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%c"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%a"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%b"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%c"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER main"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER sum3"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%a)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%b)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%c)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%first)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%total)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L2]: first = a + b"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L3]: total = first + c"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L4]: return total"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L7]: println(sum3(2, 3, 4))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L8]: return 0"
+          }
+        ]
+      },
+      "elapsed_ms": 1824,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:05.787839+00:00",
+      "raw_ref": "observations/ast_symbol_extractor.json",
+      "raw_sha256": "533a7fa1a25a82fc376acd9db587ffa36622351a2a6cdb530f9b5442660d3f64",
+      "reason": "结构线索已返回",
+      "request_id": "6ba8db956875454bbe323056ef95a623-ast_symbol_extractor",
+      "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+      "status": "VALID",
+      "tool": "ast_symbol_extractor"
+    }
+  ],
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "slice_criterion": {
+    "direction": "Bwd",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "slice_scope": "VARIABLE_TABLE",
+  "source": {
+    "code": "func sum3(a: Int64, b: Int64, c: Int64): Int64 {\n    let first = a + b\n    let total = first + c\n    return total\n}\nmain(): Int64 {\n    println(sum3(2, 3, 4))\n    return 0\n}\n",
+    "filename": "l1_sum3.cj",
+    "line_count": 9,
+    "size": 174,
+    "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf"
+  },
+  "status": "COMPLETE",
+  "updated_at": "2026-10-22T04:26:05.789625+00:00"
+}

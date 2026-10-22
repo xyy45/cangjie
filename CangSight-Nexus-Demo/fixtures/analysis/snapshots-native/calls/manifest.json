@@ -1,0 +1,14 @@
+{
+  "files": {
+    "artifacts/callgraph.svg": "e17ad92c77430ff41adf7fdc10aee815c3919ad243b0be5e1f0b48f94e0c30df",
+    "observations/ast_symbol_extractor.json": "8e70a984cd04d7ccb368f85f10789aab92e1496d5fcdc576d5700341a539a96f",
+    "observations/sympas_dep_graph.json": "34b62edd3efd4c1e67938a3433353e1f3f029da52b5d9eb98c11b3c2e20468f4",
+    "observations/sympas_slice_table.json": "c988d9c83c74bb7ace9e4e3d23f720ded8c954162af633c53c583322911782eb",
+    "result.json": "49a80981b35a807bce4ae1d3f462b1a1817828669a610311c33448aa251b24da",
+    "source.cj": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5"
+  },
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "status": "COMPLETE"
+}

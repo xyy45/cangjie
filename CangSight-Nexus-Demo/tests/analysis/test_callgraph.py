@@ -81,7 +81,7 @@ def test_unknown_svg_encoding_is_optional_failure():
 class SvgClient(FakeClient):
     def analyze(self,tool,args):
         reply=super().analyze(tool,args)
-        if tool=='sympas_slice':reply['response']={'status':'error','message':'failed slice'}
+        if tool=='sympas_slice_table':reply['response']={'status':'error','message':'failed slice'}
         if tool=='sympas_dep_graph':
             assert 'Cg' in args['graph_types'] and 'svg' in args['formats']
             reply.update(_callgraph_bytes=SVG,callgraph={'status':'SAVED','upstream_path':'/artifacts/run/f_cg.svg'})

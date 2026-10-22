@@ -12,6 +12,13 @@ from nexus.analysis.service import AnalysisService
 from tests.analysis.test_service import FakeClient, SOURCE
 
 
+@pytest.fixture(autouse=True)
+def legacy_profile(monkeypatch,tmp_path):
+    import nexus.analysis.service as service_module
+    monkeypatch.setattr(service_module,'TOOLS',('sympas_slice','sympas_dep_graph','ast_symbol_extractor'))
+    monkeypatch.setattr(samples,'POINT_SNAPSHOTS',tmp_path/'no-point-snapshots')
+    monkeypatch.setattr(samples,'NATIVE_SNAPSHOTS',tmp_path/'no-native-snapshots')
+
 def test_existing_real_calls_snapshot_recovers_ten_variables_without_changing_verdict():
     report=samples.snapshot('calls')
     assert report['status']=='PARTIAL'

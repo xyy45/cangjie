@@ -10,8 +10,9 @@ import time
 import zipfile
 
 from nexus.analysis.client import ResearchClient,AnalysisUnavailable
-from nexus.analysis.normalize import TOOLS,LIMITATIONS,normalize
+from nexus.analysis.normalize import TOOLS,SUPPORTED_TOOLS,LIMITATIONS,normalize
 from nexus.analysis.recovery import attach_recovery
+from nexus.analysis.point import attach_point_graph
 from nexus.execution.ownership import owner_token,verify_write_owner
 from nexus.store import RunStore,uid
 
@@ -54,14 +55,14 @@ class AnalysisService:
         if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}',request_key or '') or origin not in ('SAMPLE','UPLOAD','REGISTERED'):raise ValueError('无效分析请求')
         criterion=slice_criterion(source,slice_line)
         identity=dict(filename=source['filename'],source_sha256=source['source_sha256'],origin=origin)
-        fingerprint=sha(encoded(dict(**identity,profile_version=3,slice_criterion=criterion)))
-        previous=sha(encoded(dict(**identity,profile_version=2,slice_criterion=criterion)))
+        fingerprint=sha(encoded(dict(**identity,profile_version=5,slice_criterion=criterion)))
+        previous=[sha(encoded(dict(**identity,profile_version=n,slice_criterion=criterion))) for n in (2,3,4)]
         legacy=sha(encoded(dict(**identity,profile_version=1))) if criterion==slice_criterion(source) else None
         with self.store.connect() as db:
             db.execute('BEGIN IMMEDIATE')
             old=db.execute('SELECT id,request_hash FROM analysis_jobs WHERE actor_id=? AND request_key=?',(actor_id,request_key)).fetchone()
             if old:
-                if old[1] not in (fingerprint,previous,legacy):raise AnalysisConflict('同一请求标识不能绑定不同源码或切片目标')
+                if old[1] not in (fingerprint,*previous,legacy):raise AnalysisConflict('同一请求标识不能绑定不同源码或切片目标')
                 return {'id':old[0]}
             has_impact=db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='impact_jobs'").fetchone()
             impact=db.execute("SELECT status,payload FROM impact_jobs WHERE status IN ('READY','RUNNING')").fetchone() if has_impact else None
@@ -75,7 +76,7 @@ class AnalysisService:
             with path.open('xb') as stream:path.chmod(0o600);stream.write(source['code'].encode())
             payload=dict(schema_version=1,id=identity,origin=origin,source={k:v for k,v in source.items() if k!='code'},
                 created_at=datetime.now(timezone.utc).isoformat(),updated_at=datetime.now(timezone.utc).isoformat(),
-                observations=[],limitations=LIMITATIONS,active_tool=None,elapsed_ms=None,slice_criterion=criterion)
+                analysis_profile=5,slice_scope='VARIABLE_TABLE',observations=[],limitations=LIMITATIONS,active_tool=None,elapsed_ms=None,slice_criterion=criterion)
             db.execute('INSERT INTO analysis_jobs VALUES (?,?,?,?,?,?)',(identity,actor_id,request_key,fingerprint,'READY',json.dumps(payload,ensure_ascii=False)))
         return {'id':identity}
 
@@ -113,8 +114,9 @@ class AnalysisService:
                     verify_write_owner(self.store.root,self.owner)
                     payload['active_tool']=tool;self._save(identity,'RUNNING',payload)
                     args=dict(code=source['code'],filename=source['filename'],lang='cangjie')
+                    if tool=='sympas_slice_table':args.update(direction='Bwd',method='SymPas',table_formats=['json'],timeout_sec=40)
                     if tool=='sympas_slice':args.update(**payload.get('slice_criterion',slice_criterion(source)),format='json')
-                    if tool=='sympas_dep_graph':args.update(graph_types='Ddg,Cg',formats=['dot','svg'])
+                    if tool=='sympas_dep_graph':args.update(graph_types='Ddg,Cg,Pdg',formats=['dot','svg'])
                     try:
                         reply=client.analyze(tool,args)
                         observation=normalize(tool,reply.get('response'),source['filename'],source['line_count']) if reply.get('http_status')==200 else dict(status='UNAVAILABLE',reason='分析服务返回非200状态',data={})
@@ -161,7 +163,7 @@ class AnalysisService:
         status,payload=self._row(identity,actor_id);source=self._source(identity,payload)
         root=self.directory(identity)
         for o in payload['observations']:
-            if o['raw_ref'] not in {f'observations/{tool}.json' for tool in TOOLS}:raise ValueError('未知证据引用')
+            if o['raw_ref'] not in {f'observations/{tool}.json' for tool in SUPPORTED_TOOLS}:raise ValueError('未知证据引用')
             path=root/o['raw_ref']
             if path.is_symlink() or sha(path.read_bytes())!=o['raw_sha256']:raise ValueError('分析证据已变化')
         if payload.get('result_sha256'):
@@ -188,8 +190,21 @@ class AnalysisService:
         if observed:
             args=json.loads((root/observed['raw_ref']).read_bytes())['input']
             if any(args.get(k)!=v for k,v in criterion.items()):raise ValueError('切片参数与原始请求不符')
-        return attach_recovery(dict(payload,status=status,source=source,slice_criterion=criterion,
-            callgraph=cg or dict(status='UNAVAILABLE',reason='此记录没有调用图 SVG，请重新分析')),root)
+        native=next((o for o in payload['observations'] if o['tool']=='sympas_slice_table'),None)
+        if native:
+            raw=json.loads((root/native['raw_ref']).read_bytes())
+            args=raw.get('input',{})
+            if (raw.get('tool')!='sympas_slice_table' or raw.get('source_sha256')!=source['source_sha256'] or
+                    args.get('code')!=source['code'] or args.get('filename')!=source['filename'] or
+                    args.get('lang')!='cangjie' or args.get('direction')!='Bwd' or args.get('method')!='SymPas' or
+                    args.get('table_formats')!=['json'] or 'line' in args or payload.get('slice_scope')!='VARIABLE_TABLE'):
+                raise ValueError('切片表与原始请求绑定不符')
+            if native['status']=='VALID':
+                checked=normalize('sympas_slice_table',raw.get('response'),source['filename'],source['line_count'])
+                if raw.get('http_status')!=200 or checked['status']!='VALID' or checked['data']!=native['data']:
+                    raise ValueError('切片表与原始结果不符')
+        return attach_point_graph(attach_recovery(dict(payload,status=status,source=source,slice_criterion=criterion,
+            callgraph=cg or dict(status='UNAVAILABLE',reason='此记录没有调用图 SVG，请重新分析')),root),root)
 
     def callgraph_bytes(self,identity,*,actor_id):
         result=self.get(identity,actor_id=actor_id)
@@ -201,7 +216,7 @@ class AnalysisService:
     def list(self,actor_id):
         with self.store.connect() as db:
             rows=db.execute('SELECT id,status,payload FROM analysis_jobs WHERE actor_id=? ORDER BY rowid DESC LIMIT 20',(actor_id,)).fetchall()
-        return [dict(id=identity,status=status,filename=(data:=json.loads(payload))['source']['filename'],origin=data['origin'],
+        return [dict(id=identity,status=status,filename=(data:=json.loads(payload))['source']['filename'],origin=data['origin'],slice_scope=data.get('slice_scope'),
             slice_criterion=data.get('slice_criterion',slice_criterion(data['source']))) for identity,status,payload in rows]
 
     def export(self,identity,*,actor_id):

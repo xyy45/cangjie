@@ -21,7 +21,6 @@ async function selectCase(id,showWorkspace=true){
   invalidate();const version=epoch;try{const data=await api('/demo/cases/'+id);if(version!==epoch)return;current=data;current.replay_files=data.files;caseId=id;fileIndex=0;flow.reset();realTask=null;realCandidate=null;realChecks=[];selectedRound=null;roundEpoch++;roundLoading=false;downloadUrl='';
     document.querySelectorAll('.case-button').forEach(b=>b.classList.toggle('selected',b.dataset.case===id));
     $('case-title').textContent=data.title;$('case-category').textContent=data.category;$('requirement-text').textContent=data.requirement;
-    $('limitation-tags').replaceChildren(...data.limitations.map(t=>{const s=document.createElement('span');s.className='tiny-badge';s.textContent=t;return s;}));
     if(!data.can_replay)mode='real';syncMode();render();if(showWorkspace)showView('workspace');return {epoch,id:caseId};
   }catch(error){toast(error.message);return null;}
 }

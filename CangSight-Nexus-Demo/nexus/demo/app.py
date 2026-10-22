@@ -9,7 +9,7 @@ from flask import jsonify, render_template, send_file, session, request
 
 from nexus.demo.cases import case_catalog, download_case, load_cases
 from nexus.demo.provider import RuleProvider
-from nexus.analysis.routes import svg_links,svg_response
+from nexus.analysis.routes import svg_links,svg_response,point_response
 from nexus.demo.deepseek import DeepSeekProvider, model_config
 from nexus.execution.delivery import DeliveryService
 from nexus.execution.ownership import RuntimeOwner
@@ -139,6 +139,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
 
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>')
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/evidence')
+    @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/point-slice')
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/callgraph.svg')
     def impact_analysis(candidate_id,analysis_id):
         report=impact.get(candidate_id)
@@ -149,6 +150,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
         service=app.extensions['analysis_service'];result=service.get(analysis_id,actor_id=actor)
         if result['source']['source_sha256']!=file[side]['source_sha256'] or result['slice_criterion']!=file[side]['slice_criterion']:
             raise ValueError('影响分析版本或准则变化')
+        if request.path.endswith('/point-slice'):return point_response(result,lambda:service.export(analysis_id,actor_id=actor))
         if request.path.endswith('/callgraph.svg'):return svg_response(service.callgraph_bytes(analysis_id,actor_id=actor),analysis_id)
         if request.path.endswith('/evidence'):
             return send_file(service.export(analysis_id,actor_id=actor),mimetype='application/zip',as_attachment=True,
@@ -166,6 +168,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
 
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>')
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/evidence')
+    @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/point-slice')
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/callgraph.svg')
     def repair_analysis_file(task_id,analysis_id):
         from nexus.analysis.repair import verify_evidence
@@ -177,6 +180,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
         service=app.extensions['analysis_service']
         result=service.get(analysis_id,actor_id='repair-'+task_id)
         if result['source']['source_sha256']!=entry['source_sha256']:raise ValueError('Analysis source changed')
+        if request.path.endswith('/point-slice'):return point_response(result,lambda:service.export(analysis_id,actor_id='repair-'+task_id))
         if request.path.endswith('/callgraph.svg'):return svg_response(service.callgraph_bytes(analysis_id,actor_id='repair-'+task_id),analysis_id)
         if request.path.endswith('/evidence'):
             return send_file(service.export(analysis_id,actor_id='repair-'+task_id),mimetype='application/zip',

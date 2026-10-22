@@ -1,0 +1,522 @@
+{
+  "active_tool": null,
+  "analysis_profile": 4,
+  "callgraph": {
+    "analysis_id": "2eb43ecc32034965bb3b5e93a087f518",
+    "graph_type": "Cg",
+    "raw_ref": "observations/sympas_dep_graph.json",
+    "raw_sha256": "1d980dac000db500d13738dbf2b0a71cac19db552c90beec4c358f4ec91a100b",
+    "ref": "artifacts/callgraph.svg",
+    "sha256": "33ce37659632556ea63ede2b41aaaf6b8719d1a57513cdd107df976a859b0774",
+    "size_bytes": 3319,
+    "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+    "status": "SAVED",
+    "upstream_path": "/artifacts/sympas_depgraph_opos5mjs/l2_loop_cg.svg"
+  },
+  "created_at": "2026-10-21T12:51:17.002442+00:00",
+  "elapsed_ms": 7007,
+  "id": "2eb43ecc32034965bb3b5e93a087f518",
+  "limitations": [
+    "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+    "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+    "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+    "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+  ],
+  "observations": [
+    {
+      "data": {
+        "direction": "Bwd",
+        "method": "SymPas",
+        "scope": "VARIABLE_TABLE",
+        "slices": {
+          "index@sumPositive": [
+            1,
+            2,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ],
+          "total@sumPositive": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ],
+          "value@sumPositive": [
+            1,
+            2,
+            4,
+            5,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ],
+          "values@sumPositive": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        }
+      },
+      "elapsed_ms": 874,
+      "http_status": 200,
+      "observed_at": "2026-10-21T12:51:17.880817+00:00",
+      "raw_ref": "observations/sympas_slice_table.json",
+      "raw_sha256": "9fd6c8f161b843b37df4b3970250880c923d2a9a1dd1e0053dafbb39c5955f3b",
+      "reason": "静态切片表已返回",
+      "request_id": "2eb43ecc32034965bb3b5e93a087f518-sympas_slice_table",
+      "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+      "status": "VALID",
+      "tool": "sympas_slice_table"
+    },
+    {
+      "data": {
+        "graphs": [
+          {
+            "edges": [
+              {
+                "from": "n10",
+                "to": "n17"
+              },
+              {
+                "from": "n2",
+                "to": "n17"
+              },
+              {
+                "from": "n1",
+                "to": "n14"
+              },
+              {
+                "from": "n10",
+                "to": "n7"
+              },
+              {
+                "from": "n6",
+                "to": "n10"
+              },
+              {
+                "from": "n2",
+                "to": "n10"
+              },
+              {
+                "from": "n6",
+                "to": "n7"
+              },
+              {
+                "from": "n14",
+                "to": "n6"
+              },
+              {
+                "from": "n1",
+                "to": "n6"
+              },
+              {
+                "from": "n14",
+                "to": "n3"
+              },
+              {
+                "from": "n1",
+                "to": "n3"
+              },
+              {
+                "from": "n10",
+                "to": "n24"
+              },
+              {
+                "from": "n2",
+                "to": "n24"
+              },
+              {
+                "from": "n19",
+                "to": "n23"
+              },
+              {
+                "from": "n14",
+                "to": "n22"
+              },
+              {
+                "from": "n1",
+                "to": "n22"
+              },
+              {
+                "from": "n6",
+                "to": "n21"
+              },
+              {
+                "from": "n18",
+                "to": "n17"
+              },
+              {
+                "from": "n14",
+                "to": "n19"
+              },
+              {
+                "from": "n18",
+                "to": "n14"
+              },
+              {
+                "from": "n18",
+                "to": "n7"
+              },
+              {
+                "from": "n10",
+                "to": "n19"
+              },
+              {
+                "from": "n18",
+                "to": "n10"
+              },
+              {
+                "from": "n6",
+                "to": "n19"
+              },
+              {
+                "from": "n18",
+                "to": "n6"
+              },
+              {
+                "from": "n18",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n19"
+              },
+              {
+                "from": "n18",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n19"
+              },
+              {
+                "from": "n18",
+                "to": "n1"
+              },
+              {
+                "from": "n18",
+                "to": "n19"
+              }
+            ],
+            "graph_type": "Ddg",
+            "nodes": [
+              {
+                "id": "n3",
+                "label": "[L4]: <Loop_cond> (index < values)",
+                "line": 4
+              },
+              {
+                "id": "n21",
+                "label": "FinalUse(%value)",
+                "line": null
+              },
+              {
+                "id": "n17",
+                "label": "[L11]: return total",
+                "line": 11
+              },
+              {
+                "id": "n10",
+                "label": "[L7]: total = total + value",
+                "line": 7
+              },
+              {
+                "id": "n14",
+                "label": "[L9]: index = index + 1",
+                "line": 9
+              },
+              {
+                "id": "n19",
+                "label": "(formal-out)%values",
+                "line": null
+              },
+              {
+                "id": "n7",
+                "label": "[L6]: <Cond> (value > 0)",
+                "line": 6
+              },
+              {
+                "id": "n23",
+                "label": "FinalUse(%values)",
+                "line": null
+              },
+              {
+                "id": "n22",
+                "label": "FinalUse(%index)",
+                "line": null
+              },
+              {
+                "id": "n24",
+                "label": "FinalUse(%total)",
+                "line": null
+              },
+              {
+                "id": "n6",
+                "label": "[L5]: value = values",
+                "line": 5
+              },
+              {
+                "id": "n18",
+                "label": "(formal-in)%values",
+                "line": null
+              },
+              {
+                "id": "n1",
+                "label": "[L2]: index = 0",
+                "line": 2
+              },
+              {
+                "id": "n2",
+                "label": "[L3]: total = 0",
+                "line": 3
+              }
+            ]
+          }
+        ]
+      },
+      "elapsed_ms": 1462,
+      "http_status": 200,
+      "observed_at": "2026-10-21T12:51:20.746472+00:00",
+      "raw_ref": "observations/sympas_dep_graph.json",
+      "raw_sha256": "1d980dac000db500d13738dbf2b0a71cac19db552c90beec4c358f4ec91a100b",
+      "reason": "数据依赖结构已返回",
+      "request_id": "2eb43ecc32034965bb3b5e93a087f518-sympas_dep_graph",
+      "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+      "status": "VALID",
+      "tool": "sympas_dep_graph"
+    },
+    {
+      "data": {
+        "dependency_count": 111,
+        "symbols": [
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%values"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%values"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "<noop: return>"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER main"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER sumPositive"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%index)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%total)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%value)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%values)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "JOIN"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L11]: return total"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L15]: println(sumPositive([7]))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L16]: println(sumPositive([-2, -1]))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L17]: return 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L2]: index = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L3]: total = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L4]: <Loop_cond> (index < values)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L5]: value = values"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L6]: <Cond> (value > 0)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L7]: total = total + value"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L9]: index = index + 1"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "_tmp = <?>"
+          }
+        ]
+      },
+      "elapsed_ms": 1862,
+      "http_status": 200,
+      "observed_at": "2026-10-21T12:51:24.005895+00:00",
+      "raw_ref": "observations/ast_symbol_extractor.json",
+      "raw_sha256": "2ae2702feceb8d25bc9f40563943338c75fb9c85fb41ea07537a1841c53e01e9",
+      "reason": "结构线索已返回",
+      "request_id": "2eb43ecc32034965bb3b5e93a087f518-ast_symbol_extractor",
+      "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+      "status": "VALID",
+      "tool": "ast_symbol_extractor"
+    }
+  ],
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "slice_criterion": {
+    "direction": "Bwd",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "slice_scope": "VARIABLE_TABLE",
+  "source": {
+    "code": "func sumPositive(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        if (value > 0) {\n            total = total + value\n        }\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(sumPositive([2, -3, 4, 5]))\n    println(sumPositive([7]))\n    println(sumPositive([-2, -1]))\n    return 0\n}\n",
+    "filename": "l2_loop.cj",
+    "line_count": 18,
+    "size": 422,
+    "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3"
+  },
+  "status": "COMPLETE",
+  "updated_at": "2026-10-21T12:51:24.008854+00:00"
+}

@@ -17,7 +17,8 @@ class Transport:
     def analyze(self,tool,args):
         self.calls.append((tool,args))
         response={'status':'success','untrusted_ref':'records/foreign.json'}
-        if tool=='sympas_slice':response['data']={'backward_slices':{'quantity':{args['filename']:[3,4]}}}
+        if tool in ('sympas_slice','sympas_slice_table'):response['data']={'backward_slices':{'quantity':{args['filename']:[3,4]}}}
+        if tool=='sympas_slice_table':response.update(tool=tool,direction='Bwd',method='SymPas',row_count=1,backward_slice_count=1)
         if tool=='sympas_dep_graph':response['json_graphs']=[dict(graph_type='Ddg',nodes=[
             dict(id='changed',label='[L4]: '+args['code'].splitlines()[3]),dict(id='input',label='(formal-in)%quantity'),
             dict(id='return',label='[L5]: return'),dict(id='unrelated',label='[L1]: other')],

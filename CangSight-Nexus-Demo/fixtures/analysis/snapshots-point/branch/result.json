@@ -1,0 +1,423 @@
+{
+  "active_tool": null,
+  "analysis_profile": 5,
+  "callgraph": {
+    "analysis_id": "808c3bf2d3074faeac89844bdb518796",
+    "graph_type": "Cg",
+    "raw_ref": "observations/sympas_dep_graph.json",
+    "raw_sha256": "7820031a73fe8a308cb9512b2beeceebc08ee815436af1e2fb2d10bb25375e79",
+    "ref": "artifacts/callgraph.svg",
+    "sha256": "d7090b16df517b571723a0c1cb28426b0640c013a3f690379310d7fcf50e6038",
+    "size_bytes": 3304,
+    "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a",
+    "status": "SAVED",
+    "upstream_path": "/artifacts/sympas_depgraph_af7lnwmn/l5_branch_cg.svg"
+  },
+  "created_at": "2026-10-22T04:26:28.223298+00:00",
+  "elapsed_ms": 7009,
+  "id": "808c3bf2d3074faeac89844bdb518796",
+  "limitations": [
+    "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+    "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+    "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+    "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+  ],
+  "observations": [
+    {
+      "data": {
+        "direction": "Bwd",
+        "method": "SymPas",
+        "scope": "VARIABLE_TABLE",
+        "slices": {
+          "amount@shipping": [
+            1,
+            9,
+            11,
+            12
+          ],
+          "fee@shipping": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            11,
+            12
+          ],
+          "member@shipping": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            9,
+            11,
+            12
+          ]
+        }
+      },
+      "elapsed_ms": 661,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:28.891071+00:00",
+      "raw_ref": "observations/sympas_slice_table.json",
+      "raw_sha256": "de6d0fef5587a873fd8096476f449fee3852cce1fccc3668a608985b3e602f1e",
+      "reason": "静态切片表已返回",
+      "request_id": "808c3bf2d3074faeac89844bdb518796-sympas_slice_table",
+      "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a",
+      "status": "VALID",
+      "tool": "sympas_slice_table"
+    },
+    {
+      "data": {
+        "graphs": [
+          {
+            "edges": [
+              {
+                "from": "n12",
+                "to": "n16"
+              },
+              {
+                "from": "n5",
+                "to": "n16"
+              },
+              {
+                "from": "n1",
+                "to": "n16"
+              },
+              {
+                "from": "n12",
+                "to": "n9"
+              },
+              {
+                "from": "n5",
+                "to": "n2"
+              },
+              {
+                "from": "n12",
+                "to": "n24"
+              },
+              {
+                "from": "n5",
+                "to": "n24"
+              },
+              {
+                "from": "n1",
+                "to": "n24"
+              },
+              {
+                "from": "n18",
+                "to": "n23"
+              },
+              {
+                "from": "n20",
+                "to": "n22"
+              },
+              {
+                "from": "n19",
+                "to": "n16"
+              },
+              {
+                "from": "n19",
+                "to": "n9"
+              },
+              {
+                "from": "n12",
+                "to": "n20"
+              },
+              {
+                "from": "n19",
+                "to": "n12"
+              },
+              {
+                "from": "n17",
+                "to": "n9"
+              },
+              {
+                "from": "n19",
+                "to": "n2"
+              },
+              {
+                "from": "n5",
+                "to": "n20"
+              },
+              {
+                "from": "n19",
+                "to": "n5"
+              },
+              {
+                "from": "n17",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n20"
+              },
+              {
+                "from": "n19",
+                "to": "n1"
+              },
+              {
+                "from": "n19",
+                "to": "n20"
+              },
+              {
+                "from": "n17",
+                "to": "n18"
+              }
+            ],
+            "graph_type": "Ddg",
+            "nodes": [
+              {
+                "id": "n17",
+                "label": "(formal-in)%amount",
+                "line": null
+              },
+              {
+                "id": "n5",
+                "label": "[L4]: fee = 0",
+                "line": 4
+              },
+              {
+                "id": "n12",
+                "label": "[L7]: fee = 0",
+                "line": 7
+              },
+              {
+                "id": "n19",
+                "label": "(formal-in)%member",
+                "line": null
+              },
+              {
+                "id": "n20",
+                "label": "(formal-out)%member",
+                "line": null
+              },
+              {
+                "id": "n23",
+                "label": "FinalUse(%amount)",
+                "line": null
+              },
+              {
+                "id": "n9",
+                "label": "[L6]: <Cond> (member && amount >= 5000)",
+                "line": 6
+              },
+              {
+                "id": "n16",
+                "label": "[L9]: return fee",
+                "line": 9
+              },
+              {
+                "id": "n22",
+                "label": "FinalUse(%member)",
+                "line": null
+              },
+              {
+                "id": "n24",
+                "label": "FinalUse(%fee)",
+                "line": null
+              },
+              {
+                "id": "n18",
+                "label": "(formal-out)%amount",
+                "line": null
+              },
+              {
+                "id": "n1",
+                "label": "[L2]: fee = 800",
+                "line": 2
+              },
+              {
+                "id": "n2",
+                "label": "[L3]: <Cond> (amount >= 9900)",
+                "line": 3
+              }
+            ]
+          }
+        ]
+      },
+      "elapsed_ms": 1778,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:32.069849+00:00",
+      "raw_ref": "observations/sympas_dep_graph.json",
+      "raw_sha256": "7820031a73fe8a308cb9512b2beeceebc08ee815436af1e2fb2d10bb25375e79",
+      "reason": "数据依赖结构已返回",
+      "request_id": "808c3bf2d3074faeac89844bdb518796-sympas_dep_graph",
+      "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a",
+      "status": "VALID",
+      "tool": "sympas_dep_graph"
+    },
+    {
+      "data": {
+        "dependency_count": 78,
+        "symbols": [
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%amount"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%member"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%amount"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%member"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER main"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER shipping"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%amount)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%fee)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%member)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "JOIN"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L12]: println(shipping(6000, true))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L13]: return 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L2]: fee = 800"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L3]: <Cond> (amount >= 9900)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L4]: fee = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L6]: <Cond> (member && amount >= 5000)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L7]: fee = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L9]: return fee"
+          }
+        ]
+      },
+      "elapsed_ms": 1763,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:35.232243+00:00",
+      "raw_ref": "observations/ast_symbol_extractor.json",
+      "raw_sha256": "312446b5cd1ff92cd715346151e3a324444725f5606a2ba3123094d0fe96b9bf",
+      "reason": "结构线索已返回",
+      "request_id": "808c3bf2d3074faeac89844bdb518796-ast_symbol_extractor",
+      "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a",
+      "status": "VALID",
+      "tool": "ast_symbol_extractor"
+    }
+  ],
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "slice_criterion": {
+    "direction": "Bwd",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "slice_scope": "VARIABLE_TABLE",
+  "source": {
+    "code": "func shipping(amount: Int64, member: Bool): Int64 {\n    var fee: Int64 = 800\n    if (amount >= 9900) {\n        fee = 0\n    }\n    if (member && amount >= 5000) {\n        fee = 0\n    }\n    return fee\n}\nmain(): Int64 {\n    println(shipping(6000, true))\n    return 0\n}\n",
+    "filename": "l5_branch.cj",
+    "line_count": 14,
+    "size": 265,
+    "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a"
+  },
+  "status": "COMPLETE",
+  "updated_at": "2026-10-22T04:26:35.233544+00:00"
+}

@@ -1,0 +1,1771 @@
+{
+  "elapsed_ms": 1763,
+  "http_status": 200,
+  "input": {
+    "code": "func shipping(amount: Int64, member: Bool): Int64 {\n    var fee: Int64 = 800\n    if (amount >= 9900) {\n        fee = 0\n    }\n    if (member && amount >= 5000) {\n        fee = 0\n    }\n    return fee\n}\nmain(): Int64 {\n    println(shipping(6000, true))\n    return 0\n}\n",
+    "filename": "l5_branch.cj",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-22T04:26:35.232243+00:00",
+  "request_id": "808c3bf2d3074faeac89844bdb518796-ast_symbol_extractor",
+  "response": {
+    "artifacts": [],
+    "cache": "miss",
+    "data": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L13]: return 0"
+        },
+        {
+          "from": "[L3]: <Cond> (amount >= 9900)",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "[L6]: <Cond> (member && amount >= 5000)",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "(formal-out)%amount",
+          "kind": "Pdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "(formal-out)%member",
+          "kind": "Pdg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "(formal-out)%amount"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "(formal-in)%member"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "(formal-in)%amount"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "(formal-out)%amount",
+          "kind": "Ddg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "(formal-out)%member",
+          "kind": "Ddg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "(formal-out)%amount"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L13]: return 0"
+        },
+        {
+          "from": "[L3]: <Cond> (amount >= 9900)",
+          "kind": "Cdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "[L6]: <Cond> (member && amount >= 5000)",
+          "kind": "Cdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%member)"
+        }
+      ],
+      "dependency_count": 78,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 18,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%amount"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%member"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%amount"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%member"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER shipping"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%amount)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%fee)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%member)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L13]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: fee = 800"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: fee = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: fee = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L9]: return fee"
+        }
+      ],
+      "target": "runtime/sympas_src_d75a78/l5_branch.cj"
+    },
+    "dependencies": [
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L12]: println(shipping(6000, true))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L13]: return 0"
+      },
+      {
+        "from": "[L3]: <Cond> (amount >= 9900)",
+        "kind": "Pdg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "[L6]: <Cond> (member && amount >= 5000)",
+        "kind": "Pdg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L2]: fee = 800"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Pdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Pdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Pdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Pdg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Pdg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "(formal-out)%amount",
+        "kind": "Pdg",
+        "to": "FinalUse(%amount)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "FinalUse(%amount)"
+      },
+      {
+        "from": "(formal-out)%member",
+        "kind": "Pdg",
+        "to": "FinalUse(%member)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "FinalUse(%member)"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Pdg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Pdg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "[L2]: fee = 800"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Pdg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Pdg",
+        "to": "(formal-out)%amount"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "(formal-in)%member"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Pdg",
+        "to": "(formal-in)%amount"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Ddg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Ddg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Ddg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Ddg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Ddg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "(formal-out)%amount",
+        "kind": "Ddg",
+        "to": "FinalUse(%amount)"
+      },
+      {
+        "from": "(formal-out)%member",
+        "kind": "Ddg",
+        "to": "FinalUse(%member)"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "[L7]: fee = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L4]: fee = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Ddg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "[L2]: fee = 800",
+        "kind": "Ddg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "[L2]: fee = 800"
+      },
+      {
+        "from": "(formal-in)%member",
+        "kind": "Ddg",
+        "to": "(formal-out)%member"
+      },
+      {
+        "from": "(formal-in)%amount",
+        "kind": "Ddg",
+        "to": "(formal-out)%amount"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L12]: println(shipping(6000, true))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L13]: return 0"
+      },
+      {
+        "from": "[L3]: <Cond> (amount >= 9900)",
+        "kind": "Cdg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "[L6]: <Cond> (member && amount >= 5000)",
+        "kind": "Cdg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L2]: fee = 800"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L4]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L7]: fee = 0"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "[L9]: return fee"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "FinalUse(%fee)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "FinalUse(%amount)"
+      },
+      {
+        "from": "ENTER shipping",
+        "kind": "Cdg",
+        "to": "FinalUse(%member)"
+      }
+    ],
+    "dependency_count": 78,
+    "issue_count": 18,
+    "issues": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%amount"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%member"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%amount"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%member"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER shipping"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%amount)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%fee)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%member)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L12]: println(shipping(6000, true))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L13]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: fee = 800"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: fee = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: fee = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L9]: return fee"
+      }
+    ],
+    "message": "Completed with 18 item(s) and 0 artifact(s).",
+    "preview": {},
+    "report": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L13]: return 0"
+        },
+        {
+          "from": "[L3]: <Cond> (amount >= 9900)",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "[L6]: <Cond> (member && amount >= 5000)",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "(formal-out)%amount",
+          "kind": "Pdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "(formal-out)%member",
+          "kind": "Pdg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Pdg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Pdg",
+          "to": "(formal-out)%amount"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "(formal-in)%member"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Pdg",
+          "to": "(formal-in)%amount"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "(formal-out)%amount",
+          "kind": "Ddg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "(formal-out)%member",
+          "kind": "Ddg",
+          "to": "FinalUse(%member)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "[L7]: fee = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L4]: fee = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "[L2]: fee = 800",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "(formal-in)%member",
+          "kind": "Ddg",
+          "to": "(formal-out)%member"
+        },
+        {
+          "from": "(formal-in)%amount",
+          "kind": "Ddg",
+          "to": "(formal-out)%amount"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L13]: return 0"
+        },
+        {
+          "from": "[L3]: <Cond> (amount >= 9900)",
+          "kind": "Cdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "[L6]: <Cond> (member && amount >= 5000)",
+          "kind": "Cdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L2]: fee = 800"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L4]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L7]: fee = 0"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "[L9]: return fee"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%fee)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%amount)"
+        },
+        {
+          "from": "ENTER shipping",
+          "kind": "Cdg",
+          "to": "FinalUse(%member)"
+        }
+      ],
+      "dependency_count": 78,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 18,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%amount"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%member"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%amount"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%member"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER shipping"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%amount)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%fee)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%member)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L12]: println(shipping(6000, true))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L13]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: fee = 800"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: <Cond> (amount >= 9900)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: fee = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: <Cond> (member && amount >= 5000)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: fee = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L9]: return fee"
+        }
+      ],
+      "target": "runtime/sympas_src_d75a78/l5_branch.cj"
+    },
+    "request_id": "14906801eeee047b",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 1583.1
+    },
+    "server_timing_ms": 1583.1,
+    "source": "sympas-gs_graphs",
+    "status": "success",
+    "symbol_count": 18,
+    "symbols": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%amount"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%member"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%amount"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%member"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER shipping"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%amount)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%fee)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%member)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L12]: println(shipping(6000, true))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L13]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: fee = 800"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: <Cond> (amount >= 9900)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: fee = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: <Cond> (member && amount >= 5000)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: fee = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L9]: return fee"
+      }
+    ],
+    "target": "runtime/sympas_src_d75a78/l5_branch.cj",
+    "tool": "ast_symbol_extractor"
+  },
+  "schema_version": 1,
+  "source_sha256": "66886a9324b72031622e70ead4f7c677c31bcaa93b9d3e5706959d4e4f78282a",
+  "tool": "ast_symbol_extractor",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_ae33f1fce51a4e1caad967487d7d9a71"
+}

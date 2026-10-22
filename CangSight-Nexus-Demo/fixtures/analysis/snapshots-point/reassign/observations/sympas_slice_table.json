@@ -1,0 +1,215 @@
+{
+  "elapsed_ms": 587,
+  "http_status": 200,
+  "input": {
+    "code": "func staged(a: Int64, b: Int64): Int64 {\n    var value = a + 1\n    let first = value * 2\n    value = b + 3\n    let second = value * 4\n    return first + second\n}\nmain(): Int64 {\n    println(staged(2, 8))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l4_reassign.cj",
+    "lang": "cangjie",
+    "method": "SymPas",
+    "table_formats": [
+      "json"
+    ],
+    "timeout_sec": 40
+  },
+  "observed_at": "2026-10-22T04:26:21.649092+00:00",
+  "request_id": "36d9a4c7798d411dbb63f6c701e296e0-sympas_slice_table",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_sliceview_ti45iiz7/slice_table.md",
+        "download_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_table.md?[REDACTED]",
+        "format": "markdown",
+        "name": "slice_table.md",
+        "path": "/workspace/artifacts/sympas_sliceview_ti45iiz7/slice_table.md",
+        "preview": {
+          "available": true,
+          "content": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@staged | l4_reassign.cj | 1, 6, 8, 9 |\n| b@staged | l4_reassign.cj | 1, 2, 3, 4, 5, 6, 8, 9 |\n| first@staged | l4_reassign.cj | 1, 2, 3, 6, 8, 9 |\n| second@staged | l4_reassign.cj | 1, 4, 5, 6, 8, 9 |\n| value@staged | l4_reassign.cj | 1, 2, 4, 6, 8, 9 |\n"
+        },
+        "url": "/artifacts/sympas_sliceview_ti45iiz7/slice_table.md?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_ti45iiz7/slice_tables.json",
+        "download_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_tables.json?[REDACTED]",
+        "format": "json",
+        "name": "slice_tables.json",
+        "path": "/workspace/artifacts/sympas_sliceview_ti45iiz7/slice_tables.json",
+        "preview": {
+          "available": true,
+          "content": "{\"backward_slices\": {\"a@staged\": {\"l4_reassign.cj\": [1, 6, 8, 9]}, \"b@staged\": {\"l4_reassign.cj\": [1, 2, 3, 4, 5, 6, 8, 9]}, \"first@staged\": {\"l4_reassign.cj\": [1, 2, 3, 6, 8, 9]}, \"second@staged\": {\"l4_reassign.cj\": [1, 4, 5, 6, 8, 9]}, \"value@staged\": {\"l4_reassign.cj\": [1, 2, 4, 6, 8, 9]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}"
+        },
+        "url": "/artifacts/sympas_sliceview_ti45iiz7/slice_tables.json?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG",
+        "download_url": "/artifacts/sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG?[REDACTED]",
+        "format": "text",
+        "name": "l4_reassign.SliceResult_Bwd-SDG",
+        "path": "/workspace/artifacts/sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG",
+        "preview": {
+          "available": true,
+          "content": "\nBackward Static SliceTable:\n\t#Insts_sliced = 30.0 (Average: 6)\n\n Variable      SrcLineNumbers  \n------------------------------\n a@staged             {\"l4_reassign.cj: [1,6,8,9]\"}\n b@staged             {\"l4_reassign.cj: [1,2,3,4,5,6,8,9]\"}\n first@staged         {\"l4_reassign.cj: [1,2,3,6,8,9]\"}\n second@staged        {\"l4_reassign.cj: [1,4,5,6,8,9]\"}\n value@staged         {\"l4_reassign.cj: [1,2,4,6,8,9]\"}\n"
+        },
+        "url": "/artifacts/sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG?[REDACTED]"
+      }
+    ],
+    "backward_slice_count": 5,
+    "cache": "miss",
+    "criterion": "",
+    "data": {
+      "backward_slices": {
+        "a@staged": {
+          "l4_reassign.cj": [
+            1,
+            6,
+            8,
+            9
+          ]
+        },
+        "b@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        "first@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+          ]
+        },
+        "second@staged": {
+          "l4_reassign.cj": [
+            1,
+            4,
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        "value@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "direction": "Bwd",
+    "engine": "analysis-engine/SymPas",
+    "forward_slice_count": 0,
+    "issue_count": 0,
+    "issues": [],
+    "markdown": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@staged | l4_reassign.cj | 1, 6, 8, 9 |\n| b@staged | l4_reassign.cj | 1, 2, 3, 4, 5, 6, 8, 9 |\n| first@staged | l4_reassign.cj | 1, 2, 3, 6, 8, 9 |\n| second@staged | l4_reassign.cj | 1, 4, 5, 6, 8, 9 |\n| value@staged | l4_reassign.cj | 1, 2, 4, 6, 8, 9 |\n",
+    "message": "Completed with 0 item(s) and 3 artifact(s).",
+    "method": "SymPas",
+    "output_dir": "/workspace/artifacts/sympas_sliceview_ti45iiz7",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_tables.json?[REDACTED]",
+      "json_source": "{\"backward_slices\": {\"a@staged\": {\"l4_reassign.cj\": [1, 6, 8, 9]}, \"b@staged\": {\"l4_reassign.cj\": [1, 2, 3, 4, 5, 6, 8, 9]}, \"first@staged\": {\"l4_reassign.cj\": [1, 2, 3, 6, 8, 9]}, \"second@staged\": {\"l4_reassign.cj\": [1, 4, 5, 6, 8, 9]}, \"value@staged\": {\"l4_reassign.cj\": [1, 2, 4, 6, 8, 9]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_tables.json?[REDACTED]",
+      "markdown_download_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_table.md?[REDACTED]",
+      "markdown_source": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@staged | l4_reassign.cj | 1, 6, 8, 9 |\n| b@staged | l4_reassign.cj | 1, 2, 3, 4, 5, 6, 8, 9 |\n| first@staged | l4_reassign.cj | 1, 2, 3, 6, 8, 9 |\n| second@staged | l4_reassign.cj | 1, 4, 5, 6, 8, 9 |\n| value@staged | l4_reassign.cj | 1, 2, 4, 6, 8, 9 |\n",
+      "markdown_source_truncated": false,
+      "markdown_url": "/artifacts/sympas_sliceview_ti45iiz7/slice_table.md?[REDACTED]",
+      "text_download_url": "/artifacts/sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG?[REDACTED]",
+      "text_source": "\nBackward Static SliceTable:\n\t#Insts_sliced = 30.0 (Average: 6)\n\n Variable      SrcLineNumbers  \n------------------------------\n a@staged             {\"l4_reassign.cj: [1,6,8,9]\"}\n b@staged             {\"l4_reassign.cj: [1,2,3,4,5,6,8,9]\"}\n first@staged         {\"l4_reassign.cj: [1,2,3,6,8,9]\"}\n second@staged        {\"l4_reassign.cj: [1,4,5,6,8,9]\"}\n value@staged         {\"l4_reassign.cj: [1,2,4,6,8,9]\"}\n",
+      "text_source_truncated": false,
+      "text_url": "/artifacts/sympas_sliceview_ti45iiz7/l4_reassign.SliceResult_Bwd-SDG?[REDACTED]"
+    },
+    "report": {
+      "backward_slices": {
+        "a@staged": {
+          "l4_reassign.cj": [
+            1,
+            6,
+            8,
+            9
+          ]
+        },
+        "b@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        "first@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+          ]
+        },
+        "second@staged": {
+          "l4_reassign.cj": [
+            1,
+            4,
+            5,
+            6,
+            8,
+            9
+          ]
+        },
+        "value@staged": {
+          "l4_reassign.cj": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "13d30757e0f90476",
+    "requested_direction": "Bwd",
+    "requested_method": "SymPas",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 489.9
+    },
+    "row_count": 5,
+    "server_timing_ms": 489.9,
+    "status": "success",
+    "table_formats": [
+      "json"
+    ],
+    "target": "runtime/sympas_src_9bb0f7/l4_reassign.cj",
+    "tool": "sympas_slice_table"
+  },
+  "schema_version": 1,
+  "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea",
+  "tool": "sympas_slice_table",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_79f8323674cb4671ac74f7737ca8f2d7"
+}

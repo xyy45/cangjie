@@ -1,0 +1,437 @@
+{
+  "active_tool": null,
+  "analysis_profile": 5,
+  "callgraph": {
+    "analysis_id": "36d9a4c7798d411dbb63f6c701e296e0",
+    "graph_type": "Cg",
+    "raw_ref": "observations/sympas_dep_graph.json",
+    "raw_sha256": "d659d38b63822a01c2ef1e60813453e088ffd4af072ab6e0e07b8bec97804c3a",
+    "ref": "artifacts/callgraph.svg",
+    "sha256": "c610d71b6723b6feccdc095a3513a7373c0f846d7528fa96df4ec230fe9d07df",
+    "size_bytes": 2724,
+    "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea",
+    "status": "SAVED",
+    "upstream_path": "/artifacts/sympas_depgraph_tc2rujpl/l4_reassign_cg.svg"
+  },
+  "created_at": "2026-10-22T04:26:21.057869+00:00",
+  "elapsed_ms": 7141,
+  "id": "36d9a4c7798d411dbb63f6c701e296e0",
+  "limitations": [
+    "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+    "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+    "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+    "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+  ],
+  "observations": [
+    {
+      "data": {
+        "direction": "Bwd",
+        "method": "SymPas",
+        "scope": "VARIABLE_TABLE",
+        "slices": {
+          "a@staged": [
+            1,
+            6,
+            8,
+            9
+          ],
+          "b@staged": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9
+          ],
+          "first@staged": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+          ],
+          "second@staged": [
+            1,
+            4,
+            5,
+            6,
+            8,
+            9
+          ],
+          "value@staged": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "elapsed_ms": 587,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:21.649092+00:00",
+      "raw_ref": "observations/sympas_slice_table.json",
+      "raw_sha256": "e4be0275bd12f5084264ef14967230f51d9875ad6f9b834037db32f64882faf7",
+      "reason": "静态切片表已返回",
+      "request_id": "36d9a4c7798d411dbb63f6c701e296e0-sympas_slice_table",
+      "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea",
+      "status": "VALID",
+      "tool": "sympas_slice_table"
+    },
+    {
+      "data": {
+        "graphs": [
+          {
+            "edges": [
+              {
+                "from": "n4",
+                "to": "n5"
+              },
+              {
+                "from": "n2",
+                "to": "n5"
+              },
+              {
+                "from": "n3",
+                "to": "n4"
+              },
+              {
+                "from": "n1",
+                "to": "n2"
+              },
+              {
+                "from": "n2",
+                "to": "n15"
+              },
+              {
+                "from": "n4",
+                "to": "n14"
+              },
+              {
+                "from": "n9",
+                "to": "n13"
+              },
+              {
+                "from": "n3",
+                "to": "n12"
+              },
+              {
+                "from": "n1",
+                "to": "n12"
+              },
+              {
+                "from": "n7",
+                "to": "n11"
+              },
+              {
+                "from": "n8",
+                "to": "n5"
+              },
+              {
+                "from": "n4",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n4"
+              },
+              {
+                "from": "n3",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n3"
+              },
+              {
+                "from": "n2",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n2"
+              },
+              {
+                "from": "n1",
+                "to": "n9"
+              },
+              {
+                "from": "n8",
+                "to": "n1"
+              },
+              {
+                "from": "n6",
+                "to": "n1"
+              },
+              {
+                "from": "n8",
+                "to": "n9"
+              },
+              {
+                "from": "n6",
+                "to": "n7"
+              }
+            ],
+            "graph_type": "Ddg",
+            "nodes": [
+              {
+                "id": "n3",
+                "label": "[L4]: value = b + 3",
+                "line": 4
+              },
+              {
+                "id": "n5",
+                "label": "[L6]: return first + second",
+                "line": 6
+              },
+              {
+                "id": "n14",
+                "label": "FinalUse(%second)",
+                "line": null
+              },
+              {
+                "id": "n12",
+                "label": "FinalUse(%value)",
+                "line": null
+              },
+              {
+                "id": "n11",
+                "label": "FinalUse(%a)",
+                "line": null
+              },
+              {
+                "id": "n8",
+                "label": "(formal-in)%b",
+                "line": null
+              },
+              {
+                "id": "n7",
+                "label": "(formal-out)%a",
+                "line": null
+              },
+              {
+                "id": "n9",
+                "label": "(formal-out)%b",
+                "line": null
+              },
+              {
+                "id": "n15",
+                "label": "FinalUse(%first)",
+                "line": null
+              },
+              {
+                "id": "n6",
+                "label": "(formal-in)%a",
+                "line": null
+              },
+              {
+                "id": "n4",
+                "label": "[L5]: second = value * 4",
+                "line": 5
+              },
+              {
+                "id": "n1",
+                "label": "[L2]: value = a + 1",
+                "line": 2
+              },
+              {
+                "id": "n13",
+                "label": "FinalUse(%b)",
+                "line": null
+              },
+              {
+                "id": "n2",
+                "label": "[L3]: first = value * 2",
+                "line": 3
+              }
+            ]
+          }
+        ]
+      },
+      "elapsed_ms": 1919,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:24.970368+00:00",
+      "raw_ref": "observations/sympas_dep_graph.json",
+      "raw_sha256": "d659d38b63822a01c2ef1e60813453e088ffd4af072ab6e0e07b8bec97804c3a",
+      "reason": "数据依赖结构已返回",
+      "request_id": "36d9a4c7798d411dbb63f6c701e296e0-sympas_dep_graph",
+      "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea",
+      "status": "VALID",
+      "tool": "sympas_dep_graph"
+    },
+    {
+      "data": {
+        "dependency_count": 70,
+        "symbols": [
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%a"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%b"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%a"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%b"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER main"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER staged"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%a)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%b)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%first)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%second)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%value)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L10]: return 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L2]: value = a + 1"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L3]: first = value * 2"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L4]: value = b + 3"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L5]: second = value * 4"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L6]: return first + second"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L9]: println(staged(2, 8))"
+          }
+        ]
+      },
+      "elapsed_ms": 1829,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:28.195142+00:00",
+      "raw_ref": "observations/ast_symbol_extractor.json",
+      "raw_sha256": "c6267496cc1be3f5708cd3c231c509e51095a1cb1cb2d17caf894cd5bd25e747",
+      "reason": "结构线索已返回",
+      "request_id": "36d9a4c7798d411dbb63f6c701e296e0-ast_symbol_extractor",
+      "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea",
+      "status": "VALID",
+      "tool": "ast_symbol_extractor"
+    }
+  ],
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "slice_criterion": {
+    "direction": "Bwd",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "slice_scope": "VARIABLE_TABLE",
+  "source": {
+    "code": "func staged(a: Int64, b: Int64): Int64 {\n    var value = a + 1\n    let first = value * 2\n    value = b + 3\n    let second = value * 4\n    return first + second\n}\nmain(): Int64 {\n    println(staged(2, 8))\n    return 0\n}\n",
+    "filename": "l4_reassign.cj",
+    "line_count": 11,
+    "size": 219,
+    "source_sha256": "ac213fad241e4f8c2f3ca1b7143d95d73fe9f90a82d36de47ff089377e7379ea"
+  },
+  "status": "COMPLETE",
+  "updated_at": "2026-10-22T04:26:28.197966+00:00"
+}

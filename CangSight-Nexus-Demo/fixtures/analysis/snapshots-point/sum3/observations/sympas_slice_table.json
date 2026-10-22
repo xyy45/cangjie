@@ -1,0 +1,205 @@
+{
+  "elapsed_ms": 613,
+  "http_status": 200,
+  "input": {
+    "code": "func sum3(a: Int64, b: Int64, c: Int64): Int64 {\n    let first = a + b\n    let total = first + c\n    return total\n}\nmain(): Int64 {\n    println(sum3(2, 3, 4))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l1_sum3.cj",
+    "lang": "cangjie",
+    "method": "SymPas",
+    "table_formats": [
+      "json"
+    ],
+    "timeout_sec": 40
+  },
+  "observed_at": "2026-10-22T04:25:59.337548+00:00",
+  "request_id": "6ba8db956875454bbe323056ef95a623-sympas_slice_table",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_sliceview_v7z3hoc1/slice_table.md",
+        "download_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_table.md?[REDACTED]",
+        "format": "markdown",
+        "name": "slice_table.md",
+        "path": "/workspace/artifacts/sympas_sliceview_v7z3hoc1/slice_table.md",
+        "preview": {
+          "available": true,
+          "content": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| b@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| c@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n| first@sum3 | l1_sum3.cj | 1, 2, 4, 6, 7 |\n| total@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n"
+        },
+        "url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_table.md?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_v7z3hoc1/slice_tables.json",
+        "download_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_tables.json?[REDACTED]",
+        "format": "json",
+        "name": "slice_tables.json",
+        "path": "/workspace/artifacts/sympas_sliceview_v7z3hoc1/slice_tables.json",
+        "preview": {
+          "available": true,
+          "content": "{\"backward_slices\": {\"a@sum3\": {\"l1_sum3.cj\": [1, 4, 6, 7]}, \"b@sum3\": {\"l1_sum3.cj\": [1, 4, 6, 7]}, \"c@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"first@sum3\": {\"l1_sum3.cj\": [1, 2, 4, 6, 7]}, \"total@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}"
+        },
+        "url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_tables.json?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG",
+        "download_url": "/artifacts/sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG?[REDACTED]",
+        "format": "text",
+        "name": "l1_sum3.SliceResult_Bwd-SDG",
+        "path": "/workspace/artifacts/sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG",
+        "preview": {
+          "available": true,
+          "content": "\nBackward Static SliceTable:\n\t#Insts_sliced = 25.0 (Average: 5)\n\n Variable      SrcLineNumbers  \n------------------------------\n a@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n b@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n c@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n first@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\n total@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n"
+        },
+        "url": "/artifacts/sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG?[REDACTED]"
+      }
+    ],
+    "backward_slice_count": 5,
+    "cache": "miss",
+    "criterion": "",
+    "data": {
+      "backward_slices": {
+        "a@sum3": {
+          "l1_sum3.cj": [
+            1,
+            4,
+            6,
+            7
+          ]
+        },
+        "b@sum3": {
+          "l1_sum3.cj": [
+            1,
+            4,
+            6,
+            7
+          ]
+        },
+        "c@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "first@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            4,
+            6,
+            7
+          ]
+        },
+        "total@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "direction": "Bwd",
+    "engine": "analysis-engine/SymPas",
+    "forward_slice_count": 0,
+    "issue_count": 0,
+    "issues": [],
+    "markdown": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| b@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| c@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n| first@sum3 | l1_sum3.cj | 1, 2, 4, 6, 7 |\n| total@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n",
+    "message": "Completed with 0 item(s) and 3 artifact(s).",
+    "method": "SymPas",
+    "output_dir": "/workspace/artifacts/sympas_sliceview_v7z3hoc1",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_tables.json?[REDACTED]",
+      "json_source": "{\"backward_slices\": {\"a@sum3\": {\"l1_sum3.cj\": [1, 4, 6, 7]}, \"b@sum3\": {\"l1_sum3.cj\": [1, 4, 6, 7]}, \"c@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}, \"first@sum3\": {\"l1_sum3.cj\": [1, 2, 4, 6, 7]}, \"total@sum3\": {\"l1_sum3.cj\": [1, 2, 3, 4, 6, 7]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_tables.json?[REDACTED]",
+      "markdown_download_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_table.md?[REDACTED]",
+      "markdown_source": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| a@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| b@sum3 | l1_sum3.cj | 1, 4, 6, 7 |\n| c@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n| first@sum3 | l1_sum3.cj | 1, 2, 4, 6, 7 |\n| total@sum3 | l1_sum3.cj | 1, 2, 3, 4, 6, 7 |\n",
+      "markdown_source_truncated": false,
+      "markdown_url": "/artifacts/sympas_sliceview_v7z3hoc1/slice_table.md?[REDACTED]",
+      "text_download_url": "/artifacts/sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG?[REDACTED]",
+      "text_source": "\nBackward Static SliceTable:\n\t#Insts_sliced = 25.0 (Average: 5)\n\n Variable      SrcLineNumbers  \n------------------------------\n a@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n b@sum3            {\"l1_sum3.cj: [1,4,6,7]\"}\n c@sum3            {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n first@sum3        {\"l1_sum3.cj: [1,2,4,6,7]\"}\n total@sum3        {\"l1_sum3.cj: [1,2,3,4,6,7]\"}\n",
+      "text_source_truncated": false,
+      "text_url": "/artifacts/sympas_sliceview_v7z3hoc1/l1_sum3.SliceResult_Bwd-SDG?[REDACTED]"
+    },
+    "report": {
+      "backward_slices": {
+        "a@sum3": {
+          "l1_sum3.cj": [
+            1,
+            4,
+            6,
+            7
+          ]
+        },
+        "b@sum3": {
+          "l1_sum3.cj": [
+            1,
+            4,
+            6,
+            7
+          ]
+        },
+        "c@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        "first@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            4,
+            6,
+            7
+          ]
+        },
+        "total@sum3": {
+          "l1_sum3.cj": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "127e8a0fade4046d",
+    "requested_direction": "Bwd",
+    "requested_method": "SymPas",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 487.7
+    },
+    "row_count": 5,
+    "server_timing_ms": 487.7,
+    "status": "success",
+    "table_formats": [
+      "json"
+    ],
+    "target": "runtime/sympas_src_7023cd/l1_sum3.cj",
+    "tool": "sympas_slice_table"
+  },
+  "schema_version": 1,
+  "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+  "tool": "sympas_slice_table",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_38155ef6780e4c41afae9754c96fb8d0"
+}
