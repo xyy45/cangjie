@@ -190,3 +190,82 @@ def test_final_report_and_archive_event_cannot_be_committed_separately(tmp_path,
     assert service.get(c.id)['status']=='IN_DOUBT'
     assert not any(e['type']=='IMPACT_ANALYSIS' for e in store.records(c.task_id,'event'))
     assert service.start(c.id)[1] is False and service.run(c.id) is False and len(Transport.calls)==6
+
+
+class PdgTransport(Transport):
+    def analyze(self,tool,args):
+        reply=super().analyze(tool,args)
+        if tool=='sympas_dep_graph':
+            reply['response']['json_graphs']=[
+                dict(graph_type='Ddg',nodes=[],edges=[]),
+                dict(graph_type='Pdg',nodes=[dict(id='entry',label='ENTER validQuantity'),
+                    dict(id='arg',label='(formal-in)%quantity'),
+                    dict(id='changed',label='[L4]: '+args['code'].splitlines()[3])],
+                    edges=[{'from':'entry','to':'changed'},{'from':'entry','to':'arg'}])]
+        return reply
+
+
+def test_empty_ddg_uses_verified_pdg_without_upgrading_original_tool_status(tmp_path):
+    _,_,c,service=setup(tmp_path,PdgTransport);service.start(c.id);service.run(c.id)
+    r=service.get(c.id)
+    assert r['status']=='PARTIAL'
+    for side in ('before','after'):
+        entry=r['files'][0][side];g=entry['graph']
+        assert g['graph_type']=='Pdg' and g['status']=='VALID'
+        assert g['total_nodes']==3 and g['total_edges']==2
+        assert {n['id'] for n in g['nodes']}=={'entry','changed'}
+        assert g['edges']==[{'from':'entry','to':'changed'}]
+        assert g['source_sha256']==entry['source_sha256'] and len(g['raw_sha256'])==64
+        assert next(t for t in entry['tools'] if t['tool']=='sympas_dep_graph')['status']=='EMPTY'
+
+
+def test_valid_ddg_stays_preferred_over_pdg_and_wrong_source_pdg_is_rejected():
+    from nexus.analysis.impact import graph_neighborhood
+    source={'source_sha256':'a'*64}
+    pdg=dict(status='VALID',source_sha256='a'*64,graph={'graph_type':'Pdg',
+        'nodes':[dict(id='p',line=4,label='pdg')],'edges':[]})
+    ddg=dict(tool='sympas_dep_graph',status='VALID',data={'graphs':[{'graph_type':'Ddg',
+        'nodes':[dict(id='d',line=4,label='ddg')],'edges':[]}]})
+    result=dict(source=source,point_graph=pdg,observations=[ddg])
+    g=graph_neighborhood(result,[4]);assert g['graph_type']=='Ddg' and g['nodes'][0]['id']=='d'
+    ddg.update(status='EMPTY',reason='未返回非空DDG',data={});pdg['source_sha256']='b'*64
+    assert graph_neighborhood(result,[4])['nodes']==[]
+
+
+def test_legacy_impact_projects_pdg_without_rewriting_evidence_or_replaying_tools(tmp_path,monkeypatch):
+    import nexus.analysis.impact as module
+    store,_,c,service=setup(tmp_path,PdgTransport)
+    real=module.graph_neighborhood
+    # Produce the previous report format: its graph selector only sees DDG.
+    with monkeypatch.context() as m:
+        m.setattr(module,'graph_neighborhood',lambda r,lines:real({k:v for k,v in r.items() if k!='point_graph'},lines))
+        service.start(c.id);service.run(c.id)
+    status,original=service._row(c.id)
+    raw=(store.root/original['report_ref']).read_bytes()
+    assert json.loads(raw)['files'][0]['after']['graph']['nodes']==[]
+    view=service.get(c.id)
+    for side in ('before','after'):
+        entry=view['files'][0][side]
+        assert entry['graph']['nodes']==[]
+        assert entry['display_graph']['graph_type']=='Pdg'
+        assert {n['id'] for n in entry['display_graph']['nodes']}=={'entry','changed'}
+    assert (store.root/original['report_ref']).read_bytes()==raw and len(Transport.calls)==6
+    with zipfile.ZipFile(service.export(c.id)) as z:
+        assert z.read('report.json')==raw
+        derived=json.loads(z.read('display-graphs.json'))
+        assert derived['files'][0]['after']['graph']['graph_type']=='Pdg'
+        manifest=json.loads(z.read('manifest.json'))
+        import hashlib
+        assert all(hashlib.sha256(z.read(n)).hexdigest()==h for n,h in manifest['files'].items())
+
+
+def test_legacy_projection_rejects_changed_original_graph_evidence(tmp_path,monkeypatch):
+    import nexus.analysis.impact as module
+    store,_,c,service=setup(tmp_path,PdgTransport);real=module.graph_neighborhood
+    with monkeypatch.context() as m:
+        m.setattr(module,'graph_neighborhood',lambda r,lines:real({k:v for k,v in r.items() if k!='point_graph'},lines))
+        service.start(c.id);service.run(c.id)
+    _,report=service._row(c.id)
+    identity=report['files'][0]['after']['analysis_id']
+    (service.analysis.directory(identity)/'observations/sympas_dep_graph.json').write_text('{}')
+    with pytest.raises(ValueError):service.get(c.id)

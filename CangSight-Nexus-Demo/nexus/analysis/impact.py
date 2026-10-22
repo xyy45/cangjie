@@ -1,5 +1,6 @@
 """Explicit, immutable candidate comparisons; static observations are not correctness proofs."""
 from datetime import datetime,timezone
+from copy import deepcopy
 import difflib
 import io
 import json
@@ -52,8 +53,15 @@ def graph_neighborhood(result,changed_lines):
     observed=next((o for o in result['observations'] if o['tool']=='sympas_dep_graph'),{})
     output=dict(status=observed.get('status','NOT_RUN'),reason=observed.get('reason','尚未分析'),
         nodes=[],edges=[],anchor_ids=[],total_nodes=0,total_edges=0,truncated=False)
-    if output['status']!='VALID':return output
-    graphs=observed['data']['graphs']
+    graphs=observed.get('data',{}).get('graphs',[]) if observed.get('status')=='VALID' else []
+    graph_type='Ddg'
+    if not graphs:
+        pg=result.get('point_graph') or {}
+        if (pg.get('status')!='VALID' or not pg.get('source_sha256') or
+                pg['source_sha256']!=result.get('source',{}).get('source_sha256')):return output
+        graphs=[pg['graph']];graph_type='Pdg'
+        output.update({k:pg.get(k) for k in ('source_sha256','raw_ref','raw_sha256','graph_sha256')})
+    output.update(status='VALID',graph_type=graph_type,origin='MCP_PDG' if graph_type=='Pdg' else 'MCP_DDG')
     # Each graph owns its IDs: choose the most relevant graph, never merge IDs.
     index=max(range(len(graphs)),key=lambda i:sum(n['line'] in changed_lines for n in graphs[i]['nodes']))
     graph=graphs[index];nodes,edges=graph['nodes'],graph['edges']
@@ -66,7 +74,7 @@ def graph_neighborhood(result,changed_lines):
     ids={n['id'] for n in chosen};subset=[e for e in edges if e['from'] in ids and e['to'] in ids]
     output.update(nodes=chosen,edges=subset[:300],anchor_ids=sorted(anchors&ids),total_nodes=len(nodes),
         total_edges=len(edges),truncated=len(chosen)<len(selected) or len(subset)>300,
-        reason='修改行节点及一跳邻接；各版本独立显示，不按节点ID跨版本匹配' if anchors else '有效DDG中没有与修改行对应的节点')
+        reason='修改行节点及一跳邻接；各版本独立显示，不按节点ID跨版本匹配' if anchors else '有效'+graph_type.upper()+'中没有与修改行对应的节点')
     return output
 
 
@@ -134,8 +142,26 @@ class ImpactService:
             if persisted['candidate_id']!=candidate_id or persisted['tree_hash']!=preview['tree_hash']:raise ValueError('影响报告版本错误')
             for entry in report['evidence_files']:
                 if sha(self._evidence(entry['record_ref']))!=entry['sha256']:raise ValueError('影响分析证据变化')
-            return dict(persisted,status=status,report_ref=report['report_ref'],report_sha256=report['report_sha256'])
-        return dict(report,status=status)
+            return self._display_graphs(dict(persisted,status=status,report_ref=report['report_ref'],report_sha256=report['report_sha256']))
+        return self._display_graphs(dict(report,status=status))
+
+    def _display_graphs(self,report):
+        """Project verified PDGs into legacy views without rewriting recorded evidence."""
+        result=deepcopy(report)
+        for file in result['files']:
+            for side in ('before','after'):
+                entry=file[side]
+                if not entry or entry['graph']['status']=='VALID':continue
+                try:analysis=self.analysis.get(entry['analysis_id'],actor_id='repair-'+report['task_id'])
+                except (LookupError,OSError):continue
+                if (analysis['source']['source_sha256']!=entry['source_sha256'] or
+                        analysis['source']['code']!=file[side+'_code'] or analysis['slice_criterion']!=entry['slice_criterion'] or
+                        {o['tool']:o['raw_sha256'] for o in analysis['observations']}!=
+                        {o['tool']:o['raw_sha256'] for o in entry['tools']}):
+                    raise ValueError('影响图与原始分析绑定变化')
+                graph=graph_neighborhood(analysis,file['changes'][side+'_lines'])
+                if graph.get('graph_type')=='Pdg' and graph['status']=='VALID':entry['display_graph']=graph
+        return result
 
     def _evidence(self,ref):
         return evidence_bytes(self.store,ref)
@@ -257,6 +283,12 @@ class ImpactService:
         if report['status'] in (*ACTIVE,'NOT_STARTED') or not report.get('report_ref'):raise AnalysisConflict('尚无完整可导出的影响证据')
         files={'report.json':self._evidence(report['report_ref'])}
         files.update({e['record_ref']:self._evidence(e['record_ref']) for e in report['evidence_files']})
+        projected=[dict(path=f['path'],**{side:dict(analysis_id=f[side]['analysis_id'],
+            source_sha256=f[side]['source_sha256'],graph=f[side]['display_graph'])
+            for side in ('before','after') if f[side] and f[side].get('display_graph')})
+            for f in report['files'] if any(f[s] and f[s].get('display_graph') for s in ('before','after'))]
+        if projected:files['display-graphs.json']=encoded(dict(schema_version=1,origin='VERIFIED_ANALYSIS_PROJECTION',
+            candidate_id=candidate_id,tree_hash=report['tree_hash'],report_sha256=report['report_sha256'],files=projected))
         stream=io.BytesIO()
         with zipfile.ZipFile(stream,'w',zipfile.ZIP_DEFLATED) as archive:
             for name,raw in files.items():archive.writestr(name,raw)
