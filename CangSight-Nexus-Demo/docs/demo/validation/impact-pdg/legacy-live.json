@@ -1,0 +1,30 @@
+{
+  "candidate_id": "c_079abb8fc80840318817c4dfc64f2fa4",
+  "status": "PARTIAL",
+  "sides": [
+    {
+      "path": "src/quantity.cj",
+      "side": "before",
+      "graph_type": "Pdg",
+      "original_nodes": 3,
+      "original_edges": 2,
+      "shown_nodes": 2,
+      "shown_edges": 1,
+      "source_sha256": "87665e774ea74e270a42dcbd6b2f69fa4a6f6755c13c478b799f25c459cec08d",
+      "raw_sha256": "a73084b1421c5d41a05abe63a15fb14eaa105bab7e37be9bc1899d22e801cd52"
+    },
+    {
+      "path": "src/quantity.cj",
+      "side": "after",
+      "graph_type": "Pdg",
+      "original_nodes": 3,
+      "original_edges": 2,
+      "shown_nodes": 2,
+      "shown_edges": 1,
+      "source_sha256": "0b6bed26a940b4ee2bc3bdf019544a8d6ac8b174a1d85c0b03eb688ef5c73cf0",
+      "raw_sha256": "8e98c8af8b5f258274621d607aa2069b8e622ceb9712df0d7275a4b72f6063e6"
+    }
+  ],
+  "archive_hashes_valid": true,
+  "original_report_preserved": true
+}
