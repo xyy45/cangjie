@@ -1,7 +1,7 @@
 'use strict';
 const EvidenceUI=(()=>{
  const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
- const names={sympas_slice:'静态切片',sympas_dep_graph:'数据依赖',ast_symbol_extractor:'结构线索'};
+ const names={sympas_slice_table:'静态切片表',sympas_slice:'静态切片',sympas_dep_graph:'数据依赖',ast_symbol_extractor:'结构线索'};
  let task=null,advice=null,currentMode='real',probeBusy=false,viewEpoch=0;
  function update(value,suggestion,mode,caseId){
   if(task?.id!==value?.id||currentMode!==mode)viewEpoch++;
@@ -20,7 +20,7 @@ const EvidenceUI=(()=>{
   try{
    const report=(await api('/api/demo/tasks/'+identity+'/analysis')).analysis;
    if(version!==viewEpoch||!$('repair-analysis-dialog').open)return;
-   box.replaceChildren(make('p','evidence-note','工具事实来自本次修复基线；模型引用仅说明使用了哪些依据，不证明推理正确。'));
+   box.replaceChildren();
    details(box,[['基线',report.baseline_id],['树摘要',report.baseline_hash]]);
    const citations=new Set(advice?.analysis_refs||[]);
    for(const file of report.files){
@@ -40,7 +40,8 @@ const EvidenceUI=(()=>{
  }
  function showPolicy(){
   const box=$('policy-detail-content'),rows=currentMode==='real'?policyRecords(task?.events||[]):[];
-  box.replaceChildren(make('p','evidence-note',rows.length?'原生决定与执行结果分别记录；探测不会批准或导出候选。':'尚未取得本次原生策略记录。'));
+  box.replaceChildren();
+  if(!rows.length)box.append(make('p','evidence-note','尚未取得本次原生策略记录。'));
   for(const row of rows.toReversed()){
    const section=make('section','evidence-section'),head=make('div','evidence-heading');
    head.append(make('strong','',row.request.action),make('span','tiny-badge',row.native?row.decision.decision:'无原生响应'));section.append(head);

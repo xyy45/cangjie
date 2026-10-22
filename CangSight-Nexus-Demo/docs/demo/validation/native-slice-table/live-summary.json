@@ -1,0 +1,94 @@
+[
+  {
+    "sample": "sum3",
+    "id": "a50c1c657a414ca7bfa2787258092e77",
+    "status": "COMPLETE",
+    "slice_status": "VALID",
+    "scope": "VARIABLE_TABLE",
+    "variables": 5,
+    "tools": [
+      {
+        "tool": "sympas_slice_table",
+        "status": "VALID"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID"
+      }
+    ],
+    "elapsed_ms": 9297
+  },
+  {
+    "sample": "loop",
+    "id": "2eb43ecc32034965bb3b5e93a087f518",
+    "status": "COMPLETE",
+    "slice_status": "VALID",
+    "scope": "VARIABLE_TABLE",
+    "variables": 4,
+    "tools": [
+      {
+        "tool": "sympas_slice_table",
+        "status": "VALID"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID"
+      }
+    ],
+    "elapsed_ms": 7007
+  },
+  {
+    "sample": "calls",
+    "id": "214e1c6b55e145fdb052d133fc4f17fa",
+    "status": "COMPLETE",
+    "slice_status": "VALID",
+    "scope": "VARIABLE_TABLE",
+    "variables": 10,
+    "tools": [
+      {
+        "tool": "sympas_slice_table",
+        "status": "VALID"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID"
+      }
+    ],
+    "elapsed_ms": 7113
+  },
+  {
+    "sample": "upload",
+    "id": "a1634664acf943968aca8aefd6f5fdd6",
+    "status": "COMPLETE",
+    "slice_status": "VALID",
+    "scope": "VARIABLE_TABLE",
+    "variables": 4,
+    "tools": [
+      {
+        "tool": "sympas_slice_table",
+        "status": "VALID"
+      },
+      {
+        "tool": "sympas_dep_graph",
+        "status": "VALID"
+      },
+      {
+        "tool": "ast_symbol_extractor",
+        "status": "VALID"
+      }
+    ],
+    "elapsed_ms": 6710
+  }
+]

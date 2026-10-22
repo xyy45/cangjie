@@ -1,0 +1,235 @@
+{
+  "elapsed_ms": 874,
+  "http_status": 200,
+  "input": {
+    "code": "func sumPositive(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        if (value > 0) {\n            total = total + value\n        }\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(sumPositive([2, -3, 4, 5]))\n    println(sumPositive([7]))\n    println(sumPositive([-2, -1]))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l2_loop.cj",
+    "lang": "cangjie",
+    "method": "SymPas",
+    "table_formats": [
+      "json"
+    ],
+    "timeout_sec": 40
+  },
+  "observed_at": "2026-10-21T12:51:17.880817+00:00",
+  "request_id": "2eb43ecc32034965bb3b5e93a087f518-sympas_slice_table",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_sliceview_pu91uot7/slice_table.md",
+        "download_url": "/artifacts/sympas_sliceview_pu91uot7/slice_table.md?[REDACTED]",
+        "format": "markdown",
+        "name": "slice_table.md",
+        "path": "/workspace/artifacts/sympas_sliceview_pu91uot7/slice_table.md",
+        "preview": {
+          "available": true,
+          "content": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| index@sumPositive | l2_loop.cj | 1, 2, 9, 11, 13, 14, 15, 16 |\n| total@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n| value@sumPositive | l2_loop.cj | 1, 2, 4, 5, 9, 11, 13, 14, 15, 16 |\n| values@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n"
+        },
+        "url": "/artifacts/sympas_sliceview_pu91uot7/slice_table.md?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_pu91uot7/slice_tables.json",
+        "download_url": "/artifacts/sympas_sliceview_pu91uot7/slice_tables.json?[REDACTED]",
+        "format": "json",
+        "name": "slice_tables.json",
+        "path": "/workspace/artifacts/sympas_sliceview_pu91uot7/slice_tables.json",
+        "preview": {
+          "available": true,
+          "content": "{\"backward_slices\": {\"index@sumPositive\": {\"l2_loop.cj\": [1, 2, 9, 11, 13, 14, 15, 16]}, \"total@sumPositive\": {\"l2_loop.cj\": [1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16]}, \"value@sumPositive\": {\"l2_loop.cj\": [1, 2, 4, 5, 9, 11, 13, 14, 15, 16]}, \"values@sumPositive\": {\"l2_loop.cj\": [1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}"
+        },
+        "url": "/artifacts/sympas_sliceview_pu91uot7/slice_tables.json?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG",
+        "download_url": "/artifacts/sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG?[REDACTED]",
+        "format": "text",
+        "name": "l2_loop.SliceResult_Bwd-SDG",
+        "path": "/workspace/artifacts/sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG",
+        "preview": {
+          "available": true,
+          "content": "\nBackward Static SliceTable:\n\t#Insts_sliced = 44.0 (Average: 11)\n\n Variable      SrcLineNumbers  \n------------------------------\n index@sumPositive         {\"l2_loop.cj: [1,2,9,11,13,14,15,16]\"}\n total@sumPositive         {\"l2_loop.cj: [1,2,3,4,5,6,7,9,11,13,14,15,16]\"}\n value@sumPositive         {\"l2_loop.cj: [1,2,4,5,9,11,13,14,15,16]\"}\n values@sumPositive        {\"l2_loop.cj: [1,2,3,4,5,6,7,9,11,13,14,15,16]\"}\n"
+        },
+        "url": "/artifacts/sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG?[REDACTED]"
+      }
+    ],
+    "backward_slice_count": 4,
+    "cache": "miss",
+    "criterion": "",
+    "data": {
+      "backward_slices": {
+        "index@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "total@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "value@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            4,
+            5,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "values@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "direction": "Bwd",
+    "engine": "analysis-engine/SymPas",
+    "forward_slice_count": 0,
+    "issue_count": 0,
+    "issues": [],
+    "markdown": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| index@sumPositive | l2_loop.cj | 1, 2, 9, 11, 13, 14, 15, 16 |\n| total@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n| value@sumPositive | l2_loop.cj | 1, 2, 4, 5, 9, 11, 13, 14, 15, 16 |\n| values@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n",
+    "message": "Completed with 0 item(s) and 3 artifact(s).",
+    "method": "SymPas",
+    "output_dir": "/workspace/artifacts/sympas_sliceview_pu91uot7",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_sliceview_pu91uot7/slice_tables.json?[REDACTED]",
+      "json_source": "{\"backward_slices\": {\"index@sumPositive\": {\"l2_loop.cj\": [1, 2, 9, 11, 13, 14, 15, 16]}, \"total@sumPositive\": {\"l2_loop.cj\": [1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16]}, \"value@sumPositive\": {\"l2_loop.cj\": [1, 2, 4, 5, 9, 11, 13, 14, 15, 16]}, \"values@sumPositive\": {\"l2_loop.cj\": [1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_sliceview_pu91uot7/slice_tables.json?[REDACTED]",
+      "markdown_download_url": "/artifacts/sympas_sliceview_pu91uot7/slice_table.md?[REDACTED]",
+      "markdown_source": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| index@sumPositive | l2_loop.cj | 1, 2, 9, 11, 13, 14, 15, 16 |\n| total@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n| value@sumPositive | l2_loop.cj | 1, 2, 4, 5, 9, 11, 13, 14, 15, 16 |\n| values@sumPositive | l2_loop.cj | 1, 2, 3, 4, 5, 6, 7, 9, 11, 13, 14, 15, 16 |\n",
+      "markdown_source_truncated": false,
+      "markdown_url": "/artifacts/sympas_sliceview_pu91uot7/slice_table.md?[REDACTED]",
+      "text_download_url": "/artifacts/sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG?[REDACTED]",
+      "text_source": "\nBackward Static SliceTable:\n\t#Insts_sliced = 44.0 (Average: 11)\n\n Variable      SrcLineNumbers  \n------------------------------\n index@sumPositive         {\"l2_loop.cj: [1,2,9,11,13,14,15,16]\"}\n total@sumPositive         {\"l2_loop.cj: [1,2,3,4,5,6,7,9,11,13,14,15,16]\"}\n value@sumPositive         {\"l2_loop.cj: [1,2,4,5,9,11,13,14,15,16]\"}\n values@sumPositive        {\"l2_loop.cj: [1,2,3,4,5,6,7,9,11,13,14,15,16]\"}\n",
+      "text_source_truncated": false,
+      "text_url": "/artifacts/sympas_sliceview_pu91uot7/l2_loop.SliceResult_Bwd-SDG?[REDACTED]"
+    },
+    "report": {
+      "backward_slices": {
+        "index@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "total@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "value@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            4,
+            5,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        "values@sumPositive": {
+          "l2_loop.cj": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14,
+            15,
+            16
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "03f334083de00416",
+    "requested_direction": "Bwd",
+    "requested_method": "SymPas",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 503.3
+    },
+    "row_count": 4,
+    "server_timing_ms": 503.3,
+    "status": "success",
+    "table_formats": [
+      "json"
+    ],
+    "target": "runtime/sympas_src_290396/l2_loop.cj",
+    "tool": "sympas_slice_table"
+  },
+  "schema_version": 1,
+  "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+  "tool": "sympas_slice_table",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_bf637b567f8c4674a43bdbf0c713b918"
+}

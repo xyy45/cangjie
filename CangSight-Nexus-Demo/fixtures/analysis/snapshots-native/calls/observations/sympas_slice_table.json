@@ -1,0 +1,495 @@
+{
+  "elapsed_ms": 729,
+  "http_status": 200,
+  "input": {
+    "code": "func clamp(value: Int64, lower: Int64, upper: Int64): Int64 {\n    if (value < lower) {\n        return lower\n    }\n    if (value > upper) {\n        return upper\n    }\n    return value\n}\nfunc transform(value: Int64): Int64 {\n    let bounded = clamp(value, -10, 10)\n    return bounded * bounded\n}\nfunc aggregate(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        let transformed = transform(value)\n        total = total + transformed\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(aggregate([2, -3, 20]))\n    println(aggregate([0]))\n    return 0\n}\n",
+    "direction": "Bwd",
+    "filename": "l3_calls.cj",
+    "lang": "cangjie",
+    "method": "SymPas",
+    "table_formats": [
+      "json"
+    ],
+    "timeout_sec": 40
+  },
+  "observed_at": "2026-10-21T12:51:24.760335+00:00",
+  "request_id": "214e1c6b55e145fdb052d133fc4f17fa-sympas_slice_table",
+  "response": {
+    "artifacts": [
+      {
+        "artifact_path": "sympas_sliceview_pp8u3axf/slice_table.md",
+        "download_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_table.md?[REDACTED]",
+        "format": "markdown",
+        "name": "slice_table.md",
+        "path": "/workspace/artifacts/sympas_sliceview_pp8u3axf/slice_table.md",
+        "preview": {
+          "available": true,
+          "content": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| bounded@transform | l3_calls.cj | 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| index@aggregate | l3_calls.cj | 14, 15, 17, 21, 23, 25, 26, 27 |\n| lower@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| total@aggregate | l3_calls.cj | 12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 26, 27 |\n| transformed@aggregate | l3_calls.cj | 12, 14, 15, 17, 19, 21, 23, 25, 26, 27 |\n| upper@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@transform | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| values@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27 |\n"
+        },
+        "url": "/artifacts/sympas_sliceview_pp8u3axf/slice_table.md?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_pp8u3axf/slice_tables.json",
+        "download_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_tables.json?[REDACTED]",
+        "format": "json",
+        "name": "slice_tables.json",
+        "path": "/workspace/artifacts/sympas_sliceview_pp8u3axf/slice_tables.json",
+        "preview": {
+          "available": true,
+          "content": "{\"backward_slices\": {\"bounded@transform\": {\"l3_calls.cj\": [3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"index@aggregate\": {\"l3_calls.cj\": [14, 15, 17, 21, 23, 25, 26, 27]}, \"lower@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"total@aggregate\": {\"l3_calls.cj\": [12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 26, 27]}, \"transformed@aggregate\": {\"l3_calls.cj\": [12, 14, 15, 17, 19, 21, 23, 25, 26, 27]}, \"upper@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@aggregate\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@transform\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"values@aggregate\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}"
+        },
+        "url": "/artifacts/sympas_sliceview_pp8u3axf/slice_tables.json?[REDACTED]"
+      },
+      {
+        "artifact_path": "sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG",
+        "download_url": "/artifacts/sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG?[REDACTED]",
+        "format": "text",
+        "name": "l3_calls.SliceResult_Bwd-SDG",
+        "path": "/workspace/artifacts/sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG",
+        "preview": {
+          "available": true,
+          "content": "\nBackward Static SliceTable:\n\t#Insts_sliced = 150.0 (Average: 15)\n\n Variable      SrcLineNumbers  \n------------------------------\n bounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n index@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\n lower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n total@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\n transformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\n upper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n values@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\n"
+        },
+        "url": "/artifacts/sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG?[REDACTED]"
+      }
+    ],
+    "backward_slice_count": 10,
+    "cache": "miss",
+    "criterion": "",
+    "data": {
+      "backward_slices": {
+        "bounded@transform": {
+          "l3_calls.cj": [
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "index@aggregate": {
+          "l3_calls.cj": [
+            14,
+            15,
+            17,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "lower@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "total@aggregate": {
+          "l3_calls.cj": [
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "transformed@aggregate": {
+          "l3_calls.cj": [
+            12,
+            14,
+            15,
+            17,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "upper@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@aggregate": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@transform": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "values@aggregate": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "direction": "Bwd",
+    "engine": "analysis-engine/SymPas",
+    "forward_slice_count": 0,
+    "issue_count": 0,
+    "issues": [],
+    "markdown": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| bounded@transform | l3_calls.cj | 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| index@aggregate | l3_calls.cj | 14, 15, 17, 21, 23, 25, 26, 27 |\n| lower@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| total@aggregate | l3_calls.cj | 12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 26, 27 |\n| transformed@aggregate | l3_calls.cj | 12, 14, 15, 17, 19, 21, 23, 25, 26, 27 |\n| upper@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@transform | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| values@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27 |\n",
+    "message": "Completed with 0 item(s) and 3 artifact(s).",
+    "method": "SymPas",
+    "output_dir": "/workspace/artifacts/sympas_sliceview_pp8u3axf",
+    "preview": {
+      "json_download_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_tables.json?[REDACTED]",
+      "json_source": "{\"backward_slices\": {\"bounded@transform\": {\"l3_calls.cj\": [3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"index@aggregate\": {\"l3_calls.cj\": [14, 15, 17, 21, 23, 25, 26, 27]}, \"lower@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"total@aggregate\": {\"l3_calls.cj\": [12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 26, 27]}, \"transformed@aggregate\": {\"l3_calls.cj\": [12, 14, 15, 17, 19, 21, 23, 25, 26, 27]}, \"upper@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@aggregate\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@clamp\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"value@transform\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27]}, \"values@aggregate\": {\"l3_calls.cj\": [1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27]}}, \"tool\": \"analysis-engine/SymPas\", \"version\": \"1.0\"}",
+      "json_source_truncated": false,
+      "json_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_tables.json?[REDACTED]",
+      "markdown_download_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_table.md?[REDACTED]",
+      "markdown_source": "| 变量 | 文件 | 行号 |\n|---|---|---|\n| bounded@transform | l3_calls.cj | 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| index@aggregate | l3_calls.cj | 14, 15, 17, 21, 23, 25, 26, 27 |\n| lower@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| total@aggregate | l3_calls.cj | 12, 14, 15, 16, 17, 19, 20, 21, 23, 25, 26, 27 |\n| transformed@aggregate | l3_calls.cj | 12, 14, 15, 17, 19, 21, 23, 25, 26, 27 |\n| upper@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@clamp | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| value@transform | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21, 23, 25, 26, 27 |\n| values@aggregate | l3_calls.cj | 1, 3, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27 |\n",
+      "markdown_source_truncated": false,
+      "markdown_url": "/artifacts/sympas_sliceview_pp8u3axf/slice_table.md?[REDACTED]",
+      "text_download_url": "/artifacts/sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG?[REDACTED]",
+      "text_source": "\nBackward Static SliceTable:\n\t#Insts_sliced = 150.0 (Average: 15)\n\n Variable      SrcLineNumbers  \n------------------------------\n bounded@transform            {\"l3_calls.cj: [3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n index@aggregate              {\"l3_calls.cj: [14,15,17,21,23,25,26,27]\"}\n lower@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n total@aggregate              {\"l3_calls.cj: [12,14,15,16,17,19,20,21,23,25,26,27]\"}\n transformed@aggregate        {\"l3_calls.cj: [12,14,15,17,19,21,23,25,26,27]\"}\n upper@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@aggregate              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@clamp                  {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n value@transform              {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,17,18,19,21,23,25,26,27]\"}\n values@aggregate             {\"l3_calls.cj: [1,3,6,8,10,11,12,14,15,16,17,18,19,20,21,23,25,26,27]\"}\n",
+      "text_source_truncated": false,
+      "text_url": "/artifacts/sympas_sliceview_pp8u3axf/l3_calls.SliceResult_Bwd-SDG?[REDACTED]"
+    },
+    "report": {
+      "backward_slices": {
+        "bounded@transform": {
+          "l3_calls.cj": [
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "index@aggregate": {
+          "l3_calls.cj": [
+            14,
+            15,
+            17,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "lower@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "total@aggregate": {
+          "l3_calls.cj": [
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "transformed@aggregate": {
+          "l3_calls.cj": [
+            12,
+            14,
+            15,
+            17,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "upper@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@aggregate": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@clamp": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "value@transform": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        },
+        "values@aggregate": {
+          "l3_calls.cj": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        }
+      },
+      "tool": "analysis-engine/SymPas",
+      "version": "1.0"
+    },
+    "request_id": "045c17108e680419",
+    "requested_direction": "Bwd",
+    "requested_method": "SymPas",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 503.8
+    },
+    "row_count": 10,
+    "server_timing_ms": 503.8,
+    "status": "success",
+    "table_formats": [
+      "json"
+    ],
+    "target": "runtime/sympas_src_48b6dd/l3_calls.cj",
+    "tool": "sympas_slice_table"
+  },
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "tool": "sympas_slice_table",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_6e902a9bf028492e8c598902e4d519b2"
+}

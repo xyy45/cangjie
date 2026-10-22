@@ -168,7 +168,7 @@ class ImpactService:
             rows=db.execute('SELECT id,status,payload FROM analysis_jobs WHERE actor_id=? ORDER BY rowid DESC',(actor,)).fetchall()
         for identity,status,raw in rows:
             payload=json.loads(raw)
-            if (payload['origin']=='REGISTERED' and all(payload['source'][k]==source[k] for k in ('filename','source_sha256')) and
+            if (payload.get('analysis_profile')==5 and payload.get('slice_scope')=='VARIABLE_TABLE' and payload['origin']=='REGISTERED' and all(payload['source'][k]==source[k] for k in ('filename','source_sha256')) and
                     payload.get('slice_criterion',slice_criterion(source))==criterion):
                 if status in ACTIVE:raise AnalysisConflict('对应源码分析仍在运行')
                 return self.analysis.get(identity,actor_id=actor),True
@@ -213,7 +213,7 @@ class ImpactService:
                     if result['source']['source_sha256']!=source['source_sha256'] or result['source']['code']!=source['code']:
                         raise ValueError('分析源码版本错误')
                     self._copy(result,report)
-                    file[side]=dict(analysis_id=result['id'],source_sha256=source['source_sha256'],slice_criterion=result['slice_criterion'],
+                    file[side]=dict(analysis_id=result['id'],source_sha256=source['source_sha256'],slice_criterion=result['slice_criterion'],slice_scope=result.get('slice_scope'),
                         status=result['status'],reused=reused,graph=graph_neighborhood(result,lines),
                         tools=[dict(tool=o['tool'],status=o['status'],reason=o['reason'],raw_sha256=o['raw_sha256']) for o in result['observations']])
                     self._save(report,'RUNNING')

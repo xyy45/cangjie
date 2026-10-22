@@ -1,0 +1,1452 @@
+{
+  "elapsed_ms": 1824,
+  "http_status": 200,
+  "input": {
+    "code": "func sum3(a: Int64, b: Int64, c: Int64): Int64 {\n    let first = a + b\n    let total = first + c\n    return total\n}\nmain(): Int64 {\n    println(sum3(2, 3, 4))\n    return 0\n}\n",
+    "filename": "l1_sum3.cj",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-22T04:26:05.787839+00:00",
+  "request_id": "6ba8db956875454bbe323056ef95a623-ast_symbol_extractor",
+  "response": {
+    "artifacts": [],
+    "cache": "miss",
+    "data": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L8]: return 0"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%b",
+          "kind": "Pdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "(formal-out)%c",
+          "kind": "Pdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "(formal-out)%a",
+          "kind": "Pdg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Pdg",
+          "to": "(formal-out)%b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Pdg",
+          "to": "(formal-out)%a"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%a"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%b",
+          "kind": "Ddg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "(formal-out)%c",
+          "kind": "Ddg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "(formal-out)%a",
+          "kind": "Ddg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Ddg",
+          "to": "(formal-out)%b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Ddg",
+          "to": "(formal-out)%a"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L8]: return 0"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%a)"
+        }
+      ],
+      "dependency_count": 57,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 18,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%a"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%b"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%c"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%a"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%b"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%c"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER sum3"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%a)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%b)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%c)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%first)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: first = a + b"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: total = first + c"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L8]: return 0"
+        }
+      ],
+      "target": "runtime/sympas_src_80bd54/l1_sum3.cj"
+    },
+    "dependencies": [
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L7]: println(sum3(2, 3, 4))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L8]: return 0"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Pdg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Pdg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Pdg",
+        "to": "FinalUse(%first)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "FinalUse(%first)"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%b",
+        "kind": "Pdg",
+        "to": "FinalUse(%b)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "FinalUse(%b)"
+      },
+      {
+        "from": "(formal-out)%c",
+        "kind": "Pdg",
+        "to": "FinalUse(%c)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "FinalUse(%c)"
+      },
+      {
+        "from": "(formal-out)%a",
+        "kind": "Pdg",
+        "to": "FinalUse(%a)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "FinalUse(%a)"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Pdg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Pdg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Pdg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Pdg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Pdg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%a",
+        "kind": "Pdg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%b",
+        "kind": "Pdg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Pdg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%b",
+        "kind": "Pdg",
+        "to": "(formal-out)%b"
+      },
+      {
+        "from": "(formal-in)%a",
+        "kind": "Pdg",
+        "to": "(formal-out)%a"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "(formal-in)%c"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "(formal-in)%b"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Pdg",
+        "to": "(formal-in)%a"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Ddg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Ddg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Ddg",
+        "to": "FinalUse(%first)"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Ddg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%b",
+        "kind": "Ddg",
+        "to": "FinalUse(%b)"
+      },
+      {
+        "from": "(formal-out)%c",
+        "kind": "Ddg",
+        "to": "FinalUse(%c)"
+      },
+      {
+        "from": "(formal-out)%a",
+        "kind": "Ddg",
+        "to": "FinalUse(%a)"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Ddg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "[L3]: total = first + c",
+        "kind": "Ddg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Ddg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "[L2]: first = a + b",
+        "kind": "Ddg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Ddg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%a",
+        "kind": "Ddg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%b",
+        "kind": "Ddg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "(formal-in)%c",
+        "kind": "Ddg",
+        "to": "(formal-out)%c"
+      },
+      {
+        "from": "(formal-in)%b",
+        "kind": "Ddg",
+        "to": "(formal-out)%b"
+      },
+      {
+        "from": "(formal-in)%a",
+        "kind": "Ddg",
+        "to": "(formal-out)%a"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L7]: println(sum3(2, 3, 4))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L8]: return 0"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "[L2]: first = a + b"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "[L3]: total = first + c"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "[L4]: return total"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "FinalUse(%first)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "FinalUse(%b)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "FinalUse(%c)"
+      },
+      {
+        "from": "ENTER sum3",
+        "kind": "Cdg",
+        "to": "FinalUse(%a)"
+      }
+    ],
+    "dependency_count": 57,
+    "issue_count": 18,
+    "issues": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%a"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%b"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%c"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%a"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%b"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%c"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER sum3"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%a)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%b)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%c)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%first)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: first = a + b"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: total = first + c"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: println(sum3(2, 3, 4))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L8]: return 0"
+      }
+    ],
+    "message": "Completed with 18 item(s) and 0 artifact(s).",
+    "preview": {},
+    "report": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L8]: return 0"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%b",
+          "kind": "Pdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "(formal-out)%c",
+          "kind": "Pdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "(formal-out)%a",
+          "kind": "Pdg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Pdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Pdg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Pdg",
+          "to": "(formal-out)%b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Pdg",
+          "to": "(formal-out)%a"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Pdg",
+          "to": "(formal-in)%a"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%b",
+          "kind": "Ddg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "(formal-out)%c",
+          "kind": "Ddg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "(formal-out)%a",
+          "kind": "Ddg",
+          "to": "FinalUse(%a)"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "[L3]: total = first + c",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "[L2]: first = a + b",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Ddg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "(formal-in)%c",
+          "kind": "Ddg",
+          "to": "(formal-out)%c"
+        },
+        {
+          "from": "(formal-in)%b",
+          "kind": "Ddg",
+          "to": "(formal-out)%b"
+        },
+        {
+          "from": "(formal-in)%a",
+          "kind": "Ddg",
+          "to": "(formal-out)%a"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L8]: return 0"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L2]: first = a + b"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L3]: total = first + c"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "[L4]: return total"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%first)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%b)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%c)"
+        },
+        {
+          "from": "ENTER sum3",
+          "kind": "Cdg",
+          "to": "FinalUse(%a)"
+        }
+      ],
+      "dependency_count": 57,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 18,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%a"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%b"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%c"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%a"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%b"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%c"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER sum3"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%a)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%b)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%c)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%first)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: first = a + b"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: total = first + c"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: println(sum3(2, 3, 4))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L8]: return 0"
+        }
+      ],
+      "target": "runtime/sympas_src_80bd54/l1_sum3.cj"
+    },
+    "request_id": "12ce7116dc78046f",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 1613.1
+    },
+    "server_timing_ms": 1613.1,
+    "source": "sympas-gs_graphs",
+    "status": "success",
+    "symbol_count": 18,
+    "symbols": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%a"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%b"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%c"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%a"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%b"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%c"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER sum3"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%a)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%b)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%c)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%first)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: first = a + b"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: total = first + c"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: println(sum3(2, 3, 4))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L8]: return 0"
+      }
+    ],
+    "target": "runtime/sympas_src_80bd54/l1_sum3.cj",
+    "tool": "ast_symbol_extractor"
+  },
+  "schema_version": 1,
+  "source_sha256": "08d40306768c605df05ea3f121831c691021c83755552d0fd6df5bda4f913bcf",
+  "tool": "ast_symbol_extractor",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_0626848e7f4e4a6f8a59bcf9a6ab9b38"
+}

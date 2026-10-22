@@ -11,7 +11,7 @@ from xml.etree import ElementTree
 
 from dotenv import dotenv_values
 import httpx
-from nexus.analysis.normalize import TOOLS
+from nexus.analysis.normalize import SUPPORTED_TOOLS
 
 ROOT=Path(__file__).resolve().parents[2]
 DEFAULT_URL='http://47.94.83.64:6240'
@@ -59,7 +59,7 @@ class ResearchClient:
     def __exit__(self,*args):pass
 
     def analyze(self,tool,arguments):
-        if tool not in TOOLS:raise ValueError('Tool is not permitted')
+        if tool not in SUPPORTED_TOOLS:raise ValueError('Tool is not permitted')
         if self.paced:time.sleep(max(0,1.4-(time.monotonic()-self.last)))
         try:return asyncio.run(self._request(tool,arguments))
         except (httpx.HTTPError,TimeoutError) as exc:

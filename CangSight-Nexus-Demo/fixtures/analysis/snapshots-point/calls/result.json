@@ -1,0 +1,962 @@
+{
+  "active_tool": null,
+  "analysis_profile": 5,
+  "callgraph": {
+    "analysis_id": "fd0b5b608574479b87bca1fcc185552e",
+    "graph_type": "Cg",
+    "raw_ref": "observations/sympas_dep_graph.json",
+    "raw_sha256": "5b744bf9ba1f9bd9f3b58f7f3e4bcb6cbffd6f653ab4b6662572bbf1c26802c0",
+    "ref": "artifacts/callgraph.svg",
+    "sha256": "e17ad92c77430ff41adf7fdc10aee815c3919ad243b0be5e1f0b48f94e0c30df",
+    "size_bytes": 6789,
+    "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+    "status": "SAVED",
+    "upstream_path": "/artifacts/sympas_depgraph_u7eolvl4/l3_calls_cg.svg"
+  },
+  "created_at": "2026-10-22T04:26:13.280401+00:00",
+  "elapsed_ms": 7745,
+  "id": "fd0b5b608574479b87bca1fcc185552e",
+  "limitations": [
+    "静态结构观察不代替仓颉编译、类型检查或行为测试。",
+    "切片行准则在现有工具中可能不精确；高亮仅反映工具返回的行。",
+    "复杂语法可能触发中间表示错误；结果按工具分别报告。",
+    "源码摘要绑定本次请求字节，不是远端签名或语义正确性证明。"
+  ],
+  "observations": [
+    {
+      "data": {
+        "direction": "Bwd",
+        "method": "SymPas",
+        "scope": "VARIABLE_TABLE",
+        "slices": {
+          "bounded@transform": [
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "index@aggregate": [
+            14,
+            15,
+            17,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "lower@clamp": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "total@aggregate": [
+            12,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "transformed@aggregate": [
+            12,
+            14,
+            15,
+            17,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "upper@clamp": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "value@aggregate": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "value@clamp": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "value@transform": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            17,
+            18,
+            19,
+            21,
+            23,
+            25,
+            26,
+            27
+          ],
+          "values@aggregate": [
+            1,
+            3,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            25,
+            26,
+            27
+          ]
+        }
+      },
+      "elapsed_ms": 724,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:14.009559+00:00",
+      "raw_ref": "observations/sympas_slice_table.json",
+      "raw_sha256": "b1ec9e7969207e691f020b1c0bd5b975785c5700f0bb3410cc9d303697304ea8",
+      "reason": "静态切片表已返回",
+      "request_id": "fd0b5b608574479b87bca1fcc185552e-sympas_slice_table",
+      "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+      "status": "VALID",
+      "tool": "sympas_slice_table"
+    },
+    {
+      "data": {
+        "graphs": [
+          {
+            "edges": [
+              {
+                "from": "n42",
+                "to": "n46"
+              },
+              {
+                "from": "n35",
+                "to": "n46"
+              },
+              {
+                "from": "n34",
+                "to": "n43"
+              },
+              {
+                "from": "n41",
+                "to": "n42"
+              },
+              {
+                "from": "n35",
+                "to": "n42"
+              },
+              {
+                "from": "n43",
+                "to": "n39"
+              },
+              {
+                "from": "n34",
+                "to": "n39"
+              },
+              {
+                "from": "n43",
+                "to": "n36"
+              },
+              {
+                "from": "n34",
+                "to": "n36"
+              },
+              {
+                "from": "n41",
+                "to": "n54"
+              },
+              {
+                "from": "n42",
+                "to": "n53"
+              },
+              {
+                "from": "n35",
+                "to": "n53"
+              },
+              {
+                "from": "n48",
+                "to": "n52"
+              },
+              {
+                "from": "n43",
+                "to": "n51"
+              },
+              {
+                "from": "n34",
+                "to": "n51"
+              },
+              {
+                "from": "n39",
+                "to": "n50"
+              },
+              {
+                "from": "n47",
+                "to": "n46"
+              },
+              {
+                "from": "n43",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n43"
+              },
+              {
+                "from": "n42",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n42"
+              },
+              {
+                "from": "n41",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n41"
+              },
+              {
+                "from": "n39",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n39"
+              },
+              {
+                "from": "n47",
+                "to": "n36"
+              },
+              {
+                "from": "n35",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n35"
+              },
+              {
+                "from": "n34",
+                "to": "n48"
+              },
+              {
+                "from": "n47",
+                "to": "n34"
+              },
+              {
+                "from": "n47",
+                "to": "n48"
+              },
+              {
+                "from": "n26",
+                "to": "n27"
+              },
+              {
+                "from": "n26",
+                "to": "n32"
+              },
+              {
+                "from": "n29",
+                "to": "n31"
+              },
+              {
+                "from": "n28",
+                "to": "n27"
+              },
+              {
+                "from": "n26",
+                "to": "n29"
+              },
+              {
+                "from": "n28",
+                "to": "n26"
+              },
+              {
+                "from": "n28",
+                "to": "n29"
+              },
+              {
+                "from": "n19",
+                "to": "n23"
+              },
+              {
+                "from": "n15",
+                "to": "n22"
+              },
+              {
+                "from": "n17",
+                "to": "n21"
+              },
+              {
+                "from": "n14",
+                "to": "n13"
+              },
+              {
+                "from": "n18",
+                "to": "n10"
+              },
+              {
+                "from": "n14",
+                "to": "n7"
+              },
+              {
+                "from": "n18",
+                "to": "n7"
+              },
+              {
+                "from": "n16",
+                "to": "n4"
+              },
+              {
+                "from": "n14",
+                "to": "n1"
+              },
+              {
+                "from": "n16",
+                "to": "n1"
+              },
+              {
+                "from": "n18",
+                "to": "n19"
+              },
+              {
+                "from": "n16",
+                "to": "n17"
+              },
+              {
+                "from": "n14",
+                "to": "n15"
+              }
+            ],
+            "graph_type": "Ddg",
+            "nodes": [
+              {
+                "id": "n39",
+                "label": "[L18]: value = values",
+                "line": 18
+              },
+              {
+                "id": "n53",
+                "label": "FinalUse(%total)",
+                "line": null
+              },
+              {
+                "id": "n42",
+                "label": "[L20]: total = total + transformed",
+                "line": 20
+              },
+              {
+                "id": "n50",
+                "label": "FinalUse(%value)",
+                "line": null
+              },
+              {
+                "id": "n34",
+                "label": "[L15]: index = 0",
+                "line": 15
+              },
+              {
+                "id": "n48",
+                "label": "(formal-out)%values",
+                "line": null
+              },
+              {
+                "id": "n46",
+                "label": "[L23]: return total",
+                "line": 23
+              },
+              {
+                "id": "n35",
+                "label": "[L16]: total = 0",
+                "line": 16
+              },
+              {
+                "id": "n43",
+                "label": "[L21]: index = index + 1",
+                "line": 21
+              },
+              {
+                "id": "n54",
+                "label": "FinalUse(%transformed)",
+                "line": null
+              },
+              {
+                "id": "n52",
+                "label": "FinalUse(%values)",
+                "line": null
+              },
+              {
+                "id": "n36",
+                "label": "[L17]: <Loop_cond> (index < values)",
+                "line": 17
+              },
+              {
+                "id": "n51",
+                "label": "FinalUse(%index)",
+                "line": null
+              },
+              {
+                "id": "n47",
+                "label": "(formal-in)%values",
+                "line": null
+              },
+              {
+                "id": "n41",
+                "label": "[L19]: transformed = transform(value)",
+                "line": 19
+              },
+              {
+                "id": "n21",
+                "label": "FinalUse(%lower)",
+                "line": null
+              },
+              {
+                "id": "n17",
+                "label": "(formal-out)%lower",
+                "line": null
+              },
+              {
+                "id": "n10",
+                "label": "[L6]: return upper",
+                "line": 6
+              },
+              {
+                "id": "n14",
+                "label": "(formal-in)%value",
+                "line": null
+              },
+              {
+                "id": "n19",
+                "label": "(formal-out)%upper",
+                "line": null
+              },
+              {
+                "id": "n7",
+                "label": "[L5]: <Cond> (value > upper)",
+                "line": 5
+              },
+              {
+                "id": "n23",
+                "label": "FinalUse(%upper)",
+                "line": null
+              },
+              {
+                "id": "n15",
+                "label": "(formal-out)%value",
+                "line": null
+              },
+              {
+                "id": "n16",
+                "label": "(formal-in)%lower",
+                "line": null
+              },
+              {
+                "id": "n22",
+                "label": "FinalUse(%value)",
+                "line": null
+              },
+              {
+                "id": "n18",
+                "label": "(formal-in)%upper",
+                "line": null
+              },
+              {
+                "id": "n4",
+                "label": "[L3]: return lower",
+                "line": 3
+              },
+              {
+                "id": "n1",
+                "label": "[L2]: <Cond> (value < lower)",
+                "line": 2
+              },
+              {
+                "id": "n13",
+                "label": "[L8]: return value",
+                "line": 8
+              },
+              {
+                "id": "n27",
+                "label": "[L12]: return bounded * bounded",
+                "line": 12
+              },
+              {
+                "id": "n31",
+                "label": "FinalUse(%value)",
+                "line": null
+              },
+              {
+                "id": "n32",
+                "label": "FinalUse(%bounded)",
+                "line": null
+              },
+              {
+                "id": "n28",
+                "label": "(formal-in)%value",
+                "line": null
+              },
+              {
+                "id": "n26",
+                "label": "[L11]: bounded = clamp(value, -10, 10)",
+                "line": 11
+              },
+              {
+                "id": "n29",
+                "label": "(formal-out)%value",
+                "line": null
+              }
+            ]
+          }
+        ]
+      },
+      "elapsed_ms": 2053,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:17.474163+00:00",
+      "raw_ref": "observations/sympas_dep_graph.json",
+      "raw_sha256": "5b744bf9ba1f9bd9f3b58f7f3e4bcb6cbffd6f653ab4b6662572bbf1c26802c0",
+      "reason": "数据依赖结构已返回",
+      "request_id": "fd0b5b608574479b87bca1fcc185552e-sympas_dep_graph",
+      "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+      "status": "VALID",
+      "tool": "sympas_dep_graph"
+    },
+    {
+      "data": {
+        "dependency_count": 197,
+        "symbols": [
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%lower"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%upper"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%value"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-in)%values"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%lower"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%upper"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%value"
+          },
+          {
+            "appears_in": [
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "(formal-out)%values"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "<noop: return>"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER aggregate"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER clamp"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER main"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "ENTER transform"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%bounded)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%index)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%lower)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%total)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%transformed)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%upper)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%value)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "FinalUse(%values)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "JOIN"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L11]: bounded = clamp(value, -10, 10)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L12]: return bounded * bounded"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L15]: index = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L16]: total = 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L17]: <Loop_cond> (index < values)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L18]: value = values"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L19]: transformed = transform(value)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L20]: total = total + transformed"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L21]: index = index + 1"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L23]: return total"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L26]: println(aggregate([2, -3, 20]))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L27]: println(aggregate([0]))"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "[L28]: return 0"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L2]: <Cond> (value < lower)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L3]: return lower"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L5]: <Cond> (value > upper)"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L6]: return upper"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Ddg",
+              "Pdg"
+            ],
+            "symbol": "[L8]: return value"
+          },
+          {
+            "appears_in": [
+              "Cdg",
+              "Pdg"
+            ],
+            "symbol": "_tmp = <?>"
+          }
+        ]
+      },
+      "elapsed_ms": 2151,
+      "http_status": 200,
+      "observed_at": "2026-10-22T04:26:21.020231+00:00",
+      "raw_ref": "observations/ast_symbol_extractor.json",
+      "raw_sha256": "8c3126178de258032e6573db8d8a8c648c37facd9549faebd925665543d6293f",
+      "reason": "结构线索已返回",
+      "request_id": "fd0b5b608574479b87bca1fcc185552e-ast_symbol_extractor",
+      "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+      "status": "VALID",
+      "tool": "ast_symbol_extractor"
+    }
+  ],
+  "origin": "SAMPLE",
+  "schema_version": 1,
+  "slice_criterion": {
+    "direction": "Bwd",
+    "line": 3,
+    "method": "SymPas"
+  },
+  "slice_scope": "VARIABLE_TABLE",
+  "source": {
+    "code": "func clamp(value: Int64, lower: Int64, upper: Int64): Int64 {\n    if (value < lower) {\n        return lower\n    }\n    if (value > upper) {\n        return upper\n    }\n    return value\n}\nfunc transform(value: Int64): Int64 {\n    let bounded = clamp(value, -10, 10)\n    return bounded * bounded\n}\nfunc aggregate(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        let transformed = transform(value)\n        total = total + transformed\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(aggregate([2, -3, 20]))\n    println(aggregate([0]))\n    return 0\n}\n",
+    "filename": "l3_calls.cj",
+    "line_count": 29,
+    "size": 683,
+    "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5"
+  },
+  "status": "COMPLETE",
+  "updated_at": "2026-10-22T04:26:21.025281+00:00"
+}

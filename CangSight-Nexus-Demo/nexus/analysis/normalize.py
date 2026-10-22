@@ -3,7 +3,8 @@ import hashlib
 import json
 import re
 
-TOOLS=('sympas_slice','sympas_dep_graph','ast_symbol_extractor')
+TOOLS=('sympas_slice_table','sympas_dep_graph','ast_symbol_extractor')
+SUPPORTED_TOOLS=(*TOOLS,'sympas_slice')
 MAX_SOURCE=65536
 MAX_LINES=1000
 LIMITATIONS=[
@@ -31,8 +32,8 @@ def _result(status,reason,data=None):
     return dict(status=status,reason=reason,data=data or {})
 
 
-def normalize(tool,response,filename,line_count):
-    if tool not in TOOLS:raise ValueError('Unsupported tool')
+def response_failure(response):
+    """Validate the tool envelope independently of any particular graph type."""
     if not isinstance(response,dict):return _result('INVALID','响应不是JSON对象')
     logs=[response.get(k) for k in ('engine_log','raw_output','diagnostics','stderr','error','error_code','message','scan_errors')]
     diagnostic=json.dumps(logs,ensure_ascii=False)
@@ -41,21 +42,36 @@ def normalize(tool,response,filename,line_count):
         return _result('FAILED','工具内部分析失败；查看原始证据')
     if response.get('status') not in ('success','ok','completed'):
         return _result('INVALID','缺少已知成功状态')
+    return None
+
+
+def normalize(tool,response,filename,line_count):
+    if tool not in SUPPORTED_TOOLS:raise ValueError('Unsupported tool')
+    failure=response_failure(response)
+    if failure is not None:return failure
     container=response.get('data') if isinstance(response.get('data'),dict) else response
     try:
-        if tool=='sympas_slice':
+        if tool in ('sympas_slice','sympas_slice_table'):
             slices=container.get('backward_slices')
             if not isinstance(slices,dict):return _result('INVALID','缺少结构化切片')
             if not slices:return _result('EMPTY','未返回切片')
             if len(slices)>500:raise ValueError('切片数量超限')
+            native=tool=='sympas_slice_table'
+            if native:
+                if response.get('direction')!='Bwd' or response.get('method')!='SymPas':raise ValueError('切片表分析方式不匹配')
+                if response.get('tool')!='sympas_slice_table':raise ValueError('切片表工具标识不匹配')
+                for key in ('row_count','backward_slice_count'):
+                    if type(response.get(key)) is not int or response[key]!=len(slices):raise ValueError('切片表计数不匹配')
             output={}
             for symbol,files in slices.items():
-                if not isinstance(symbol,str) or not symbol or len(symbol)>500 or not isinstance(files,dict):raise ValueError('切片结构无效')
+                if not isinstance(symbol,str) or not symbol.strip() or len(symbol)>500 or not isinstance(files,dict):raise ValueError('切片结构无效')
                 if set(files)!={filename}:raise ValueError('切片文件不匹配')
                 lines=files[filename]
                 if not isinstance(lines,list) or len(lines)>MAX_LINES or any(type(n) is not int or not 1<=n<=line_count for n in lines):raise ValueError('切片行号无效')
                 if lines:output[symbol]=sorted(set(lines))
-            return _result('VALID','静态切片已返回',{'slices':output}) if output else _result('EMPTY','切片未包含源码行')
+            data=dict(slices=output)
+            if native:data.update(scope='VARIABLE_TABLE',direction='Bwd',method='SymPas')
+            return _result('VALID','静态切片表已返回' if native else '静态切片已返回',data) if output else _result('EMPTY','切片未包含源码行')
         if tool=='sympas_dep_graph':
             graphs=response.get('json_graphs',container.get('json_graphs'))
             if not isinstance(graphs,list):return _result('INVALID','缺少JSON依赖图')
@@ -63,23 +79,8 @@ def normalize(tool,response,filename,line_count):
             for graph in graphs:
                 if not isinstance(graph,dict):raise ValueError('图结构无效')
                 if graph.get('graph_type')!='Ddg':continue
-                nodes,edges=graph.get('nodes'),graph.get('edges')
-                if not isinstance(nodes,list) or not isinstance(edges,list) or len(nodes)>500 or len(edges)>3000:raise ValueError('图结构无效或超限')
-                if graph.get('node_count',len(nodes))!=len(nodes) or graph.get('edge_count',len(edges))!=len(edges):raise ValueError('图计数不匹配')
-                if not nodes:continue
-                normalized=[];ids=set()
-                for node in nodes:
-                    if not isinstance(node,dict):raise ValueError('节点无效')
-                    identity,label=node.get('id'),node.get('label')
-                    if not isinstance(identity,str) or not identity or len(identity)>128 or identity in ids or not isinstance(label,str) or len(label)>2000:raise ValueError('节点无效或重复')
-                    ids.add(identity);match=re.match(r'^\[L(\d+)\]:',label);line=int(match.group(1)) if match else None
-                    if line is not None and not 1<=line<=line_count:raise ValueError('节点行号越界')
-                    normalized.append(dict(id=identity,label=label,line=line))
-                clean_edges=[]
-                for edge in edges:
-                    if not isinstance(edge,dict) or edge.get('from') not in ids or edge.get('to') not in ids:raise ValueError('依赖边端点不存在')
-                    clean_edges.append({'from':edge['from'],'to':edge['to']})
-                output.append(dict(graph_type='Ddg',nodes=normalized,edges=clean_edges))
+                if graph.get('nodes')==[]:continue
+                output.append(validate_graph(graph,line_count))
             return _result('VALID','数据依赖结构已返回',{'graphs':output}) if output else _result('EMPTY','未返回非空DDG')
         symbols=response.get('symbols',container.get('symbols'))
         dependencies=response.get('dependencies',container.get('dependencies',[]))
@@ -93,3 +94,27 @@ def normalize(tool,response,filename,line_count):
         return _result('VALID','结构线索已返回',{'symbols':clean,'dependency_count':len(dependencies)}) if clean else _result('EMPTY','未返回符号')
     except (ValueError,TypeError,KeyError) as exc:
         return _result('INVALID',str(exc))
+
+
+def validate_graph(graph,line_count):
+    """Validate a complete bounded graph; no fabricated source locations."""
+    nodes,edges=graph.get('nodes'),graph.get('edges')
+    if (not isinstance(nodes,list) or not nodes or not isinstance(edges,list) or
+            len(nodes)>500 or len(edges)>3000):raise ValueError('图结构无效或超限')
+    if graph.get('node_count',len(nodes))!=len(nodes) or graph.get('edge_count',len(edges))!=len(edges):
+        raise ValueError('图计数不匹配')
+    normalized=[];ids=set()
+    for node in nodes:
+        if not isinstance(node,dict):raise ValueError('节点无效')
+        identity,label=node.get('id'),node.get('label')
+        if (not isinstance(identity,str) or not identity or len(identity)>128 or identity in ids or
+                not isinstance(label,str) or len(label)>2000):raise ValueError('节点无效或重复')
+        ids.add(identity);match=re.match(r'^\[L(\d+)\]:',label);line=int(match.group(1)) if match else None
+        if line is not None and not 1<=line<=line_count:raise ValueError('节点行号越界')
+        normalized.append(dict(id=identity,label=label,line=line))
+    clean_edges=[]
+    for edge in edges:
+        if not isinstance(edge,dict) or edge.get('from') not in ids or edge.get('to') not in ids:
+            raise ValueError('依赖边端点不存在')
+        clean_edges.append({'from':edge['from'],'to':edge['to']})
+    return dict(graph_type=graph['graph_type'],nodes=normalized,edges=clean_edges)

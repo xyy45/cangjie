@@ -25,7 +25,8 @@ def test_analysis_bound_journey_and_approval_probe_preserve_delivery_evidence(tm
         def __exit__(self,*args):pass
         def analyze(self,tool,args):
             result={'status':'success'}
-            if tool=='sympas_slice':result['data']={'backward_slices':{'value':{args['filename']:[1]}}}
+            if tool in ('sympas_slice','sympas_slice_table'):result['data']={'backward_slices':{'value':{args['filename']:[1]}}}
+            if tool=='sympas_slice_table':result.update(tool=tool,direction='Bwd',method='SymPas',row_count=1,backward_slice_count=1)
             if tool=='sympas_dep_graph':result['json_graphs']=[{'graph_type':'Ddg','nodes':[{'id':'v','label':'[L1]: variable'}],'edges':[]}]
             if tool=='ast_symbol_extractor':result['symbols']=[{'symbol':'value'}]
             result['untrusted_ref']='records/do-not-export.json'

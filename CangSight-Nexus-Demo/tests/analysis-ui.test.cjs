@@ -40,3 +40,10 @@ test('startup and running states prevent changing source under an in-flight requ
 test('a fresh upload clears every old slice and graph before its request starts',()=>{
  const session=new AnalysisSession();const a=session.select();session.apply(a,{id:'sample',status:'COMPLETE',observations:[{tool:'sympas_dep_graph'}]});session.select();assert.equal(session.report,null);
 });
+
+test('native variable table takes precedence and invalid native tables cannot fall back to legacy logs',()=>{
+ const report={source:{source_sha256:'s'},observations:[{tool:'sympas_slice_table',status:'VALID',data:{scope:'VARIABLE_TABLE',slices:{v:[2,3]}}},{tool:'sympas_slice',status:'VALID',data:{slices:{v:[1]}}}]};
+ assert.deepEqual([...sliceLines(report,'v')],[2,3]);
+ report.observations[0].status='INVALID';
+ assert.deepEqual([...sliceLines(report,'v')],[]);
+});

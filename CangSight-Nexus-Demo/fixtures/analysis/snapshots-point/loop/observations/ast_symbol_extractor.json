@@ -1,0 +1,2418 @@
+{
+  "elapsed_ms": 1824,
+  "http_status": 200,
+  "input": {
+    "code": "func sumPositive(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        if (value > 0) {\n            total = total + value\n        }\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(sumPositive([2, -3, 4, 5]))\n    println(sumPositive([7]))\n    println(sumPositive([-2, -1]))\n    return 0\n}\n",
+    "filename": "l2_loop.cj",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-22T04:26:13.250912+00:00",
+  "request_id": "921340c8d5ec4f4c93a18536795e7177-ast_symbol_extractor",
+  "response": {
+    "artifacts": [],
+    "cache": "miss",
+    "data": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L17]: return 0"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L6]: <Cond> (value > 0)",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "(formal-in)%values"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Ddg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L17]: return 0"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L6]: <Cond> (value > 0)",
+          "kind": "Cdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        }
+      ],
+      "dependency_count": 111,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 23,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%values"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "<noop: return>"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER sumPositive"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%index)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L11]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L17]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: index = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: total = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L5]: value = values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: total = total + value"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L9]: index = index + 1"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "_tmp = <?>"
+        }
+      ],
+      "target": "runtime/sympas_src_906cf7/l2_loop.cj"
+    },
+    "dependencies": [
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L15]: println(sumPositive([7]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L16]: println(sumPositive([-2, -1]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L17]: return 0"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L6]: <Cond> (value > 0)",
+        "kind": "Pdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L2]: index = 0"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L3]: total = 0"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Pdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Pdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Pdg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Pdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Pdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Pdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Pdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Pdg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Pdg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%values",
+        "kind": "Pdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L3]: total = 0"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L2]: index = 0"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Pdg",
+        "to": "(formal-in)%values"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Ddg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Ddg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Ddg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Ddg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Ddg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Ddg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Ddg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Ddg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Ddg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Ddg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%values",
+        "kind": "Ddg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Ddg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Ddg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L9]: index = index + 1",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L7]: total = total + value",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "[L5]: value = values",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L3]: total = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L3]: total = 0"
+      },
+      {
+        "from": "[L2]: index = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L2]: index = 0"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L15]: println(sumPositive([7]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L16]: println(sumPositive([-2, -1]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L17]: return 0"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "[L4]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "[L6]: <Cond> (value > 0)",
+        "kind": "Cdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L2]: index = 0"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L3]: total = 0"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L5]: value = values"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L7]: total = total + value"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L9]: index = index + 1"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "[L11]: return total"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "ENTER sumPositive",
+        "kind": "Cdg",
+        "to": "FinalUse(%value)"
+      }
+    ],
+    "dependency_count": 111,
+    "issue_count": 23,
+    "issues": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%values"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "<noop: return>"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER sumPositive"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%index)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L11]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L15]: println(sumPositive([7]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L16]: println(sumPositive([-2, -1]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L17]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: index = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: total = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L5]: value = values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: total = total + value"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L9]: index = index + 1"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "_tmp = <?>"
+      }
+    ],
+    "message": "Completed with 23 item(s) and 0 artifact(s).",
+    "preview": {},
+    "report": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L17]: return 0"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L6]: <Cond> (value > 0)",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Pdg",
+          "to": "(formal-in)%values"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Ddg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L9]: index = index + 1",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L7]: total = total + value",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "[L5]: value = values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L3]: total = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "[L2]: index = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L17]: return 0"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "[L4]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "[L6]: <Cond> (value > 0)",
+          "kind": "Cdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L2]: index = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L3]: total = 0"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L5]: value = values"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L7]: total = total + value"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L9]: index = index + 1"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "[L11]: return total"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER sumPositive",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        }
+      ],
+      "dependency_count": 111,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 23,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%values"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "<noop: return>"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER sumPositive"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%index)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L11]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L15]: println(sumPositive([7]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L16]: println(sumPositive([-2, -1]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L17]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: index = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: total = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L4]: <Loop_cond> (index < values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L5]: value = values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: <Cond> (value > 0)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L7]: total = total + value"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L9]: index = index + 1"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "_tmp = <?>"
+        }
+      ],
+      "target": "runtime/sympas_src_906cf7/l2_loop.cj"
+    },
+    "request_id": "134033239c510472",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 1623.1
+    },
+    "server_timing_ms": 1623.1,
+    "source": "sympas-gs_graphs",
+    "status": "success",
+    "symbol_count": 23,
+    "symbols": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%values"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "<noop: return>"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER sumPositive"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%index)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L11]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L14]: println(sumPositive([2, -3, 4, 5]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L15]: println(sumPositive([7]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L16]: println(sumPositive([-2, -1]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L17]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: index = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: total = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L4]: <Loop_cond> (index < values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L5]: value = values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: <Cond> (value > 0)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L7]: total = total + value"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L9]: index = index + 1"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "_tmp = <?>"
+      }
+    ],
+    "target": "runtime/sympas_src_906cf7/l2_loop.cj",
+    "tool": "ast_symbol_extractor"
+  },
+  "schema_version": 1,
+  "source_sha256": "da95f4be0e3d364bea2ed68122054ef07e24e825125c5b9ee6d7edb00ea611a3",
+  "tool": "ast_symbol_extractor",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_5a168d021c234d0c93b9b13f31f39bab"
+}

@@ -1,0 +1,4256 @@
+{
+  "elapsed_ms": 2159,
+  "http_status": 200,
+  "input": {
+    "code": "func clamp(value: Int64, lower: Int64, upper: Int64): Int64 {\n    if (value < lower) {\n        return lower\n    }\n    if (value > upper) {\n        return upper\n    }\n    return value\n}\nfunc transform(value: Int64): Int64 {\n    let bounded = clamp(value, -10, 10)\n    return bounded * bounded\n}\nfunc aggregate(values: Array<Int64>): Int64 {\n    var index: Int64 = 0\n    var total: Int64 = 0\n    while (index < values.size) {\n        let value = values[index]\n        let transformed = transform(value)\n        total = total + transformed\n        index = index + 1\n    }\n    return total\n}\nmain(): Int64 {\n    println(aggregate([2, -3, 20]))\n    println(aggregate([0]))\n    return 0\n}\n",
+    "filename": "l3_calls.cj",
+    "lang": "cangjie"
+  },
+  "observed_at": "2026-10-21T12:51:31.134486+00:00",
+  "request_id": "214e1c6b55e145fdb052d133fc4f17fa-ast_symbol_extractor",
+  "response": {
+    "artifacts": [],
+    "cache": "miss",
+    "data": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L28]: return 0"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "(formal-in)%values"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "(formal-in)%value"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-out)%upper",
+          "kind": "Pdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-out)%lower",
+          "kind": "Pdg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "(formal-out)%upper"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "(formal-out)%lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%value"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Ddg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-out)%upper",
+          "kind": "Ddg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-out)%lower",
+          "kind": "Ddg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "(formal-out)%upper"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "(formal-out)%lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L28]: return 0"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%lower)"
+        }
+      ],
+      "dependency_count": 197,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 41,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%lower"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%upper"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%value"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%values"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%lower"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%upper"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%value"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "<noop: return>"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER aggregate"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER clamp"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER transform"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%bounded)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%index)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%lower)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%transformed)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%upper)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L12]: return bounded * bounded"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L15]: index = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L16]: total = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L18]: value = values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L19]: transformed = transform(value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L20]: total = total + transformed"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L21]: index = index + 1"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L23]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L28]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: return lower"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: return upper"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L8]: return value"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "_tmp = <?>"
+        }
+      ],
+      "target": "runtime/sympas_src_1b7cba/l3_calls.cj"
+    },
+    "dependencies": [
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L26]: println(aggregate([2, -3, 20]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L27]: println(aggregate([0]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Pdg",
+        "to": "[L28]: return 0"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Pdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L15]: index = 0"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L16]: total = 0"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Pdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Pdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Pdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Pdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Pdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Pdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Pdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Pdg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Pdg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Pdg",
+        "to": "FinalUse(%transformed)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "FinalUse(%transformed)"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%values",
+        "kind": "Pdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L18]: value = values",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "[L18]: value = values",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L16]: total = 0"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "[L15]: index = 0"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Pdg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Pdg",
+        "to": "(formal-in)%values"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Pdg",
+        "to": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Pdg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Pdg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Pdg",
+        "to": "FinalUse(%bounded)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Pdg",
+        "to": "FinalUse(%bounded)"
+      },
+      {
+        "from": "(formal-out)%value",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Pdg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Pdg",
+        "to": "(formal-in)%value"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Pdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Pdg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Pdg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Pdg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "(formal-out)%upper",
+        "kind": "Pdg",
+        "to": "FinalUse(%upper)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "FinalUse(%upper)"
+      },
+      {
+        "from": "(formal-out)%value",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-out)%lower",
+        "kind": "Pdg",
+        "to": "FinalUse(%lower)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "FinalUse(%lower)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Pdg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Pdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Pdg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Pdg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Pdg",
+        "to": "(formal-out)%upper"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Pdg",
+        "to": "(formal-out)%lower"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Pdg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "(formal-in)%upper"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "(formal-in)%lower"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Pdg",
+        "to": "(formal-in)%value"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Ddg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Ddg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Ddg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Ddg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Ddg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Ddg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Ddg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Ddg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Ddg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Ddg",
+        "to": "FinalUse(%transformed)"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Ddg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "(formal-out)%values",
+        "kind": "Ddg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Ddg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Ddg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "[L18]: value = values",
+        "kind": "Ddg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L21]: index = index + 1",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L20]: total = total + transformed",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L19]: transformed = transform(value)",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "[L18]: value = values",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "[L16]: total = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L16]: total = 0"
+      },
+      {
+        "from": "[L15]: index = 0",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "[L15]: index = 0"
+      },
+      {
+        "from": "(formal-in)%values",
+        "kind": "Ddg",
+        "to": "(formal-out)%values"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Ddg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Ddg",
+        "to": "FinalUse(%bounded)"
+      },
+      {
+        "from": "(formal-out)%value",
+        "kind": "Ddg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "[L11]: bounded = clamp(value, -10, 10)",
+        "kind": "Ddg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "(formal-out)%upper",
+        "kind": "Ddg",
+        "to": "FinalUse(%upper)"
+      },
+      {
+        "from": "(formal-out)%value",
+        "kind": "Ddg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "(formal-out)%lower",
+        "kind": "Ddg",
+        "to": "FinalUse(%lower)"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Ddg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Ddg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Ddg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Ddg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "(formal-in)%upper",
+        "kind": "Ddg",
+        "to": "(formal-out)%upper"
+      },
+      {
+        "from": "(formal-in)%lower",
+        "kind": "Ddg",
+        "to": "(formal-out)%lower"
+      },
+      {
+        "from": "(formal-in)%value",
+        "kind": "Ddg",
+        "to": "(formal-out)%value"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L26]: println(aggregate([2, -3, 20]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L27]: println(aggregate([0]))"
+      },
+      {
+        "from": "ENTER main",
+        "kind": "Cdg",
+        "to": "[L28]: return 0"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "[L17]: <Loop_cond> (index < values)",
+        "kind": "Cdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L15]: index = 0"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L16]: total = 0"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L18]: value = values"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L19]: transformed = transform(value)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L20]: total = total + transformed"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L21]: index = index + 1"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "<noop: return>"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "_tmp = <?>"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "[L23]: return total"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "FinalUse(%transformed)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "FinalUse(%total)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "FinalUse(%values)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "FinalUse(%index)"
+      },
+      {
+        "from": "ENTER aggregate",
+        "kind": "Cdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Cdg",
+        "to": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Cdg",
+        "to": "[L12]: return bounded * bounded"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Cdg",
+        "to": "FinalUse(%bounded)"
+      },
+      {
+        "from": "ENTER transform",
+        "kind": "Cdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Cdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "[L2]: <Cond> (value < lower)",
+        "kind": "Cdg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Cdg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "[L5]: <Cond> (value > upper)",
+        "kind": "Cdg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "[L3]: return lower"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "[L6]: return upper"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "JOIN"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "[L8]: return value"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "FinalUse(%upper)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "FinalUse(%value)"
+      },
+      {
+        "from": "ENTER clamp",
+        "kind": "Cdg",
+        "to": "FinalUse(%lower)"
+      }
+    ],
+    "dependency_count": 197,
+    "issue_count": 41,
+    "issues": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%lower"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%upper"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%value"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%values"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%lower"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%upper"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%value"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "<noop: return>"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER aggregate"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER clamp"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER transform"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%bounded)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%index)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%lower)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%transformed)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%upper)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L12]: return bounded * bounded"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L15]: index = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L16]: total = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L18]: value = values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L19]: transformed = transform(value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L20]: total = total + transformed"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L21]: index = index + 1"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L23]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L26]: println(aggregate([2, -3, 20]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L27]: println(aggregate([0]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L28]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: return lower"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: return upper"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L8]: return value"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "_tmp = <?>"
+      }
+    ],
+    "message": "Completed with 41 item(s) and 0 artifact(s).",
+    "preview": {},
+    "report": {
+      "dependencies": [
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Pdg",
+          "to": "[L28]: return 0"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Pdg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Pdg",
+          "to": "(formal-in)%values"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Pdg",
+          "to": "(formal-in)%value"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-out)%upper",
+          "kind": "Pdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-out)%lower",
+          "kind": "Pdg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Pdg",
+          "to": "(formal-out)%upper"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Pdg",
+          "to": "(formal-out)%lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Pdg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Pdg",
+          "to": "(formal-in)%value"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "(formal-out)%values",
+          "kind": "Ddg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L21]: index = index + 1",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L20]: total = total + transformed",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L19]: transformed = transform(value)",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L18]: value = values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "[L16]: total = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "[L15]: index = 0",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "(formal-in)%values",
+          "kind": "Ddg",
+          "to": "(formal-out)%values"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "[L11]: bounded = clamp(value, -10, 10)",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "(formal-out)%upper",
+          "kind": "Ddg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "(formal-out)%value",
+          "kind": "Ddg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "(formal-out)%lower",
+          "kind": "Ddg",
+          "to": "FinalUse(%lower)"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "(formal-in)%upper",
+          "kind": "Ddg",
+          "to": "(formal-out)%upper"
+        },
+        {
+          "from": "(formal-in)%lower",
+          "kind": "Ddg",
+          "to": "(formal-out)%lower"
+        },
+        {
+          "from": "(formal-in)%value",
+          "kind": "Ddg",
+          "to": "(formal-out)%value"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "from": "ENTER main",
+          "kind": "Cdg",
+          "to": "[L28]: return 0"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "[L17]: <Loop_cond> (index < values)",
+          "kind": "Cdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L15]: index = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L16]: total = 0"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L18]: value = values"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L19]: transformed = transform(value)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L20]: total = total + transformed"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L21]: index = index + 1"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "<noop: return>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "_tmp = <?>"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "[L23]: return total"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%transformed)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%total)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%values)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%index)"
+        },
+        {
+          "from": "ENTER aggregate",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "[L12]: return bounded * bounded"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "FinalUse(%bounded)"
+        },
+        {
+          "from": "ENTER transform",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L2]: <Cond> (value < lower)",
+          "kind": "Cdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "[L5]: <Cond> (value > upper)",
+          "kind": "Cdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L3]: return lower"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L6]: return upper"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "JOIN"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "[L8]: return value"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%upper)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%value)"
+        },
+        {
+          "from": "ENTER clamp",
+          "kind": "Cdg",
+          "to": "FinalUse(%lower)"
+        }
+      ],
+      "dependency_count": 197,
+      "source": "sympas-gs_graphs",
+      "symbol_count": 41,
+      "symbols": [
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%lower"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%upper"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%value"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-in)%values"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%lower"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%upper"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%value"
+        },
+        {
+          "appears_in": [
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "(formal-out)%values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "<noop: return>"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER aggregate"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER clamp"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER main"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "ENTER transform"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%bounded)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%index)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%lower)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%total)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%transformed)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%upper)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "FinalUse(%values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "JOIN"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L11]: bounded = clamp(value, -10, 10)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L12]: return bounded * bounded"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L15]: index = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L16]: total = 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L17]: <Loop_cond> (index < values)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L18]: value = values"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L19]: transformed = transform(value)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L20]: total = total + transformed"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L21]: index = index + 1"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L23]: return total"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L26]: println(aggregate([2, -3, 20]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L27]: println(aggregate([0]))"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "[L28]: return 0"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L2]: <Cond> (value < lower)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L3]: return lower"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L5]: <Cond> (value > upper)"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L6]: return upper"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Ddg",
+            "Pdg"
+          ],
+          "symbol": "[L8]: return value"
+        },
+        {
+          "appears_in": [
+            "Cdg",
+            "Pdg"
+          ],
+          "symbol": "_tmp = <?>"
+        }
+      ],
+      "target": "runtime/sympas_src_1b7cba/l3_calls.cj"
+    },
+    "request_id": "04a69a956167041b",
+    "resource_usage": {
+      "peak_memory_mb": 0.0,
+      "wall_time_ms": 1769.9
+    },
+    "server_timing_ms": 1769.9,
+    "source": "sympas-gs_graphs",
+    "status": "success",
+    "symbol_count": 41,
+    "symbols": [
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%lower"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%upper"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%value"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-in)%values"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%lower"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%upper"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%value"
+      },
+      {
+        "appears_in": [
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "(formal-out)%values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "<noop: return>"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER aggregate"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER clamp"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER main"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "ENTER transform"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%bounded)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%index)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%lower)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%total)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%transformed)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%upper)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "FinalUse(%values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "JOIN"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L11]: bounded = clamp(value, -10, 10)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L12]: return bounded * bounded"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L15]: index = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L16]: total = 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L17]: <Loop_cond> (index < values)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L18]: value = values"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L19]: transformed = transform(value)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L20]: total = total + transformed"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L21]: index = index + 1"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L23]: return total"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L26]: println(aggregate([2, -3, 20]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L27]: println(aggregate([0]))"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "[L28]: return 0"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L2]: <Cond> (value < lower)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L3]: return lower"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L5]: <Cond> (value > upper)"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L6]: return upper"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Ddg",
+          "Pdg"
+        ],
+        "symbol": "[L8]: return value"
+      },
+      {
+        "appears_in": [
+          "Cdg",
+          "Pdg"
+        ],
+        "symbol": "_tmp = <?>"
+      }
+    ],
+    "target": "runtime/sympas_src_1b7cba/l3_calls.cj",
+    "tool": "ast_symbol_extractor"
+  },
+  "schema_version": 1,
+  "source_sha256": "f3f1a601a8912296a436047d593b5dc00387ea0f43175c52fe0b539fe5a2afb5",
+  "tool": "ast_symbol_extractor",
+  "transport": "group_http_tools",
+  "transport_request_id": "analysis_9fb1b4cc61f3487984bae292ea79dee0"
+}

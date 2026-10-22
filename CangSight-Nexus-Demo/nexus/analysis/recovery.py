@@ -72,6 +72,7 @@ def recover(record_bytes,source,observation):
 def attach_recovery(report,root):
     """A presentation projection only; no RunStore/result.json changes."""
     if report.get('status') in ('READY','RUNNING','IN_DOUBT'):return report
+    if any(o['tool']=='sympas_slice_table' for o in report.get('observations',[])):return report
     observed=next((o for o in report.get('observations',[]) if o['tool']=='sympas_slice'),None)
     if not observed or observed['status']=='VALID':return report
     if observed.get('raw_ref')!='observations/sympas_slice.json':raise ValueError('未知切片原始引用')

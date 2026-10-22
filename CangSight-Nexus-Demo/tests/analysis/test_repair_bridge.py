@@ -18,7 +18,8 @@ class Transport:
     def analyze(self,tool,args):
         self.calls.append((tool,args))
         data={'status':'success'}
-        if tool=='sympas_slice':data['data']={'backward_slices':{'value':{args['filename']:[1]}}}
+        if tool in ('sympas_slice','sympas_slice_table'):data['data']={'backward_slices':{'value':{args['filename']:[1]}}}
+        if tool=='sympas_slice_table':data.update(tool=tool,direction='Bwd',method='SymPas',row_count=1,backward_slice_count=1)
         if tool=='sympas_dep_graph':data['json_graphs']=[{'graph_type':'Ddg','nodes':[{'id':'one','label':'[L1]: source'}],'edges':[]}]
         if tool=='ast_symbol_extractor':data['symbols']=[{'symbol':'value','appears_in':['Ddg']}]
         return dict(http_status=200,response=data,elapsed_ms=1,transport='TEST_NOT_LIVE')
@@ -57,7 +58,7 @@ def test_failed_tool_data_never_becomes_model_evidence(tmp_path):
     class Partial(Transport):
         def analyze(self,tool,args):
             result=super().analyze(tool,args)
-            if tool=='sympas_slice':result['response']={'status':'success','engine_log':'SIL syntax error','data':{'backward_slices':{'fake':{args['filename']:[1]}}}}
+            if tool in ('sympas_slice','sympas_slice_table'):result['response']={'status':'success','engine_log':'SIL syntax error','data':{'backward_slices':{'fake':{args['filename']:[1]}}}}
             return result
     _,task,context,bridge=setup(tmp_path,Partial);asyncio.run(bridge.enrich(task,context))
     assert context['analysis']['status']=='PARTIAL'
