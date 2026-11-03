@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "合法性检查允许第0期，返回一个实际不存在的账单。",
+  "family": "installment_remainder",
+  "function": "hard025",
+  "goal": "total为0..10000分，periods和index在0..12。periods至少1、index从1到periods，否则返回-1。前periods-1期每期为total/periods整数截断，最后一期为剩余金额，所有期数总和须等于total。",
+  "id": "business_hard_025",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

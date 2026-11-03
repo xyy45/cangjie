@@ -1,0 +1,40 @@
+[
+  {
+    "args": [
+      [
+        300,
+        -100
+      ],
+      1000
+    ],
+    "expected": 200,
+    "suite": "target"
+  },
+  {
+    "args": [
+      [
+        500,
+        500
+      ],
+      1000
+    ],
+    "expected": 1000,
+    "suite": "target"
+  },
+  {
+    "args": [
+      [],
+      1000
+    ],
+    "expected": 0,
+    "suite": "regression"
+  },
+  {
+    "args": [
+      [],
+      0
+    ],
+    "expected": 0,
+    "suite": "target"
+  }
+]

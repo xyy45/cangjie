@@ -1,0 +1,50 @@
+{
+  "version": 4,
+  "function": "refundTotal",
+  "domains": {
+    "refunds": {
+      "values": [
+        [],
+        [
+          300,
+          -100
+        ],
+        [
+          500,
+          500
+        ],
+        [
+          100,
+          -100
+        ],
+        [
+          -100
+        ],
+        [
+          100
+        ],
+        [
+          200,
+          100
+        ],
+        [
+          100,
+          200
+        ]
+      ]
+    },
+    "paid": {
+      "min": 0,
+      "max": 2000,
+      "points": [
+        200,
+        500,
+        1000
+      ]
+    }
+  },
+  "expression": "array_sum(refunds) if 0 <= array_sum(refunds) <= paid else -1",
+  "seed": 17,
+  "max_cases": 32,
+  "excluded_inputs": []
+}

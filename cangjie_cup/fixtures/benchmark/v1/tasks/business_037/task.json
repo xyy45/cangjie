@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "vip_discount",
+  "function": "calc037",
+  "goal": "x为金额、v表示会员，会员按九折整数截断，非会员原价。",
+  "id": "business_037",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

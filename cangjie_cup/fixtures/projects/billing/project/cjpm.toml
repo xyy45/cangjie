@@ -1,0 +1,7 @@
+[package]
+  name = "billing"
+  version = "1.0.0"
+  cjc-version = "1.0.5"
+  output-type = "static"
+
+[dependencies]

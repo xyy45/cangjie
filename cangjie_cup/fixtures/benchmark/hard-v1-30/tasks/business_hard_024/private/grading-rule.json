@@ -1,0 +1,43 @@
+{
+  "domains": {
+    "quantity": {
+      "max": 2000,
+      "min": -2,
+      "points": [
+        -2,
+        0,
+        1,
+        2,
+        1000,
+        2000
+      ]
+    },
+    "release": {},
+    "reserved": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        5,
+        10,
+        1000
+      ]
+    },
+    "stock": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        10,
+        1000
+      ]
+    }
+  },
+  "expression": "stock+quantity if release and 0 < quantity <= reserved else (stock-quantity if not release and 0 < quantity <= stock else stock)",
+  "function": "hard024",
+  "max_cases": 32,
+  "seed": 45150,
+  "version": 1
+}

@@ -1,0 +1,1 @@
+stock为可用库存、reserved为已预留库存，二者在0..1000；quantity在-2..2000，release为Bool。预留时quantity须正且不超过stock，返回stock-quantity；释放时quantity须正且不超过reserved，返回stock+quantity。任何非法操作返回原stock；函数只返回新的可用库存，不代表数据库或并发操作。

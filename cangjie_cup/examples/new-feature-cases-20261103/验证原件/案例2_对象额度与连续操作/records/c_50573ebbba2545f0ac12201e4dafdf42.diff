@@ -1,0 +1,8 @@
+--- a/src/quota.cj
++++ b/src/quota.cj
+@@ -11,3 +11,5 @@
+     }
+     return state
+ }
++
++// local defect validation

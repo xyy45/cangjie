@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "reward",
+  "function": "calc057",
+  "goal": "消费x达到16获得双倍积分，否则积分等于消费额。",
+  "id": "business_057",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

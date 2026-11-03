@@ -1,0 +1,1 @@
+函数refundTotal(refunds, paid)计算净退款，单位为分。refunds最多16项，测试范围内每项绝对值不超过100000，正数表示退款、负数表示退款冲正，全部项目都必须参与求和。paid为0至10000000；paid非法、净退款为负或超过paid时返回-1，否则返回净退款。净退款恰好等于paid有效；空数组返回0，包括paid=0。检查netRefund与refundTotal两个函数，保持接口不变。

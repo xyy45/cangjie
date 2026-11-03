@@ -1,0 +1,37 @@
+{
+  "origin": "ACCEPTED_3A_HARNESS_BYTES",
+  "source_hash": "2af05ce93b95c1132f7b9be2e21ae31eab295e173d4b961a20e4e54ea7cfbf69",
+  "harness_sha256": "74c9bd7ecb643c0f078866c1233449899809076305c191de78976d3afbea6149",
+  "signature": {
+    "name": "refundState",
+    "params": [
+      {
+        "name": "paid",
+        "type": "Int64"
+      },
+      {
+        "name": "refunded",
+        "type": "Int64"
+      },
+      {
+        "name": "requested",
+        "type": "Int64"
+      }
+    ],
+    "return_type": "Int64"
+  },
+  "inputs": [
+    [
+      1000,
+      900,
+      200
+    ],
+    [
+      1000,
+      800,
+      100
+    ]
+  ],
+  "package": "bench",
+  "token": "0123456789abcdef"
+}

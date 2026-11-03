@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "分段计费正确但遗漏最终封顶，超出费用上限。",
+  "family": "incremental_tiers_cap",
+  "function": "hard030",
+  "goal": "quantity在0..500，cap在300..1000分。前100件每件1分，第101至200件每件2分，第201件起每件3分；各段分别计费相加，最终不超过cap，零件数费用为0。",
+  "id": "business_hard_030",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

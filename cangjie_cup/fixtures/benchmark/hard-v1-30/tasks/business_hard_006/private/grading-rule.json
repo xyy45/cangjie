@@ -1,0 +1,40 @@
+{
+  "domains": {
+    "amount": {
+      "max": 20000,
+      "min": 0,
+      "points": [
+        0,
+        5000,
+        10000,
+        20000
+      ]
+    },
+    "coupon": {
+      "max": 5000,
+      "min": 0,
+      "points": [
+        0,
+        1000,
+        2000,
+        5000
+      ]
+    },
+    "threshold": {
+      "max": 15000,
+      "min": 5000,
+      "points": [
+        5000,
+        9900,
+        10000,
+        15000
+      ]
+    },
+    "vip": {}
+  },
+  "expression": "max(0,amount-coupon) if vip or max(0,amount-coupon) >= threshold else max(0,amount-coupon)+800",
+  "function": "hard006",
+  "max_cases": 32,
+  "seed": 45132,
+  "version": 1
+}

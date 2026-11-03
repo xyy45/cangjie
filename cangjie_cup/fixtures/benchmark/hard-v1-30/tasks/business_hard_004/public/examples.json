@@ -1,0 +1,22 @@
+[
+  {
+    "args": [
+      10,
+      0,
+      2,
+      false
+    ],
+    "expected": 8,
+    "suite": "target"
+  },
+  {
+    "args": [
+      10,
+      5,
+      0,
+      true
+    ],
+    "expected": 10,
+    "suite": "regression"
+  }
+]

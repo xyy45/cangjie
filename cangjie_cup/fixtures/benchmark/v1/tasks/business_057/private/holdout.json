@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      16
+    ],
+    "expected": 32
+  },
+  {
+    "args": [
+      15
+    ],
+    "expected": 15
+  },
+  {
+    "args": [
+      17
+    ],
+    "expected": 34
+  },
+  {
+    "args": [
+      5
+    ],
+    "expected": 5
+  },
+  {
+    "args": [
+      4
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      6
+    ],
+    "expected": 6
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 1
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 1998
+  },
+  {
+    "args": [
+      889
+    ],
+    "expected": 1778
+  },
+  {
+    "args": [
+      611
+    ],
+    "expected": 1222
+  },
+  {
+    "args": [
+      230
+    ],
+    "expected": 460
+  },
+  {
+    "args": [
+      499
+    ],
+    "expected": 998
+  },
+  {
+    "args": [
+      21
+    ],
+    "expected": 42
+  },
+  {
+    "args": [
+      45
+    ],
+    "expected": 90
+  },
+  {
+    "args": [
+      320
+    ],
+    "expected": 640
+  },
+  {
+    "args": [
+      825
+    ],
+    "expected": 1650
+  },
+  {
+    "args": [
+      615
+    ],
+    "expected": 1230
+  },
+  {
+    "args": [
+      492
+    ],
+    "expected": 984
+  },
+  {
+    "args": [
+      585
+    ],
+    "expected": 1170
+  },
+  {
+    "args": [
+      31
+    ],
+    "expected": 62
+  },
+  {
+    "args": [
+      680
+    ],
+    "expected": 1360
+  },
+  {
+    "args": [
+      32
+    ],
+    "expected": 64
+  },
+  {
+    "args": [
+      589
+    ],
+    "expected": 1178
+  },
+  {
+    "args": [
+      769
+    ],
+    "expected": 1538
+  },
+  {
+    "args": [
+      228
+    ],
+    "expected": 456
+  },
+  {
+    "args": [
+      760
+    ],
+    "expected": 1520
+  },
+  {
+    "args": [
+      945
+    ],
+    "expected": 1890
+  },
+  {
+    "args": [
+      808
+    ],
+    "expected": 1616
+  },
+  {
+    "args": [
+      713
+    ],
+    "expected": 1426
+  },
+  {
+    "args": [
+      412
+    ],
+    "expected": 824
+  },
+  {
+    "args": [
+      772
+    ],
+    "expected": 1544
+  },
+  {
+    "args": [
+      875
+    ],
+    "expected": 1750
+  },
+  {
+    "args": [
+      910
+    ],
+    "expected": 1820
+  },
+  {
+    "args": [
+      10
+    ],
+    "expected": 10
+  },
+  {
+    "args": [
+      128
+    ],
+    "expected": 256
+  },
+  {
+    "args": [
+      596
+    ],
+    "expected": 1192
+  },
+  {
+    "args": [
+      725
+    ],
+    "expected": 1450
+  },
+  {
+    "args": [
+      360
+    ],
+    "expected": 720
+  },
+  {
+    "args": [
+      873
+    ],
+    "expected": 1746
+  },
+  {
+    "args": [
+      52
+    ],
+    "expected": 104
+  },
+  {
+    "args": [
+      325
+    ],
+    "expected": 650
+  },
+  {
+    "args": [
+      286
+    ],
+    "expected": 572
+  },
+  {
+    "args": [
+      666
+    ],
+    "expected": 1332
+  },
+  {
+    "args": [
+      457
+    ],
+    "expected": 914
+  },
+  {
+    "args": [
+      649
+    ],
+    "expected": 1298
+  },
+  {
+    "args": [
+      661
+    ],
+    "expected": 1322
+  },
+  {
+    "args": [
+      984
+    ],
+    "expected": 1968
+  },
+  {
+    "args": [
+      877
+    ],
+    "expected": 1754
+  },
+  {
+    "args": [
+      238
+    ],
+    "expected": 476
+  },
+  {
+    "args": [
+      942
+    ],
+    "expected": 1884
+  },
+  {
+    "args": [
+      734
+    ],
+    "expected": 1468
+  },
+  {
+    "args": [
+      40
+    ],
+    "expected": 80
+  },
+  {
+    "args": [
+      83
+    ],
+    "expected": 166
+  },
+  {
+    "args": [
+      419
+    ],
+    "expected": 838
+  },
+  {
+    "args": [
+      145
+    ],
+    "expected": 290
+  },
+  {
+    "args": [
+      43
+    ],
+    "expected": 86
+  },
+  {
+    "args": [
+      822
+    ],
+    "expected": 1644
+  },
+  {
+    "args": [
+      61
+    ],
+    "expected": 122
+  },
+  {
+    "args": [
+      461
+    ],
+    "expected": 922
+  },
+  {
+    "args": [
+      540
+    ],
+    "expected": 1080
+  },
+  {
+    "args": [
+      217
+    ],
+    "expected": 434
+  },
+  {
+    "args": [
+      616
+    ],
+    "expected": 1232
+  }
+]

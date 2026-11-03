@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "refund",
+  "function": "calc096",
+  "goal": "已付x与请求退款y：退款取两者较小值。",
+  "id": "business_096",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 4
+}

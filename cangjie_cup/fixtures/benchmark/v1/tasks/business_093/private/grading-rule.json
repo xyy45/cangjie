@@ -1,0 +1,17 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        22,
+        7
+      ]
+    }
+  },
+  "expression": "0 if x >= 22 else 7",
+  "function": "calc093",
+  "max_cases": 32,
+  "seed": 1821,
+  "version": 1
+}

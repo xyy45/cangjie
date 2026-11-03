@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "reservation",
+  "function": "calc059",
+  "goal": "已预约x、本次y、总容量z，本次必须为正，合计不超容量。",
+  "id": "business_059",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

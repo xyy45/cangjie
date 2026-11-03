@@ -1,0 +1,19 @@
+{
+  "domains": {
+    "v": {},
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        0,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x > 0 and v",
+  "function": "calc026",
+  "max_cases": 32,
+  "seed": 1754,
+  "version": 1
+}

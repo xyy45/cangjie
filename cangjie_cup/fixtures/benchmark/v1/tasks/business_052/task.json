@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "booking_window",
+  "function": "calc052",
+  "goal": "当前时刻x必须在左闭右开区间[y,z)内。",
+  "id": "business_052",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

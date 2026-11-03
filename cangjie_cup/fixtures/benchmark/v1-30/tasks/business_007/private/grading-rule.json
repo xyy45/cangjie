@@ -1,0 +1,19 @@
+{
+  "domains": {
+    "v": {},
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        20,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x*9//10 if v else x",
+  "function": "calc007",
+  "max_cases": 32,
+  "seed": 1735,
+  "version": 1
+}

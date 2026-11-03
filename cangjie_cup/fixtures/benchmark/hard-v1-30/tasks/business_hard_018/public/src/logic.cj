@@ -1,0 +1,7 @@
+package bench
+
+public func hard018(quantity: Int64, price: Int64): Int64 {
+    if (quantity < 0 || price <= 0) { return -1 }
+    if (quantity > 9223372036854775807 / price) { return -1 }
+    return quantity * price
+}

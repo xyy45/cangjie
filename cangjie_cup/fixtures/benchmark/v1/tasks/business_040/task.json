@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "late_fee",
+  "function": "calc040",
+  "goal": "宽限5天，只对超出天数每天收2分。",
+  "id": "business_040",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

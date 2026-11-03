@@ -1,0 +1,31 @@
+{
+  "domains": {
+    "member": {},
+    "price": {
+      "max": 10000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        100,
+        10000
+      ]
+    },
+    "quantity": {
+      "max": 1000,
+      "min": -2,
+      "points": [
+        -2,
+        0,
+        1,
+        2,
+        1000
+      ]
+    }
+  },
+  "expression": "-1 if quantity < 1 or quantity > 1000 or price < 1 or price > 10000 else (quantity*price if member else quantity*price+20)",
+  "function": "hard009",
+  "max_cases": 32,
+  "seed": 45135,
+  "version": 1
+}

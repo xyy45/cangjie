@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      6
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      5
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      7
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      16
+    ],
+    "expected": 22
+  },
+  {
+    "args": [
+      15
+    ],
+    "expected": 20
+  },
+  {
+    "args": [
+      17
+    ],
+    "expected": 24
+  },
+  {
+    "args": [
+      4
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 1988
+  },
+  {
+    "args": [
+      263
+    ],
+    "expected": 516
+  },
+  {
+    "args": [
+      842
+    ],
+    "expected": 1674
+  },
+  {
+    "args": [
+      206
+    ],
+    "expected": 402
+  },
+  {
+    "args": [
+      243
+    ],
+    "expected": 476
+  },
+  {
+    "args": [
+      215
+    ],
+    "expected": 420
+  },
+  {
+    "args": [
+      509
+    ],
+    "expected": 1008
+  },
+  {
+    "args": [
+      647
+    ],
+    "expected": 1284
+  },
+  {
+    "args": [
+      407
+    ],
+    "expected": 804
+  },
+  {
+    "args": [
+      179
+    ],
+    "expected": 348
+  },
+  {
+    "args": [
+      213
+    ],
+    "expected": 416
+  },
+  {
+    "args": [
+      211
+    ],
+    "expected": 412
+  },
+  {
+    "args": [
+      600
+    ],
+    "expected": 1190
+  },
+  {
+    "args": [
+      712
+    ],
+    "expected": 1414
+  },
+  {
+    "args": [
+      768
+    ],
+    "expected": 1526
+  },
+  {
+    "args": [
+      305
+    ],
+    "expected": 600
+  },
+  {
+    "args": [
+      548
+    ],
+    "expected": 1086
+  },
+  {
+    "args": [
+      650
+    ],
+    "expected": 1290
+  },
+  {
+    "args": [
+      695
+    ],
+    "expected": 1380
+  },
+  {
+    "args": [
+      493
+    ],
+    "expected": 976
+  },
+  {
+    "args": [
+      63
+    ],
+    "expected": 116
+  },
+  {
+    "args": [
+      538
+    ],
+    "expected": 1066
+  },
+  {
+    "args": [
+      178
+    ],
+    "expected": 346
+  },
+  {
+    "args": [
+      665
+    ],
+    "expected": 1320
+  },
+  {
+    "args": [
+      314
+    ],
+    "expected": 618
+  },
+  {
+    "args": [
+      555
+    ],
+    "expected": 1100
+  },
+  {
+    "args": [
+      148
+    ],
+    "expected": 286
+  },
+  {
+    "args": [
+      239
+    ],
+    "expected": 468
+  },
+  {
+    "args": [
+      281
+    ],
+    "expected": 552
+  },
+  {
+    "args": [
+      810
+    ],
+    "expected": 1610
+  },
+  {
+    "args": [
+      515
+    ],
+    "expected": 1020
+  },
+  {
+    "args": [
+      297
+    ],
+    "expected": 584
+  },
+  {
+    "args": [
+      343
+    ],
+    "expected": 676
+  },
+  {
+    "args": [
+      891
+    ],
+    "expected": 1772
+  },
+  {
+    "args": [
+      491
+    ],
+    "expected": 972
+  },
+  {
+    "args": [
+      209
+    ],
+    "expected": 408
+  },
+  {
+    "args": [
+      550
+    ],
+    "expected": 1090
+  },
+  {
+    "args": [
+      645
+    ],
+    "expected": 1280
+  },
+  {
+    "args": [
+      488
+    ],
+    "expected": 966
+  },
+  {
+    "args": [
+      801
+    ],
+    "expected": 1592
+  },
+  {
+    "args": [
+      138
+    ],
+    "expected": 266
+  },
+  {
+    "args": [
+      446
+    ],
+    "expected": 882
+  },
+  {
+    "args": [
+      411
+    ],
+    "expected": 812
+  },
+  {
+    "args": [
+      627
+    ],
+    "expected": 1244
+  },
+  {
+    "args": [
+      112
+    ],
+    "expected": 214
+  },
+  {
+    "args": [
+      898
+    ],
+    "expected": 1786
+  },
+  {
+    "args": [
+      34
+    ],
+    "expected": 58
+  },
+  {
+    "args": [
+      279
+    ],
+    "expected": 548
+  },
+  {
+    "args": [
+      922
+    ],
+    "expected": 1834
+  },
+  {
+    "args": [
+      189
+    ],
+    "expected": 368
+  },
+  {
+    "args": [
+      28
+    ],
+    "expected": 46
+  },
+  {
+    "args": [
+      337
+    ],
+    "expected": 664
+  },
+  {
+    "args": [
+      205
+    ],
+    "expected": 400
+  },
+  {
+    "args": [
+      572
+    ],
+    "expected": 1134
+  }
+]

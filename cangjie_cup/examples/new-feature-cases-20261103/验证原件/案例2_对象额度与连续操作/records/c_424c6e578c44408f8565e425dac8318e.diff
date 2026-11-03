@@ -1,0 +1,17 @@
+--- a/src/quota.cj
++++ b/src/quota.cj
+@@ -2,12 +2,12 @@
+ 
+ public func applyQuota(state: QuotaState, action: String): QuotaState {
+     if (action == "reserve") {
+-        if (state.available <= 10) { return state }
++        if (state.available < 10) { return state }
+         return QuotaState(state.available - 10, state.reserved + 10)
+     }
+     if (action == "cancel") {
+         if (state.reserved < 10) { return state }
+-        return QuotaState(state.available + 10, state.reserved)
++        return QuotaState(state.available + 10, state.reserved - 10)
+     }
+     return state
+ }

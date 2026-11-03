@@ -1,0 +1,8 @@
+.................................                                        [100%]
+=============================== warnings summary ===============================
+tests/test_deployment_artifacts.py::test_verification_rejects_duplicate_names_extra_member_and_changed_bytes
+  /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/zipfile/__init__.py:1607: UserWarning: Duplicate name: 'nexus/example.py'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+33 passed, 1 warning in 1.85s

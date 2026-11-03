@@ -1,0 +1,28 @@
+{
+  "domains": {
+    "v": {},
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        1,
+        13,
+        4
+      ]
+    },
+    "y": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        2,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x == y or v",
+  "function": "calc013",
+  "max_cases": 32,
+  "seed": 1741,
+  "version": 1
+}

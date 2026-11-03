@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "active_account",
+  "function": "calc056",
+  "goal": "余额x必须为正且账户状态v为启用，才允许消费。",
+  "id": "business_056",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

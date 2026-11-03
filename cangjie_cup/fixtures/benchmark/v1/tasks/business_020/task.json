@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "retry",
+  "function": "calc020",
+  "goal": "已尝试次数x小于上限y时允许重试，达到上限停止。",
+  "id": "business_020",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

@@ -1,0 +1,46 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jxy/Desktop/CangSight-main/CangSight-Nexus-Demo/examples/new-feature-cases-20261103/验证原件/案例1_数组退款与跨文件/candidates/c_6f1eed98d1524b47928bac91ce99cd8e/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33mbench[0m, time elapsed: 865000 ns, RESULT:
+    TCS: [33mUploadedTests[0m, time elapsed: 865000 ns, RESULT:
+    [[32m PASSED [0m] CASE: case2 (4000 ns)
+    [[31m FAILED [0m] CASE: case0 (100000 ns)
+    Expect Failed: `([33mrefundTotal([300, - 100], 1000)[0m == [33m200[0m)`
+       left: 300
+      right: 200
+
+    [[31m FAILED [0m] CASE: case1 (5000 ns)
+    Expect Failed: `([33mrefundTotal([500, 500], 1000)[0m == [33m1000[0m)`
+       left: -1
+      right: 1000
+
+    [[31m FAILED [0m] CASE: case3 (6000 ns)
+    Expect Failed: `([33mrefundTotal([], 0)[0m == [33m0[0m)`
+       left: -1
+      right: 0
+
+Summary: TOTAL: 4
+    [32mPASSED[0m: 1, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 3, listed below:
+            TCS: [33mUploadedTests[0m, CASE: case0
+            TCS: [33mUploadedTests[0m, CASE: case1
+            TCS: [33mUploadedTests[0m, CASE: case3
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 1779000 ns, RESULT:
+TP: [33mbench[0m.*, time elapsed: 1735000 ns, RESULT:
+    FAILED:
+    TP: [33mbench[0m, time elapsed: 865000 ns, RESULT:
+        TCS: [33mUploadedTests[0m, time elapsed: 865000 ns, RESULT:
+        [[31m FAILED [0m] CASE: case0 (100000 ns)
+        [[31m FAILED [0m] CASE: case1 (5000 ns)
+        [[31m FAILED [0m] CASE: case3 (6000 ns)
+Summary: TOTAL: 4
+    [32mPASSED[0m: 1, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 3
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hError: cjpm test failed

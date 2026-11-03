@@ -1,0 +1,31 @@
+{
+  "domains": {
+    "cap": {
+      "max": 1000,
+      "min": 300,
+      "points": [
+        300,
+        500,
+        1000
+      ]
+    },
+    "quantity": {
+      "max": 500,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        100,
+        101,
+        200,
+        201,
+        500
+      ]
+    }
+  },
+  "expression": "min(cap,min(quantity,100)+2*min(max(quantity-100,0),100)+3*max(quantity-200,0))",
+  "function": "hard010",
+  "max_cases": 32,
+  "seed": 45136,
+  "version": 1
+}

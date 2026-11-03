@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "stock",
+  "function": "calc035",
+  "goal": "库存x、请求y：请求须正且不超过库存；非法返回-1，否则返回余额。",
+  "id": "business_035",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

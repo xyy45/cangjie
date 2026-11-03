@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "authorization",
+  "function": "calc013",
+  "goal": "x是当前用户、y是资源所有者，v是管理员标记；管理员或所有者允许访问。",
+  "id": "business_013",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

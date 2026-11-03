@@ -1,0 +1,17 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        19,
+        6
+      ]
+    }
+  },
+  "expression": "x - 6 if x >= 19 else x",
+  "function": "calc064",
+  "max_cases": 32,
+  "seed": 1792,
+  "version": 1
+}

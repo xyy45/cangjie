@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/amount.cj",
+    "src/logic.cj"
+  ],
+  "family": "cross_file_fee",
+  "function": "calc060",
+  "goal": "入口调用另一文件的原金额函数后收5分服务费；两个文件须协调修复。",
+  "id": "business_060",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

@@ -1,0 +1,27 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        2,
+        13,
+        4
+      ]
+    },
+    "y": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        3,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "max(0,x-y)",
+  "function": "calc011",
+  "max_cases": 32,
+  "seed": 1739,
+  "version": 1
+}

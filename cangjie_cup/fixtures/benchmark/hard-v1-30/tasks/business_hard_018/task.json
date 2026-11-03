@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "把零价格误判成非法，安全乘法的零元订单被拒绝。",
+  "family": "safe_product_extreme",
+  "function": "hard018",
+  "goal": "quantity在-1..9223372036854775807、price在-1..1000。负数非法返回-1；非负输入在乘积可用Int64表示时返回quantity*price，超过Int64最大值9223372036854775807则返回-1。等于最大值仍合法；零价格不除零，非法输入不能先计算溢出的乘积。",
+  "id": "business_hard_018",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "transfer",
+  "function": "calc074",
+  "goal": "余额x转出y，仅允许正数且不超余额，非法返回-1，否则返回余款。",
+  "id": "business_074",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "args": [
+      {
+        "$type": "QuotaState",
+        "fields": {
+          "available": 20,
+          "reserved": 0
+        }
+      },
+      "reserve"
+    ],
+    "expected": {
+      "$type": "QuotaState",
+      "fields": {
+        "available": 10,
+        "reserved": 10
+      }
+    },
+    "suite": "target"
+  },
+  {
+    "args": [
+      {
+        "$type": "QuotaState",
+        "fields": {
+          "available": 10,
+          "reserved": 0
+        }
+      },
+      "cancel"
+    ],
+    "expected": {
+      "$type": "QuotaState",
+      "fields": {
+        "available": 10,
+        "reserved": 0
+      }
+    },
+    "suite": "regression"
+  }
+]

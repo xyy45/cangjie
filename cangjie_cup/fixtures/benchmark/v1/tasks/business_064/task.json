@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "coupon",
+  "function": "calc064",
+  "goal": "金额x达到19减6，否则原价。",
+  "id": "business_064",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

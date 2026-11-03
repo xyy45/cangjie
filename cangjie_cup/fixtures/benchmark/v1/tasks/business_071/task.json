@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "points_cap",
+  "function": "calc071",
+  "goal": "x是订单金额、y是积分可抵金额，抵扣不能超过订单金额，返回应付。",
+  "id": "business_071",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

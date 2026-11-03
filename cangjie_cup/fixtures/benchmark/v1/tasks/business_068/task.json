@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "gift",
+  "function": "calc068",
+  "goal": "每购买6件赠一件，返回购买和赠送总件数。",
+  "id": "business_068",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

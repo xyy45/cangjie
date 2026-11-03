@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "packages",
+  "function": "calc077",
+  "goal": "每箱装6件，需要的箱数向上取整，零件数为零箱。",
+  "id": "business_077",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

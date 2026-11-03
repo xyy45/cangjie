@@ -1,0 +1,18 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        1,
+        19,
+        6
+      ]
+    }
+  },
+  "expression": "ceil_div(x,6)",
+  "function": "calc077",
+  "max_cases": 32,
+  "seed": 1805,
+  "version": 1
+}

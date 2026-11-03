@@ -1,0 +1,2 @@
+{"case": "案例1_数组退款与跨文件", "states": [{"candidate": "buggy", "build": "PASS", "public": "FAIL", "independent": "NOT_RUN_PUBLIC_FAILED"}, {"candidate": "reference", "build": "PASS", "public": "PASS", "independent": "PASS"}]}
+{"case": "案例2_对象额度与连续操作", "states": [{"candidate": "buggy", "build": "PASS", "public": "PASS", "independent": "FAIL"}, {"candidate": "reference", "build": "PASS", "public": "PASS", "independent": "PASS"}]}

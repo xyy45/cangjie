@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "tier_price",
+  "function": "calc099",
+  "goal": "前7件每件10分，超出部分每件8分。",
+  "id": "business_099",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 4
+}

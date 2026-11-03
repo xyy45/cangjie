@@ -1,0 +1,109 @@
+{
+  "state": "PASS",
+  "new_pid": 91563,
+  "old_pid": 48227,
+  "port": 8877,
+  "new_working_directory": "/Users/jxy/Desktop/cangjie_cup",
+  "new_runtime_root": "/Users/jxy/Desktop/cangjie_cup/.runtime/demo-workbench",
+  "http": {
+    "homepage_http": 200,
+    "assets": {
+      "/demo-static/analysis-core.js": "d1ed2fb3ecc8f45ede6e4a8721a57ab821c1f48efce0f31d9030a690d6270ab2",
+      "/demo-static/analysis.js": "d710bc1ebdf633af65302a262e3d2f5f472b189fd5d1a7adaac1b60181953216",
+      "/demo-static/demo.css": "4b76ad3eb5943340f5f0b5d026759faf8945900357aaa6d7043b5c181055b5be",
+      "/demo-static/demo.js": "e84a145f4302891a1a047cc9a138e9db74311045020b4a0cb17016b8b8037312",
+      "/demo-static/evidence-core.js": "f57201e0c81b1f59bb7ed1c096b7cca0ef89ac6cbbc738be485613e8c9225770",
+      "/demo-static/evidence.js": "82524d1552ff2d3d79a32a2b2455663046f262af99356480d62b91b82512ef9d",
+      "/demo-static/exploration.js": "54e365c7c85bfee061543901711b625d1375802a10c9af2e24a82c0843a980c7",
+      "/demo-static/feedback.js": "6bb664e9c1187da0b3ea1ac96f2511363c03e4497235aabee2a165c86100b588",
+      "/demo-static/flow.js": "517e5563fdd8a73877181452e3de8429e639b9ab02494e24533ef3e34f9af04b",
+      "/demo-static/impact.js": "96492c4887d9006f527d6427224dd68f131582b7fe796f1d81a9e4f9e63e2b0d",
+      "/demo-static/localization.js": "22300ccca55acc873fe04bafbe2ddea532e30d7f291a970deac29cb32cc6249a",
+      "/demo-static/properties.js": "754b6f197814d375f720c1f05eb237f9dabd9c311b2e61b72299df42007c9c10",
+      "/demo-static/relations.js": "71ea997bfaa6986cba2c0e4a77d2d0f3140762d327de2393e539ec6d084bd719",
+      "/demo-static/sequences.js": "78c1e65d50302ed962ac5daf3a2884250efcb1c37a9f949dc399bee5866e21e7",
+      "/demo-static/upload.js": "af43f4ba21901a1ef15c32d2a9aea25bf2b18a6e9ef5e07fd037878d91d74503"
+    },
+    "ready": true,
+    "policy_ready": true,
+    "provider": "DeepSeek",
+    "model_connectivity": "NOT_PROBED",
+    "cases": [
+      {
+        "id": "order",
+        "title": "订单边界修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "order-price",
+        "title": "价格边界修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "order-discount",
+        "title": "优惠门槛修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "multifile",
+        "title": "校验计费修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "cross-discount",
+        "title": "优惠结算修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "cross-stock",
+        "title": "库存扣减修复",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "policy",
+        "title": "测试保护拦截",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "policy-config",
+        "title": "配置保护拦截",
+        "origin": "SAMPLE"
+      },
+      {
+        "id": "policy-path",
+        "title": "路径越界拦截",
+        "origin": "SAMPLE"
+      }
+    ]
+  },
+  "functional_files_compared": 154,
+  "functional_differences": [],
+  "asset_bytes_unchanged": true,
+  "old_data_preserved": true,
+  "old_tasks": 44,
+  "old_record_files": 3959,
+  "new_runtime_is_fresh": true,
+  "new_tasks": 0,
+  "historical_scenario_origin_changes": [
+    {
+      "id": "order",
+      "before": "LIVE_REPLAY",
+      "after": "SAMPLE"
+    },
+    {
+      "id": "multifile",
+      "before": "SIMULATED",
+      "after": "SAMPLE"
+    },
+    {
+      "id": "policy",
+      "before": "NATIVE_REPLAY",
+      "after": "SAMPLE"
+    }
+  ],
+  "model_config_local_only": true,
+  "model_connectivity": "NOT_PROBED",
+  "paid_model_calls": 0,
+  "remote_mcp_calls": 0,
+  "original_service_stopped": true
+}

@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "把满减资格判断及减券放在折扣之前。",
+  "family": "discount_order",
+  "function": "hard002",
+  "goal": "amount在0..10000分，percent在50..100，threshold在0..10000分，coupon在0..1000分。先按percent百分比折扣并整数截断；以折后金额达到threshold（含等号）判断满减，符合时减coupon，最终最低0。",
+  "id": "business_hard_002",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

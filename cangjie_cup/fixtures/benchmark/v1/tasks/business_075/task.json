@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "daily_limit",
+  "function": "calc075",
+  "goal": "已用x加本次y不能超过限额z，恰好达到可通过。",
+  "id": "business_075",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

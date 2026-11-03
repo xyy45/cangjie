@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "function": "shippingFee",
+  "domains": {
+    "weight": {
+      "min": 0,
+      "max": 30001,
+      "points": [
+        1,
+        1000,
+        1500,
+        30000
+      ]
+    },
+    "distance": {
+      "min": 0,
+      "max": 2001,
+      "points": [
+        1,
+        500,
+        2000
+      ]
+    },
+    "express": {}
+  },
+  "expression": "-1 if weight < 1 or weight > 30000 or distance < 1 or distance > 2000 else (800 + ceil_div(max(weight - 1000, 0), 500) * 200 + (300 if distance > 500 else 0)) * (150 if express else 100) // 100",
+  "seed": 7,
+  "max_cases": 96
+}

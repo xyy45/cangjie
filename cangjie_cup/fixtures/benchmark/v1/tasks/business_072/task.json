@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "expiry",
+  "function": "calc072",
+  "goal": "x是当前时刻、y是失效时刻，到失效时刻即不可用。",
+  "id": "business_072",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

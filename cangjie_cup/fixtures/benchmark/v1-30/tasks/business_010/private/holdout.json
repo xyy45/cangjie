@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      5
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      6
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      13
+    ],
+    "expected": 18
+  },
+  {
+    "args": [
+      12
+    ],
+    "expected": 16
+  },
+  {
+    "args": [
+      14
+    ],
+    "expected": 20
+  },
+  {
+    "args": [
+      3
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 1990
+  },
+  {
+    "args": [
+      826
+    ],
+    "expected": 1644
+  },
+  {
+    "args": [
+      859
+    ],
+    "expected": 1710
+  },
+  {
+    "args": [
+      463
+    ],
+    "expected": 918
+  },
+  {
+    "args": [
+      989
+    ],
+    "expected": 1970
+  },
+  {
+    "args": [
+      962
+    ],
+    "expected": 1916
+  },
+  {
+    "args": [
+      240
+    ],
+    "expected": 472
+  },
+  {
+    "args": [
+      735
+    ],
+    "expected": 1462
+  },
+  {
+    "args": [
+      383
+    ],
+    "expected": 758
+  },
+  {
+    "args": [
+      180
+    ],
+    "expected": 352
+  },
+  {
+    "args": [
+      572
+    ],
+    "expected": 1136
+  },
+  {
+    "args": [
+      997
+    ],
+    "expected": 1986
+  },
+  {
+    "args": [
+      899
+    ],
+    "expected": 1790
+  },
+  {
+    "args": [
+      411
+    ],
+    "expected": 814
+  },
+  {
+    "args": [
+      212
+    ],
+    "expected": 416
+  },
+  {
+    "args": [
+      207
+    ],
+    "expected": 406
+  },
+  {
+    "args": [
+      944
+    ],
+    "expected": 1880
+  },
+  {
+    "args": [
+      429
+    ],
+    "expected": 850
+  },
+  {
+    "args": [
+      244
+    ],
+    "expected": 480
+  },
+  {
+    "args": [
+      507
+    ],
+    "expected": 1006
+  },
+  {
+    "args": [
+      720
+    ],
+    "expected": 1432
+  },
+  {
+    "args": [
+      295
+    ],
+    "expected": 582
+  },
+  {
+    "args": [
+      43
+    ],
+    "expected": 78
+  },
+  {
+    "args": [
+      924
+    ],
+    "expected": 1840
+  },
+  {
+    "args": [
+      432
+    ],
+    "expected": 856
+  },
+  {
+    "args": [
+      721
+    ],
+    "expected": 1434
+  },
+  {
+    "args": [
+      313
+    ],
+    "expected": 618
+  },
+  {
+    "args": [
+      898
+    ],
+    "expected": 1788
+  },
+  {
+    "args": [
+      539
+    ],
+    "expected": 1070
+  },
+  {
+    "args": [
+      108
+    ],
+    "expected": 208
+  },
+  {
+    "args": [
+      713
+    ],
+    "expected": 1418
+  },
+  {
+    "args": [
+      174
+    ],
+    "expected": 340
+  },
+  {
+    "args": [
+      901
+    ],
+    "expected": 1794
+  },
+  {
+    "args": [
+      111
+    ],
+    "expected": 214
+  },
+  {
+    "args": [
+      645
+    ],
+    "expected": 1282
+  },
+  {
+    "args": [
+      97
+    ],
+    "expected": 186
+  },
+  {
+    "args": [
+      809
+    ],
+    "expected": 1610
+  },
+  {
+    "args": [
+      186
+    ],
+    "expected": 364
+  },
+  {
+    "args": [
+      196
+    ],
+    "expected": 384
+  },
+  {
+    "args": [
+      115
+    ],
+    "expected": 222
+  },
+  {
+    "args": [
+      535
+    ],
+    "expected": 1062
+  },
+  {
+    "args": [
+      598
+    ],
+    "expected": 1188
+  },
+  {
+    "args": [
+      589
+    ],
+    "expected": 1170
+  },
+  {
+    "args": [
+      433
+    ],
+    "expected": 858
+  },
+  {
+    "args": [
+      28
+    ],
+    "expected": 48
+  },
+  {
+    "args": [
+      61
+    ],
+    "expected": 114
+  },
+  {
+    "args": [
+      762
+    ],
+    "expected": 1516
+  },
+  {
+    "args": [
+      121
+    ],
+    "expected": 234
+  },
+  {
+    "args": [
+      534
+    ],
+    "expected": 1060
+  },
+  {
+    "args": [
+      450
+    ],
+    "expected": 892
+  },
+  {
+    "args": [
+      538
+    ],
+    "expected": 1068
+  },
+  {
+    "args": [
+      595
+    ],
+    "expected": 1182
+  },
+  {
+    "args": [
+      651
+    ],
+    "expected": 1294
+  },
+  {
+    "args": [
+      985
+    ],
+    "expected": 1962
+  }
+]
