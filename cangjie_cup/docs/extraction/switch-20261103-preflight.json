@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "provider": "deepseek",
+  "port": 8889,
+  "target": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "minimum_python": "3.12",
+    "tested_python": "3.12.4",
+    "cangjie": "1.0.5",
+    "stdx": "1.0.5.1",
+    "macos_developer_sdk": "15.4"
+  },
+  "checks": [
+    {
+      "code": "ENVIRONMENT_PROBE",
+      "state": "PASS",
+      "details": {}
+    },
+    {
+      "code": "PYTHON",
+      "state": "PASS",
+      "details": {
+        "version": "3.12.4",
+        "tested_combination": true
+      }
+    },
+    {
+      "code": "PLATFORM",
+      "state": "PASS",
+      "details": {
+        "target": "macOS ARM64"
+      }
+    },
+    {
+      "code": "DEPENDENCIES",
+      "state": "PASS",
+      "details": {
+        "expected_distributions": 40,
+        "mismatches": []
+      },
+      "repair_command": "python -m pip install -r requirements.lock"
+    },
+    {
+      "code": "SDK_TOOLCHAIN",
+      "state": "PASS",
+      "details": {
+        "expected_version": "1.0.5",
+        "repair_command": "python scripts/install_runtime.py"
+      }
+    },
+    {
+      "code": "MACOS_DEVELOPER_SDK",
+      "state": "PASS",
+      "details": {
+        "expected_version": "15.4"
+      }
+    },
+    {
+      "code": "STDX_LAYOUT",
+      "state": "PASS",
+      "details": {
+        "expected_version": "1.0.5.1",
+        "version_integrity": "NOT_PROVEN_BY_LAYOUT",
+        "repair_command": "python scripts/install_runtime.py"
+      }
+    },
+    {
+      "code": "CORE",
+      "state": "PASS",
+      "details": {
+        "component": {
+          "core_source_hash": "d2629c31b029f3152d1da91c72b8333d59a71f0df5d3411ba3e6e79713bf1790",
+          "core_component_hash": "33102bf7b78b4c9bc99f60ba6586ccb543bc11b18fac6a217a75019f0cb2632c",
+          "core_compiler_hash": "f65a65c20cb570e15185b04376a19fba00581efd477665d31ed5cc47fb58f1f7"
+        },
+        "repair_command": "python scripts/build_core.py"
+      }
+    },
+    {
+      "code": "MODEL_CONFIGURATION",
+      "state": "PASS",
+      "details": {
+        "required": true,
+        "present": {
+          "api_key_present": true,
+          "base_url_present": true,
+          "model_present": true
+        },
+        "connectivity": "NOT_PROBED"
+      }
+    },
+    {
+      "code": "PORT",
+      "state": "PASS",
+      "details": {
+        "host": "127.0.0.1",
+        "reserved": false
+      }
+    }
+  ],
+  "ready": true,
+  "model_connectivity": "NOT_PROBED"
+}

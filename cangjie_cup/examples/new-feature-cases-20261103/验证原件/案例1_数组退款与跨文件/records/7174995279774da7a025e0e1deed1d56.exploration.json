@@ -1,0 +1,890 @@
+{
+  "algorithm": "boundary-array-v4",
+  "batches": [
+    {
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build",
+          "--show-all-output"
+        ]
+      ],
+      "exit_code": 0,
+      "harness_ref": "records/a623069065e14befa17b681b71d564ca.exploration.cj",
+      "harness_sha256": "94d46feb05f36f5f92e24983dadde44cfaabebf8fc100ae4bb75a282fdaa6a45",
+      "inputs": [
+        [
+          [],
+          0
+        ],
+        [
+          [
+            300,
+            -100
+          ],
+          0
+        ],
+        [
+          [
+            500,
+            500
+          ],
+          0
+        ],
+        [
+          [
+            100,
+            -100
+          ],
+          0
+        ],
+        [
+          [
+            -100
+          ],
+          0
+        ],
+        [
+          [
+            100
+          ],
+          0
+        ],
+        [
+          [
+            200,
+            100
+          ],
+          0
+        ],
+        [
+          [
+            100,
+            200
+          ],
+          0
+        ],
+        [
+          [],
+          2000
+        ],
+        [
+          [],
+          200
+        ],
+        [
+          [],
+          199
+        ],
+        [
+          [],
+          201
+        ],
+        [
+          [],
+          500
+        ],
+        [
+          [],
+          499
+        ],
+        [
+          [],
+          501
+        ],
+        [
+          [],
+          1000
+        ],
+        [
+          [],
+          999
+        ],
+        [
+          [],
+          1001
+        ],
+        [
+          [],
+          1
+        ],
+        [
+          [],
+          1999
+        ],
+        [
+          [
+            300,
+            -100
+          ],
+          2000
+        ],
+        [
+          [
+            300,
+            -100
+          ],
+          200
+        ],
+        [
+          [
+            300,
+            -100
+          ],
+          199
+        ],
+        [
+          [
+            300,
+            -100
+          ],
+          201
+        ],
+        [
+          [
+            200,
+            100
+          ],
+          1652
+        ],
+        [
+          [
+            -100
+          ],
+          1967
+        ],
+        [
+          [
+            100
+          ],
+          593
+        ],
+        [
+          [
+            500,
+            500
+          ],
+          1568
+        ],
+        [
+          [
+            -100
+          ],
+          225
+        ],
+        [
+          [],
+          509
+        ],
+        [
+          [
+            200,
+            100
+          ],
+          1669
+        ],
+        [
+          [
+            200,
+            100
+          ],
+          516
+        ]
+      ],
+      "label": "search",
+      "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+      "log_sha256": "733ed56a17b8e32508456a2b8b0ccc8bde02ed59fe45d9b2246854a6d95689c5",
+      "problem": null,
+      "project_manifest": {
+        "cjpm.lock": "5787b4cbb3bb34d172270d15e510c795b0e85ffb95258d6eeb3d62fc7c4670d5",
+        "cjpm.toml": "56bdec34c329185d6092764520839e8ee1b922089ae2bef348347ff7fa5f2246",
+        "src/amount.cj": "bee874b568bbb540dbf218d3c1f8f9aaa33d76c299072e080ad508ded6727306",
+        "src/boundary_test.cj": "94d46feb05f36f5f92e24983dadde44cfaabebf8fc100ae4bb75a282fdaa6a45",
+        "src/refund.cj": "e7f364aa92782a187c450dc0c17c8dea687830349ecf09f64d18b743a84f97f1"
+      },
+      "project_path": "explorations/763a419141f74af1916dc88bce05835d",
+      "result": {
+        "counts": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 32,
+          "skipped": 0,
+          "total": 32
+        },
+        "execution_state": "PASS",
+        "failures": [],
+        "observations": [
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 728,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 678
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case0"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                300,
+                -100
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 829,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 778
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case1"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                500,
+                500
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 930,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 879
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case2"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [
+                100,
+                -100
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1031,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 981
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case3"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                -100
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1132,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1081
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case4"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                100
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1233,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1182
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case5"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                200,
+                100
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1334,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1283
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case6"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                100,
+                200
+              ],
+              0
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1435,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1384
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case7"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              2000
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1535,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1485
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case8"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              200
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1635,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1585
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case9"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              199
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1737,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1686
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case10"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              201
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1839,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1788
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case11"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              500
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1941,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1890
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case12"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              499
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2043,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 1992
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case13"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              501
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2145,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2094
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case14"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              1000
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2247,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2196
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case15"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              999
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2349,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2298
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case16"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              1001
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2451,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2400
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case17"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              1
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2553,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2502
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case18"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              1999
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2655,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2604
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case19"
+          },
+          {
+            "actual_return": 200,
+            "args": [
+              [
+                300,
+                -100
+              ],
+              2000
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2759,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2706
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case20"
+          },
+          {
+            "actual_return": 200,
+            "args": [
+              [
+                300,
+                -100
+              ],
+              200
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2863,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2810
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case21"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                300,
+                -100
+              ],
+              199
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2966,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 2914
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case22"
+          },
+          {
+            "actual_return": 200,
+            "args": [
+              [
+                300,
+                -100
+              ],
+              201
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3070,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3017
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case23"
+          },
+          {
+            "actual_return": 300,
+            "args": [
+              [
+                200,
+                100
+              ],
+              1652
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3174,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3121
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case24"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                -100
+              ],
+              1967
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3277,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3225
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case25"
+          },
+          {
+            "actual_return": 100,
+            "args": [
+              [
+                100
+              ],
+              593
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3381,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3328
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case26"
+          },
+          {
+            "actual_return": 1000,
+            "args": [
+              [
+                500,
+                500
+              ],
+              1568
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3486,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3432
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case27"
+          },
+          {
+            "actual_return": -1,
+            "args": [
+              [
+                -100
+              ],
+              225
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3589,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3537
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case28"
+          },
+          {
+            "actual_return": 0,
+            "args": [
+              [],
+              509
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3691,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3640
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case29"
+          },
+          {
+            "actual_return": 300,
+            "args": [
+              [
+                200,
+                100
+              ],
+              1669
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3795,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3742
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case30"
+          },
+          {
+            "actual_return": 300,
+            "args": [
+              [
+                200,
+                100
+              ],
+              516
+            ],
+            "source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3899,
+              "log_ref": "records/925474b414a44c93a05591467c712fc6.exploration.log",
+              "start_char": 3846
+            },
+            "test_id": "NexusOracleV3a3a28c08a0825980.case31"
+          }
+        ],
+        "reason": "",
+        "state": "PASS"
+      },
+      "token": "a3a28c08a0825980"
+    }
+  ],
+  "binding": {
+    "candidate_id": "c_7b0bcdbcdd4f43fe950e58f9e3537c13",
+    "check_plan_hash": "2daeb67f6cdc49e6002402f25fc7236794db5e24cf615be706e3043bfbe36efb",
+    "engine_hash": "7a9de70b85a0515a141aa18ef543621d2487be4e6ec75ccce6d0121c66929500",
+    "native_core": {
+      "core_compiler_hash": "f65a65c20cb570e15185b04376a19fba00581efd477665d31ed5cc47fb58f1f7",
+      "core_component_hash": "2be34e85f5fdecdd661a9ef292ca0ea16229a1cb2c84e6dbe23b1c8c6fc8e62a",
+      "core_source_hash": "01fd40490d76afdac1627f6baacfc184e88b874b9cc77cea302de034898841ab"
+    },
+    "oracle_hash": "148cb7baa3d0d7c4aa5bc7417f2ef76858a948955009bdfa86c77e5b7f3ef550",
+    "public_check_hash": "22ca09efa9a190d020dfc449c81862c2ede867bb2b457e6dadb80fda077895c9",
+    "public_evidence": {
+      "log_sha256": "af1fbe947a2ce9711d390cd21c3754ae52acfe35f782d00d5604f2f4f9a3b21a",
+      "record_hash": "22ca09efa9a190d020dfc449c81862c2ede867bb2b457e6dadb80fda077895c9",
+      "report_sha256": "caaa7f88432a09bb73265d563554e3ad4f320fede9f1e349e0a5075d7286a4e9",
+      "state": "PASS"
+    },
+    "task_id": "a2de8af0679d48a3a430b2e08d73b515",
+    "tree_hash": "5b4da8967223395483db8ca545c0ad75867f00c6c745cbec6e917f1b77a59d9d",
+    "verification_plan_hash": "d7efda2e747fde8739fd0de7d542e282e6978076c2479317f1dc02e199366f54"
+  },
+  "candidate_id": "c_7b0bcdbcdd4f43fe950e58f9e3537c13",
+  "distinct_failure_count": 0,
+  "failure_count": 0,
+  "failures": [],
+  "failures_truncated": false,
+  "limitations": [
+    "有限Array枚举与参数采样；不证明任意输入正确",
+    "缩减有预算限制，不保证全局最小",
+    "观测Array最多16项、String最多256个UTF-8字节，不提供候选中间分配硬堆限额"
+  ],
+  "native_boundary": {
+    "component": {
+      "core_compiler_hash": "f65a65c20cb570e15185b04376a19fba00581efd477665d31ed5cc47fb58f1f7",
+      "core_component_hash": "2be34e85f5fdecdd661a9ef292ca0ea16229a1cb2c84e6dbe23b1c8c6fc8e62a",
+      "core_source_hash": "01fd40490d76afdac1627f6baacfc184e88b874b9cc77cea302de034898841ab"
+    },
+    "request": {
+      "core_version": "2.0",
+      "operation": "boundary.axes",
+      "payload": {
+        "domains": [
+          {
+            "domain": {
+              "values": [
+                [],
+                [
+                  300,
+                  -100
+                ],
+                [
+                  500,
+                  500
+                ],
+                [
+                  100,
+                  -100
+                ],
+                [
+                  -100
+                ],
+                [
+                  100
+                ],
+                [
+                  200,
+                  100
+                ],
+                [
+                  100,
+                  200
+                ]
+              ]
+            },
+            "name": "refunds",
+            "type": "Array<Int64>"
+          },
+          {
+            "domain": {
+              "max": 2000,
+              "min": 0,
+              "points": [
+                200,
+                500,
+                1000
+              ]
+            },
+            "name": "paid",
+            "type": "Int64"
+          }
+        ]
+      },
+      "payload_hash": "844bbaa80019094476f7fa8deeeeaf2ba634015be0335277b07d0eaa51d8ce75",
+      "request_id": "27af8df1a52a451fa60626d82881ebd9",
+      "schema_version": 1
+    },
+    "response": {
+      "core_version": "2.0",
+      "data": {
+        "axes": [
+          [
+            [],
+            [
+              300,
+              -100
+            ],
+            [
+              500,
+              500
+            ],
+            [
+              100,
+              -100
+            ],
+            [
+              -100
+            ],
+            [
+              100
+            ],
+            [
+              200,
+              100
+            ],
+            [
+              100,
+              200
+            ]
+          ],
+          [
+            0,
+            2000,
+            200,
+            199,
+            201,
+            500,
+            499,
+            501,
+            1000,
+            999,
+            1001,
+            1,
+            1999
+          ]
+        ]
+      },
+      "operation": "boundary.axes",
+      "payload_hash": "844bbaa80019094476f7fa8deeeeaf2ba634015be0335277b07d0eaa51d8ce75",
+      "reason": "COMPLETED",
+      "request_id": "27af8df1a52a451fa60626d82881ebd9",
+      "schema_version": 1,
+      "status": "OK"
+    }
+  },
+  "public_test_state": "PASS",
+  "reason": "",
+  "regression_cases": 0,
+  "regression_refs": [],
+  "schema_version": 3,
+  "search_cases": 32,
+  "seed": 17,
+  "shrink_cases": 0,
+  "state": "PASS"
+}

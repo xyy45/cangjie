@@ -1,0 +1,15 @@
+{
+  "allowed_paths": [
+    "src/amount.cj",
+    "src/order.cj",
+    "src/validation.cj"
+  ],
+  "defect": "结算入口把非会员作为非法输入拒绝条件，导致会员绕过跨文件校验。",
+  "family": "cross_file_member_gate",
+  "function": "hard009",
+  "goal": "quantity在-2..1000、price在0..10000分、member为Bool。合法数量为1..1000，合法单价为1..10000；任何用户非法输入均返回-1。合法时商品金额为quantity*price，会员免20分服务费，非会员另加20分；会员不得绕过输入校验。检查同包三个文件中的校验、计价和结算函数。",
+  "id": "business_hard_009",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

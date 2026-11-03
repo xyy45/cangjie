@@ -1,0 +1,34 @@
+{
+  "domains": {
+    "price": {
+      "max": 1000,
+      "min": -1,
+      "points": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        1000
+      ]
+    },
+    "quantity": {
+      "max": 9223372036854775807,
+      "min": -1,
+      "points": [
+        -1,
+        0,
+        1,
+        2,
+        4611686018427387903,
+        9223372036854775806,
+        9223372036854775807
+      ]
+    }
+  },
+  "expression": "-1 if quantity < 0 or price < 0 or (price > 0 and quantity > 9223372036854775807//price) else quantity*price",
+  "function": "hard028",
+  "max_cases": 32,
+  "seed": 45154,
+  "version": 1
+}

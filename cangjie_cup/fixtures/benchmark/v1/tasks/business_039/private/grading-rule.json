@@ -1,0 +1,18 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        6,
+        16,
+        5
+      ]
+    }
+  },
+  "expression": "x*10 if x <= 5 else 5*10+(x-5)*8",
+  "function": "calc039",
+  "max_cases": 32,
+  "seed": 1767,
+  "version": 1
+}

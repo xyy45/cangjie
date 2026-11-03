@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "function": "total",
+  "domains": {"amount": {"min": 0, "max": 10000, "points": [1, 2, 3, 99, 100]}},
+  "expression": "amount + 100",
+  "seed": 7,
+  "max_cases": 64
+}

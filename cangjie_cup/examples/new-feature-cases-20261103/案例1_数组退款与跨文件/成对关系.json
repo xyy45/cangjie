@@ -1,0 +1,58 @@
+{
+  "version": 3,
+  "kind": "relation",
+  "function": "refundTotal",
+  "domains": {
+    "refunds": {
+      "values": [
+        [],
+        [
+          300,
+          -100
+        ],
+        [
+          500,
+          500
+        ],
+        [
+          100,
+          -100
+        ],
+        [
+          -100
+        ],
+        [
+          100
+        ],
+        [
+          200,
+          100
+        ],
+        [
+          100,
+          200
+        ]
+      ]
+    },
+    "paid": {
+      "min": 0,
+      "max": 2000,
+      "points": [
+        200,
+        500,
+        1000
+      ]
+    }
+  },
+  "relations": [
+    {
+      "id": "REL-PAID",
+      "text": "两份实付金额均足够时同一明细的净退款结果不变",
+      "precondition": "left_arg0 == right_arg0 and 0 <= array_sum(left_arg0) <= left_arg1 and left_arg1 <= right_arg1",
+      "assertion": "left_result == right_result"
+    }
+  ],
+  "seed": 17,
+  "max_pairs": 32,
+  "excluded_inputs": []
+}

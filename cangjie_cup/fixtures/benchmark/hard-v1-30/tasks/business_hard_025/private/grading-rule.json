@@ -1,0 +1,40 @@
+{
+  "domains": {
+    "index": {
+      "max": 12,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        3,
+        12
+      ]
+    },
+    "periods": {
+      "max": 12,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        3,
+        12
+      ]
+    },
+    "total": {
+      "max": 10000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        100,
+        1200,
+        10000
+      ]
+    }
+  },
+  "expression": "-1 if periods < 1 or index < 1 or index > periods else (total-(total//periods)*(periods-1) if index == periods else total//periods)",
+  "function": "hard025",
+  "max_cases": 32,
+  "seed": 45151,
+  "version": 1
+}

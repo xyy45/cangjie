@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "child_ticket",
+  "function": "calc024",
+  "goal": "年龄x低于13时票价50，否则100。",
+  "id": "business_024",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

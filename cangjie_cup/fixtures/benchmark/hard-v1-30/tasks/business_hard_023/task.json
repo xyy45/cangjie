@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "向上取整后遗漏最高手续费约束，超限收费。",
+  "family": "rounded_fee_bounds",
+  "function": "hard023",
+  "goal": "amount为0..1000000分，rate为0..1000基点（万分比），floor为0..100分，ceiling为100..500分。金额0不收费；正金额手续费为amount*rate/10000向上取整，再限制在floor至ceiling闭区间。",
+  "id": "business_hard_023",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

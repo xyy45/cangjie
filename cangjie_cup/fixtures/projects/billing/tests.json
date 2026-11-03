@@ -1,0 +1,4 @@
+[
+  {"args": [2], "expected": 102, "suite": "target"},
+  {"args": [0], "expected": 100, "suite": "regression"}
+]

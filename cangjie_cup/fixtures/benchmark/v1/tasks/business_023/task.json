@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "rebate_cap",
+  "function": "calc023",
+  "goal": "订单金额x，返利y最多抵扣订单的一半（向下取整），返回应付。",
+  "id": "business_023",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      8
+    ],
+    "expected": 78
+  },
+  {
+    "args": [
+      7
+    ],
+    "expected": 70
+  },
+  {
+    "args": [
+      9
+    ],
+    "expected": 86
+  },
+  {
+    "args": [
+      22
+    ],
+    "expected": 190
+  },
+  {
+    "args": [
+      21
+    ],
+    "expected": 182
+  },
+  {
+    "args": [
+      23
+    ],
+    "expected": 198
+  },
+  {
+    "args": [
+      6
+    ],
+    "expected": 60
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 10
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 8006
+  },
+  {
+    "args": [
+      230
+    ],
+    "expected": 1854
+  },
+  {
+    "args": [
+      653
+    ],
+    "expected": 5238
+  },
+  {
+    "args": [
+      41
+    ],
+    "expected": 342
+  },
+  {
+    "args": [
+      37
+    ],
+    "expected": 310
+  },
+  {
+    "args": [
+      87
+    ],
+    "expected": 710
+  },
+  {
+    "args": [
+      84
+    ],
+    "expected": 686
+  },
+  {
+    "args": [
+      779
+    ],
+    "expected": 6246
+  },
+  {
+    "args": [
+      901
+    ],
+    "expected": 7222
+  },
+  {
+    "args": [
+      697
+    ],
+    "expected": 5590
+  },
+  {
+    "args": [
+      89
+    ],
+    "expected": 726
+  },
+  {
+    "args": [
+      498
+    ],
+    "expected": 3998
+  },
+  {
+    "args": [
+      736
+    ],
+    "expected": 5902
+  },
+  {
+    "args": [
+      86
+    ],
+    "expected": 702
+  },
+  {
+    "args": [
+      707
+    ],
+    "expected": 5670
+  },
+  {
+    "args": [
+      74
+    ],
+    "expected": 606
+  },
+  {
+    "args": [
+      261
+    ],
+    "expected": 2102
+  },
+  {
+    "args": [
+      126
+    ],
+    "expected": 1022
+  },
+  {
+    "args": [
+      250
+    ],
+    "expected": 2014
+  },
+  {
+    "args": [
+      883
+    ],
+    "expected": 7078
+  },
+  {
+    "args": [
+      338
+    ],
+    "expected": 2718
+  },
+  {
+    "args": [
+      216
+    ],
+    "expected": 1742
+  },
+  {
+    "args": [
+      668
+    ],
+    "expected": 5358
+  },
+  {
+    "args": [
+      145
+    ],
+    "expected": 1174
+  },
+  {
+    "args": [
+      169
+    ],
+    "expected": 1366
+  },
+  {
+    "args": [
+      311
+    ],
+    "expected": 2502
+  },
+  {
+    "args": [
+      541
+    ],
+    "expected": 4342
+  },
+  {
+    "args": [
+      805
+    ],
+    "expected": 6454
+  },
+  {
+    "args": [
+      478
+    ],
+    "expected": 3838
+  },
+  {
+    "args": [
+      209
+    ],
+    "expected": 1686
+  },
+  {
+    "args": [
+      156
+    ],
+    "expected": 1262
+  },
+  {
+    "args": [
+      514
+    ],
+    "expected": 4126
+  },
+  {
+    "args": [
+      59
+    ],
+    "expected": 486
+  },
+  {
+    "args": [
+      459
+    ],
+    "expected": 3686
+  },
+  {
+    "args": [
+      583
+    ],
+    "expected": 4678
+  },
+  {
+    "args": [
+      538
+    ],
+    "expected": 4318
+  },
+  {
+    "args": [
+      323
+    ],
+    "expected": 2598
+  },
+  {
+    "args": [
+      143
+    ],
+    "expected": 1158
+  },
+  {
+    "args": [
+      294
+    ],
+    "expected": 2366
+  },
+  {
+    "args": [
+      522
+    ],
+    "expected": 4190
+  },
+  {
+    "args": [
+      658
+    ],
+    "expected": 5278
+  },
+  {
+    "args": [
+      380
+    ],
+    "expected": 3054
+  },
+  {
+    "args": [
+      629
+    ],
+    "expected": 5046
+  },
+  {
+    "args": [
+      570
+    ],
+    "expected": 4574
+  },
+  {
+    "args": [
+      958
+    ],
+    "expected": 7678
+  },
+  {
+    "args": [
+      840
+    ],
+    "expected": 6734
+  },
+  {
+    "args": [
+      613
+    ],
+    "expected": 4918
+  },
+  {
+    "args": [
+      425
+    ],
+    "expected": 3414
+  },
+  {
+    "args": [
+      60
+    ],
+    "expected": 494
+  },
+  {
+    "args": [
+      335
+    ],
+    "expected": 2694
+  },
+  {
+    "args": [
+      603
+    ],
+    "expected": 4838
+  },
+  {
+    "args": [
+      223
+    ],
+    "expected": 1798
+  },
+  {
+    "args": [
+      869
+    ],
+    "expected": 6966
+  },
+  {
+    "args": [
+      530
+    ],
+    "expected": 4254
+  }
+]

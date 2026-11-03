@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "只拒绝零退款，负数申请反向减少历史退款。",
+  "family": "cumulative_refund",
+  "function": "hard021",
+  "goal": "paid为实付、refunded为已累计退款、requested为本次申请，均为整数分；paid在0..10000、refunded在0..10000、requested在-1..2000。历史累计必须在0..paid，本次必须为正且不超过剩余实付；合法返回新的累计退款，非法返回-1。",
+  "id": "business_hard_021",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

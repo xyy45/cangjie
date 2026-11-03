@@ -1,0 +1,16 @@
+--- a/src/amount.cj
++++ b/src/amount.cj
+@@ -12,3 +12,5 @@
+     }
+     return total
+ }
++
++// local defect validation
+--- a/src/refund.cj
++++ b/src/refund.cj
+@@ -6,3 +6,5 @@
+     if (total < 0 || total >= paid) { return -1 }
+     return total
+ }
++
++// local defect validation

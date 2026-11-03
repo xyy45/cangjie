@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "普通用户的免运费资格使用折前金额，忽略优惠后的门槛。",
+  "family": "discount_shipping",
+  "function": "hard006",
+  "goal": "amount在0..20000分、coupon在0..5000分、threshold在5000..15000分、vip为Bool。折后商品金额为max(0,amount-coupon)；会员或折后金额达到threshold（含）免运费，其余收800分运费。返回折后商品金额加运费。",
+  "id": "business_hard_006",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

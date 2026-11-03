@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "cancel_state",
+  "function": "calc049",
+  "goal": "订单状态0待支付、1已支付可取消，其他状态不可取消。",
+  "id": "business_049",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

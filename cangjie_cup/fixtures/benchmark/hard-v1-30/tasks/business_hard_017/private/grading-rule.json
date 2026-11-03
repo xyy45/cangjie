@@ -1,0 +1,50 @@
+{
+  "domains": {
+    "amount": {
+      "max": 10000,
+      "min": 0,
+      "points": [
+        0,
+        100,
+        1000,
+        10000
+      ]
+    },
+    "percent": {
+      "max": 50,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        20,
+        50
+      ]
+    },
+    "points": {
+      "max": 100000,
+      "min": 0,
+      "points": [
+        0,
+        99,
+        100,
+        10000,
+        100000
+      ]
+    },
+    "requested": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        10,
+        1000
+      ]
+    }
+  },
+  "expression": "min(requested,points//100,amount*percent//100)",
+  "function": "hard017",
+  "max_cases": 32,
+  "seed": 45143,
+  "version": 1
+}

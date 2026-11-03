@@ -1,2 +1,0 @@
-# CangSight
-See Code Differently

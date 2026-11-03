@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      8
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      7
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      9
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      22
+    ],
+    "expected": 30
+  },
+  {
+    "args": [
+      21
+    ],
+    "expected": 28
+  },
+  {
+    "args": [
+      23
+    ],
+    "expected": 32
+  },
+  {
+    "args": [
+      6
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 1984
+  },
+  {
+    "args": [
+      580
+    ],
+    "expected": 1146
+  },
+  {
+    "args": [
+      665
+    ],
+    "expected": 1316
+  },
+  {
+    "args": [
+      298
+    ],
+    "expected": 582
+  },
+  {
+    "args": [
+      700
+    ],
+    "expected": 1386
+  },
+  {
+    "args": [
+      632
+    ],
+    "expected": 1250
+  },
+  {
+    "args": [
+      280
+    ],
+    "expected": 546
+  },
+  {
+    "args": [
+      394
+    ],
+    "expected": 774
+  },
+  {
+    "args": [
+      242
+    ],
+    "expected": 470
+  },
+  {
+    "args": [
+      946
+    ],
+    "expected": 1878
+  },
+  {
+    "args": [
+      387
+    ],
+    "expected": 760
+  },
+  {
+    "args": [
+      586
+    ],
+    "expected": 1158
+  },
+  {
+    "args": [
+      491
+    ],
+    "expected": 968
+  },
+  {
+    "args": [
+      163
+    ],
+    "expected": 312
+  },
+  {
+    "args": [
+      364
+    ],
+    "expected": 714
+  },
+  {
+    "args": [
+      596
+    ],
+    "expected": 1178
+  },
+  {
+    "args": [
+      205
+    ],
+    "expected": 396
+  },
+  {
+    "args": [
+      729
+    ],
+    "expected": 1444
+  },
+  {
+    "args": [
+      489
+    ],
+    "expected": 964
+  },
+  {
+    "args": [
+      862
+    ],
+    "expected": 1710
+  },
+  {
+    "args": [
+      175
+    ],
+    "expected": 336
+  },
+  {
+    "args": [
+      193
+    ],
+    "expected": 372
+  },
+  {
+    "args": [
+      398
+    ],
+    "expected": 782
+  },
+  {
+    "args": [
+      199
+    ],
+    "expected": 384
+  },
+  {
+    "args": [
+      927
+    ],
+    "expected": 1840
+  },
+  {
+    "args": [
+      977
+    ],
+    "expected": 1940
+  },
+  {
+    "args": [
+      784
+    ],
+    "expected": 1554
+  },
+  {
+    "args": [
+      151
+    ],
+    "expected": 288
+  },
+  {
+    "args": [
+      448
+    ],
+    "expected": 882
+  },
+  {
+    "args": [
+      286
+    ],
+    "expected": 558
+  },
+  {
+    "args": [
+      67
+    ],
+    "expected": 120
+  },
+  {
+    "args": [
+      561
+    ],
+    "expected": 1108
+  },
+  {
+    "args": [
+      817
+    ],
+    "expected": 1620
+  },
+  {
+    "args": [
+      591
+    ],
+    "expected": 1168
+  },
+  {
+    "args": [
+      763
+    ],
+    "expected": 1512
+  },
+  {
+    "args": [
+      470
+    ],
+    "expected": 926
+  },
+  {
+    "args": [
+      641
+    ],
+    "expected": 1268
+  },
+  {
+    "args": [
+      36
+    ],
+    "expected": 58
+  },
+  {
+    "args": [
+      816
+    ],
+    "expected": 1618
+  },
+  {
+    "args": [
+      713
+    ],
+    "expected": 1412
+  },
+  {
+    "args": [
+      806
+    ],
+    "expected": 1598
+  },
+  {
+    "args": [
+      620
+    ],
+    "expected": 1226
+  },
+  {
+    "args": [
+      504
+    ],
+    "expected": 994
+  },
+  {
+    "args": [
+      439
+    ],
+    "expected": 864
+  },
+  {
+    "args": [
+      105
+    ],
+    "expected": 196
+  },
+  {
+    "args": [
+      852
+    ],
+    "expected": 1690
+  },
+  {
+    "args": [
+      588
+    ],
+    "expected": 1162
+  },
+  {
+    "args": [
+      54
+    ],
+    "expected": 94
+  },
+  {
+    "args": [
+      343
+    ],
+    "expected": 672
+  },
+  {
+    "args": [
+      57
+    ],
+    "expected": 100
+  },
+  {
+    "args": [
+      12
+    ],
+    "expected": 10
+  },
+  {
+    "args": [
+      653
+    ],
+    "expected": 1292
+  },
+  {
+    "args": [
+      381
+    ],
+    "expected": 748
+  },
+  {
+    "args": [
+      581
+    ],
+    "expected": 1148
+  }
+]

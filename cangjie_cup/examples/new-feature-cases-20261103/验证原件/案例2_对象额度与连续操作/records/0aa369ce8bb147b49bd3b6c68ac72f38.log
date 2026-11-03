@@ -1,0 +1,25 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jxy/Desktop/CangSight-main/CangSight-Nexus-Demo/examples/new-feature-cases-20261103/验证原件/案例2_对象额度与连续操作/candidates/c_50573ebbba2545f0ac12201e4dafdf42/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33mbench[0m, time elapsed: 1095000 ns, RESULT:
+    TCS: [33mUploadedTests[0m, time elapsed: 1095000 ns, RESULT:
+    [[32m PASSED [0m] CASE: case0 (255000 ns)
+    [[32m PASSED [0m] CASE: case1 (10000 ns)
+Summary: TOTAL: 2
+    [32mPASSED[0m: 2, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 2458000 ns, RESULT:
+TP: [33mbench[0m.*, time elapsed: 2405000 ns, RESULT:
+    PASSED:
+    TP: [33mbench[0m, time elapsed: 1095000 ns
+Summary: TOTAL: 2
+    [32mPASSED[0m: 2, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

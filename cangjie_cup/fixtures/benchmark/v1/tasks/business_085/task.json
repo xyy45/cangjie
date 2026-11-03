@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "installment",
+  "function": "calc085",
+  "goal": "总额x按正数期数y分期，每期上限向上取整。",
+  "id": "business_085",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

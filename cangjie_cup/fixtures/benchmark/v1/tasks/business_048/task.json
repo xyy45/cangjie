@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "tax",
+  "function": "calc048",
+  "goal": "按13%计税并向上取整，金额x非负。",
+  "id": "business_048",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

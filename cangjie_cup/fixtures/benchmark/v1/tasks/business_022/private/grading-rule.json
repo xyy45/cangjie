@@ -1,0 +1,36 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        5,
+        13,
+        4
+      ]
+    },
+    "y": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        1,
+        13,
+        4
+      ]
+    },
+    "z": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        5,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x >= y and x < z",
+  "function": "calc022",
+  "max_cases": 32,
+  "seed": 1750,
+  "version": 1
+}

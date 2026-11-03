@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "price",
+  "function": "calc032",
+  "goal": "单价x必须为正且不超过16。",
+  "id": "business_032",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

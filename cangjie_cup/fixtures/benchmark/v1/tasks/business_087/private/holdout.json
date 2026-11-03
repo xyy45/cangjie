@@ -1,0 +1,374 @@
+[
+  {
+    "args": [
+      19
+    ],
+    "expected": 38
+  },
+  {
+    "args": [
+      18
+    ],
+    "expected": 18
+  },
+  {
+    "args": [
+      20
+    ],
+    "expected": 40
+  },
+  {
+    "args": [
+      6
+    ],
+    "expected": 6
+  },
+  {
+    "args": [
+      5
+    ],
+    "expected": 5
+  },
+  {
+    "args": [
+      7
+    ],
+    "expected": 7
+  },
+  {
+    "args": [
+      1
+    ],
+    "expected": 1
+  },
+  {
+    "args": [
+      999
+    ],
+    "expected": 1998
+  },
+  {
+    "args": [
+      166
+    ],
+    "expected": 332
+  },
+  {
+    "args": [
+      573
+    ],
+    "expected": 1146
+  },
+  {
+    "args": [
+      401
+    ],
+    "expected": 802
+  },
+  {
+    "args": [
+      975
+    ],
+    "expected": 1950
+  },
+  {
+    "args": [
+      555
+    ],
+    "expected": 1110
+  },
+  {
+    "args": [
+      413
+    ],
+    "expected": 826
+  },
+  {
+    "args": [
+      613
+    ],
+    "expected": 1226
+  },
+  {
+    "args": [
+      797
+    ],
+    "expected": 1594
+  },
+  {
+    "args": [
+      861
+    ],
+    "expected": 1722
+  },
+  {
+    "args": [
+      403
+    ],
+    "expected": 806
+  },
+  {
+    "args": [
+      216
+    ],
+    "expected": 432
+  },
+  {
+    "args": [
+      830
+    ],
+    "expected": 1660
+  },
+  {
+    "args": [
+      150
+    ],
+    "expected": 300
+  },
+  {
+    "args": [
+      769
+    ],
+    "expected": 1538
+  },
+  {
+    "args": [
+      615
+    ],
+    "expected": 1230
+  },
+  {
+    "args": [
+      868
+    ],
+    "expected": 1736
+  },
+  {
+    "args": [
+      146
+    ],
+    "expected": 292
+  },
+  {
+    "args": [
+      368
+    ],
+    "expected": 736
+  },
+  {
+    "args": [
+      781
+    ],
+    "expected": 1562
+  },
+  {
+    "args": [
+      773
+    ],
+    "expected": 1546
+  },
+  {
+    "args": [
+      239
+    ],
+    "expected": 478
+  },
+  {
+    "args": [
+      978
+    ],
+    "expected": 1956
+  },
+  {
+    "args": [
+      493
+    ],
+    "expected": 986
+  },
+  {
+    "args": [
+      623
+    ],
+    "expected": 1246
+  },
+  {
+    "args": [
+      182
+    ],
+    "expected": 364
+  },
+  {
+    "args": [
+      935
+    ],
+    "expected": 1870
+  },
+  {
+    "args": [
+      678
+    ],
+    "expected": 1356
+  },
+  {
+    "args": [
+      612
+    ],
+    "expected": 1224
+  },
+  {
+    "args": [
+      845
+    ],
+    "expected": 1690
+  },
+  {
+    "args": [
+      321
+    ],
+    "expected": 642
+  },
+  {
+    "args": [
+      859
+    ],
+    "expected": 1718
+  },
+  {
+    "args": [
+      712
+    ],
+    "expected": 1424
+  },
+  {
+    "args": [
+      877
+    ],
+    "expected": 1754
+  },
+  {
+    "args": [
+      311
+    ],
+    "expected": 622
+  },
+  {
+    "args": [
+      143
+    ],
+    "expected": 286
+  },
+  {
+    "args": [
+      14
+    ],
+    "expected": 14
+  },
+  {
+    "args": [
+      547
+    ],
+    "expected": 1094
+  },
+  {
+    "args": [
+      723
+    ],
+    "expected": 1446
+  },
+  {
+    "args": [
+      594
+    ],
+    "expected": 1188
+  },
+  {
+    "args": [
+      304
+    ],
+    "expected": 608
+  },
+  {
+    "args": [
+      461
+    ],
+    "expected": 922
+  },
+  {
+    "args": [
+      631
+    ],
+    "expected": 1262
+  },
+  {
+    "args": [
+      381
+    ],
+    "expected": 762
+  },
+  {
+    "args": [
+      770
+    ],
+    "expected": 1540
+  },
+  {
+    "args": [
+      196
+    ],
+    "expected": 392
+  },
+  {
+    "args": [
+      927
+    ],
+    "expected": 1854
+  },
+  {
+    "args": [
+      586
+    ],
+    "expected": 1172
+  },
+  {
+    "args": [
+      148
+    ],
+    "expected": 296
+  },
+  {
+    "args": [
+      680
+    ],
+    "expected": 1360
+  },
+  {
+    "args": [
+      156
+    ],
+    "expected": 312
+  },
+  {
+    "args": [
+      614
+    ],
+    "expected": 1228
+  },
+  {
+    "args": [
+      983
+    ],
+    "expected": 1966
+  },
+  {
+    "args": [
+      901
+    ],
+    "expected": 1802
+  },
+  {
+    "args": [
+      914
+    ],
+    "expected": 1828
+  }
+]

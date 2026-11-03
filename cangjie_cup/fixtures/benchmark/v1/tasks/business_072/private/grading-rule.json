@@ -1,0 +1,27 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        5,
+        19,
+        6
+      ]
+    },
+    "y": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        5,
+        19,
+        6
+      ]
+    }
+  },
+  "expression": "x < y",
+  "function": "calc072",
+  "max_cases": 32,
+  "seed": 1800,
+  "version": 1
+}

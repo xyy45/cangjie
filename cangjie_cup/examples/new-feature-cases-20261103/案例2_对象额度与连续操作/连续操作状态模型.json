@@ -1,0 +1,109 @@
+{
+  "version": 4,
+  "kind": "sequence",
+  "function": "applyQuota",
+  "state_param": "state",
+  "domains": {
+    "state": {
+      "values": [
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 20,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 20
+          }
+        }
+      ]
+    },
+    "action": {
+      "values": [
+        "reserve",
+        "cancel",
+        "noop"
+      ]
+    }
+  },
+  "initial_states": [
+    {
+      "$type": "QuotaState",
+      "fields": {
+        "available": 20,
+        "reserved": 0
+      }
+    },
+    {
+      "$type": "QuotaState",
+      "fields": {
+        "available": 10,
+        "reserved": 0
+      }
+    }
+  ],
+  "initial_precondition": "True",
+  "context_params": [],
+  "operations": [
+    {
+      "id": "OP-RESERVE",
+      "text": "预留10额度",
+      "args": [
+        "reserve"
+      ],
+      "transition": "object_with(object_with(state,\"available\",object_get(state,\"available\")-10),\"reserved\",object_get(state,\"reserved\")+10) if object_get(state,\"available\") >= 10 else state"
+    },
+    {
+      "id": "OP-CANCEL",
+      "text": "取消10预留",
+      "args": [
+        "cancel"
+      ],
+      "transition": "object_with(object_with(state,\"available\",object_get(state,\"available\")+10),\"reserved\",object_get(state,\"reserved\")-10) if object_get(state,\"reserved\") >= 10 else state"
+    }
+  ],
+  "invariants": [
+    {
+      "id": "INV-EXACT",
+      "text": "每一步遵守参考状态且额度守恒",
+      "precondition": "True",
+      "assertion": "result == expected_state and object_get(result,\"available\") >= 0 and object_get(result,\"reserved\") >= 0 and object_get(result,\"available\")+object_get(result,\"reserved\") == object_get(initial_state,\"available\")+object_get(initial_state,\"reserved\")"
+    }
+  ],
+  "seed": 23,
+  "max_sequences": 16,
+  "max_steps": 4,
+  "excluded_inputs": []
+}

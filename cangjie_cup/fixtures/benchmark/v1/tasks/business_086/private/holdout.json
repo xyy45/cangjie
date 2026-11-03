@@ -1,0 +1,436 @@
+[
+  {
+    "args": [
+      1000,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      1,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      19,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      18,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      20,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      6,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      5,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      7,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      999,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      0,
+      true
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      1,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      19,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      18,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      20,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      6,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      5,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      7,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      999,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      584,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      510,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      652,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      718,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      257,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      227,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      968,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      16,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      451,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      959,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      454,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      798,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      492,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      533,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      510,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      865,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      43,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      374,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      291,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      40,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      514,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      867,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      243,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      616,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      551,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      729,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      97,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      965,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      128,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      281,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      289,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      455,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      701,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      278,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      833,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      809,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      24,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      411,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      661,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      937,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      855,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      101,
+      true
+    ],
+    "expected": true
+  },
+  {
+    "args": [
+      918,
+      false
+    ],
+    "expected": false
+  },
+  {
+    "args": [
+      351,
+      true
+    ],
+    "expected": true
+  }
+]

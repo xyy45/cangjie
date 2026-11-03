@@ -1,0 +1,19 @@
+{
+  "domains": {
+    "v": {},
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        1,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "0 if v or x >= 13 else 4",
+  "function": "calc021",
+  "max_cases": 32,
+  "seed": 1749,
+  "version": 1
+}

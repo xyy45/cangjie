@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "member_shipping",
+  "function": "calc081",
+  "goal": "会员v或金额x达到19时免运费，否则收6。",
+  "id": "business_081",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

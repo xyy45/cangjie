@@ -1,0 +1,17 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        4,
+        13
+      ]
+    }
+  },
+  "expression": "x+x//4",
+  "function": "calc008",
+  "max_cases": 32,
+  "seed": 1736,
+  "version": 1
+}

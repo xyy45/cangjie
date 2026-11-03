@@ -1,0 +1,436 @@
+[
+  {
+    "args": [
+      1000,
+      0
+    ],
+    "expected": 1000
+  },
+  {
+    "args": [
+      5,
+      0
+    ],
+    "expected": 5
+  },
+  {
+    "args": [
+      4,
+      0
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      6,
+      0
+    ],
+    "expected": 6
+  },
+  {
+    "args": [
+      16,
+      0
+    ],
+    "expected": 16
+  },
+  {
+    "args": [
+      15,
+      0
+    ],
+    "expected": 15
+  },
+  {
+    "args": [
+      17,
+      0
+    ],
+    "expected": 17
+  },
+  {
+    "args": [
+      1,
+      0
+    ],
+    "expected": 1
+  },
+  {
+    "args": [
+      999,
+      0
+    ],
+    "expected": 999
+  },
+  {
+    "args": [
+      0,
+      1000
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      4
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      3
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      5
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      16
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      15
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      17
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      6
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      1
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      0,
+      999
+    ],
+    "expected": 0
+  },
+  {
+    "args": [
+      1000,
+      4
+    ],
+    "expected": 996
+  },
+  {
+    "args": [
+      1000,
+      3
+    ],
+    "expected": 997
+  },
+  {
+    "args": [
+      1000,
+      5
+    ],
+    "expected": 995
+  },
+  {
+    "args": [
+      1000,
+      16
+    ],
+    "expected": 984
+  },
+  {
+    "args": [
+      1000,
+      15
+    ],
+    "expected": 985
+  },
+  {
+    "args": [
+      1000,
+      17
+    ],
+    "expected": 983
+  },
+  {
+    "args": [
+      1000,
+      6
+    ],
+    "expected": 994
+  },
+  {
+    "args": [
+      1000,
+      1
+    ],
+    "expected": 999
+  },
+  {
+    "args": [
+      1000,
+      999
+    ],
+    "expected": 500
+  },
+  {
+    "args": [
+      5,
+      1000
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      4
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      3
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      5
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      16
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      15
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      17
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      6
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      5,
+      1
+    ],
+    "expected": 4
+  },
+  {
+    "args": [
+      5,
+      999
+    ],
+    "expected": 3
+  },
+  {
+    "args": [
+      4,
+      1000
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      4
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      3
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      5
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      16
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      15
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      17
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      4,
+      6
+    ],
+    "expected": 2
+  },
+  {
+    "args": [
+      20,
+      818
+    ],
+    "expected": 10
+  },
+  {
+    "args": [
+      539,
+      612
+    ],
+    "expected": 270
+  },
+  {
+    "args": [
+      844,
+      645
+    ],
+    "expected": 422
+  },
+  {
+    "args": [
+      848,
+      292
+    ],
+    "expected": 556
+  },
+  {
+    "args": [
+      877,
+      43
+    ],
+    "expected": 834
+  },
+  {
+    "args": [
+      373,
+      455
+    ],
+    "expected": 187
+  },
+  {
+    "args": [
+      73,
+      945
+    ],
+    "expected": 37
+  },
+  {
+    "args": [
+      868,
+      267
+    ],
+    "expected": 601
+  },
+  {
+    "args": [
+      701,
+      866
+    ],
+    "expected": 351
+  },
+  {
+    "args": [
+      998,
+      548
+    ],
+    "expected": 499
+  },
+  {
+    "args": [
+      778,
+      304
+    ],
+    "expected": 474
+  },
+  {
+    "args": [
+      379,
+      223
+    ],
+    "expected": 190
+  },
+  {
+    "args": [
+      856,
+      465
+    ],
+    "expected": 428
+  },
+  {
+    "args": [
+      179,
+      760
+    ],
+    "expected": 90
+  },
+  {
+    "args": [
+      541,
+      573
+    ],
+    "expected": 271
+  },
+  {
+    "args": [
+      815,
+      92
+    ],
+    "expected": 723
+  }
+]

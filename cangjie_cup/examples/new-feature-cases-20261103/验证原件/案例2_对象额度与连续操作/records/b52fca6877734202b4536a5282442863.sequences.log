@@ -1,0 +1,115 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jxy/Desktop/CangSight-main/CangSight-Nexus-Demo/examples/new-feature-cases-20261103/验证原件/案例2_对象额度与连续操作/sequences/dc31208c9c904d2f9b605fca67db3f5d/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build", "--show-all-output"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33mbench[0m, time elapsed: 2194000 ns, RESULT:
+    TCS: [33mNexusSequencesV42c8c3115d95a9761[0m, time elapsed: 2194000 ns, RESULT:
+    [[32m PASSED [0m] CASE: case0 (205000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case0|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case0|1|COMPLETE
+    [[32m PASSED [0m] CASE: case1 (10000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case1|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case1|step1|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case1|2|COMPLETE
+    [[32m PASSED [0m] CASE: case2 (11000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case2|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case2|step1|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case2|2|COMPLETE
+    [[32m PASSED [0m] CASE: case3 (10000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case3|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case3|step1|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:1:02:20
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case3|2|COMPLETE
+    [[32m PASSED [0m] CASE: case4 (12000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case4|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case4|step1|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case4|step2|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case4|3|COMPLETE
+    [[32m PASSED [0m] CASE: case5 (14000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case5|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case5|step1|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:1:02:20
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case5|step2|QuotaState|o:QuotaState:2:1:02:20|o:QuotaState:2:1:02:20
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case5|step3|QuotaState|o:QuotaState:2:1:02:20|o:QuotaState:2:1:02:20
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case5|4|COMPLETE
+    [[32m PASSED [0m] CASE: case6 (8000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case6|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case6|step1|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case6|2|COMPLETE
+    [[32m PASSED [0m] CASE: case7 (10000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case7|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case7|step1|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case7|step2|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case7|step3|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case7|4|COMPLETE
+    [[32m PASSED [0m] CASE: case8 (13000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case8|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case8|step1|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case8|step2|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case8|step3|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case8|4|COMPLETE
+    [[32m PASSED [0m] CASE: case9 (10000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case9|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case9|step1|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case9|2|COMPLETE
+    [[32m PASSED [0m] CASE: case10 (14000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case10|step0|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case10|step1|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case10|step2|QuotaState|o:QuotaState:2:2:102:10|o:QuotaState:2:2:201:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case10|step3|QuotaState|o:QuotaState:2:2:201:0|o:QuotaState:2:2:102:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case10|4|COMPLETE
+    [[32m PASSED [0m] CASE: case11 (11000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case11|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case11|step1|QuotaState|o:QuotaState:2:1:02:10|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case11|2|COMPLETE
+    [[32m PASSED [0m] CASE: case12 (12000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case12|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case12|step1|QuotaState|o:QuotaState:2:1:02:10|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case12|step2|QuotaState|o:QuotaState:2:1:02:10|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case12|step3|QuotaState|o:QuotaState:2:1:02:10|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case12|4|COMPLETE
+    [[32m PASSED [0m] CASE: case13 (10000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case13|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case13|step1|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case13|2|COMPLETE
+    [[32m PASSED [0m] CASE: case14 (12000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case14|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case14|step1|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case14|step2|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case14|step3|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case14|4|COMPLETE
+    [[32m PASSED [0m] CASE: case15 (9000 ns)
+    STDOUT:
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case15|step0|QuotaState|o:QuotaState:2:2:101:0|o:QuotaState:2:1:02:10
+    NEXUS_SEQUENCE_V4|2c8c3115d95a9761|case15|step1|QuotaState|o:QuotaState:2:1:02:10|o:QuotaState:2:2:101:0
+    NEXUS_SEQUENCE_END_V4|2c8c3115d95a9761|case15|2|COMPLETE
+Summary: TOTAL: 16
+    [32mPASSED[0m: 16, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 3097000 ns, RESULT:
+TP: [33mbench[0m.*, time elapsed: 3052000 ns, RESULT:
+    PASSED:
+    TP: [33mbench[0m, time elapsed: 2194000 ns
+Summary: TOTAL: 16
+    [32mPASSED[0m: 16, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

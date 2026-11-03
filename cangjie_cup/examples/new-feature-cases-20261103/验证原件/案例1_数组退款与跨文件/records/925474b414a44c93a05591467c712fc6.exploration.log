@@ -1,0 +1,119 @@
+NEXUS_EXECUTION_PHASE compile: ["cjpm", "test", "--no-run"]
+   Finished `test` profile compilation
+   Executable files at `/Users/jxy/Desktop/CangSight-main/CangSight-Nexus-Demo/examples/new-feature-cases-20261103/验证原件/案例1_数组退款与跨文件/explorations/763a419141f74af1916dc88bce05835d/target/release/unittest_bin`
+cjpm test success
+NEXUS_EXECUTION_PHASE test: ["cjpm", "test", "--skip-build", "--show-all-output"]
+[?25l[0J7[;r8
+[1F7[9999E8[0J7[;r8
+[1F7[9999E8--------------------------------------------------------------------------------------------------
+TP: [33mbench[0m, time elapsed: 2893000 ns, RESULT:
+    TCS: [33mNexusOracleV3a3a28c08a0825980[0m, time elapsed: 2893000 ns, RESULT:
+    [[32m PASSED [0m] CASE: case0 (178000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case0|Int64|0
+    [[32m PASSED [0m] CASE: case1 (9000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case1|Int64|-1
+    [[32m PASSED [0m] CASE: case2 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case2|Int64|-1
+    [[32m PASSED [0m] CASE: case3 (11000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case3|Int64|0
+    [[32m PASSED [0m] CASE: case4 (7000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case4|Int64|-1
+    [[32m PASSED [0m] CASE: case5 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case5|Int64|-1
+    [[32m PASSED [0m] CASE: case6 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case6|Int64|-1
+    [[32m PASSED [0m] CASE: case7 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case7|Int64|-1
+    [[32m PASSED [0m] CASE: case8 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case8|Int64|0
+    [[32m PASSED [0m] CASE: case9 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case9|Int64|0
+    [[32m PASSED [0m] CASE: case10 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case10|Int64|0
+    [[32m PASSED [0m] CASE: case11 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case11|Int64|0
+    [[32m PASSED [0m] CASE: case12 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case12|Int64|0
+    [[32m PASSED [0m] CASE: case13 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case13|Int64|0
+    [[32m PASSED [0m] CASE: case14 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case14|Int64|0
+    [[32m PASSED [0m] CASE: case15 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case15|Int64|0
+    [[32m PASSED [0m] CASE: case16 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case16|Int64|0
+    [[32m PASSED [0m] CASE: case17 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case17|Int64|0
+    [[32m PASSED [0m] CASE: case18 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case18|Int64|0
+    [[32m PASSED [0m] CASE: case19 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case19|Int64|0
+    [[32m PASSED [0m] CASE: case20 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case20|Int64|200
+    [[32m PASSED [0m] CASE: case21 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case21|Int64|200
+    [[32m PASSED [0m] CASE: case22 (7000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case22|Int64|-1
+    [[32m PASSED [0m] CASE: case23 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case23|Int64|200
+    [[32m PASSED [0m] CASE: case24 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case24|Int64|300
+    [[32m PASSED [0m] CASE: case25 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case25|Int64|-1
+    [[32m PASSED [0m] CASE: case26 (6000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case26|Int64|100
+    [[32m PASSED [0m] CASE: case27 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case27|Int64|1000
+    [[32m PASSED [0m] CASE: case28 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case28|Int64|-1
+    [[32m PASSED [0m] CASE: case29 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case29|Int64|0
+    [[32m PASSED [0m] CASE: case30 (4000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case30|Int64|300
+    [[32m PASSED [0m] CASE: case31 (5000 ns)
+    STDOUT:
+    NEXUS_ORACLE_V3|a3a28c08a0825980|case31|Int64|300
+Summary: TOTAL: 32
+    [32mPASSED[0m: 32, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+Project tests finished, time elapsed: 3767000 ns, RESULT:
+TP: [33mbench[0m.*, time elapsed: 3681000 ns, RESULT:
+    PASSED:
+    TP: [33mbench[0m, time elapsed: 2893000 ns
+Summary: TOTAL: 32
+    [32mPASSED[0m: 32, [32mSKIPPED[0m: 0, ERROR: 0
+    [31mFAILED[0m: 0
+--------------------------------------------------------------------------------------------------
+[0J7[;r8[?25hcjpm test success

@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "shipping",
+  "function": "calc003",
+  "goal": "金额x达到13免运费，否则运费4。",
+  "id": "business_003",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

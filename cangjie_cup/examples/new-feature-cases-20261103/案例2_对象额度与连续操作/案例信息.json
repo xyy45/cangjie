@@ -1,0 +1,12 @@
+{
+  "function": "applyQuota",
+  "allowed_paths": [
+    "src/quota.cj"
+  ],
+  "models": [
+    "独立业务规则",
+    "业务属性",
+    "连续操作状态模型"
+  ],
+  "origin": "TEAM_AUTHORED_SYNTHETIC"
+}

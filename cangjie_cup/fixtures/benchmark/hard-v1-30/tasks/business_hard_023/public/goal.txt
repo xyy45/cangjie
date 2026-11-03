@@ -1,0 +1,1 @@
+amount为0..1000000分，rate为0..1000基点（万分比），floor为0..100分，ceiling为100..500分。金额0不收费；正金额手续费为amount*rate/10000向上取整，再限制在floor至ceiling闭区间。

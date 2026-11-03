@@ -1,0 +1,13 @@
+{
+  "function": "refundTotal",
+  "allowed_paths": [
+    "src/amount.cj",
+    "src/refund.cj"
+  ],
+  "models": [
+    "独立业务规则",
+    "业务属性",
+    "成对关系"
+  ],
+  "origin": "TEAM_AUTHORED_SYNTHETIC"
+}

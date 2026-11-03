@@ -1,0 +1,18 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        5,
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x*10 if x <= 4 else 4*10+(x-4)*8",
+  "function": "calc009",
+  "max_cases": 32,
+  "seed": 1737,
+  "version": 1
+}

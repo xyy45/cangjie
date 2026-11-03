@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "ledger_balance",
+  "function": "calc058",
+  "goal": "余额x加上带符号变动y，返回不小于零的余额。",
+  "id": "business_058",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

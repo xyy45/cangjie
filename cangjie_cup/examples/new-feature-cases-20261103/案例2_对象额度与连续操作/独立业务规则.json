@@ -1,0 +1,63 @@
+{
+  "version": 5,
+  "function": "applyQuota",
+  "domains": {
+    "state": {
+      "values": [
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 20,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 20
+          }
+        }
+      ]
+    },
+    "action": {
+      "values": [
+        "reserve",
+        "cancel",
+        "noop"
+      ]
+    }
+  },
+  "expression": "(object_with(object_with(state,\"available\",object_get(state,\"available\")-10),\"reserved\",object_get(state,\"reserved\")+10) if object_get(state,\"available\") >= 10 else state) if action == \"reserve\" else ((object_with(object_with(state,\"available\",object_get(state,\"available\")+10),\"reserved\",object_get(state,\"reserved\")-10) if object_get(state,\"reserved\") >= 10 else state) if action == \"cancel\" else state)",
+  "seed": 23,
+  "max_cases": 32,
+  "excluded_inputs": []
+}

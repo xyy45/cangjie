@@ -1,0 +1,3 @@
+applyQuota(state, action)处理额度预留与取消。state包含非负available和reserved，测试初始总额度不超过20。action="reserve"时，available>=10就将10从available移至reserved；不足10原样返回。action="cancel"时，reserved>=10就将10从reserved移回available；不足10原样返回。其他action不改变状态。每一步两个字段非负、总额度守恒；预留后取消应还原初始状态，连续取消不能凭空增加额度。必须保留QuotaState类型、字段、构造和total方法，只允许修改src/quota.cj。
+
+请检查全部相关允许修改文件，修复业务逻辑，保留现有函数签名、对象字段与public可见性。不得修改测试、配置或规则，不得用硬编码样例替代业务实现。请在原有受限仓颉语法内实现。

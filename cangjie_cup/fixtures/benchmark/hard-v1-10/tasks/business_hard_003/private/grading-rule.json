@@ -1,0 +1,47 @@
+{
+  "domains": {
+    "amount": {
+      "max": 1000000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        101,
+        10000,
+        1000000
+      ]
+    },
+    "ceiling": {
+      "max": 500,
+      "min": 100,
+      "points": [
+        100,
+        500
+      ]
+    },
+    "floor": {
+      "max": 100,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        100
+      ]
+    },
+    "rate": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        0,
+        1,
+        100,
+        1000
+      ]
+    }
+  },
+  "expression": "0 if amount == 0 else min(ceiling,max(floor,ceil_div(amount*rate,10000)))",
+  "function": "hard003",
+  "max_cases": 32,
+  "seed": 45129,
+  "version": 1
+}

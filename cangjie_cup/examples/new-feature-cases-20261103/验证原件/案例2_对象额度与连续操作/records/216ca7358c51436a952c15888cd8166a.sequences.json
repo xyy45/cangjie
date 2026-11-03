@@ -1,0 +1,3880 @@
+{
+  "algorithm": "state-sequences-object-v4",
+  "batches": [
+    {
+      "execution_argv": [
+        [
+          "cjpm",
+          "test",
+          "--no-run"
+        ],
+        [
+          "cjpm",
+          "test",
+          "--skip-build",
+          "--show-all-output"
+        ]
+      ],
+      "exit_code": 0,
+      "harness_ref": "records/ba681075fefa4ff5ba2dd3a6d60fb047.sequences.cj",
+      "harness_sha256": "6a6c9a87d0198f2592b39f0875c6f61d76555e5905376e1a80e8a3a8e6ed8612",
+      "label": "search",
+      "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+      "log_sha256": "6c2373c986e1c731b81164dea76a368a0a81271c6e81f499504e8dea9e037bec",
+      "problem": null,
+      "project_manifest": {
+        "cjpm.lock": "5787b4cbb3bb34d172270d15e510c795b0e85ffb95258d6eeb3d62fc7c4670d5",
+        "cjpm.toml": "56bdec34c329185d6092764520839e8ee1b922089ae2bef348347ff7fa5f2246",
+        "src/quota.cj": "27bf140bb015f994ba92f0227f3c09c905fd0a2bc2e3359d37155e262f3f6c4b",
+        "src/sequence_observations_test.cj": "6a6c9a87d0198f2592b39f0875c6f61d76555e5905376e1a80e8a3a8e6ed8612",
+        "src/state.cj": "d575a3196831ae74f2539c9e3d73c7b12e6ae32b21c11c8fc0f9518098821ded"
+      },
+      "project_path": "sequences/dc31208c9c904d2f9b605fca67db3f5d",
+      "result": {
+        "counts": {
+          "errors": 0,
+          "failed": 0,
+          "passed": 16,
+          "skipped": 0,
+          "total": 16
+        },
+        "execution_state": "PASS",
+        "failures": [],
+        "observations": [
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 846,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 787
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 1,
+            "planned_steps": 1,
+            "sequence_id": "SEQUENCE-9e293101a88d57a6",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-9e293101a88d57a6",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 786,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 679
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case0",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case0",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1172,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 1113
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-f43bec808881d068",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f43bec808881d068",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1004,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 897
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case1",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f43bec808881d068",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1112,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1005
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case1",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case1",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1500,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 1441
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-f749749c725a2b50",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f749749c725a2b50",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1331,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1223
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case2",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-f749749c725a2b50",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1440,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1332
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case2",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case2",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 1828,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 1769
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-4d48c36d7466385c",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-4d48c36d7466385c",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1659,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1551
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case3",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-4d48c36d7466385c",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1768,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1660
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case3",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case3",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2264,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 2205
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 3,
+            "planned_steps": 3,
+            "sequence_id": "SEQUENCE-729a11415d15e087",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-729a11415d15e087",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 1986,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1879
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case4",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-729a11415d15e087",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2095,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 1987
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case4",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-729a11415d15e087",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2204,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2096
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case4",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case4",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 2808,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 2749
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-0b207d992d5d6682",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-0b207d992d5d6682",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2423,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2315
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case5",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-0b207d992d5d6682",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2532,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2424
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case5",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 20
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "sequence_id": "SEQUENCE-0b207d992d5d6682",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2640,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2533
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case5",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 20
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                },
+                "sequence_id": "SEQUENCE-0b207d992d5d6682",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2748,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2641
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case5",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case5",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3133,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 3074
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-a39e11b70af899d4",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-a39e11b70af899d4",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 2965,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2858
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case6",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-a39e11b70af899d4",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3073,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 2966
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case6",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case6",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 3675,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 3616
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-f1488a19a8ea9270",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f1488a19a8ea9270",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3291,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3184
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case7",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f1488a19a8ea9270",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3399,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3292
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case7",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f1488a19a8ea9270",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3507,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3400
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case7",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-f1488a19a8ea9270",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3615,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3508
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case7",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case7",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 4221,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 4162
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-70c8ef3b2018cfbb",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-70c8ef3b2018cfbb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3834,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3726
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case8",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-70c8ef3b2018cfbb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 3943,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3835
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case8",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-70c8ef3b2018cfbb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4052,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 3944
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case8",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-70c8ef3b2018cfbb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4161,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4053
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case8",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case8",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 4548,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 4489
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-01bb30340f864e5c",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-01bb30340f864e5c",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4379,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4272
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case9",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-01bb30340f864e5c",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4488,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4380
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case9",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case9",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 5099,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 5039
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-dc56adb2ce797471",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-dc56adb2ce797471",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4708,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4600
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case10",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-dc56adb2ce797471",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4818,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4709
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case10",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-dc56adb2ce797471",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 4928,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4819
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case10",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 20,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-dc56adb2ce797471",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5038,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 4929
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case10",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case10",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 5429,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 5369
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-b0bf80abafc8dee7",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-b0bf80abafc8dee7",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5259,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5151
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case11",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-b0bf80abafc8dee7",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5368,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5260
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case11",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case11",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 5977,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 5917
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-6e15790be4c63213",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-6e15790be4c63213",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5589,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5481
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case12",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-6e15790be4c63213",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5698,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5590
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case12",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-6e15790be4c63213",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5807,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5699
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case12",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 10
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-6e15790be4c63213",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 5916,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 5808
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case12",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case12",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 6307,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 6247
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-e72ff7718e368e61",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-e72ff7718e368e61",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6137,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6029
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case13",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-e72ff7718e368e61",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6246,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6138
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case13",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case13",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 6855,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 6795
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 4,
+            "planned_steps": 4,
+            "sequence_id": "SEQUENCE-89b3fa284c94becb",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-89b3fa284c94becb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6467,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6359
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case14",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-89b3fa284c94becb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6576,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6468
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case14",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-89b3fa284c94becb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6685,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6577
+                },
+                "step_index": 2,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case14",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-89b3fa284c94becb",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 6794,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6686
+                },
+                "step_index": 3,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case14",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case14",
+            "unexecuted_steps": 0
+          },
+          {
+            "context": [],
+            "end_source": {
+              "coordinate": "ANSI_STRIPPED_FULL_LOG",
+              "end_char": 7184,
+              "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+              "start_char": 7124
+            },
+            "initial_state": {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            "observed_steps": 2,
+            "planned_steps": 2,
+            "sequence_id": "SEQUENCE-8c10df924b6436ff",
+            "steps": [
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 10,
+                      "reserved": 0
+                    }
+                  },
+                  "reserve"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-RESERVE",
+                "operation_text": "预留10额度",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "sequence_id": "SEQUENCE-8c10df924b6436ff",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 7014,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 6906
+                },
+                "step_index": 0,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case15",
+                "violations": []
+              },
+              {
+                "actual_return": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "applicable": [
+                  "INV-EXACT"
+                ],
+                "args": [
+                  {
+                    "$type": "QuotaState",
+                    "fields": {
+                      "available": 0,
+                      "reserved": 10
+                    }
+                  },
+                  "cancel"
+                ],
+                "before_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "expected_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "initial_state": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                "operation_id": "OP-CANCEL",
+                "operation_text": "取消10预留",
+                "reference_before": {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                "sequence_id": "SEQUENCE-8c10df924b6436ff",
+                "source": {
+                  "coordinate": "ANSI_STRIPPED_FULL_LOG",
+                  "end_char": 7123,
+                  "log_ref": "records/b52fca6877734202b4536a5282442863.sequences.log",
+                  "start_char": 7015
+                },
+                "step_index": 1,
+                "test_id": "NexusSequencesV42c8c3115d95a9761.case15",
+                "violations": []
+              }
+            ],
+            "stop_reason": "COMPLETE",
+            "test_id": "NexusSequencesV42c8c3115d95a9761.case15",
+            "unexecuted_steps": 0
+          }
+        ],
+        "observed_calls": 44,
+        "per_invariant": [
+          {
+            "id": "INV-EXACT",
+            "observed": 44,
+            "planned_applicable": 44,
+            "violations": 0
+          }
+        ],
+        "per_operation": [
+          {
+            "id": "OP-RESERVE",
+            "model_mismatches": 0,
+            "observed": 22,
+            "planned": 22
+          },
+          {
+            "id": "OP-CANCEL",
+            "model_mismatches": 0,
+            "observed": 22,
+            "planned": 22
+          }
+        ],
+        "planned_calls": 44,
+        "reason": "",
+        "state": "PASS",
+        "unexecuted_calls": 0
+      },
+      "token": "2c8c3115d95a9761",
+      "traces": [
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 20,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        },
+        {
+          "context": [],
+          "initial_state": {
+            "$type": "QuotaState",
+            "fields": {
+              "available": 10,
+              "reserved": 0
+            }
+          },
+          "steps": [
+            {
+              "args": [
+                "reserve"
+              ],
+              "operation_id": "OP-RESERVE"
+            },
+            {
+              "args": [
+                "cancel"
+              ],
+              "operation_id": "OP-CANCEL"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "binding": {
+    "candidate_id": "c_424c6e578c44408f8565e425dac8318e",
+    "check_plan_hash": "1e2bc31d89f1b771efca073392f6eda2be731d37bf83dbdf4a8dce1fd2214b25",
+    "engine_hash": "59f2e62c0942f15a715a4dab6db1936b15af3ad70f1ae565909dbbf97db3cc35",
+    "native_core": {
+      "core_compiler_hash": "f65a65c20cb570e15185b04376a19fba00581efd477665d31ed5cc47fb58f1f7",
+      "core_component_hash": "2be34e85f5fdecdd661a9ef292ca0ea16229a1cb2c84e6dbe23b1c8c6fc8e62a",
+      "core_source_hash": "01fd40490d76afdac1627f6baacfc184e88b874b9cc77cea302de034898841ab"
+    },
+    "oracle_hash": null,
+    "origin": "USER_CONFIRMED",
+    "properties_hash": null,
+    "public_check_hash": "d1e1473de4cb2033bbe7f24a021817a35d611516d7b6a772b7c45464b2df6ee5",
+    "public_evidence": {
+      "log_sha256": "f4f73462c6f9bc52861bbad2c7ef7d9be73faf0d44bbe4693ea1596d8c79f765",
+      "record_hash": "d1e1473de4cb2033bbe7f24a021817a35d611516d7b6a772b7c45464b2df6ee5",
+      "report_sha256": "f4906c3d90edc8f5cb3ea585ed73a577e1d422910341954cb28f369b77daa64c",
+      "state": "PASS"
+    },
+    "relations_hash": null,
+    "required_checks": {},
+    "sequences_hash": "1085b957e31a01e416ca9f97e7d0736931122eb5950954b483063f6ca6b2498e",
+    "task_id": "206cbc7254ea4edc948812e27cb63d35",
+    "tree_hash": "e4aa10ac569732e15ca0bf8bd2d7bca0ed1cbea55088fd3cfbfc050f8aaa2c4e",
+    "verification_plan_hash": "196597b9f35d2db54b9a4938b5daca73b4e17ba2be1b479b89c89ed082fec05c"
+  },
+  "candidate_checks": 24,
+  "candidate_id": "c_424c6e578c44408f8565e425dac8318e",
+  "distinct_failure_count": 0,
+  "failure_count": 0,
+  "failures": [],
+  "failures_truncated": false,
+  "limitations": [
+    "有限具名对象状态及固定上下文采样，不证明任意路径正确",
+    "最多128次搜索计划调用及两批各64次缩减计划调用，不保证全局最小",
+    "每报告保留最多8条失败前缀，完整批次原件仍归档；累计并集超预算则UNKNOWN",
+    "仅只读扁平对象值，不覆盖可变身份图、数据库、外部副作用或并发"
+  ],
+  "native_boundary": {
+    "component": {
+      "core_compiler_hash": "f65a65c20cb570e15185b04376a19fba00581efd477665d31ed5cc47fb58f1f7",
+      "core_component_hash": "2be34e85f5fdecdd661a9ef292ca0ea16229a1cb2c84e6dbe23b1c8c6fc8e62a",
+      "core_source_hash": "01fd40490d76afdac1627f6baacfc184e88b874b9cc77cea302de034898841ab"
+    },
+    "request": {
+      "core_version": "2.0",
+      "operation": "boundary.axes",
+      "payload": {
+        "domains": [
+          {
+            "domain": {
+              "values": [
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 0
+                  }
+                },
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 0
+                  }
+                },
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 20,
+                    "reserved": 0
+                  }
+                },
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 10
+                  }
+                },
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 10,
+                    "reserved": 10
+                  }
+                },
+                {
+                  "$type": "QuotaState",
+                  "fields": {
+                    "available": 0,
+                    "reserved": 20
+                  }
+                }
+              ]
+            },
+            "name": "state",
+            "type": "QuotaState"
+          },
+          {
+            "domain": {
+              "values": [
+                "reserve",
+                "cancel",
+                "noop"
+              ]
+            },
+            "name": "action",
+            "type": "String"
+          }
+        ],
+        "types": {
+          "QuotaState": {
+            "fields": [
+              {
+                "name": "available",
+                "type": "Int64"
+              },
+              {
+                "name": "reserved",
+                "type": "Int64"
+              }
+            ],
+            "kind": "struct"
+          }
+        }
+      },
+      "payload_hash": "a87ba411f80c31eeed0ad316c0642aed898f8f1b2cfb10c82a9f2a62e56a993f",
+      "request_id": "4e3f04045a1447ebab805002344b3b49",
+      "schema_version": 1
+    },
+    "response": {
+      "core_version": "2.0",
+      "data": {
+        "axes": [
+          [
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 0,
+                "reserved": 0
+              }
+            },
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 0
+              }
+            },
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 20,
+                "reserved": 0
+              }
+            },
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 0,
+                "reserved": 10
+              }
+            },
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 10,
+                "reserved": 10
+              }
+            },
+            {
+              "$type": "QuotaState",
+              "fields": {
+                "available": 0,
+                "reserved": 20
+              }
+            }
+          ],
+          [
+            "reserve",
+            "cancel",
+            "noop"
+          ]
+        ]
+      },
+      "operation": "boundary.axes",
+      "payload_hash": "a87ba411f80c31eeed0ad316c0642aed898f8f1b2cfb10c82a9f2a62e56a993f",
+      "reason": "COMPLETED",
+      "request_id": "4e3f04045a1447ebab805002344b3b49",
+      "schema_version": 1,
+      "status": "OK"
+    }
+  },
+  "observed_calls": 44,
+  "per_invariant": [
+    {
+      "id": "INV-EXACT",
+      "observed": 44,
+      "planned_applicable": 44,
+      "violations": 0
+    }
+  ],
+  "per_operation": [
+    {
+      "id": "OP-RESERVE",
+      "model_mismatches": 0,
+      "observed": 22,
+      "planned": 22
+    },
+    {
+      "id": "OP-CANCEL",
+      "model_mismatches": 0,
+      "observed": 22,
+      "planned": 22
+    }
+  ],
+  "public_test_state": "PASS",
+  "reason": "",
+  "regression_refs": [
+    {
+      "candidate_id": "c_50573ebbba2545f0ac12201e4dafdf42",
+      "report_ref": "records/4596bde7e5764886bca1e3ccad7f453f.sequences.json",
+      "report_sha256": "38a13b852306c60119ffd737e40f3d9ac84e4442095d049e56212f56de2a94a8"
+    }
+  ],
+  "regression_traces": 5,
+  "schema_version": 1,
+  "search_planned_calls": 44,
+  "search_traces": 16,
+  "seed": 23,
+  "shrink_planned_calls": 0,
+  "shrink_traces": 0,
+  "state": "PASS"
+}

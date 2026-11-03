@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "只限制积分余额与申请金额，遗漏订单比例抵扣上限。",
+  "family": "points_dual_cap",
+  "function": "hard007",
+  "goal": "points在0..100000、amount在0..10000分、requested在0..1000分、percent在0..50。每100积分可抵1分，余数积分不可折算；订单抵扣上限为amount*percent/100整数截断。返回requested、积分可抵金额、订单抵扣上限三者的最小值。",
+  "id": "business_hard_007",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 1
+}

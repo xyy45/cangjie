@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "quantity",
+  "function": "calc061",
+  "goal": "数量x仅在1至19（含）有效。",
+  "id": "business_061",
+  "kind": "Bool",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 3
+}

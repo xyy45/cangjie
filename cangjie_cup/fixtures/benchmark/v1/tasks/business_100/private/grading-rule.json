@@ -1,0 +1,18 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": 0,
+      "points": [
+        8,
+        22,
+        7
+      ]
+    }
+  },
+  "expression": "max(0,x-7)*2",
+  "function": "calc100",
+  "max_cases": 32,
+  "seed": 1828,
+  "version": 1
+}

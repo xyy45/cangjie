@@ -1,0 +1,12 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "family": "page_size",
+  "function": "calc046",
+  "goal": "分页大小至少1且最多16，返回截断后的值。",
+  "id": "business_046",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}

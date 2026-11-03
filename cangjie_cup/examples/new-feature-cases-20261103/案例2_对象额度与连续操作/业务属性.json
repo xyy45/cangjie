@@ -1,0 +1,71 @@
+{
+  "version": 4,
+  "kind": "single",
+  "function": "applyQuota",
+  "domains": {
+    "state": {
+      "values": [
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 20,
+            "reserved": 0
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 10,
+            "reserved": 10
+          }
+        },
+        {
+          "$type": "QuotaState",
+          "fields": {
+            "available": 0,
+            "reserved": 20
+          }
+        }
+      ]
+    },
+    "action": {
+      "values": [
+        "reserve",
+        "cancel",
+        "noop"
+      ]
+    }
+  },
+  "properties": [
+    {
+      "id": "PROP-CONSERVE",
+      "text": "操作前后总额度守恒且两个字段非负",
+      "precondition": "True",
+      "assertion": "object_get(result,\"available\") >= 0 and object_get(result,\"reserved\") >= 0 and object_get(result,\"available\")+object_get(result,\"reserved\") == object_get(arg0,\"available\")+object_get(arg0,\"reserved\")"
+    }
+  ],
+  "seed": 23,
+  "max_cases": 32,
+  "excluded_inputs": []
+}

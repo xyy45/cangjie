@@ -1,0 +1,17 @@
+{
+  "domains": {
+    "x": {
+      "max": 1000,
+      "min": -2,
+      "points": [
+        13,
+        4
+      ]
+    }
+  },
+  "expression": "x > 0 and x <= 13",
+  "function": "calc002",
+  "max_cases": 32,
+  "seed": 1730,
+  "version": 1
+}

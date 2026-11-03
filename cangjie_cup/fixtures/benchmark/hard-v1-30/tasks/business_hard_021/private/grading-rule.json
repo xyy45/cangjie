@@ -1,0 +1,41 @@
+{
+  "domains": {
+    "paid": {
+      "max": 10000,
+      "min": 0,
+      "points": [
+        0,
+        100,
+        1000,
+        10000
+      ]
+    },
+    "refunded": {
+      "max": 10000,
+      "min": 0,
+      "points": [
+        0,
+        100,
+        900,
+        1000
+      ]
+    },
+    "requested": {
+      "max": 2000,
+      "min": -1,
+      "points": [
+        -1,
+        0,
+        1,
+        100,
+        200,
+        2000
+      ]
+    }
+  },
+  "expression": "-1 if refunded > paid or requested <= 0 or requested > paid-refunded else refunded+requested",
+  "function": "hard021",
+  "max_cases": 32,
+  "seed": 45147,
+  "version": 1
+}

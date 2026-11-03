@@ -1,0 +1,13 @@
+{
+  "allowed_paths": [
+    "src/logic.cj"
+  ],
+  "defect": "免运资格遗漏会员分支，低于门槛的会员被收运费。",
+  "family": "discount_shipping",
+  "function": "hard016",
+  "goal": "amount在0..20000分、coupon在0..5000分、threshold在5000..15000分、vip为Bool。折后商品金额为max(0,amount-coupon)；会员或折后金额达到threshold（含）免运费，其余收800分运费。返回折后商品金额加运费。",
+  "id": "business_hard_016",
+  "kind": "Int64",
+  "provenance": "TEAM_AUTHORED_SYNTHETIC",
+  "variant": 2
+}
