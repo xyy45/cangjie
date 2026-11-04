@@ -38,6 +38,17 @@ function sliceView(result){
  return {slices:table?.status==='VALID'&&table.data?.scope==='VARIABLE_TABLE'?table.data.slices:{},recovered:false};
 }
 function sliceLines(result,symbol){return new Set(sliceView(result).slices?.[symbol]||[]);}
+// Presentation excludes the retired DDG JSON only when all visible outputs exist.
+// Never mutate the stored report or promote missing/failed analysis tools.
+function analysisDisplayStatus(report,{graphsReady=false}={}){
+ if(report?.status!=='PARTIAL'||report.error||!graphsReady||report.point_graph?.status==='INVALID')return report?.status;
+ const observations=report.observations||[];
+ if(observations.length!==3)return report.status;
+ const byTool=new Map(observations.map(o=>[o.tool,o]));
+ const slice=byTool.get('sympas_slice')||byTool.get('sympas_slice_table');
+ const ddg=byTool.get('sympas_dep_graph'),symbols=byTool.get('ast_symbol_extractor');
+ return byTool.size===3&&slice?.status==='VALID'&&symbols?.status==='VALID'&&['INVALID','EMPTY'].includes(ddg?.status)?'COMPLETE':report.status;
+}
 class AnalysisSession{
   constructor(){this.epoch=0;this.report=null;this.busy=false;}
   select(){if(this.busy)return null;this.epoch++;this.report=null;return this.epoch;}
@@ -45,5 +56,5 @@ class AnalysisSession{
   apply(token,report){if(token!==this.epoch)return false;this.report=report;this.busy=['READY','RUNNING'].includes(report.status);return true;}
   fail(token){if(token===this.epoch)this.busy=false;}
 }
-return {defaultTargetLine,layoutGraph,sliceLines,sliceView,AnalysisSession};
+return {defaultTargetLine,layoutGraph,sliceLines,sliceView,analysisDisplayStatus,AnalysisSession};
 });

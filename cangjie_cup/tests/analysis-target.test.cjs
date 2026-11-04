@@ -101,3 +101,27 @@ test('legacy table reports remain identifiable and require explicit reanalysis t
  assert.match(get('analysis-slice-note').textContent,/历史切片表/);assert.equal(get('analysis-slice-count').textContent,2);
  assert.equal(requests.filter(r=>r.method==='POST').length,0);
 });
+
+test('uploaded source analyzes on the first click with default MCP submission and no checkbox action',async()=>{
+ const {get,show,requests}=page(null,'mcp');await show();
+ const file=new Blob([new TextEncoder().encode('public func f(): Int64 {\n return 1\n}\n')]);file.name='direct.cj';
+ get('analysis-file').onchange({target:{files:[file],value:'file'}});
+ for(let i=0;i<100&&get('analysis-filename').textContent!=='direct.cj';i++)await new Promise(resolve=>setImmediate(resolve));
+ await get('analysis-run').onclick();
+ const calls=requests.filter(r=>r.method==='POST');assert.equal(calls.length,1);
+ assert.equal(calls[0].body.get('consent'),'true');assert.equal(await calls[0].body.get('file').text(),'public func f(): Int64 {\n return 1\n}\n');
+});
+test('DDG-only invalid JSON displays normal analysis while its original error remains in evidence',async()=>{
+ const graphs=Object.fromEntries(['Sdg','Pdg','Cfg','Cg','Cdg','Dfg'].map(kind=>[kind,{status:'SAVED',source_sha256:'hash',graph_type:kind,
+  view_url:'/api/analysis/saved/graphs/'+kind+'.svg',download_url:'/api/analysis/saved/graphs/'+kind+'.svg?download=1'}]));
+ const {get,show}=page(null,'mcp',{reportOverrides:{status:'PARTIAL',native_graphs:{schema_version:1,graphs},observations:[
+  {tool:'sympas_slice',status:'VALID',data:{slices:{x:[2,3]}}},
+  {tool:'sympas_dep_graph',status:'INVALID',reason:'依赖边端点不存在',raw_sha256:'raw-ddg',data:{}},
+  {tool:'ast_symbol_extractor',status:'VALID',data:{symbols:[]}}
+ ]}});
+ await show();assert.equal(get('analysis-status').textContent,'正常分析');assert.equal(get('analysis-status').className,'status good');
+ assert.equal(get('analysis-active-tool').textContent,'');
+ get('analysis-evidence-open').onclick();
+ const content=JSON.stringify(get('analysis-evidence-content').children);
+ assert.match(content,/依赖边端点不存在/);assert.match(content,/结果无效/);
+});

@@ -47,3 +47,35 @@ test('native sympas_slice takes precedence over a legacy table, and its failure 
  report.observations[1].status='INVALID';
  assert.deepEqual([...sliceLines(report,'v')],[]);
 });
+
+function uiReport(depStatus='INVALID'){
+ return {status:'PARTIAL',observations:[
+  {tool:'sympas_slice',status:'VALID',data:{slices:{x:[2,3]}}},
+  {tool:'sympas_dep_graph',status:depStatus,reason:'依赖边端点不存在',data:{}},
+  {tool:'ast_symbol_extractor',status:'VALID',data:{symbols:[{symbol:'x'}]}}
+ ]};
+}
+test('display status ignores DDG-only validation when every displayed result is available without rewriting evidence',()=>{
+ const report=uiReport(),before=JSON.stringify(report);
+ assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),'COMPLETE');
+ assert.equal(JSON.stringify(report),before);
+ assert.equal(core.analysisDisplayStatus(uiReport('EMPTY'),{graphsReady:true}),'COMPLETE');
+});
+test('missing original graphs, invalid PDG or failed slices and symbols retain a partial result',()=>{
+ assert.equal(core.analysisDisplayStatus(uiReport(),{graphsReady:false}),'PARTIAL');
+ for(const tool of ['sympas_slice','ast_symbol_extractor']){
+  const report=uiReport();report.observations.find(o=>o.tool===tool).status='FAILED';
+  assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),'PARTIAL');
+ }
+ const report=uiReport();report.point_graph={status:'INVALID',reason:'bad PDG'};
+ assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),'PARTIAL');
+});
+test('tool execution errors, incomplete observations and terminal failures cannot be promoted',()=>{
+ for(const state of ['FAILED','IN_DOUBT','RUNNING','READY']){
+  const report=uiReport();report.status=state;
+  assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),state);
+ }
+ for(const state of ['FAILED','UNAVAILABLE'])assert.equal(core.analysisDisplayStatus(uiReport(state),{graphsReady:true}),'PARTIAL');
+ const report=uiReport();report.error='分析未完整结束';assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),'PARTIAL');
+ delete report.error;report.observations.pop();assert.equal(core.analysisDisplayStatus(report,{graphsReady:true}),'PARTIAL');
+});
