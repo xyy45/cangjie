@@ -4,13 +4,11 @@ import io
 import re
 from flask import jsonify,request,session,send_file
 from nexus.analysis import samples
-from nexus.analysis.point import point_slice,point_archive
 from nexus.analysis.normalize import MAX_SOURCE,validate_source
 from nexus.analysis.service import AnalysisService,AnalysisConflict
 
 
 def svg_links(result,base):
-    result['point_slice_url']=base+'/point-slice'
     if result.get('callgraph',{}).get('status')=='SAVED':
         result['callgraph']=dict(result['callgraph'],view_url=base+'/callgraph.svg',download_url=base+'/callgraph.svg?download=1')
     for kind,graph in result.get('native_graphs',{}).get('graphs',{}).items():
@@ -29,17 +27,8 @@ def svg_response(raw,identity,kind='Cg'):
 
 
 def point_response(result,archive):
-    if (set(request.args)-{'line','download'} or len(request.args.getlist('line'))!=1 or
-            not re.fullmatch(r'[1-9][0-9]{0,3}',request.args['line']) or
-            len(request.args.getlist('download'))>1 or request.args.get('download','0') not in ('0','1')):
-        return jsonify(error='请提供有效的切片目标行'),400
-    try:derived=point_slice(result,int(request.args['line']))
-    except ValueError as exc:return jsonify(error=str(exc)),400
-    if request.args.get('download')!='1':return jsonify(derived)
-    if derived['status']!='VALID':return jsonify(error=derived['reason']),409
-    stream=point_archive(archive(),result,derived['line'])
-    return send_file(stream,mimetype='application/zip',as_attachment=True,
-        download_name='CangSight-point-slice-L'+str(derived['line'])+'.zip')
+    # Route retained for stale bookmarks; no new local slice is calculated.
+    return jsonify(error='本地按行切片已停用，请使用MCP sympas_slice的原生结果',code='LOCAL_SLICE_RETIRED'),410
 
 
 def register_analysis(app,store):

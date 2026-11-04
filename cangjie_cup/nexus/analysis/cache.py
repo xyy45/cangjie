@@ -8,12 +8,16 @@ import time
 
 from nexus.analysis.normalize import TOOLS,normalize
 
-PROFILE=7
+PROFILE=8
 CACHE_SECONDS=300
 
 
 def digest(value):
     return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def tools(profile=None):
+    return ('sympas_slice_table','sympas_dep_graph','ast_symbol_extractor') if profile in (6,7) else TOOLS
 
 
 def arguments(tool,source,criterion,*,profile=None):
@@ -43,10 +47,11 @@ def verified(service,identity,actor_id,expected_key,*,allow_previous=False):
     original=json.loads((root/'result.json').read_bytes())
     for field in ('id','status','source','analysis_profile','cache_key','completed_at','observations','slice_criterion','origin'):
         if original.get(field)!=report.get(field):raise ValueError('缓存元数据与封存原件不符')
-    if (report['status']!='COMPLETE' or report.get('analysis_profile') not in ((PROFILE,6) if allow_previous else (PROFILE,)) or
+    if (report['status']!='COMPLETE' or report.get('analysis_profile') not in ((PROFILE,7,6) if allow_previous else (PROFILE,)) or
             report.get('cache_key')!=expected_key):raise ValueError('缓存执行绑定不符')
     observations=report['observations']
-    if len(observations)!=len(TOOLS) or {o['tool'] for o in observations}!=set(TOOLS):raise ValueError('缓存工具证据不完整')
+    expected_tools=tools(report['analysis_profile'])
+    if len(observations)!=len(expected_tools) or {o['tool'] for o in observations}!=set(expected_tools):raise ValueError('缓存工具证据不完整')
     for o in observations:
         raw=json.loads((root/o['raw_ref']).read_bytes())
         if (raw.get('tool')!=o['tool'] or raw.get('source_sha256')!=report['source']['source_sha256'] or

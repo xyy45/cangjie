@@ -97,15 +97,11 @@ def test_session_point_route_and_download_bind_the_requested_line_and_actor(tmp_
     service=app.extensions['analysis_service'];service.client_factory=Client
     job=service.create(validate_source('f.cj',CODE.encode()),actor_id=actor,request_key='point',origin='UPLOAD');service.run(job['id'])
     base='/api/analysis/'+job['id']+'/point-slice'
-    response=client.get(base+'?line=3');assert response.status_code==200,response.json
-    assert response.json['lines']==[2,3]
-    response=client.get(base+'?line=5&download=1');assert response.status_code==200
-    with zipfile.ZipFile(io.BytesIO(response.data)) as z:assert json.loads(z.read('point-slice.json'))['lines']==[4,5]
+    for suffix in ('?line=3','?line=5&download=1','','?line=0','?line=9999','?line=true','?line=2&extra=1'):
+        response=client.get(base+suffix)
+        assert response.status_code==410
+        assert response.json['code']=='LOCAL_SLICE_RETIRED'
     assert app.test_client().get(base+'?line=3').status_code==404
-    for suffix in ('','?line=0','?line=9999','?line=true','?line=2&extra=1'):
-        assert client.get(base+suffix).status_code==400
-    assert client.get(base+'?line=7').json['status']=='EMPTY'
-    assert client.get(base+'?line=7&download=1').status_code==409
 
 
 def test_condition_node_is_included_even_when_it_is_not_a_data_definition(tmp_path):
@@ -121,13 +117,13 @@ def test_multiple_statements_on_one_line_are_all_seeds_without_inventing_nodes(t
     assert r['seed_nodes']==['extra','first'] and r['node_ids']==['a','entry','extra','first']
 
 
-def test_browser_and_download_traversal_produce_identical_results(tmp_path):
+def test_browser_cannot_compute_local_slices_from_old_graph_records(tmp_path):
     import subprocess
-    from nexus.analysis.point import point_slice
     r=report(tmp_path)
-    js="const c=require('./nexus/demo/static/analysis-core.js');let s='';process.stdin.on('data',x=>s+=x);process.stdin.on('end',()=>{const r=JSON.parse(s);console.log(JSON.stringify([3,5,7].map(n=>c.pointSlice(r,n))));});"
-    result=subprocess.run(['node','-e',js],input=json.dumps(r),text=True,capture_output=True,check=True)
-    assert json.loads(result.stdout)==[point_slice(r,line) for line in (3,5,7)]
+    js="const c=require('./nexus/demo/static/analysis-core.js');console.log(JSON.stringify({retired:c.pointSlice===undefined,lines:[...c.sliceLines({},'v')]}));"
+    result=subprocess.run(['node','-e',js],text=True,capture_output=True,check=True)
+    assert json.loads(result.stdout)=={'retired':True,'lines':[]}
+
 
 
 @pytest.mark.parametrize('ddg_status,nodes',[('EMPTY',[]),('INVALID',[dict(id='bad',label='[L999]: bad')])])

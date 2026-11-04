@@ -72,15 +72,16 @@ Error: cjpm test failed'''
     return store,task,check,context
 
 
-def test_focus_reconstructs_confirmed_failure_and_original_point_graph_without_replay(tmp_path):
+def test_focus_preserves_confirmed_failure_and_native_variable_evidence_without_local_slicing(tmp_path):
     store,task,check,context=setup(tmp_path);before=len(GraphTransport.calls)
     service=api()(store);event=service.create(task.id,task.baseline_id);report=event['localization']
-    assert report['status']=='COMPLETE' and report['binding']['subject_id']==task.baseline_id
+    assert report['status']=='PARTIAL' and report['binding']['subject_id']==task.baseline_id
     assert report['binding']['spec_hash']==task.spec_hash
     target=report['targets'][0];point=target['locations'][0]['anchors'][0]['slice']
     assert target['args']==[2] and target['actual']=='3' and target['expected']=='2'
-    assert point['status']=='VALID' and point['lines']==[2,3]
-    assert point['raw_ref'].startswith('records/') and point['raw_sha256']
+    assert point['status']=='UNAVAILABLE' and point['origin']=='MCP_SYMPAS_SLICE'
+    native=next(o for f in context['analysis']['files'] for o in f['tools'] if o['tool']=='sympas_slice')
+    assert native['status']=='VALID' and native['included'] and native['data']['slices']
     assert service.verify(task.id,event)==report and len(GraphTransport.calls)==before
     assert service.create(task.id,task.baseline_id)==event
     assert len([e for e in store.records(task.id,'event') if e['type']=='LOCALIZATION_CONTEXT'])==1
@@ -92,7 +93,9 @@ def test_focus_tampering_and_foreign_binding_are_rejected(tmp_path,change):
     if change=='log':(tmp_path/check.log_ref).write_text('changed')
     elif change=='report':(tmp_path/check.report_ref).write_text('{}')
     elif change=='pdg-copy':
-        ref=event['localization']['targets'][0]['locations'][0]['anchors'][0]['slice']['raw_ref'];(tmp_path/ref).write_text('{}')
+        analysis_event=next(e for e in store.records(task.id,'event') if e['type']=='ANALYSIS_CONTEXT')
+        ref=next(e['record_ref'] for e in analysis_event['evidence_files'] if e['record_ref'].endswith('analysis.observations.sympas_dep_graph.json'))
+        (tmp_path/ref).write_text('{}')
     elif change=='focus':event['localization']['targets'][0]['actual']='forged'
     else:event['task_id']='foreign'
     with pytest.raises(ValueError):service.verify(task.id,event)

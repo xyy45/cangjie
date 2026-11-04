@@ -40,7 +40,9 @@ class NativeClient(FakeClient):
         return super().analyze(tool,args)
 
 
-def test_new_jobs_use_native_table_without_claiming_a_line_criterion(tmp_path):
+def test_historical_profile7_table_binding_remains_readable(tmp_path,monkeypatch):
+    from nexus.analysis import cache
+    monkeypatch.setattr(cache,'PROFILE',7)
     NativeClient.calls=[]
     service=AnalysisService(tmp_path,client_factory=NativeClient)
     job=service.create(validate_source('add.cj',SOURCE),actor_id='a',request_key='new',origin='UPLOAD',slice_line=2)
@@ -72,7 +74,9 @@ def test_native_table_is_sent_through_the_fixed_client_endpoint():
     assert result['http_status']==200 and requests[0].url.path=='/tools/sympas_slice_table'
 
 
-def test_native_model_context_contains_whole_table_scope(tmp_path):
+def test_historical_profile7_model_context_preserves_table_scope(tmp_path,monkeypatch):
+    from nexus.analysis import cache
+    monkeypatch.setattr(cache,'PROFILE',7)
     import asyncio
     from tests.analysis.test_repair_bridge import setup
     store,task,context,bridge=setup(tmp_path)

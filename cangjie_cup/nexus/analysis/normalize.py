@@ -3,8 +3,8 @@ import hashlib
 import json
 import re
 
-TOOLS=('sympas_slice_table','sympas_dep_graph','ast_symbol_extractor')
-SUPPORTED_TOOLS=(*TOOLS,'sympas_slice')
+TOOLS=('sympas_slice','sympas_dep_graph','ast_symbol_extractor')
+SUPPORTED_TOOLS=(*TOOLS,'sympas_slice_table')
 MAX_SOURCE=65536
 MAX_LINES=1000
 LIMITATIONS=[

@@ -195,7 +195,7 @@ class ImpactService:
             rows=db.execute('SELECT id,status,payload FROM analysis_jobs WHERE actor_id=? ORDER BY rowid DESC',(actor,)).fetchall()
         for identity,status,raw in rows:
             payload=json.loads(raw)
-            if (payload.get('analysis_profile')==ANALYSIS_CACHE.PROFILE and payload.get('slice_scope')=='VARIABLE_TABLE' and payload['origin']=='REGISTERED' and all(payload['source'][k]==source[k] for k in ('filename','source_sha256')) and
+            if (payload.get('analysis_profile')==ANALYSIS_CACHE.PROFILE and payload.get('slice_scope')==('MCP_NATIVE' if ANALYSIS_CACHE.PROFILE>=8 else 'VARIABLE_TABLE') and payload['origin']=='REGISTERED' and all(payload['source'][k]==source[k] for k in ('filename','source_sha256')) and
                     payload.get('slice_criterion',slice_criterion(source))==criterion):
                 if status in ACTIVE:raise AnalysisConflict('对应源码分析仍在运行')
                 return self.analysis.get(identity,actor_id=actor),True

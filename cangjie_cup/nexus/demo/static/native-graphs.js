@@ -1,7 +1,7 @@
 (function(root,factory){const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;else root.NativeGraphUI=api;})(typeof globalThis!=='undefined'?globalThis:this,function(root){
 'use strict';
-const TYPES=['Ddg','Pdg','Sdg','Cfg','Cdg','Cg','Dfg'];
-const LABELS={Ddg:'数据依赖 DDG',Pdg:'程序依赖 PDG',Sdg:'系统依赖 SDG',Cfg:'控制流 CFG',Cdg:'控制依赖 CDG',Cg:'函数调用 CG',Dfg:'数据流 DFG'};
+const TYPES=['Sdg','Pdg','Cfg','Cg','Cdg','Dfg'];
+const LABELS={Pdg:'程序依赖 PDG',Sdg:'系统依赖 SDG',Cfg:'控制流 CFG',Cdg:'控制依赖 CDG',Cg:'函数调用 CG',Dfg:'数据流 DFG'};
 function safeURL(value,kind,origin){
  if(typeof value!=='string'||!value.startsWith('/')||value.startsWith('//'))return false;
  try{const u=new URL(value,origin);return u.origin===origin&&!u.username&&!u.password&&!u.hash&&
@@ -41,7 +41,7 @@ function mount({onSelect}){
  function resize(){const size=fitSize(canvas.clientWidth||900,aspect);canvas.style.height=size.height+'px';apply();}
  function apply(){if(image)image.style.transform=`translate(${pose.x}px, ${pose.y}px) scale(${pose.zoom})`;canvas.style.touchAction=pose.zoom>1?'none':'pan-y';canvas.style.cursor=image&&pose.zoom>1?'grab':'default';}
  function render(report,kind){
-  get('analysis-graph-title').textContent=LABELS[kind];canvas.setAttribute('aria-label',LABELS[kind]);
+  get('analysis-graph-title').textContent=LABELS[kind]||'不支持的图类型';canvas.setAttribute('aria-label',LABELS[kind]||'不支持的图类型');
   for(const b of buttons){const current=asset(report,b.dataset.kind);b.classList.toggle('selected',b.dataset.kind===kind);b.setAttribute('aria-pressed',String(b.dataset.kind===kind));b.title=current.ready?LABELS[b.dataset.kind]:current.reason;b.disabled=['READY','RUNNING'].includes(report?.status);}
   const selected=asset(report,kind),next=[report?.id,report?.source?.source_sha256,report?.status,kind,selected.view_url,selected.sha256,selected.ready,selected.reason].join('|');
   if(next===key)return;

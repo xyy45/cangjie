@@ -1,13 +1,15 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-function page(callgraph,native=false,{omitPointOnResult=false,cacheHit=false}={}){
+function page(callgraph,native=false,{omitPointOnResult=false,cacheHit=false,sourceOverride=null,reportOverrides={}}={}){
  const nodes=new Map();
  const element=()=>({children:[],textContent:'',value:'',hidden:false,disabled:false,dataset:{},style:{},showModal(){},classList:{toggle(){}},setAttribute(){},append(...xs){this.children.push(...xs);},replaceChildren(...xs){this.children=xs;},querySelectorAll(){return[];},querySelector(){return null;}});
  const get=id=>{if(!nodes.has(id))nodes.set(id,element());return nodes.get(id);};
- const source={filename:'f.cj',code:'func f(): Int64 {\n let x = 2\n return x\n}\n',line_count:4,source_sha256:'hash'};
+ const source=sourceOverride||{filename:'f.cj',code:'func f(): Int64 {\n let x = 2\n return x\n}\n',line_count:4,source_sha256:'hash'};
  const requests=[],report={id:'saved',status:callgraph?'PARTIAL':'COMPLETE',callgraph,source,slice_criterion:{line:3,direction:'Bwd',method:'SymPas'},observations:[{tool:'sympas_slice',status:'VALID',data:{slices:{x:[2,3]}}}]};
  if(native){report.slice_scope='VARIABLE_TABLE';report.observations=[{tool:'sympas_slice_table',status:'VALID',data:{scope:'VARIABLE_TABLE',slices:{x:[2,3],a:[1]}}}];}
  if(native==='point'){report.point_slice_url='/api/analysis/saved/point-slice';report.point_graph={status:'VALID',source_sha256:'hash',raw_sha256:'raw',graph:{graph_type:'Pdg',nodes:[{id:'one',label:'[L2]: x = 2',line:2},{id:'two',label:'[L3]: return x',line:3}],edges:[{from:'one',to:'two'}]}};}
+ if(native==='mcp'){report.analysis_profile=8;report.slice_scope='MCP_NATIVE';report.observations=[{tool:'sympas_slice',status:'VALID',data:{slices:{x:[2,3],a:[1]}}}];}
+ Object.assign(report,reportOverrides);
  const ctx={document:{getElementById:get,createElement:element,createElementNS:element},crypto:require('node:crypto').webcrypto,TextDecoder,FormData,csrf:'csrf',URL,location:{origin:'http://localhost'},toast(){},setTimeout:()=>0,clearTimeout(){},fetch:async(url,options={})=>{
   requests.push({url,...options});let data;
   if(url==='/analysis/samples')data={samples:[{id:'s',title:'sample'}]};
@@ -22,127 +24,80 @@ function page(callgraph,native=false,{omitPointOnResult=false,cacheHit=false}={}
  for(const file of ['analysis-core.js','native-graphs.js','analysis.js'])vm.runInContext(fs.readFileSync('nexus/demo/static/'+file,'utf8'),ctx);
  return{get,requests,show:()=>vm.runInContext('AnalysisUI.show()',ctx),openBound:(line)=>{ctx.boundReport={...report,display_origin:'REGISTERED_BOUND'};ctx.boundLine=line;return vm.runInContext('AnalysisUI.openBound(boundReport,{line:boundLine})',ctx);}};
 }
-test('bound localization opens the requested baseline statement rather than the default criterion',()=>{
- const p=page(null,'point');assert.equal(p.openBound(2),true);assert.equal(p.get('analysis-target-line').value,'2');assert.equal(p.get('analysis-slice-mode').value,'point');
+
+test('bound focus opens a source location without deriving a new local slice',()=>{
+ const p=page(null,'mcp');assert.equal(p.openBound(2),true);assert.equal(p.get('analysis-target-line').value,'2');
+ assert.equal(p.get('analysis-variable').value,'x');assert.equal(p.get('analysis-slice-count').textContent,2);
  assert.equal(p.openBound(999),false);assert.equal(p.get('analysis-target-line').value,'2');
 });
-test('selected source line becomes actual request criterion and old results stay labelled',async()=>{
- const {get,requests,show}=page();await show();
- get('analysis-source').children[1].onclick();
- assert.equal(get('analysis-target-line').value,'2');
- assert.match(get('analysis-target-note').textContent,/L3/);assert.match(get('analysis-target-note').textContent,/L2/);
+test('changing request line preserves tool rows until an actual analysis request',async()=>{
+ const {get,requests,show}=page(null,'mcp');await show();get('analysis-source').children[1].onclick();
+ assert.match(get('analysis-target-note').textContent,/请求行号为 L3/);
+ assert.match(get('analysis-source').children[2].className,/is-slice/);
  assert.equal(requests.filter(r=>r.method==='POST').length,0);
  await get('analysis-run').onclick();
  assert.equal(JSON.parse(requests.find(r=>r.method==='POST').body).slice_line,2);
- assert.doesNotMatch(get('analysis-target-note').textContent,/显示.*L3/);
 });
-test('saved native SVG is accessible for partial results and cleared on source switch',async()=>{
- const {get,show}=page({status:'SAVED',source_sha256:'hash',view_url:'/api/analysis/saved/callgraph.svg',download_url:'/api/analysis/saved/callgraph.svg?download=1'});
- await show();assert.equal(get('analysis-graph-download').hidden,true);
- await get('analysis-history').onchange({target:{value:'saved'}});
+test('original CG links remain available explicitly and clear on a source switch',async()=>{
+ const cg={status:'SAVED',source_sha256:'hash',sha256:'svg',view_url:'/api/analysis/saved/callgraph.svg',download_url:'/api/analysis/saved/callgraph.svg?download=1'};
+ const {get,show}=page(cg,'mcp');await show();await get('analysis-history').onchange({target:{value:'saved'}});
  get('analysis-graph-types').children.find(b=>b.dataset.kind==='Cg').onclick();
- assert.equal(get('analysis-graph-download').hidden,false);
  assert.equal(get('analysis-graph').children[0].src,'/api/analysis/saved/callgraph.svg');
  assert.equal(get('analysis-graph-download').href,'/api/analysis/saved/callgraph.svg?download=1');
- await get('analysis-samples').children[0].onclick();
- assert.equal(get('analysis-graph-download').hidden,true);
- assert.equal(get('analysis-graph-download').href,'');
+ await get('analysis-samples').children[0].onclick();assert.equal(get('analysis-graph-download').hidden,true);
 });
-test('restoring analysis restores its recorded target and rejects invalid edits',async()=>{
- const {get,show}=page();await show();get('analysis-target-line').value='2';get('analysis-target-line').onchange({target:get('analysis-target-line')});
- await get('analysis-history').onchange({target:{value:'saved'}});
- assert.equal(get('analysis-target-line').value,'3');
- get('analysis-target-line').value='999';get('analysis-target-line').onchange({target:get('analysis-target-line')});
- assert.equal(get('analysis-target-line').value,'3');
+test('restoring a record keeps its request criterion and rejects invalid edits',async()=>{
+ const {get,show}=page(null,'mcp');await show();get('analysis-target-line').onchange({target:{value:'2'}});
+ await get('analysis-history').onchange({target:{value:'saved'}});assert.equal(get('analysis-target-line').value,'3');
+ get('analysis-target-line').onchange({target:{value:'999'}});assert.equal(get('analysis-target-line').value,'3');
 });
-
-test('native table switches highlight rows by variable and the target control remains a navigation anchor',async()=>{
- const {get,show,requests}=page(undefined,true);await show();
- assert.equal(get('analysis-slice-count').textContent,2);
- assert.match(get('analysis-target-note').textContent,/变量切片表/);
- assert.match(get('analysis-source').children[1].className,/is-slice/);
- assert.doesNotMatch(get('analysis-source').children[0].className,/is-slice/);
+test('MCP variable rows alone drive highlights, including rows after the request line',async()=>{
+ const {get,show,requests}=page(null,'mcp');await show();
+ assert.equal(get('analysis-slice-count').textContent,2);assert.match(get('analysis-source').children[2].className,/is-slice/);
+ get('analysis-target-line').oninput({target:{value:'2'}});assert.match(get('analysis-source').children[2].className,/is-slice/);
  get('analysis-variable').onchange({target:{value:'a'}});
- assert.match(get('analysis-source').children[0].className,/is-slice/);
- assert.doesNotMatch(get('analysis-source').children[1].className,/is-slice/);
- get('analysis-source').children[1].onclick();
- assert.match(get('analysis-target-note').textContent,/定位 L2/);
+ assert.match(get('analysis-source').children[0].className,/is-slice/);assert.doesNotMatch(get('analysis-source').children[2].className,/is-slice/);
  assert.equal(requests.filter(r=>r.method==='POST').length,0);
 });
-
-test('point mode updates source highlights and download target immediately without a new MCP request',async()=>{
- const {get,show,requests}=page(undefined,'point');await show();
- get('analysis-slice-mode').onchange({target:{value:'point'}});
- assert.equal(get('analysis-slice-mode').value,'point');
- assert.equal(get('analysis-variable').hidden,true);
- get('analysis-source').children[1].onclick();
- assert.equal(get('analysis-slice-count').textContent,1);
- assert.match(get('analysis-source').children[1].className,/is-slice/);
- assert.doesNotMatch(get('analysis-source').children[2].className,/is-slice/);
- assert.match(get('analysis-point-download').href,/line=2&download=1/);
- get('analysis-source').children[3].onclick();
- assert.equal(get('analysis-point-download').hidden,true);
- assert.ok(get('analysis-source').children.every(n=>!n.className.includes('is-slice')));
- assert.equal(requests.filter(r=>r.method==='POST').length,0);
- get('analysis-slice-mode').onchange({target:{value:'table'}});
- assert.equal(get('analysis-slice-count').textContent,2);
- assert.equal(get('analysis-variable').disabled,false);
+test('SDG remains default and all six other-than-DDG original choices remain independently selectable',async()=>{
+ const {get,show}=page(null,'mcp');await show();
+ assert.equal(get('analysis-graph-title').textContent,'系统依赖 SDG');
+ assert.deepEqual(get('analysis-graph-types').children.map(b=>b.dataset.kind),['Sdg','Pdg','Cfg','Cg','Cdg','Dfg']);
+ get('analysis-graph-types').children.find(b=>b.dataset.kind==='Cg').onclick();
+ get('analysis-target-line').oninput({target:{value:'2'}});assert.equal(get('analysis-graph-title').textContent,'函数调用 CG');
 });
-
-test('typing a valid point target recomputes immediately without waiting for blur',async()=>{
- const {get,show}=page(undefined,'point');await show();
- get('analysis-slice-mode').onchange({target:{value:'point'}});
- get('analysis-target-line').oninput({target:{value:'2'}});
- assert.match(get('analysis-target-note').textContent,/L2/);
- assert.match(get('analysis-point-download').href,/line=2&download=1/);
- assert.doesNotMatch(get('analysis-source').children[2].className,/is-slice/);
-});
-
-test('new PDG availability does not change the selected DDG mode',async()=>{
- const {get,show}=page(undefined,'point');await show();
- assert.equal(get('analysis-slice-mode').value,'table');
- assert.equal(get('analysis-graph-title').textContent,'数据依赖 DDG');
- await get('analysis-run').onclick();
- assert.equal(get('analysis-slice-mode').value,'table');
- assert.equal(get('analysis-graph-title').textContent,'数据依赖 DDG');
-});
-
-test('explicit point selection survives reanalysis and does not fallback when PDG is missing',async()=>{
- const {get,show}=page(undefined,'point',{omitPointOnResult:true});await show();
- get('analysis-slice-mode').onchange({target:{value:'point'}});
- const pending=get('analysis-run').onclick();
- assert.equal(get('analysis-slice-mode').value,'point');
- assert.equal(get('analysis-graph-title').textContent,'程序依赖 PDG');
- await pending;
- assert.equal(get('analysis-slice-mode').value,'point');
- assert.equal(get('analysis-graph-title').textContent,'程序依赖 PDG');
- assert.equal(get('analysis-node-count').textContent,'—');
- assert.match(get('analysis-slice-note').textContent,/PDG/);
-});
-
-test('first upload requests reuse and reanalysis forces tools while showing original cache provenance',async()=>{
- const {get,show,requests}=page(undefined,true,{cacheHit:true});await show();
- const bytes=new TextEncoder().encode('func f(): Int64 { return 1 }\n');
- const file=new Blob([bytes]);file.name='f.cj';
+test('first upload may reuse a verified cache, while explicit reanalysis requests fresh tools',async()=>{
+ const {get,show,requests}=page(null,'mcp',{cacheHit:true});await show();
+ const file=new Blob([new TextEncoder().encode('public func f(): Int64 {\n return 1\n}\n')]);file.name='cache-upload.cj';
  get('analysis-file').onchange({target:{files:[file],value:'file'}});
- for(let i=0;i<100&&get('analysis-filename').textContent!=='f.cj';i++)await new Promise(resolve=>setImmediate(resolve));
- get('analysis-consent').checked=true;
- await get('analysis-run').onclick();
- const first=requests.filter(r=>r.method==='POST')[0];
- assert.equal(first.body.get('reuse_cache'),'true');
- assert.match(get('analysis-origin').textContent,/缓存复用/);
- get('analysis-evidence-open').onclick();
- assert.ok(JSON.stringify(get('analysis-evidence-content').children).includes('2026'));
- await get('analysis-run').onclick();
- assert.equal(requests.filter(r=>r.method==='POST')[1].body.get('reuse_cache'),'false');
+ for(let i=0;i<100&&get('analysis-filename').textContent!=='cache-upload.cj';i++)await new Promise(resolve=>setImmediate(resolve));
+ get('analysis-consent').checked=true;await get('analysis-run').onclick();
+ assert.equal(requests.filter(r=>r.method==='POST')[0].body.get('reuse_cache'),'true');assert.match(get('analysis-origin').textContent,/缓存复用/);
+ await get('analysis-run').onclick();assert.equal(requests.filter(r=>r.method==='POST')[1].body.get('reuse_cache'),'false');
 });
-
-
-test('original JSON node list still navigates and highlights source without requesting a tool',async()=>{
- const {get,show,requests}=page(null,'point');await show();get('analysis-slice-mode').onchange({target:{value:'point'}});
- assert.equal(get('analysis-graph-node-details').hidden,false);
- get('analysis-graph-nodes').children[0].onclick();
- assert.equal(get('analysis-target-line').value,'2');
- assert.match(get('analysis-source').children[1].className,/is-slice/);
+test('PDG JSON node navigation changes focus without recomputing the selected MCP slice',async()=>{
+ const pg={status:'VALID',source_sha256:'hash',graph:{nodes:[{id:'n',line:2,label:'[L2]: x = 2'}],edges:[]}};
+ const {get,show,requests}=page(null,'mcp',{reportOverrides:{point_graph:pg}});await show();
+ get('analysis-graph-types').children.find(b=>b.dataset.kind==='Pdg').onclick();get('analysis-graph-nodes').children[0].onclick();
+ assert.equal(get('analysis-target-line').value,'2');assert.match(get('analysis-source').children[2].className,/is-slice/);
+ assert.equal(requests.filter(r=>r.method==='POST').length,0);
+});
+test('new upload clears stale rows and remains pending until MCP is requested',async()=>{
+ const {get,show}=page(null,'mcp');await show();
+ const file=new Blob([new TextEncoder().encode('public func f(): Int64 {\n return 1\n}\n')]);file.name='fresh.cj';
+ get('analysis-file').onchange({target:{files:[file],value:'file'}});
+ for(let i=0;i<100&&get('analysis-filename').textContent!=='fresh.cj';i++)await new Promise(resolve=>setImmediate(resolve));
+ assert.equal(get('analysis-target-line').value,'2');assert.equal(get('analysis-slice-count').textContent,'—');
+ assert.ok(get('analysis-source').children.every(n=>!n.className.includes('is-slice')));
+ assert.ok(get('analysis-tools').children.some(c=>c.children.map(n=>n.textContent).join(' ')==='MCP原生切片 未运行'));
+});
+test('failed native result cannot be replaced by old table, local PDG or log recovery',async()=>{
+ const {get,show}=page(null,'mcp',{reportOverrides:{status:'PARTIAL',observations:[{tool:'sympas_slice',status:'FAILED',reason:'工具失败',data:{}},{tool:'sympas_slice_table',status:'VALID',data:{scope:'VARIABLE_TABLE',slices:{x:[2,3]}}}],derived_slice:{status:'RECOVERED',slices:{x:[2,3]}}}});
+ await show();assert.equal(get('analysis-slice-count').textContent,'—');assert.match(get('analysis-slice-note').textContent,/工具失败/);
+ assert.ok(get('analysis-source').children.every(n=>!n.className.includes('is-slice')));
+});
+test('legacy table reports remain identifiable and require explicit reanalysis to change their results',async()=>{
+ const {get,show,requests}=page(null,true);await show();
+ assert.match(get('analysis-slice-note').textContent,/历史切片表/);assert.equal(get('analysis-slice-count').textContent,2);
  assert.equal(requests.filter(r=>r.method==='POST').length,0);
 });
