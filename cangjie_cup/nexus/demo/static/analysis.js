@@ -1,10 +1,11 @@
 'use strict';
 const AnalysisUI=(()=>{
-  const el=id=>document.getElementById(id),{AnalysisSession,layoutGraph,sliceLines,sliceView,pointSlice}=AnalysisCore,session=new AnalysisSession();
+  const el=id=>document.getElementById(id),{AnalysisSession,sliceLines,sliceView,pointSlice}=AnalysisCore,session=new AnalysisSession();
   const labels={COMPLETE:'结果已返回',PARTIAL:'部分结果',FAILED:'分析失败',IN_DOUBT:'待核实',RUNNING:'分析中',READY:'待分析',VALID:'有效结构',EMPTY:'空结果',INVALID:'结果无效',UNAVAILABLE:'不可用'};
   const toolLabels={sympas_slice:'静态切片',sympas_slice_table:'静态切片表',sympas_dep_graph:'数据依赖',ast_symbol_extractor:'符号结构'};
-  let initialized=false,samples=[],selectedSample=null,restoredId=null,source=null,upload=null,variable='',focusedLine=null,focusedNode=null,zoom=1,graphLayout=null,pollTimer=null,loadBusy=false,targetLine=null,sliceMode='table',cacheReuse=null;
+  let initialized=false,samples=[],selectedSample=null,restoredId=null,source=null,upload=null,variable='',focusedLine=null,focusedNode=null,nativeKind='Ddg',pollTimer=null,loadBusy=false,targetLine=null,sliceMode='table',cacheReuse=null;
   const make=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
+  const gallery=typeof NativeGraphUI==='undefined'?null:NativeGraphUI.mount({onSelect(kind){nativeKind=kind;render();}});
   async function request(path,body){
     const options=body===undefined?{}:{method:'POST',headers:{Origin:location.origin,'X-CSRF-Token':csrf},body};
     if(body&&!(body instanceof FormData)){options.headers['Content-Type']='application/json';options.body=JSON.stringify(body);}
@@ -20,7 +21,7 @@ const AnalysisUI=(()=>{
   }
   function currentPoint(){return pointSlice(session.report,targetLine);}
   function includedLines(){return sliceMode==='point'?new Set(currentPoint().lines):sliceLines(session.report,variable);}
-  function clearSelection(){variable='';focusedLine=null;focusedNode=null;zoom=1;graphLayout=null;}
+  function clearSelection(){variable='';focusedLine=null;focusedNode=null;}
   async function selectSample(id){
     if(!allowedSelection())return;const token=session.select();cacheReuse=null;selectedSample=id;restoredId=null;upload=null;source=null;targetLine=null;clearSelection();render();
     try{const data=await request('/analysis/samples/'+id);if(token!==session.epoch)return;source=data.source;targetLine=reportLine(data.snapshot||{source});session.apply(token,data.snapshot||{status:'PREVIEW',source,observations:[],origin:'SAMPLE'});render();}
@@ -89,11 +90,11 @@ const AnalysisUI=(()=>{
     el('analysis-active-tool').textContent=busy?(toolLabels[report?.active_tool]||''):report?.error?'请查看证据':'';
     if(el('analysis-view').hidden===false){el('source-badge').textContent=report?.cache_hit?'MCP · 缓存复用':snapshot?'样例快照':'课题组 MCP';el('source-badge').dataset.origin=report?.cache_hit?'ANALYSIS_CACHE':snapshot?'ANALYSIS_SNAPSHOT':'ANALYSIS_LIVE';}
     const graph=observation('sympas_dep_graph'),symbols=observation('ast_symbol_extractor');
-    const view=sliceView(report),sliceData=view.slices,graphData=pointMode?(report?.point_graph?.status==='VALID'?report.point_graph.graph:null):graph?.status==='VALID'?graph.data.graphs[0]:null;
-    el('analysis-graph-title').textContent=pointMode?'程序依赖 PDG':'数据依赖 DDG';
+    const view=sliceView(report),sliceData=view.slices,graphData=nativeKind==='Pdg'?(report?.point_graph?.status==='VALID'?report.point_graph.graph:null):nativeKind==='Ddg'&&graph?.status==='VALID'?graph.data.graphs[0]:null;
+    el('analysis-graph-title').textContent=typeof NativeGraphUI==='undefined'?(pointMode?'程序依赖 PDG':'数据依赖 DDG'):NativeGraphUI.LABELS[nativeKind];
     el('analysis-graph').setAttribute('aria-label',pointMode?'程序依赖图':'数据依赖图');
     el('analysis-slice-metric-label').textContent=pointMode?'切片行数':'切片变量';
-    el('analysis-slice-count').textContent=pointMode?(point.status==='VALID'?point.lines.length:'—'):Object.keys(sliceData).length?Object.keys(sliceData).length:'—';el('analysis-node-count').textContent=graphData?.nodes?.length??'—';el('analysis-edge-count').textContent=graphData?.edges?.length??'—';el('analysis-duration').textContent=report?.elapsed_ms!==undefined&&report?.elapsed_ms!==null?(report.elapsed_ms/1000).toFixed(2)+'s':'—';
+    el('analysis-slice-count').textContent=pointMode?(point.status==='VALID'?point.lines.length:'—'):Object.keys(sliceData).length?Object.keys(sliceData).length:'—';el('analysis-node-count').textContent=report?.native_graphs?.graphs?.[nativeKind]?.node_count??graphData?.nodes?.length??'—';el('analysis-edge-count').textContent=report?.native_graphs?.graphs?.[nativeKind]?.edge_count??graphData?.edges?.length??'—';el('analysis-duration').textContent=report?.elapsed_ms!==undefined&&report?.elapsed_ms!==null?(report.elapsed_ms/1000).toFixed(2)+'s':'—';
     const derived=report?.derived_slice;
     el('analysis-slice-note').hidden=pointMode?false:!derived;
     el('analysis-slice-note').classList.toggle('point-valid',pointMode&&point.status==='VALID');
@@ -101,7 +102,7 @@ const AnalysisUI=(()=>{
     if(!Object.hasOwn(sliceData,variable))variable=Object.keys(sliceData)[0]||'';
     el('analysis-variable').replaceChildren(...(variable?Object.keys(sliceData).map(name=>{const o=make('option','',name);o.value=name;return o;}):[make('option','','无有效切片')]));el('analysis-variable').hidden=pointMode;el('analysis-variable').disabled=pointMode||!variable;
     el('analysis-point-target').hidden=!pointMode;el('analysis-point-target').textContent='目标 L'+targetLine;el('analysis-variable').value=variable;
-    el('analysis-line-count').textContent=source?source.line_count+' 行':'—';el('analysis-source-hash').textContent=source?.source_sha256?.slice(0,16)||'—';renderSource();renderGraph(graphData);
+    el('analysis-line-count').textContent=source?source.line_count+' 行':'—';el('analysis-source-hash').textContent=source?.source_sha256?.slice(0,16)||'—';renderSource();renderGraph(graphData);renderGraphNodes(graphData);
     el('analysis-tools').replaceChildren(...(observation('sympas_slice_table')||tableMode?['sympas_slice_table','sympas_dep_graph','ast_symbol_extractor']:['sympas_slice','sympas_dep_graph','ast_symbol_extractor']).map(tool=>{const o=observation(tool),recovered=tool==='sympas_slice'&&view.recovered,card=make('div','analysis-tool');card.append(make('span','',toolLabels[tool]),make('span','status '+(recovered?'pending':o?.status==='VALID'?'good':o?.status==='FAILED'?'bad':'neutral'),recovered?'日志解析恢复':labels[o?.status]||'未运行'));return card;}));
     const symbolData=symbols?.status==='VALID'?symbols.data.symbols:[];el('analysis-symbol-count').textContent=String(symbolData.length);el('analysis-symbols').replaceChildren(...symbolData.map(item=>{const row=make('div','analysis-symbol');row.append(make('code','',item.symbol),make('span','',item.appears_in.join(' · ')));return row;}));if(!symbolData.length)el('analysis-symbols').append(make('div','analysis-empty','暂无有效结构'));
     const downloadable=report?.id&&!['READY','RUNNING'].includes(report.status)&&report.observations?.length;
@@ -109,31 +110,20 @@ const AnalysisUI=(()=>{
     if(downloadable)el('analysis-download').href=report.evidence_url||(snapshot?'/analysis/samples/'+selectedSample+'/evidence':'/api/analysis/'+report.id+'/evidence');
     const pointDownload=pointMode&&!busy&&point.status==='VALID'&&report?.point_slice_url;
     el('analysis-point-download').hidden=!pointDownload;el('analysis-point-download').href=pointDownload?report.point_slice_url+'?line='+targetLine+'&download=1':'';
-    const cg=report?.callgraph,cgReady=!busy&&cg?.status==='SAVED'&&cg.source_sha256===source?.source_sha256&&cg.view_url&&cg.download_url;
-    el('analysis-callgraph-status').textContent=cgReady?'MCP 原生 · 已保存':busy?'等待本次分析':snapshot?'快照未包含 SVG · 重新分析获取':cg?.reason||'尚未取得调用图 SVG';
-    for(const [id,url] of [['analysis-callgraph-open',cg?.view_url],['analysis-callgraph-download',cg?.download_url]]){
-      el(id).hidden=!cgReady;el(id).href=cgReady?url:'';
-    }
+
   }
   function renderSource(){
     const lines=source?.code?.split(/\r\n|\n|\r/)||[],included=includedLines(),recovered=sliceMode!=='point'&&sliceView(session.report).recovered;if(lines.at(-1)==='')lines.pop();
     el('analysis-source').replaceChildren(...lines.map((text,index)=>{const line=index+1,row=make('button','analysis-source-line'+(included.has(line)?' is-slice'+(recovered?' is-recovered':''):'')+(focusedLine===line?' is-focused':'')+(targetLine===line?' is-target-line':''));row.type='button';row.dataset.line=String(line);row.setAttribute('aria-label','源码第'+line+'行');const content=make('code');if(typeof highlightCode==='function')highlightCode(content,text||' ');else content.textContent=text||' ';row.append(make('span','analysis-line-number',String(line)),content);row.onclick=()=>{if(session.report?.display_origin!=='REGISTERED_BOUND'||sliceMode==='point')chooseTarget(line);focusedLine=line;focusedNode=null;renderSource();updateGraphSelection();el('analysis-node-detail').textContent='L'+line+' · '+text;};return row;}));
   }
-  function svgElement(tag,attributes={},text){const node=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [key,value] of Object.entries(attributes))node.setAttribute(key,String(value));if(text!==undefined)node.textContent=text;return node;}
-  function renderGraph(graph){
-    const container=el('analysis-graph');container.replaceChildren();
-    if(!graph){graphLayout=null;container.append(make('div','analysis-empty',sliceMode==='point'?currentPoint().reason:observation('sympas_dep_graph')?.reason||'等待依赖结构'));el('analysis-node-detail').textContent='选择节点';return;}
-    graphLayout=layoutGraph(graph);const positions=new Map(graphLayout.nodes.map(n=>[n.id,n]));const svg=svgElement('svg',{viewBox:`0 0 ${graphLayout.width} ${graphLayout.height}`,role:'group','aria-label':sliceMode==='point'?'仓颉程序依赖图':'仓颉数据依赖图'});
-    const defs=svgElement('defs'),marker=svgElement('marker',{id:'analysis-arrow',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:5,markerHeight:5,orient:'auto-start-reverse'});marker.append(svgElement('path',{d:'M 0 0 L 10 5 L 0 10 z',fill:'currentColor'}));defs.append(marker);svg.append(defs);
-    for(const edge of graphLayout.edges){const from=positions.get(edge.from),to=positions.get(edge.to),x1=from.x+from.width,y1=from.y+26,x2=to.x,y2=to.y+26,curve=Math.max(40,Math.abs(x2-x1)/2);svg.append(svgElement('path',{d:`M${x1},${y1} C${x1+curve},${y1} ${x2-curve},${y2} ${x2},${y2}`,class:'analysis-edge','data-from':edge.from,'data-to':edge.to,'marker-end':'url(#analysis-arrow)'}));}
-    for(const node of graphLayout.nodes){const group=svgElement('g',{class:'analysis-node'+(node.line?' source-node':''),transform:`translate(${node.x} ${node.y})`,tabindex:0,role:'button','aria-label':node.label,'data-node-id':node.id,'data-line':node.line||''});group.append(svgElement('rect',{width:node.width,height:node.height,rx:8}));group.append(svgElement('title',{},node.label));group.append(svgElement('text',{x:12,y:19,class:'analysis-node-meta'},node.line?'L'+node.line:node.id));let label=node.label.replace(/^\[L\d+\]:\s*/,'');if(label.length>28)label=label.slice(0,27)+'…';group.append(svgElement('text',{x:12,y:38},label));const choose=()=>{if(sliceMode==='point'&&node.line!==null)chooseTarget(node.line);focusedNode=node.id;focusedLine=node.line;renderSource();updateGraphSelection();el('analysis-node-detail').textContent=node.label;const row=el('analysis-source').querySelector(`[data-line="${node.line}"]`);row?.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};group.onclick=choose;group.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();choose();}};svg.append(group);}
-    container.append(svg);sizeGraph();updateGraphSelection();
+  function renderGraph(){if(gallery)gallery.render(session.report,nativeKind);else el('analysis-graph').replaceChildren();}
+  function renderGraphNodes(graph){
+    const details=el('analysis-graph-node-details'),list=el('analysis-graph-nodes');details.hidden=!graph?.nodes?.length;list.replaceChildren();
+    for(const node of graph?.nodes||[]){const button=make('button','analysis-node-link',node.line?'L'+node.line+' · '+node.label:node.label);button.type='button';button.dataset.nodeId=node.id;button.dataset.line=node.line||'';button.title=node.label;
+      button.onclick=()=>{if(sliceMode==='point'&&node.line!==null)chooseTarget(node.line);focusedNode=node.id;focusedLine=node.line;renderSource();updateGraphSelection();el('analysis-node-detail').textContent=node.label;el('analysis-source').querySelector(`[data-line="${node.line}"]`)?.scrollIntoView?.({block:'nearest'});};list.append(button);}
+    updateGraphSelection();
   }
-  function sizeGraph(){const svg=el('analysis-graph').querySelector('svg');if(!svg||!graphLayout)return;svg.style.width=Math.max(el('analysis-graph').clientWidth-24,graphLayout.width*.72*zoom)+'px';svg.style.height=Math.max(350,graphLayout.height*.85*zoom)+'px';}
-  function updateGraphSelection(){
-    const point=currentPoint(),pointNodes=new Set(point.node_ids),included=includedLines(),recovered=sliceMode!=='point'&&sliceView(session.report).recovered;el('analysis-graph').querySelectorAll('.analysis-node').forEach(node=>{node.classList.toggle('selected',focusedNode?node.dataset.nodeId===focusedNode:focusedLine!==null&&Number(node.dataset.line)===focusedLine);node.classList.toggle('in-slice',sliceMode==='point'?pointNodes.has(node.dataset.nodeId):included.has(Number(node.dataset.line)));node.classList.toggle('log-recovered',recovered);});
-    el('analysis-graph').querySelectorAll('.analysis-edge').forEach(edge=>edge.classList.toggle('selected',sliceMode==='point'?pointNodes.has(edge.dataset.from)&&pointNodes.has(edge.dataset.to):!!focusedNode&&(edge.dataset.from===focusedNode||edge.dataset.to===focusedNode)));
-  }
+  function updateGraphSelection(){const pointNodes=new Set(currentPoint().node_ids),lines=includedLines();el('analysis-graph-nodes').querySelectorAll('button').forEach(node=>{node.classList.toggle('selected',focusedNode?node.dataset.nodeId===focusedNode:focusedLine!==null&&Number(node.dataset.line)===focusedLine);node.classList.toggle('in-slice',sliceMode==='point'?pointNodes.has(node.dataset.nodeId):lines.has(Number(node.dataset.line)));});}
   function evidence(){
     const report=session.report,box=el('analysis-evidence-content');box.replaceChildren();
     if(!report){box.textContent='尚未生成分析结果';}else{
@@ -154,17 +144,18 @@ const AnalysisUI=(()=>{
     if(!initialized){initialized=true;const openingEpoch=session.epoch;try{samples=(await request('/analysis/samples')).samples;el('analysis-samples').replaceChildren(...samples.map(sample=>{const button=make('button','analysis-sample-button',sample.title);button.dataset.sample=sample.id;button.onclick=()=>selectSample(sample.id);return button;}));if(!source&&session.epoch===openingEpoch&&samples.length)await selectSample(samples[0].id);}catch(error){initialized=false;toast(error.message);}}
     render();refreshHistory();
   }
-  el('analysis-slice-mode').onchange=event=>{if(session.busy||loadBusy)return;sliceMode=event.target.value==='point'?'point':'table';focusedNode=null;render();};
+  el('analysis-slice-mode').onchange=event=>{if(session.busy||loadBusy)return;sliceMode=event.target.value==='point'?'point':'table';nativeKind=sliceMode==='point'?'Pdg':'Ddg';focusedNode=null;render();};
   el('analysis-target-line').oninput=event=>{const n=Number(event.target.value);if(Number.isInteger(n)&&source&&n>=1&&n<=source.line_count)chooseTarget(n);};
   el('analysis-target-line').onchange=event=>chooseTarget(event.target.value);
   el('analysis-upload-open').onclick=()=>el('analysis-file').click();el('analysis-file').onchange=event=>{chooseUpload(event.target.files[0]);event.target.value='';};el('analysis-run').onclick=run;
   el('analysis-variable').onchange=event=>{variable=event.target.value;renderSource();updateGraphSelection();};el('analysis-history').onchange=event=>restore(event.target.value);
-  el('analysis-zoom-in').onclick=()=>{zoom=Math.min(2.5,zoom+.2);sizeGraph();};el('analysis-zoom-out').onclick=()=>{zoom=Math.max(.35,zoom-.2);sizeGraph();};el('analysis-fit').onclick=()=>{zoom=.6;sizeGraph();el('analysis-graph').scrollTo(0,0);};el('analysis-evidence-open').onclick=evidence;
+  el('analysis-zoom-in').onclick=()=>gallery?.zoom(.5);el('analysis-zoom-out').onclick=()=>gallery?.zoom(-.5);el('analysis-fit').onclick=()=>gallery?.fit();el('analysis-fullscreen').onclick=()=>gallery?.fullscreen();el('analysis-evidence-open').onclick=evidence;
+
   function openBound(report,{line=null}={}){
     if(!allowedSelection())return false;
     if(line!==null&&(!Number.isInteger(line)||line<1||line>report?.source?.line_count)){toast('定位行号不属于此源码');return false;}
     const token=session.select();cacheReuse=null;clearSelection();selectedSample=null;restoredId=null;upload=null;
-    source=report.source;targetLine=line??reportLine(report);focusedLine=line;if(line!==null)sliceMode='point';session.apply(token,report);render();return true;
+    source=report.source;targetLine=line??reportLine(report);focusedLine=line;if(line!==null){sliceMode='point';nativeKind='Pdg';}session.apply(token,report);render();return true;
   }
   return {show,openBound};
 })();

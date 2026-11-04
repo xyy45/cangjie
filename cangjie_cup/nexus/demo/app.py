@@ -143,7 +143,8 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/evidence')
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/point-slice')
     @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/callgraph.svg')
-    def impact_analysis(candidate_id,analysis_id):
+    @app.get('/api/demo/candidates/<candidate_id>/impact/analysis/<analysis_id>/graphs/<graph_kind>.svg')
+    def impact_analysis(candidate_id,analysis_id,graph_kind=None):
         report=impact.get(candidate_id)
         entry=next(((file,side) for file in report['files'] for side in ('before','after')
             if file[side] and file[side]['analysis_id']==analysis_id),None)
@@ -152,6 +153,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
         service=app.extensions['analysis_service'];result=service.get(analysis_id,actor_id=actor)
         if result['source']['source_sha256']!=file[side]['source_sha256'] or result['slice_criterion']!=file[side]['slice_criterion']:
             raise ValueError('影响分析版本或准则变化')
+        if graph_kind is not None:return svg_response(service.native_graph_bytes(analysis_id,graph_kind,actor_id=actor),analysis_id,graph_kind)
         if request.path.endswith('/point-slice'):return point_response(result,lambda:service.export(analysis_id,actor_id=actor))
         if request.path.endswith('/callgraph.svg'):return svg_response(service.callgraph_bytes(analysis_id,actor_id=actor),analysis_id)
         if request.path.endswith('/evidence'):
@@ -184,7 +186,8 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/evidence')
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/point-slice')
     @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/callgraph.svg')
-    def repair_analysis_file(task_id,analysis_id):
+    @app.get('/api/demo/tasks/<task_id>/analysis/<analysis_id>/graphs/<graph_kind>.svg')
+    def repair_analysis_file(task_id,analysis_id,graph_kind=None):
         from nexus.analysis.repair import verify_evidence
         event=next((e for e in store.records(task_id,'event') if e['type']=='ANALYSIS_CONTEXT'),None)
         if event is None:raise ValueError('No bound analysis')
@@ -194,6 +197,7 @@ def create_demo_app(root, *, session_key=None, writes_enabled=True, provider='de
         service=app.extensions['analysis_service']
         result=service.get(analysis_id,actor_id='repair-'+task_id)
         if result['source']['source_sha256']!=entry['source_sha256']:raise ValueError('Analysis source changed')
+        if graph_kind is not None:return svg_response(service.native_graph_bytes(analysis_id,graph_kind,actor_id='repair-'+task_id),analysis_id,graph_kind)
         if request.path.endswith('/point-slice'):return point_response(result,lambda:service.export(analysis_id,actor_id='repair-'+task_id))
         if request.path.endswith('/callgraph.svg'):return svg_response(service.callgraph_bytes(analysis_id,actor_id='repair-'+task_id),analysis_id)
         if request.path.endswith('/evidence'):

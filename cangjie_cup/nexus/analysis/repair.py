@@ -78,6 +78,9 @@ class RepairAnalysis:
             original.update({o['raw_ref']:self.service.directory(job['id'])/o['raw_ref'] for o in result['observations']})
             if result.get('callgraph',{}).get('status')=='SAVED':
                 original[result['callgraph']['ref']]=self.service.directory(job['id'])/result['callgraph']['ref']
+            for graph in result.get('native_graphs',{}).get('graphs',{}).values():
+                if graph.get('status')=='SAVED':
+                    original[graph['ref']]=self.service.directory(job['id'])/graph['ref']
             for name,actual in original.items():
                 raw=actual.read_bytes();ref=f'records/{job["id"]}.analysis.{name.replace("/",".")}'
                 target=self.store.root/ref

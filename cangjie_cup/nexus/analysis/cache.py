@@ -8,7 +8,7 @@ import time
 
 from nexus.analysis.normalize import TOOLS,normalize
 
-PROFILE=6
+PROFILE=7
 CACHE_SECONDS=300
 
 
@@ -16,11 +16,13 @@ def digest(value):
     return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 
-def arguments(tool,source,criterion):
+def arguments(tool,source,criterion,*,profile=None):
     args=dict(code=source['code'],filename=source['filename'],lang='cangjie')
     if tool=='sympas_slice_table':args.update(direction='Bwd',method='SymPas',table_formats=['json'],timeout_sec=40)
     if tool=='sympas_slice':args.update(**criterion,format='json')
-    if tool=='sympas_dep_graph':args.update(graph_types='Ddg,Cg,Pdg',formats=['dot','svg'])
+    if tool=='sympas_dep_graph':
+        from nexus.analysis.native_graphs import GRAPH_TYPES
+        args.update(graph_types='Ddg,Cg,Pdg' if profile==6 else ','.join(GRAPH_TYPES),formats=['dot','svg'])
     return args
 
 
@@ -28,12 +30,12 @@ def key(source,origin,criterion,scope):
     if not isinstance(scope,str) or not re.fullmatch('[0-9a-f]{64}',scope):return None
     root=Path(__file__).parent
     pipeline={name:hashlib.sha256((root/name).read_bytes()).hexdigest()
-              for name in ('cache.py','client.py','service.py','normalize.py','recovery.py','point.py')}
+              for name in ('cache.py','client.py','service.py','normalize.py','recovery.py','point.py','native_graphs.py')}
     return digest(dict(profile=PROFILE,pipeline=pipeline,scope=scope,source=source['source_sha256'],
                        filename=source['filename'],origin=origin,criterion=criterion))
 
 
-def verified(service,identity,actor_id,expected_key):
+def verified(service,identity,actor_id,expected_key,*,allow_previous=False):
     """Return the original timestamp, never a new execution time or fabricated data."""
     report=service.get(identity,actor_id=actor_id)
     root=service.directory(identity)
@@ -41,14 +43,14 @@ def verified(service,identity,actor_id,expected_key):
     original=json.loads((root/'result.json').read_bytes())
     for field in ('id','status','source','analysis_profile','cache_key','completed_at','observations','slice_criterion','origin'):
         if original.get(field)!=report.get(field):raise ValueError('缓存元数据与封存原件不符')
-    if (report['status']!='COMPLETE' or report.get('analysis_profile')!=PROFILE or
+    if (report['status']!='COMPLETE' or report.get('analysis_profile') not in ((PROFILE,6) if allow_previous else (PROFILE,)) or
             report.get('cache_key')!=expected_key):raise ValueError('缓存执行绑定不符')
     observations=report['observations']
     if len(observations)!=len(TOOLS) or {o['tool'] for o in observations}!=set(TOOLS):raise ValueError('缓存工具证据不完整')
     for o in observations:
         raw=json.loads((root/o['raw_ref']).read_bytes())
         if (raw.get('tool')!=o['tool'] or raw.get('source_sha256')!=report['source']['source_sha256'] or
-                raw.get('input')!=arguments(o['tool'],report['source'],report['slice_criterion']) or
+                raw.get('input')!=arguments(o['tool'],report['source'],report['slice_criterion'],profile=report['analysis_profile']) or
                 raw.get('request_id')!=o['request_id'] or raw.get('http_status')!=200 or o.get('http_status')!=200):
             raise ValueError('缓存工具输入绑定不符')
         checked=normalize(o['tool'],raw.get('response'),report['source']['filename'],report['source']['line_count'])

@@ -88,7 +88,16 @@ class ResearchClient:
                     try:payload=json.loads(raw)
                     except (ValueError,UnicodeError):payload={'status':'error','message':'上游未返回有效JSON'}
                     status=response.status_code
-            extra=await self._callgraph(client,payload) if tool=='sympas_dep_graph' and status==200 else {}
+            extra={}
+            if tool=='sympas_dep_graph' and status==200:
+                from nexus.analysis.native_graphs import GRAPH_TYPES,fetch_graphs
+                requested=arguments.get('graph_types','')
+                if requested=='All' or isinstance(requested,str) and set(requested.split(','))==set(GRAPH_TYPES):
+                    extra=await fetch_graphs(client,payload,base_url=self.url,token=self.token)
+                    cg=extra['native_graphs']['graphs']['Cg']
+                    extra['callgraph']={k:v for k,v in cg.items() if k!='aspect_ratio'}
+                    if cg['status']=='SAVED':extra['_callgraph_bytes']=extra['_native_graph_bytes']['Cg']
+                else:extra=await self._callgraph(client,payload)
             self.last=time.monotonic()
             return dict(http_status=status,response=sanitize(payload,self.token),**extra,
                 elapsed_ms=round((time.monotonic()-started)*1000),transport='group_http_tools',transport_request_id=request_id)

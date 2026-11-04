@@ -13,12 +13,15 @@ def svg_links(result,base):
     result['point_slice_url']=base+'/point-slice'
     if result.get('callgraph',{}).get('status')=='SAVED':
         result['callgraph']=dict(result['callgraph'],view_url=base+'/callgraph.svg',download_url=base+'/callgraph.svg?download=1')
+    for kind,graph in result.get('native_graphs',{}).get('graphs',{}).items():
+        if graph.get('status')=='SAVED':
+            graph.update(view_url=base+'/graphs/'+kind+'.svg',download_url=base+'/graphs/'+kind+'.svg?download=1')
     return result
 
 
-def svg_response(raw,identity):
+def svg_response(raw,identity,kind='Cg'):
     response=send_file(io.BytesIO(raw),mimetype='image/svg+xml',as_attachment=request.args.get('download')=='1',
-        download_name=f'CangSight-callgraph-{identity}.svg')
+        download_name=f'CangSight-{"callgraph" if kind=="Cg" else kind}-{identity}.svg')
     response.headers.update({'Content-Security-Policy':"sandbox; default-src 'none'; style-src 'unsafe-inline'",
         'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Cache-Control':'private, no-store'})
     return response
@@ -131,6 +134,12 @@ def register_analysis(app,store):
         try:return svg_response(service.callgraph_bytes(identity,actor_id=session['actor_id']),identity)
         except LookupError:return jsonify(error='调用图 SVG 不可用'),404
         except (ValueError,OSError):return jsonify(error='调用图证据已变化',code='ANALYSIS_EVIDENCE_CHANGED'),409
+
+    @app.get('/api/analysis/<identity>/graphs/<kind>.svg')
+    def analysis_native_graph(identity,kind):
+        try:return svg_response(service.native_graph_bytes(identity,kind,actor_id=session['actor_id']),identity,kind)
+        except LookupError:return jsonify(error='此类原生SVG不可用，请重新分析'),404
+        except (ValueError,OSError):return jsonify(error='图像或来源证据已变化',code='ANALYSIS_EVIDENCE_CHANGED'),409
 
     @app.get('/api/analysis/<identity>/evidence')
     def analysis_evidence(identity):

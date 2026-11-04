@@ -1,0 +1,351 @@
+/* ============================================================
+   Workbench visual system (loaded after demo.css)
+   三层视觉关系：深色导航层 / 冷灰画布 + 浮起卡片工作层 / 祖母绿动作层。
+   颜色、圆角、阴影变量继承 demo.css，本文件负责层级、对比与质感。
+   ============================================================ */
+
+/* ---------- 0. design tokens (local) ---------- */
+:root{
+--ink:#12241f;                /* 近黑墨绿：标题、强调文字、深色表面 */
+--ink-2:#0e1c17;              /* 侧边栏底部渐变 */
+--paper:#edf0f3;              /* 画布 */
+--card:#ffffff;
+--card-line:#e4eaee;
+--card-shadow:0 1px 2px rgba(18,36,31,.05),0 10px 28px -14px rgba(18,36,31,.10);
+--card-shadow-hover:0 2px 4px rgba(18,36,31,.06),0 14px 34px -14px rgba(18,36,31,.14);
+--accent-1:#12a77d;           /* 渐变亮端 */
+--accent-2:#0a7051;           /* 渐变暗端 */
+--accent-ink:#0d7a54;         /* 文字用绿 */
+--info:#2f6f9f;               /* 指标二 */
+--violet:#8a63d2;             /* 指标三 */
+--nav-text:#9db4ac;
+--nav-text-dim:#6f8880;
+--nav-fill:#ffffff10;
+--nav-line:#ffffff1a;
+--radius-lg:14px;
+}
+
+/* ---------- 1. 全局基底 ---------- */
+body{background:var(--paper)}
+h1{color:var(--ink)}
+h2{font-size:15px;color:var(--ink)}
+::selection{background:#bde8d8}
+
+/* 字号体系（延续第一轮可读性规范） */
+.button{font-size:14px;min-height:40px;padding:10px 18px}
+.button svg{width:16px;height:16px}
+.text-button{font-size:13px;min-height:32px}
+.icon-button{width:42px;height:42px}
+.category{font-size:12px}
+.badge,.tiny-badge{font-size:11px}
+.tab{font-size:14px}
+.editor-tabs{gap:26px}
+.code-toolbar{font-size:12px;padding:14px 18px}
+.split-label{font-size:12px}
+.code-line{font-size:13px;line-height:26px;min-height:26px}
+.file-button{font-size:12px;min-height:40px}
+.tree-root{font-size:13px}
+.pipeline li{font-size:13px;gap:10px}
+.cegis-heading p{font-size:13px}
+.cegis-round strong{font-size:13px}
+.cegis-round span{font-size:12px}
+.cegis-round small{font-size:12px}
+.cegis-feedback{font-size:12px;line-height:1.8}
+.repair-analysis-strip strong{font-size:14px}
+.repair-analysis-strip>div>span:last-child{font-size:13px}
+.evidence-note{font-size:13px}
+.rule-item,.requirement-item,.check-item{font-size:13px}
+.verdict strong{font-size:15px}
+.record-row{font-size:13px}
+.upload-field{font-size:14px}
+.upload-field input,.upload-field textarea,.upload-field select{font-size:13px}
+.upload-consent{font-size:13px}
+.hidden{display:none!important}
+
+/* ---------- 2. 深色导航层 ---------- */
+.sidebar{background:linear-gradient(180deg,#15281f 0%,var(--ink-2) 100%);border-right:0;padding:28px 14px}
+.sidebar-title{color:var(--nav-text-dim);letter-spacing:.12em;font-size:11px;text-transform:uppercase}
+.case-group{color:var(--nav-text-dim);letter-spacing:.12em}
+.nav-button{color:var(--nav-text);border-radius:9px}
+.nav-button:hover{background:var(--nav-fill);color:#e6efeb}
+.nav-button.active{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#fff;box-shadow:0 4px 14px -4px rgba(10,112,81,.55),inset 0 1px 0 rgba(255,255,255,.16)}
+.nav-count{background:#ffffff22;color:#d5e4de;border-radius:999px;min-width:20px;height:20px;display:inline-grid;place-items:center;margin-left:auto}
+.nav-button.active .nav-count{background:rgba(255,255,255,.24);color:#fff}
+.case-button{color:var(--nav-text);border-radius:9px}
+.case-button:hover{background:var(--nav-fill);color:#e6efeb}
+.case-button.selected{background:#ffffff14;border-color:#ffffff24;color:#fff;box-shadow:inset 3px 0 0 var(--accent-1)}
+.sidebar-divider{border-color:var(--nav-line)}
+.sidebar-bottom{color:var(--nav-text-dim);border-top:1px solid var(--nav-line)}
+.connection-dot{box-shadow:0 0 8px rgba(18,167,125,.8)}
+.upload-entry.button.secondary{background:transparent;border:1px solid #ffffff2e;color:#d7e4df;box-shadow:none}
+.upload-entry.button.secondary:hover:not(:disabled){background:var(--nav-fill);border-color:#ffffff44}
+
+/* ---------- 3. 顶栏 ---------- */
+.topbar{background:var(--card);border-bottom:1px solid var(--card-line);box-shadow:0 1px 3px rgba(18,36,31,.04)}
+.brand strong{color:var(--ink)}
+.brand-mark{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));box-shadow:0 3px 8px -2px rgba(10,112,81,.45),inset 0 1px 0 rgba(255,255,255,.2)}
+.segmented{background:#eef2f4;border-color:#dfe6ea}
+.segmented button{color:#5c6d7d}
+.segmented button.selected{background:var(--ink);color:#fff;box-shadow:0 2px 6px -2px rgba(18,36,31,.4)}
+.badge{background:#eef2f4}
+
+/* ---------- 4. 卡片与动作层 ---------- */
+.task-overview,.advanced-evidence,.editor-panel,.inspector-card{
+background:var(--card);border:1px solid var(--card-line);border-radius:var(--radius-lg);box-shadow:var(--card-shadow)}
+
+.button.primary{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));border:0;color:#fff;box-shadow:0 2px 6px -2px rgba(10,112,81,.45),inset 0 1px 0 rgba(255,255,255,.18)}
+.button.primary:hover:not(:disabled){background:linear-gradient(135deg,#0f9670,#096047)}
+.button.secondary{background:var(--card);border:1px solid #d9e1e6;color:#33474f;box-shadow:0 1px 1px rgba(18,36,31,.05)}
+.button.secondary:hover:not(:disabled){background:#f4f7f8;border-color:#c6d1d8}
+
+/* 状态药丸：语义色区分 */
+.status{font-size:12px;font-weight:500;padding:5px 12px;border-radius:999px;background:#eef2f4;color:#5c6d7d}
+.status:before{width:6px;height:6px}
+.status.good{background:#e2f3ea;color:var(--accent-ink)}
+.status.bad{background:#fae7e9;color:var(--red)}
+.status.pending{background:#fdf3e0;color:var(--amber)}
+
+/* ---------- 5. 工作台标题区 ---------- */
+.workspace-heading{margin-bottom:20px}
+.workspace-subtitle{margin:8px 0 0;font-size:14px;line-height:1.6;color:var(--muted);max-width:56ch}
+.heading-actions{align-items:center}
+.heading-actions select{font-size:13px;min-height:40px;background:var(--card);border:1px solid #d9e1e6;border-radius:8px;padding:0 10px;color:var(--secondary)}
+.category{background:#e2f3ea;color:var(--accent-ink);font-weight:500}
+
+/* ---------- 6. 任务概览卡 ---------- */
+.task-overview{padding:22px 26px 24px;margin-bottom:20px}
+.task-overview-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.section-label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.task-overview-heading h2{font-size:17px;font-weight:600;letter-spacing:-.2px}
+.task-overview .metrics{border:0;border-radius:0;background:transparent;margin:18px 0 0;padding:0;gap:8px 0}
+.metrics>div{position:relative;padding-left:16px}
+.metrics>div::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:2px;background:#c3ced4}
+.metric-primary:nth-child(1)::before{background:var(--accent-1)}
+.metric-primary:nth-child(2)::before{background:var(--info)}
+.metric-primary:nth-child(3)::before{background:var(--violet)}
+.metrics span{font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.metrics strong{font-size:28px;font-weight:650;letter-spacing:-.5px;color:var(--ink)}
+.metric-secondary strong{font-size:20px;font-weight:600;color:var(--secondary)}
+.task-overview .pipeline-panel{border:0;border-radius:0;background:transparent;padding:20px 0 0;margin:20px 0 0;border-top:1px solid var(--border);box-shadow:none}
+.pipeline-panel .panel-note{font-size:12px;color:var(--muted)}
+.panel-top h2{font-size:15px}
+
+/* 流程步骤：当前步高亮、完成步成组 */
+.pipeline li{color:#7d8f99}
+.step-number{font-size:12px;background:var(--card);border-color:#d9e1e6;color:#8a9aa5}
+.pipeline li.done{color:var(--accent-ink)}
+.pipeline li.done .step-number{background:#e2f3ea;border-color:#bfe3d2;color:var(--accent-ink)}
+.pipeline li.current{color:var(--ink);font-weight:600}
+.pipeline li.current .step-number{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));border-color:transparent;color:#fff;box-shadow:0 0 0 4px var(--accent-ring),0 3px 8px -2px rgba(10,112,81,.5)}
+.pipeline li.failed .step-number,.pipeline li.done.failed .step-number{background:#fae7e9;border-color:#f0c3c8;color:var(--red)}
+
+/* ---------- 7. 迭代与证据（次级技术区，冷灰底区分） ---------- */
+.advanced-evidence{background:#f4f7f8;margin-bottom:20px}
+.advanced-evidence>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;cursor:pointer;list-style:none;border-radius:var(--radius-lg)}
+.advanced-evidence>summary::-webkit-details-marker{display:none}
+.advanced-evidence>summary:hover{background:#eef3f4}
+.advanced-evidence>summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.advanced-evidence>summary strong{font-size:14px;font-weight:600;color:var(--ink);display:block}
+.advanced-evidence>summary small{font-size:12px;color:var(--muted);display:block;margin-top:3px;line-height:1.6}
+.summary-action{flex-shrink:0;font-size:12px;color:var(--accent-ink);border:1px solid var(--accent-border);background:var(--accent-soft);border-radius:999px;padding:5px 14px;white-space:nowrap;font-weight:500}
+.summary-action:after{content:"展开"}
+.advanced-evidence[open] .summary-action:after{content:"收起"}
+.advanced-evidence-content{border-top:1px solid var(--card-line);padding:18px 20px 20px}
+.advanced-evidence-content .repair-analysis-strip{margin:0 0 14px;box-shadow:var(--card-shadow);background:var(--card)}
+.advanced-evidence-content .cegis-panel{margin-bottom:0;box-shadow:var(--card-shadow);border-color:var(--card-line)}
+.cegis-round.selected{box-shadow:0 0 0 1px var(--accent-border)}
+
+/* ---------- 8. 主工作区 ---------- */
+.editor-panel{overflow:hidden}
+.editor-tabs{padding:0 20px;background:var(--card)}
+.tab{color:var(--muted)}
+.tab.active{color:var(--ink);font-weight:600;border-bottom-color:var(--accent-1)}
+.tab:hover{color:var(--ink)}
+.diff-view-switch{display:flex;align-items:center;gap:2px;background:#eef2f4;border:1px solid #dfe6ea;border-radius:8px;padding:2px;margin-left:auto}
+.diff-view-switch button{border:0;background:transparent;color:var(--muted);font-size:12px;padding:5px 12px;border-radius:6px;min-height:28px}
+.diff-view-switch button.selected{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(18,36,31,.12);font-weight:500}
+.code-workspace{border-top:1px solid var(--border)}
+.file-tree{background:#f5f8f9;border-right:1px solid var(--card-line)}
+.file-button{color:var(--muted);border-radius:7px}
+.file-button:hover{background:#ecf1f3;color:var(--ink)}
+.file-button.active{background:var(--card);color:var(--accent-ink);font-weight:500;box-shadow:0 1px 3px rgba(18,36,31,.08)}
+.code-toolbar{color:var(--muted);background:var(--card)}
+.code-diff{background:var(--code-bg)}
+.code-diff[data-view="before"],.code-diff[data-view="after"]{grid-template-columns:minmax(0,1fr)}
+.code-diff[data-view="before"] .code-side:last-child{display:none}
+.code-diff[data-view="after"] .code-side:first-child{display:none}
+.diff-stat span{font-size:12px;font-weight:600}
+.editor-bottom{background:var(--card);color:var(--muted)}
+
+/* ---------- 9. 审阅摘要栏 ---------- */
+.inspector-card{transition:box-shadow .18s}
+.inspector-card:hover{box-shadow:var(--card-shadow-hover)}
+.inspector-card .panel-top h2{display:flex;align-items:center;gap:8px}
+.inspector-card .panel-top h2::before{content:"";width:3px;height:13px;border-radius:2px;background:linear-gradient(180deg,var(--accent-1),var(--accent-2))}
+.verdict.allowed{color:var(--accent-ink)}
+.verdict.denied{color:var(--red)}
+#review-bar .review-state{font-size:14px}
+#review-status{font-weight:600;color:var(--ink)}
+.review-dot.ready{box-shadow:0 0 8px rgba(139,101,8,.5)}
+.review-dot.finished{box-shadow:0 0 8px rgba(13,122,84,.5)}
+
+/* ---------- 10. 吸底审阅操作栏 ---------- */
+.review-bar{position:sticky;bottom:12px;z-index:5;background:var(--card);border:1px solid var(--card-line);border-radius:var(--radius-lg);padding:14px 20px;margin-top:20px;box-shadow:0 8px 28px -10px rgba(18,36,31,.18)}
+.review-bar .button{min-width:96px}
+
+/* ---------- 11. 对话框与提示 ---------- */
+dialog{border:1px solid var(--card-line);border-radius:var(--radius-lg);box-shadow:0 24px 64px -16px rgba(18,36,31,.28)}
+dialog::backdrop{background:rgba(18,36,31,.32)}
+.dialog-heading h2{font-size:16px;font-weight:600;color:var(--ink)}
+.toast{background:var(--ink);color:#e8f0ed;border:0;box-shadow:0 10px 30px -8px rgba(18,36,31,.45);font-size:13px}
+.upload-project{border-color:var(--card-line);border-radius:10px}
+
+/* ---------- 12. 动效与反馈层 ---------- */
+/* 状态过渡：流程步骤、卡片、导航 */
+.step-number{transition:background .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease}
+.pipeline li{transition:color .28s ease}
+.pipeline li.current{transition:color .2s ease}
+.inspector-card,.cegis-round,.file-button{transition:box-shadow .18s ease,transform .18s ease,background .18s ease,color .18s ease}
+.cegis-round:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px -4px rgba(18,36,31,.14)}
+.nav-button,.case-button{transition:background .16s ease,color .16s ease,box-shadow .16s ease}
+
+/* 视图切换淡入（元素从 hidden 显示时动画重放；纯 opacity，避免破坏 sticky 定位） */
+.tab-content,#workspace-view,#analysis-view,#history-view,#deliveries-view{animation:wb-fade .18s ease-out}
+@keyframes wb-fade{from{opacity:0}to{opacity:1}}
+
+/* 加载骨架屏 */
+.skeleton{position:relative;overflow:hidden;background:#e9eef1;border-radius:6px}
+.skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);animation:wb-shimmer 1.3s ease-in-out infinite}
+@keyframes wb-shimmer{to{transform:translateX(100%)}}
+.skeleton-side{padding:12px 4px}
+.skeleton-line{height:13px;margin:11px 14px;width:86%}
+.skeleton-line:nth-child(3n){width:64%}
+.skeleton-line:nth-child(4n+1){width:74%}
+.skeleton-line:nth-child(5n+2){width:93%}
+
+/* 空状态 */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:36px 20px;text-align:center;border:1.5px dashed #d7dfe4;border-radius:12px;background:#fafcfd;color:var(--muted)}
+.empty-state svg{width:26px;height:26px;opacity:.45;margin-bottom:3px}
+.empty-state strong{font-size:13px;font-weight:600;color:var(--secondary)}
+.empty-state small{font-size:12px;line-height:1.7;max-width:36ch}
+
+/* 提交按钮 loading */
+.button.loading{position:relative;pointer-events:none}
+.button.loading,.button.loading *{color:transparent!important}
+.button.loading svg{visibility:hidden}
+.button.loading::after{content:"";position:absolute;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:wb-spin .7s linear infinite}
+.button.secondary.loading::after{border-color:#c9d4da;border-top-color:var(--accent-ink)}
+@keyframes wb-spin{to{transform:rotate(360deg)}}
+
+/* ---------- 13. 宽屏 ---------- */
+@media(min-width:1600px){
+.code-line{font-size:13px;line-height:27px}
+.task-overview{padding:26px 30px 28px}
+}
+
+/* ---------- 13. 中屏 ---------- */
+@media(max-width:1200px){
+.file-button{font-size:12px}
+.file-button svg{display:inline-block;width:14px;height:14px}
+.metrics strong{font-size:24px}
+.metric-secondary strong{font-size:18px}
+}
+
+/* ---------- 14. 窄屏：重排优先 ---------- */
+/* ---------- 源码分析：结构线索全量展开（不再限高滚动） ---------- */
+.analysis-symbols{max-height:none;overflow:visible;padding:12px 20px 18px}
+.analysis-symbol{gap:8px}
+.analysis-symbol code{font-size:12px;color:var(--ink)}
+.analysis-symbol span{font-size:11px;letter-spacing:.02em}
+.analysis-symbol-panel{overflow:visible}
+
+@media(max-width:960px){
+.rule-item,.requirement-item,.check-item{font-size:12px}
+.metrics strong{font-size:22px}
+.metric-secondary strong{font-size:17px}
+.task-overview{padding:18px 20px 20px}
+}
+
+@media(max-width:680px){
+.nav-button{font-size:12px;min-height:44px}
+.sidebar{background:linear-gradient(180deg,#15281f,var(--ink-2))}
+.sidebar .case-button{font-size:12px;min-height:40px}
+.tab{font-size:13px}
+.button{font-size:13px}
+.workspace-subtitle{font-size:13px}
+.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 0}
+.metrics>div{padding:0 0 0 13px}
+.metrics span{font-size:11px}
+.metrics strong{font-size:20px}
+.metrics strong .unit{font-size:11px}
+.metric-secondary strong{font-size:16px}
+.task-overview .pipeline-panel{overflow-x:auto}
+.pipeline{min-width:600px}
+.pipeline li{font-size:11px}
+.step-number{height:26px;min-width:26px;font-size:11px}
+.code-workspace{grid-template-columns:minmax(0,1fr)}
+.file-tree{display:flex;align-items:center;gap:6px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--card-line);padding:10px 12px}
+.file-button{width:auto;white-space:nowrap;font-size:11px;min-height:36px;padding:7px 10px}
+.tree-root{white-space:nowrap;font-size:12px;padding:0 8px 0 0;border-right:1px solid var(--card-line);margin-right:2px;color:var(--muted)}
+.code-toolbar{font-size:11px;flex-wrap:wrap;gap:8px}
+.code-line{font-size:12px;line-height:24px;min-height:24px}
+.split-label{display:none}
+.diff-view-switch{margin-left:0}
+.code-diff[data-view="split"]{grid-template-columns:minmax(0,1fr)}
+.code-diff[data-view="split"] .code-side:first-child{display:none}
+.editor-tabs{gap:16px}
+.advanced-evidence>summary{padding:14px 16px}
+.advanced-evidence-content{padding:14px 14px 16px}
+.cegis-rounds{grid-template-columns:1fr}
+.review-bar{padding:12px 14px;gap:12px;flex-wrap:wrap;bottom:8px}
+.review-bar .review-actions{margin-left:auto}
+.inspector{grid-template-columns:minmax(0,1fr)}
+}
+
+@media(prefers-reduced-motion:reduce){
+.advanced-evidence>summary,.inspector-card{transition:none}
+}
+
+/* ---------- 13. 上传向导 ---------- */
+.dialog-subtitle{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.upload-stepper{list-style:none;display:flex;align-items:flex-start;margin:18px 0 22px;padding:0}
+.upload-stepper-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;cursor:pointer;min-width:0}
+.upload-stepper-item::before,.upload-stepper-item::after{content:'';position:absolute;top:13px;height:2px;width:50%;background:var(--card-line)}
+.upload-stepper-item::before{left:0}
+.upload-stepper-item::after{right:0}
+.upload-stepper-item:first-child::before,.upload-stepper-item:last-child::after{display:none}
+.stepper-num{position:relative;z-index:1;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--canvas);border:2px solid var(--card-line);color:var(--muted);transition:all .25s}
+.stepper-label{font-size:12px;color:var(--muted);white-space:nowrap;transition:color .25s}
+.upload-stepper-item.done::before,.upload-stepper-item.done::after{background:var(--accent)}
+.upload-stepper-item.done .stepper-num{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.upload-stepper-item.active .stepper-num{background:linear-gradient(135deg,#0e9f6e,#0b7a56);border-color:transparent;color:#fff;box-shadow:0 0 0 4px var(--accent-soft)}
+.upload-stepper-item.active .stepper-label{color:var(--text);font-weight:600}
+.upload-stepper-item.done .stepper-label{color:var(--secondary)}
+.upload-step-title{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-size:17px}
+.upload-step-title::before{content:'';width:4px;height:16px;border-radius:2px;background:linear-gradient(180deg,#12b981,#0b7a56)}
+.upload-step{margin:0}
+.upload-step[hidden]{display:none}
+.upload-step>.evidence-note:first-of-type{margin-top:6px}
+.upload-prepare-row{display:flex;align-items:center;gap:12px;margin:14px 0 4px;flex-wrap:wrap}
+.upload-summary{margin:14px 0 18px;padding:14px 16px;border:1px solid var(--card-line);border-radius:12px;background:var(--canvas);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+.upload-summary>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.upload-summary dt{font-size:11px;color:var(--muted)}
+.upload-summary dd{margin:0;font-size:13px;color:var(--text);font-weight:600;word-break:break-all}
+.upload-advanced{margin:18px 0;border:1px dashed var(--card-line);border-radius:12px;padding:0 16px;background:var(--canvas)}
+.upload-advanced>summary{display:flex;align-items:center;gap:10px;padding:14px 0;cursor:pointer;font-size:13px;list-style:none}
+.upload-advanced>summary::-webkit-details-marker{display:none}
+.upload-advanced>summary::before{content:'';width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .2s;margin-left:2px}
+.upload-advanced[open]>summary::before{transform:rotate(45deg)}
+.upload-advanced>summary .evidence-note{margin:0;font-size:12px}
+.upload-wizard-nav{position:sticky;bottom:-24px;display:flex;align-items:center;gap:14px;margin:22px -24px -24px;padding:14px 24px;background:var(--panel);border-top:1px solid var(--card-line)}
+.upload-wizard-nav #upload-step-hint{flex:1;text-align:center}
+@media(max-width:680px){
+.upload-stepper-item::before,.upload-stepper-item::after{top:11px}
+.stepper-num{width:22px;height:22px;font-size:11px}
+.stepper-label{font-size:11px}
+.upload-summary{grid-template-columns:1fr}
+.upload-wizard-nav{margin:22px -16px -24px;padding:12px 16px}
+}
+@media(prefers-reduced-motion:reduce){
+.upload-stepper-item,.stepper-num,.stepper-label,.upload-advanced>summary::before{transition:none}
+}
