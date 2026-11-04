@@ -248,7 +248,12 @@ def build_focus(source_files,confirmed_cases,failures,analysis_reports,binding,*
                     points=[]
                     for line in anchors[:4]:
                         report=analysis_reports.get(path)
-                        point=point_slice(report,line) if report is not None else dict(status='UNAVAILABLE',reason='该文件没有可校验的MCP程序依赖图',line=line)
+                        if report is not None and report.get('slice_scope')=='MCP_NATIVE':
+                            # Native variable rows are already in analysis context; do not turn them into guessed statement slices.
+                            point=dict(status='UNAVAILABLE',reason='MCP返回变量级切片，未提供该语句准则切片',line=line,
+                                       origin='MCP_SYMPAS_SLICE',scope='VARIABLE')
+                        else:
+                            point=point_slice(report,line) if report is not None else dict(status='UNAVAILABLE',reason='该文件没有可校验的MCP程序依赖图',line=line)
                         for key,limit in (('node_ids',32),('seed_nodes',32),('lines',40),('edges',32)):
                             if key in point:
                                 point[key+'_count']=len(point[key])

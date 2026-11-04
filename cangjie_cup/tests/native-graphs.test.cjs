@@ -6,11 +6,11 @@ const graph=(kind)=>({status:'SAVED',graph_type:kind,source_sha256:'source',aspe
  view_url:'/api/analysis/run/graphs/'+kind+'.svg',download_url:'/api/analysis/run/graphs/'+kind+'.svg?download=1'});
 const report={id:'run',status:'COMPLETE',source,native_graphs:{schema_version:1,graphs:Object.fromEntries(
  ['Cfg','Cg','Cdg','Ddg','Pdg','Sdg','Dfg'].map(k=>[k,graph(k)]))}};
-test('seven independent graph types retain original same-origin assets',()=>{
- assert.equal(ui.TYPES.length,7);
+test('six visible independent graph types retain original same-origin assets',()=>{
+ assert.equal(ui.TYPES.length,6);
  for(const kind of ui.TYPES)assert.equal(ui.asset(report,kind).view_url,graph(kind).view_url);
  const bad=structuredClone(report);bad.native_graphs.graphs.Sdg.source_sha256='other';
- assert.equal(ui.asset(bad,'Sdg').ready,false);assert.equal(ui.asset(bad,'Ddg').ready,true);
+ assert.equal(ui.asset(bad,'Sdg').ready,false);assert.equal(ui.asset(bad,'Pdg').ready,true);
 });
 test('unavailable kind never falls back to another graph; old CG is available explicitly',()=>{
  const old={source,status:'PARTIAL',callgraph:{...graph('Cg'),view_url:'/api/analysis/run/callgraph.svg',download_url:'/api/analysis/run/callgraph.svg?download=1'}};
@@ -19,8 +19,8 @@ test('unavailable kind never falls back to another graph; old CG is available ex
 });
 test('foreign, active, non-graph and protocol-relative URLs are rejected',()=>{
  for(const url of ['https://evil.invalid/g.svg','//evil.invalid/g.svg','javascript:alert(1)','data:image/svg+xml,x','/api/tasks']){
-  const bad=structuredClone(report);bad.native_graphs.graphs.Ddg.view_url=url;
-  assert.equal(ui.asset(bad,'Ddg').ready,false,url);
+  const bad=structuredClone(report);bad.native_graphs.graphs.Pdg.view_url=url;
+  assert.equal(ui.asset(bad,'Pdg').ready,false,url);
  }
 });
 test('fit contains portrait and wide graphs in a full-width viewport, zoom and pan stay bounded',()=>{
@@ -36,8 +36,8 @@ test('source switch clears original image and stale load cannot change the new g
  const get=id=>{if(!nodes.has(id))nodes.set(id,el());return nodes.get(id);};
  const ctx={document:{getElementById:get,createElement:el},location:{origin:'http://localhost'},URL};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync('nexus/demo/static/native-graphs.js','utf8'),ctx);
- const viewer=ctx.NativeGraphUI.mount({onSelect(){}});viewer.render(report,'Ddg');
- const image=get('analysis-graph').children[0];assert.equal(image.src,graph('Ddg').view_url);
+ const viewer=ctx.NativeGraphUI.mount({onSelect(){}});viewer.render(report,'Pdg');
+ const image=get('analysis-graph').children[0];assert.equal(image.src,graph('Pdg').view_url);
  viewer.render({...report,id:'other',source:{source_sha256:'new'}},'Sdg');
  const status=get('analysis-node-detail').textContent;image.onload();
  assert.equal(get('analysis-node-detail').textContent,status);
@@ -70,8 +70,8 @@ test('polling a completed missing graph replaces the earlier waiting state witho
  const ctx={document:{getElementById:get,createElement:el},location:{origin:'http://localhost'},URL};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync('nexus/demo/static/native-graphs.js','utf8'),ctx);
  const viewer=ctx.NativeGraphUI.mount({onSelect(){}});
- viewer.render({...report,status:'RUNNING'},'Ddg');assert.match(get('analysis-node-detail').textContent,/等待/);
- const finished=structuredClone(report);finished.status='PARTIAL';finished.native_graphs.graphs.Ddg={status:'UNAVAILABLE',reason:'MCP下载超时'};
- viewer.render(finished,'Ddg');assert.equal(get('analysis-node-detail').textContent,'MCP下载超时');
+ viewer.render({...report,status:'RUNNING'},'Pdg');assert.match(get('analysis-node-detail').textContent,/等待/);
+ const finished=structuredClone(report);finished.status='PARTIAL';finished.native_graphs.graphs.Pdg={status:'UNAVAILABLE',reason:'MCP下载超时'};
+ viewer.render(finished,'Pdg');assert.equal(get('analysis-node-detail').textContent,'MCP下载超时');
  assert.equal(get('analysis-graph').children[0].textContent,'MCP下载超时');
 });

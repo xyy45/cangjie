@@ -135,3 +135,19 @@ def test_native_literal_call_allows_spacing_and_negative_zero_but_not_bool_int_c
     assert api().build_focus(*args)['targets'][0]['mapping']=='CONFIRMED_CASE'
     args[1][0]['args']=[1];args[2][0]['args']=[True];args[2][0]['expression']='total(1)'
     with pytest.raises(ValueError):api().build_focus(*args)
+
+
+def test_current_native_slice_profile_does_not_invent_local_statement_slices(monkeypatch):
+    args=list(inputs())
+    for path,item in args[0].items():
+        args[3][path]=dict(source=dict(code=item['content'],source_sha256=item['file_hash']),slice_scope='MCP_NATIVE',analysis_profile=8,
+            observations=[dict(tool='sympas_slice',status='VALID',data=dict(slices={'v':[2,3]}))])
+    module=api()
+    monkeypatch.setattr(module,'point_slice',lambda *a:pytest.fail('current native profile traversed PDG locally'))
+    report=module.build_focus(*args)
+    for target in report['targets']:
+        for location in target['locations']:
+            for anchor in location['anchors']:
+                assert anchor['slice']['status']=='UNAVAILABLE'
+                assert anchor['slice']['origin']=='MCP_SYMPAS_SLICE'
+                assert '变量' in anchor['slice']['reason']

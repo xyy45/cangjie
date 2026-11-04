@@ -89,3 +89,6 @@ color-scheme:light;
 @media(max-width:680px){.native-graph-types{gap:6px;padding:12px}.native-graph-tab{font-size:11px;padding:8px}.native-graph-workbench .analysis-source{max-height:300px}#analysis-graph{padding:8px}#analysis-graph-panel .analysis-zoom{gap:10px}}
 
 .analysis-node-details{border-top:1px solid var(--line);padding:14px 20px}.analysis-node-details summary{font-size:12px;color:var(--muted);cursor:pointer}.analysis-node-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-top:12px}.analysis-node-link{text-align:left;white-space:normal;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text);padding:10px;font:11px/1.6 ui-monospace,monospace;cursor:pointer}.analysis-node-link.selected,.analysis-node-link.in-slice{background:var(--accent-soft);border-color:var(--accent)}
+
+/* Keep slice, SVG, JSON and symbols as independent analysis results. */
+.analysis-tools{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}

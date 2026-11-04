@@ -114,8 +114,8 @@ def test_download_contains_exactly_the_verified_result_bytes(service):
 def test_selected_line_is_sent_to_tool_and_bound_to_saved_result(service):
     job=service.create(validate_source('add.cj',SOURCE),actor_id='operator',request_key='line-2',origin='UPLOAD',slice_line=2)
     service.run(job['id']);result=service.get(job['id'],actor_id='operator')
-    assert 'line' not in next(args for tool,args in FakeClient.calls if tool=='sympas_slice_table')
-    assert result['slice_scope']=='VARIABLE_TABLE'
+    assert next(args for tool,args in FakeClient.calls if tool=='sympas_slice')['line']==2
+    assert result['slice_scope']=='MCP_NATIVE'
     assert result['slice_criterion']=={'line':2,'direction':'Bwd','method':'SymPas'}
     assert service.list('operator')[0]['slice_criterion']['line']==2
     with zipfile.ZipFile(service.export(job['id'],actor_id='operator')) as z:

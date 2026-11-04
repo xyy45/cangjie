@@ -67,7 +67,7 @@ class AnalysisService:
         criterion=slice_criterion(source,slice_line)
         identity=dict(filename=source['filename'],source_sha256=source['source_sha256'],origin=origin)
         fingerprint=sha(encoded(dict(**identity,profile_version=cache.PROFILE,slice_criterion=criterion)))
-        previous=[sha(encoded(dict(**identity,profile_version=n,slice_criterion=criterion))) for n in (2,3,4,5,6)]
+        previous=[sha(encoded(dict(**identity,profile_version=n,slice_criterion=criterion))) for n in range(2,cache.PROFILE)]
         legacy=sha(encoded(dict(**identity,profile_version=1))) if criterion==slice_criterion(source) else None
         with self.store.connect() as db:
             db.execute('BEGIN IMMEDIATE')
@@ -103,7 +103,7 @@ class AnalysisService:
             with path.open('xb') as stream:path.chmod(0o600);stream.write(source['code'].encode())
             payload=dict(schema_version=1,id=identity,origin=origin,source={k:v for k,v in source.items() if k!='code'},
                 created_at=datetime.now(timezone.utc).isoformat(),updated_at=datetime.now(timezone.utc).isoformat(),
-                analysis_profile=cache.PROFILE,slice_scope='VARIABLE_TABLE',observations=[],limitations=LIMITATIONS,active_tool=None,elapsed_ms=None,slice_criterion=criterion)
+                analysis_profile=cache.PROFILE,slice_scope='MCP_NATIVE' if cache.PROFILE>=8 else 'VARIABLE_TABLE',observations=[],limitations=LIMITATIONS,active_tool=None,elapsed_ms=None,slice_criterion=criterion)
             db.execute('INSERT INTO analysis_jobs VALUES (?,?,?,?,?,?)',(identity,actor_id,request_key,fingerprint,'READY',json.dumps(payload,ensure_ascii=False)))
             db.execute('INSERT INTO analysis_requests VALUES (?,?,?,?,0)',(actor_id,request_key,fingerprint,identity))
         return {'id':identity}
@@ -140,10 +140,11 @@ class AnalysisService:
             with self.client_factory() as client:
                 scope=getattr(client,'cache_scope',lambda:None)()
                 payload['cache_key']=cache.key(source,payload['origin'],payload['slice_criterion'],scope)
-                for tool in TOOLS:
+                execution_tools=cache.tools(payload.get('analysis_profile',cache.PROFILE))
+                for tool in execution_tools:
                     verify_write_owner(self.store.root,self.owner)
                     payload['active_tool']=tool;self._save(identity,'RUNNING',payload)
-                    args=cache.arguments(tool,source,payload.get('slice_criterion',slice_criterion(source)))
+                    args=cache.arguments(tool,source,payload.get('slice_criterion',slice_criterion(source)),profile=payload.get('analysis_profile',cache.PROFILE))
                     try:
                         reply=client.analyze(tool,args)
                         observation=normalize(tool,reply.get('response'),source['filename'],source['line_count']) if reply.get('http_status')==200 else dict(status='UNAVAILABLE',reason='分析服务返回非200状态',data={})
@@ -173,7 +174,7 @@ class AnalysisService:
                         http_status=reply.get('http_status'),elapsed_ms=reply.get('elapsed_ms'),**observation))
                     self._save(identity,'RUNNING',payload)
             valid=sum(o['status']=='VALID' for o in payload['observations'])
-            status='COMPLETE' if valid==len(TOOLS) else 'PARTIAL' if valid else 'FAILED'
+            status='COMPLETE' if valid==len(execution_tools) else 'PARTIAL' if valid else 'FAILED'
         except Exception as exc:
             # No exception body/source/header enters logs or a public error.
             payload['error']='分析未完整结束，请检查证据；未自动重试'
@@ -192,6 +193,8 @@ class AnalysisService:
 
     def get(self,identity,*,actor_id):
         status,payload=self._row(identity,actor_id);source=self._source(identity,payload)
+        if payload.get('analysis_profile',0)>=8 and payload.get('slice_scope')!='MCP_NATIVE':
+            raise ValueError('MCP原生切片范围绑定变化')
         root=self.directory(identity)
         for o in payload['observations']:
             if o['raw_ref'] not in {f'observations/{tool}.json' for tool in SUPPORTED_TOOLS}:raise ValueError('未知证据引用')
@@ -221,8 +224,16 @@ class AnalysisService:
         if criterion!=slice_criterion(source,criterion.get('line')):raise ValueError('切片参数无效')
         observed=next((o for o in payload['observations'] if o['tool']=='sympas_slice'),None)
         if observed:
-            args=json.loads((root/observed['raw_ref']).read_bytes())['input']
+            raw=json.loads((root/observed['raw_ref']).read_bytes());args=raw['input']
             if any(args.get(k)!=v for k,v in criterion.items()):raise ValueError('切片参数与原始请求不符')
+            if payload.get('analysis_profile',0)>=8:
+                if (raw.get('tool')!='sympas_slice' or raw.get('source_sha256')!=source['source_sha256'] or
+                        observed.get('source_sha256')!=source['source_sha256'] or
+                        args!=cache.arguments('sympas_slice',source,criterion,profile=payload['analysis_profile'])):
+                    raise ValueError('MCP原生切片与原始请求绑定不符')
+                checked=normalize('sympas_slice',raw.get('response'),source['filename'],source['line_count']) if raw.get('http_status')==200 else dict(status='UNAVAILABLE',data={})
+                if checked['status']!=observed['status'] or checked['data']!=observed['data']:
+                    raise ValueError('MCP原生切片与原始结果不符')
         native=next((o for o in payload['observations'] if o['tool']=='sympas_slice_table'),None)
         if native:
             raw=json.loads((root/native['raw_ref']).read_bytes())
@@ -236,8 +247,11 @@ class AnalysisService:
                 checked=normalize('sympas_slice_table',raw.get('response'),source['filename'],source['line_count'])
                 if raw.get('http_status')!=200 or checked['status']!='VALID' or checked['data']!=native['data']:
                     raise ValueError('切片表与原始结果不符')
-        return attach_point_graph(attach_recovery(dict(payload,status=status,source=source,slice_criterion=criterion,
-            callgraph=cg or dict(status='UNAVAILABLE',reason='此记录没有调用图 SVG，请重新分析')),root),root)
+        result=dict(payload,status=status,source=source,slice_criterion=criterion,
+            callgraph=cg or dict(status='UNAVAILABLE',reason='此记录没有调用图 SVG，请重新分析'))
+        # Legacy evidence can still be read; current native responses never use log recovery.
+        if payload.get('analysis_profile',0)<8:result=attach_recovery(result,root)
+        return attach_point_graph(result,root)
 
     def callgraph_bytes(self,identity,*,actor_id):
         result=self.get(identity,actor_id=actor_id)

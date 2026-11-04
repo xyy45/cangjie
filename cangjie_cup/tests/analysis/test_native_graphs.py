@@ -126,7 +126,7 @@ def test_previous_profile_cache_alias_is_readable_but_not_reused_for_new_keys(tm
         service.run(first['id'])
         alias=service.create(source,actor_id='owner',request_key='alias',origin='UPLOAD',reuse_cache=True)
         assert alias['cache_hit']
-    assert cache.PROFILE==7
+    assert cache.PROFILE==8
     assert service.create(source,actor_id='owner',request_key='alias',origin='UPLOAD',reuse_cache=True)==alias
     fresh=service.create(source,actor_id='owner',request_key='fresh',origin='UPLOAD',reuse_cache=True)
     assert fresh['id']!=first['id'] and not fresh.get('cache_hit')
@@ -162,7 +162,7 @@ class GraphClient(FakeClient):
 def test_seven_assets_are_bound_exported_and_owned(tmp_path):
     service=AnalysisService(tmp_path,client_factory=GraphClient);job=create(service);service.run(job['id'])
     r=service.get(job['id'],actor_id='operator')
-    assert r['analysis_profile']==7 and r['native_graphs']['schema_version']==1
+    assert r['analysis_profile']==8 and r['native_graphs']['schema_version']==1
     for k,g in r['native_graphs']['graphs'].items():
         assert g['analysis_id']==job['id'] and g['graph_type']==k
         assert g['source_sha256']==r['source']['source_sha256']

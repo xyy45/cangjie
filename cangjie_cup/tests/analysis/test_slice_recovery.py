@@ -15,6 +15,8 @@ from tests.analysis.test_service import FakeClient, SOURCE
 @pytest.fixture(autouse=True)
 def legacy_profile(monkeypatch,tmp_path):
     import nexus.analysis.service as service_module
+    from nexus.analysis import cache
+    monkeypatch.setattr(cache,'PROFILE',5)  # Exercise preserved historical records, not current native requests.
     monkeypatch.setattr(service_module,'TOOLS',('sympas_slice','sympas_dep_graph','ast_symbol_extractor'))
     monkeypatch.setattr(samples,'POINT_SNAPSHOTS',tmp_path/'no-point-snapshots')
     monkeypatch.setattr(samples,'NATIVE_SNAPSHOTS',tmp_path/'no-native-snapshots')

@@ -17,11 +17,11 @@ test('source highlights come only from the selected valid tool slice',()=>{
  assert.deepEqual([...sliceLines(result,'result@add')],[2,3]);assert.deepEqual([...sliceLines(result,'missing')],[]);
  result.observations[0].status='FAILED';assert.deepEqual([...sliceLines(result,'result@add')],[]);
 });
-test('source-bound log recovery can highlight while retaining original failure',()=>{
+test('legacy log recovery no longer supplies slice highlights',()=>{
  const report={source:{source_sha256:'source'},observations:[{tool:'sympas_slice',status:'FAILED',raw_sha256:'raw'}],
   derived_slice:{status:'RECOVERED',origin:'TOOL_LOG',parser_version:'sympas-text-v1',source_sha256:'source',raw_sha256:'raw',slices:{'a@f':[2,4]}}};
- assert.deepEqual([...sliceLines(report,'a@f')],[2,4]);assert.equal(report.observations[0].status,'FAILED');
- assert.equal(core.sliceView(report).recovered,true);
+ assert.deepEqual([...sliceLines(report,'a@f')],[]);assert.equal(report.observations[0].status,'FAILED');
+ assert.equal(core.sliceView(report).recovered,false);
  report.derived_slice.source_sha256='other-source';assert.deepEqual([...sliceLines(report,'a@f')],[]);
 });
 test('native JSON remains preferred over a log recovery, and rejected recovery has no highlighter',()=>{
@@ -41,9 +41,9 @@ test('a fresh upload clears every old slice and graph before its request starts'
  const session=new AnalysisSession();const a=session.select();session.apply(a,{id:'sample',status:'COMPLETE',observations:[{tool:'sympas_dep_graph'}]});session.select();assert.equal(session.report,null);
 });
 
-test('native variable table takes precedence and invalid native tables cannot fall back to legacy logs',()=>{
+test('native sympas_slice takes precedence over a legacy table, and its failure does not fall back',()=>{
  const report={source:{source_sha256:'s'},observations:[{tool:'sympas_slice_table',status:'VALID',data:{scope:'VARIABLE_TABLE',slices:{v:[2,3]}}},{tool:'sympas_slice',status:'VALID',data:{slices:{v:[1]}}}]};
- assert.deepEqual([...sliceLines(report,'v')],[2,3]);
- report.observations[0].status='INVALID';
+ assert.deepEqual([...sliceLines(report,'v')],[1]);
+ report.observations[1].status='INVALID';
  assert.deepEqual([...sliceLines(report,'v')],[]);
 });
