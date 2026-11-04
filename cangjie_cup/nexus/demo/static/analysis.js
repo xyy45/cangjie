@@ -1,7 +1,7 @@
 'use strict';
 const AnalysisUI=(()=>{
-  const el=id=>document.getElementById(id),{AnalysisSession,sliceLines,sliceView,defaultTargetLine}=AnalysisCore,session=new AnalysisSession();
-  const labels={COMPLETE:'结果已返回',PARTIAL:'部分结果',FAILED:'分析失败',IN_DOUBT:'待核实',RUNNING:'分析中',READY:'待分析',VALID:'有效结构',EMPTY:'空结果',INVALID:'结果无效',UNAVAILABLE:'不可用'};
+  const el=id=>document.getElementById(id),{AnalysisSession,sliceLines,sliceView,defaultTargetLine,analysisDisplayStatus}=AnalysisCore,session=new AnalysisSession();
+  const labels={COMPLETE:'正常分析',PARTIAL:'部分结果',FAILED:'分析失败',IN_DOUBT:'待核实',RUNNING:'分析中',READY:'待分析',VALID:'有效结构',EMPTY:'空结果',INVALID:'结果无效',UNAVAILABLE:'不可用'};
   const toolLabels={sympas_slice:'MCP原生切片',sympas_slice_table:'变量切片表',sympas_dep_graph:'依赖图工具',ast_symbol_extractor:'符号结构'};
   let initialized=false,samples=[],selectedSample=null,restoredId=null,source=null,upload=null,variable='',focusedLine=null,focusedNode=null,nativeKind='Sdg',pollTimer=null,loadBusy=false,targetLine=null,cacheReuse=null;
   const make=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -33,12 +33,11 @@ const AnalysisUI=(()=>{
       const bytes=await file.arrayBuffer(),code=new TextDecoder('utf-8',{fatal:true}).decode(bytes);
       const lines=code.split(/\r\n|\n|\r/);if(!code.trim()||code.includes('\0')||lines.length-(lines.at(-1)===''?1:0)>1000)throw Error('源码为空或超过1000行');
       const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
-      if(token!==session.epoch)return;source={filename:file.name,code,line_count:lines.length-(lines.at(-1)===''?1:0),source_sha256:hash};upload=file;targetLine=defaultTargetLine(source);el('analysis-consent').checked=false;render();
+      if(token!==session.epoch)return;source={filename:file.name,code,line_count:lines.length-(lines.at(-1)===''?1:0),source_sha256:hash};upload=file;targetLine=defaultTargetLine(source);render();
     }catch(error){if(token===session.epoch){toast(error instanceof TypeError?'源码必须为 UTF-8':error.message);render();}}
   }
   async function run(){
     if(session.busy||loadBusy||!source||session.report?.display_origin==='REGISTERED_BOUND')return;
-    if(upload&&!el('analysis-consent').checked){toast('请确认发送至课题组 MCP');return;}
     const reuseCache=!session.report?.observations?.length;
     const token=session.start();if(token===null)return;cacheReuse=null;clearSelection();render();
     try{
@@ -88,11 +87,11 @@ const AnalysisUI=(()=>{
     const legacyTable=!observation('sympas_slice')&&!!observation('sympas_slice_table');
     el('analysis-target-label').textContent='请求行号';el('analysis-target-line').setAttribute('aria-label','请求行号');
     el('analysis-target-note').textContent=legacyTable?'历史切片表结果 · 重新分析获取MCP原生切片':!source?'选择源码后调用MCP切片':bound?'MCP切片原件 · 请求 L'+resultLine+' · 当前版本只读':resultLine&&resultLine!==targetLine?'当前结果的MCP请求行号为 L'+resultLine+'；点击重新分析后请求 L'+targetLine:'sympas_slice · 后向 Bwd · 请求 L'+targetLine;
-    el('analysis-consent-label').hidden=!upload;el('analysis-consent').disabled=busy;
     el('analysis-samples').querySelectorAll('button').forEach(button=>{button.disabled=busy;button.classList.toggle('selected',button.dataset.sample===selectedSample);});
-    el('analysis-status').textContent=busy?(toolLabels[report?.active_tool]?'分析中':'准备中'):(labels[report?.status]||'就绪');
-    el('analysis-status').className='status '+(report?.status==='COMPLETE'?'good':report?.status==='PARTIAL'?'pending':['FAILED','IN_DOUBT'].includes(report?.status)?'bad':'neutral');
-    el('analysis-active-tool').textContent=busy?(toolLabels[report?.active_tool]||''):report?.error?'请查看证据':observation('sympas_dep_graph')?.status==='INVALID'?'部分图结构信息异常，详见证据':'';
+    const displayStatus=analysisDisplayStatus(report,{graphsReady:typeof NativeGraphUI!=='undefined'&&NativeGraphUI.TYPES.every(kind=>NativeGraphUI.asset(report,kind).ready)});
+    el('analysis-status').textContent=busy?(toolLabels[report?.active_tool]?'分析中':'准备中'):(labels[displayStatus]||'就绪');
+    el('analysis-status').className='status '+(displayStatus==='COMPLETE'?'good':displayStatus==='PARTIAL'?'pending':['FAILED','IN_DOUBT'].includes(displayStatus)?'bad':'neutral');
+    el('analysis-active-tool').textContent=busy?(toolLabels[report?.active_tool]||''):report?.error?'请查看证据':displayStatus!=='COMPLETE'&&observation('sympas_dep_graph')?.status==='INVALID'?'部分图结构信息异常，详见证据':'';
     if(el('analysis-view').hidden===false){el('source-badge').textContent=report?.cache_hit?'MCP · 缓存复用':snapshot?'样例快照':'课题组 MCP';el('source-badge').dataset.origin=report?.cache_hit?'ANALYSIS_CACHE':snapshot?'ANALYSIS_SNAPSHOT':'ANALYSIS_LIVE';}
     const graph=observation('sympas_dep_graph'),symbols=observation('ast_symbol_extractor');
     const view=sliceView(report),sliceData=view.slices,graphData=nativeKind==='Pdg'?(report?.point_graph?.status==='VALID'?report.point_graph.graph:null):null;

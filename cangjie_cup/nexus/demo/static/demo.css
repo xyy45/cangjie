@@ -92,3 +92,6 @@ color-scheme:light;
 
 /* Keep slice, SVG, JSON and symbols as independent analysis results. */
 .analysis-tools{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+
+/* The analysis page uses its result header instead of a global source badge. */
+body.analysis-active #source-badge{display:none}
