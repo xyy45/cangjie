@@ -8,7 +8,7 @@ function page(callgraph,native=false,{omitPointOnResult=false,cacheHit=false}={}
  const requests=[],report={id:'saved',status:callgraph?'PARTIAL':'COMPLETE',callgraph,source,slice_criterion:{line:3,direction:'Bwd',method:'SymPas'},observations:[{tool:'sympas_slice',status:'VALID',data:{slices:{x:[2,3]}}}]};
  if(native){report.slice_scope='VARIABLE_TABLE';report.observations=[{tool:'sympas_slice_table',status:'VALID',data:{scope:'VARIABLE_TABLE',slices:{x:[2,3],a:[1]}}}];}
  if(native==='point'){report.point_slice_url='/api/analysis/saved/point-slice';report.point_graph={status:'VALID',source_sha256:'hash',raw_sha256:'raw',graph:{graph_type:'Pdg',nodes:[{id:'one',label:'[L2]: x = 2',line:2},{id:'two',label:'[L3]: return x',line:3}],edges:[{from:'one',to:'two'}]}};}
- const ctx={document:{getElementById:get,createElement:element,createElementNS:element},crypto:require('node:crypto').webcrypto,TextDecoder,FormData,csrf:'csrf',location:{origin:'http://localhost'},toast(){},setTimeout:()=>0,clearTimeout(){},fetch:async(url,options={})=>{
+ const ctx={document:{getElementById:get,createElement:element,createElementNS:element},crypto:require('node:crypto').webcrypto,TextDecoder,FormData,csrf:'csrf',URL,location:{origin:'http://localhost'},toast(){},setTimeout:()=>0,clearTimeout(){},fetch:async(url,options={})=>{
   requests.push({url,...options});let data;
   if(url==='/analysis/samples')data={samples:[{id:'s',title:'sample'}]};
   else if(url==='/analysis/samples/s')data={source,snapshot:{...report,callgraph:undefined,display_origin:'SAMPLE_SNAPSHOT'}};
@@ -19,7 +19,7 @@ function page(callgraph,native=false,{omitPointOnResult=false,cacheHit=false}={}
   return{ok:true,json:async()=>data};
  }};
  vm.createContext(ctx);
- for(const file of ['analysis-core.js','analysis.js'])vm.runInContext(fs.readFileSync('nexus/demo/static/'+file,'utf8'),ctx);
+ for(const file of ['analysis-core.js','native-graphs.js','analysis.js'])vm.runInContext(fs.readFileSync('nexus/demo/static/'+file,'utf8'),ctx);
  return{get,requests,show:()=>vm.runInContext('AnalysisUI.show()',ctx),openBound:(line)=>{ctx.boundReport={...report,display_origin:'REGISTERED_BOUND'};ctx.boundLine=line;return vm.runInContext('AnalysisUI.openBound(boundReport,{line:boundLine})',ctx);}};
 }
 test('bound localization opens the requested baseline statement rather than the default criterion',()=>{
@@ -38,14 +38,15 @@ test('selected source line becomes actual request criterion and old results stay
 });
 test('saved native SVG is accessible for partial results and cleared on source switch',async()=>{
  const {get,show}=page({status:'SAVED',source_sha256:'hash',view_url:'/api/analysis/saved/callgraph.svg',download_url:'/api/analysis/saved/callgraph.svg?download=1'});
- await show();assert.equal(get('analysis-callgraph-open').hidden,true);
+ await show();assert.equal(get('analysis-graph-download').hidden,true);
  await get('analysis-history').onchange({target:{value:'saved'}});
- assert.equal(get('analysis-callgraph-open').hidden,false);
- assert.equal(get('analysis-callgraph-open').href,'/api/analysis/saved/callgraph.svg');
- assert.equal(get('analysis-callgraph-download').href,'/api/analysis/saved/callgraph.svg?download=1');
+ get('analysis-graph-types').children.find(b=>b.dataset.kind==='Cg').onclick();
+ assert.equal(get('analysis-graph-download').hidden,false);
+ assert.equal(get('analysis-graph').children[0].src,'/api/analysis/saved/callgraph.svg');
+ assert.equal(get('analysis-graph-download').href,'/api/analysis/saved/callgraph.svg?download=1');
  await get('analysis-samples').children[0].onclick();
- assert.equal(get('analysis-callgraph-open').hidden,true);
- assert.equal(get('analysis-callgraph-open').href,'');
+ assert.equal(get('analysis-graph-download').hidden,true);
+ assert.equal(get('analysis-graph-download').href,'');
 });
 test('restoring analysis restores its recorded target and rejects invalid edits',async()=>{
  const {get,show}=page();await show();get('analysis-target-line').value='2';get('analysis-target-line').onchange({target:get('analysis-target-line')});
@@ -134,4 +135,14 @@ test('first upload requests reuse and reanalysis forces tools while showing orig
  assert.ok(JSON.stringify(get('analysis-evidence-content').children).includes('2026'));
  await get('analysis-run').onclick();
  assert.equal(requests.filter(r=>r.method==='POST')[1].body.get('reuse_cache'),'false');
+});
+
+
+test('original JSON node list still navigates and highlights source without requesting a tool',async()=>{
+ const {get,show,requests}=page(null,'point');await show();get('analysis-slice-mode').onchange({target:{value:'point'}});
+ assert.equal(get('analysis-graph-node-details').hidden,false);
+ get('analysis-graph-nodes').children[0].onclick();
+ assert.equal(get('analysis-target-line').value,'2');
+ assert.match(get('analysis-source').children[1].className,/is-slice/);
+ assert.equal(requests.filter(r=>r.method==='POST').length,0);
 });

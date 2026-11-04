@@ -14,6 +14,7 @@ from nexus.analysis.normalize import TOOLS,SUPPORTED_TOOLS,LIMITATIONS,normalize
 from nexus.analysis import cache
 from nexus.analysis.recovery import attach_recovery
 from nexus.analysis.point import attach_point_graph
+from nexus.analysis import native_graphs
 from nexus.execution.ownership import owner_token,verify_write_owner
 from nexus.store import RunStore,uid
 
@@ -66,7 +67,7 @@ class AnalysisService:
         criterion=slice_criterion(source,slice_line)
         identity=dict(filename=source['filename'],source_sha256=source['source_sha256'],origin=origin)
         fingerprint=sha(encoded(dict(**identity,profile_version=cache.PROFILE,slice_criterion=criterion)))
-        previous=[sha(encoded(dict(**identity,profile_version=n,slice_criterion=criterion))) for n in (2,3,4,5)]
+        previous=[sha(encoded(dict(**identity,profile_version=n,slice_criterion=criterion))) for n in (2,3,4,5,6)]
         legacy=sha(encoded(dict(**identity,profile_version=1))) if criterion==slice_criterion(source) else None
         with self.store.connect() as db:
             db.execute('BEGIN IMMEDIATE')
@@ -76,7 +77,7 @@ class AnalysisService:
                 if old[2]:
                     _,stored=self._row(old[0],actor_id)
                     # Idempotency stays bound even beyond the reuse TTL.
-                    cache.verified(self,old[0],actor_id,stored.get('cache_key'))
+                    cache.verified(self,old[0],actor_id,stored.get('cache_key'),allow_previous=True)
                     return dict(id=old[0],cache_hit=True,cached_at=stored['completed_at'])
                 return {'id':old[0]}
             has_impact=db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='impact_jobs'").fetchone()
@@ -158,12 +159,15 @@ class AnalysisService:
                             cg.update(analysis_id=identity,source_sha256=source['source_sha256'],ref=ref,sha256=sha(svg),size_bytes=len(svg),graph_type='Cg')
                         else:cg=dict(status='UNAVAILABLE',reason=cg.get('reason','未取得调用图 SVG'))
                         reply['callgraph']=cg
+                        bundle=native_graphs.save_graphs(self.directory(identity),identity,source['source_sha256'],reply,line_count=source['line_count'])
                     record=dict(schema_version=1,request_id=f'{identity}-{tool}',tool=tool,
                         source_sha256=source['source_sha256'],input=args,observed_at=datetime.now(timezone.utc).isoformat(),**reply)
                     ref=f'observations/{tool}.json';path=self.directory(identity)/ref;path.parent.mkdir(exist_ok=True,mode=0o700)
                     raw=encoded(record)
                     with path.open('xb') as stream:path.chmod(0o600);stream.write(raw)
                     if tool=='sympas_dep_graph':payload['callgraph']=dict(cg,raw_ref=ref,raw_sha256=sha(raw))
+                    if tool=='sympas_dep_graph' and bundle is not None:
+                        payload['native_graphs']=dict(bundle,raw_ref=ref,raw_sha256=sha(raw))
                     payload['observations'].append(dict(tool=tool,request_id=record['request_id'],
                         observed_at=record['observed_at'],source_sha256=source['source_sha256'],raw_ref=ref,raw_sha256=sha(raw),
                         http_status=reply.get('http_status'),elapsed_ms=reply.get('elapsed_ms'),**observation))
@@ -211,6 +215,8 @@ class AnalysisService:
             except OSError:valid=False
             if not valid:
                 raise ValueError('调用图证据已变化')
+        native_graphs.verify_graphs(root,identity,source,payload.get('native_graphs'),
+            next((o for o in payload['observations'] if o['tool']=='sympas_dep_graph'),None))
         criterion=payload.get('slice_criterion',slice_criterion(source))
         if criterion!=slice_criterion(source,criterion.get('line')):raise ValueError('切片参数无效')
         observed=next((o for o in payload['observations'] if o['tool']=='sympas_slice'),None)
@@ -246,6 +252,17 @@ class AnalysisService:
         return [dict(id=identity,status=status,filename=(data:=json.loads(payload))['source']['filename'],origin=data['origin'],slice_scope=data.get('slice_scope'),
             slice_criterion=data.get('slice_criterion',slice_criterion(data['source']))) for identity,status,payload in rows]
 
+    def native_graph_bytes(self,identity,kind,*,actor_id):
+        if kind not in native_graphs.GRAPH_TYPES:raise LookupError('未知图类型')
+        result=self.get(identity,actor_id=actor_id)
+        entry=result.get('native_graphs',{}).get('graphs',{}).get(kind,{})
+        if entry.get('status')!='SAVED':
+            if kind=='Cg':return self.callgraph_bytes(identity,actor_id=actor_id)
+            raise LookupError('此记录没有保存该类原生图，请重新分析')
+        raw=(self.directory(identity)/entry['ref']).read_bytes()
+        if sha(raw)!=entry['sha256'] or len(raw)!=entry['size_bytes']:raise ValueError('图像在读取时已变化')
+        return raw
+
     def export(self,identity,*,actor_id):
         result=self.get(identity,actor_id=actor_id)
         if result['status'] in ACTIVE:raise AnalysisConflict('分析尚未结束')
@@ -255,6 +272,8 @@ class AnalysisService:
         if result.get('result_sha256') and sha(result_bytes)!=result['result_sha256']:raise ValueError('导出结果摘要变化')
         files={'source.cj':source_bytes,'result.json':result_bytes}
         if result['callgraph']['status']=='SAVED':files[result['callgraph']['ref']]=self.callgraph_bytes(identity,actor_id=actor_id)
+        for kind,entry in result.get('native_graphs',{}).get('graphs',{}).items():
+            if entry.get('status')=='SAVED':files[entry['ref']]=self.native_graph_bytes(identity,kind,actor_id=actor_id)
         for observation in result['observations']:
             raw=(root/observation['raw_ref']).read_bytes()
             if sha(raw)!=observation['raw_sha256']:raise ValueError('导出证据摘要变化')

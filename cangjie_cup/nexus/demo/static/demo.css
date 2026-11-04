@@ -68,3 +68,24 @@ color-scheme:light;
 @media(max-width:680px){.upload-package-import{grid-template-columns:1fr;gap:4px}.upload-package-edge{align-items:flex-start}}
 #upload-dialog .evidence-note{overflow-wrap:anywhere}
 #report-tab .test-item{overflow-wrap:anywhere;min-width:0}
+
+/* Original MCP SVG gallery: full row, no nested diagram scrolling. */
+.analysis-workbench.native-graph-workbench{grid-template-columns:minmax(0,1fr)}
+.native-graph-workbench .analysis-source{height:auto;min-height:180px;max-height:380px}
+.native-graph-workbench .analysis-graph-panel{grid-column:1/-1}
+#analysis-graph{overflow:hidden;padding:16px;height:auto;min-height:260px;isolation:isolate}
+.native-graph-image{display:block;width:100%;height:100%;object-fit:contain;transform-origin:center;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.native-graph-types{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.native-graph-tab{border:1px solid var(--line);border-radius:7px;padding:9px 13px;background:var(--panel);color:var(--muted);font-size:12px;cursor:pointer}
+.native-graph-tab:hover{border-color:var(--accent);color:var(--accent)}
+.native-graph-tab.selected{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+.native-graph-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#analysis-graph-panel .analysis-panel-top{gap:12px;flex-wrap:wrap}
+#analysis-graph-panel .analysis-zoom{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.analysis-graph-dialog{width:calc(100vw - 24px);height:calc(100dvh - 24px);max-width:none;max-height:none;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);overflow:hidden}.analysis-graph-dialog::backdrop{background:var(--backdrop)}
+.analysis-graph-dialog[open] #analysis-graph-panel{display:flex;flex-direction:column;width:100%;height:100%;border:0;border-radius:0}
+.analysis-graph-dialog[open] #analysis-graph{flex:1;min-height:0;height:auto!important}
+.analysis-graph-dialog .analysis-node-details[open] .analysis-node-list{max-height:25vh;overflow:auto}
+@media(max-width:680px){.native-graph-types{gap:6px;padding:12px}.native-graph-tab{font-size:11px;padding:8px}.native-graph-workbench .analysis-source{max-height:300px}#analysis-graph{padding:8px}#analysis-graph-panel .analysis-zoom{gap:10px}}
+
+.analysis-node-details{border-top:1px solid var(--line);padding:14px 20px}.analysis-node-details summary{font-size:12px;color:var(--muted);cursor:pointer}.analysis-node-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-top:12px}.analysis-node-link{text-align:left;white-space:normal;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text);padding:10px;font:11px/1.6 ui-monospace,monospace;cursor:pointer}.analysis-node-link.selected,.analysis-node-link.in-slice{background:var(--accent-soft);border-color:var(--accent)}
