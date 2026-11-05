@@ -13,7 +13,7 @@ async function api(path,body){
   const data=await response.json();
   if(!response.ok){const labels={ANALYSIS_BUSY:'已有分析正在运行，请稍后',ENVIRONMENT_NOT_READY:'环境未就绪',CHECKS_NOT_PASS:'检查未通过',APPROVAL_INVALID:'批准已失效',EXPORT_BLOCKED:'导出受阻',RESULT_IN_DOUBT:'结果待核实',OWNER_UNCONFIRMED:'实例被占用'};const error=new Error(labels[data.code]||data.error||'操作失败');error.code=data.code;throw error;}return data;
 }
-function showView(view){document.querySelectorAll('[data-view]').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'page':'false');});for(const name of ['workspace','analysis','history','deliveries'])$(name+'-view').hidden=name!==view;$('execution-modes').hidden=view==='analysis';document.body?.classList.toggle('analysis-active',view==='analysis');if(view==='analysis'&&typeof AnalysisUI!=='undefined')AnalysisUI.show();else if(current)render();renderHistory();}
+function showView(view){if(!['workspace','analysis','history','deliveries'].includes(view))return;document.querySelectorAll('.sidebar .nav-button[data-view]').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'page':'false');});for(const name of ['workspace','analysis','history','deliveries'])$(name+'-view').hidden=name!==view;$('execution-modes').hidden=view==='analysis';document.body?.classList.toggle('analysis-active',view==='analysis');if(view==='analysis'&&typeof AnalysisUI!=='undefined')AnalysisUI.show();else if(current)render();renderHistory();}
 function tab(name){document.querySelectorAll('[data-tab]').forEach(b=>{const active=b.dataset.tab===name;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));b.setAttribute('tabindex',active?'0':'-1');});for(const key of ['code','report','logs'])$(key+'-tab').hidden=key!==name;}
 function invalidate(){clearTimeout(timer);epoch++;}
 async function selectCase(id,showWorkspace=true){
@@ -277,7 +277,7 @@ function showAdvice(){
   $('advice-dialog').showModal();
 }
 
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+document.querySelectorAll('.sidebar .nav-button[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 $('mode-replay').onclick=()=>setMode('replay');$('mode-real').onclick=()=>setMode('real');$('start').onclick=()=>{if(mode==='real'){startReal();return;}if(flow.running){flow.pause();invalidate();}else{flow.start();schedule();}render();};
 $('cegis-latest').onclick=()=>selectRound(null);$('advice-open').onclick=showAdvice;$('reset').onclick=reset;$('accept').onclick=accept;$('reject').onclick=rejectCandidate;
 $('speed').onchange=()=>{if(flow.running)schedule();};$('requirement-open').onclick=()=>$('requirement-dialog').showModal();$('report-open').onclick=()=>tab('report');
