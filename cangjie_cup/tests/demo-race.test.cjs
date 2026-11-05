@@ -27,6 +27,7 @@ function setup({properties=false,relations=false,sequences=false}={}){
   if(properties)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/properties.js'),'utf8'),ctx);
   if(relations)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/relations.js'),'utf8'),ctx);
   if(sequences)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/sequences.js'),'utf8'),ctx);
+  vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/verification-report.js'),'utf8'),ctx);
   const source=fs.readFileSync(path.join(root,'nexus/demo/static/demo.js'),'utf8').split("\ndocument.querySelectorAll(")[0];
   vm.runInContext(source+`\nglobalThis.review={startReal,reset,selectCase,setMode,loadRecord,pollReal,render,rejectCandidate,accept,
     setApi(fn){api=fn;},setState(s){if(s.current!==undefined)current=s.current;if(s.mode!==undefined)mode=s.mode;if(s.realTask!==undefined)realTask=s.realTask;if(s.realCandidate!==undefined)realCandidate=s.realCandidate;if(s.realChecks!==undefined)realChecks=s.realChecks;if(s.flow!==undefined)Object.assign(flow,s.flow);},
@@ -107,9 +108,9 @@ test('BUILDING does not mark unverified real requirements satisfied',()=>{
 test('revalidated candidate displays newest reports instead of obsolete unknown checks',()=>{
  const {api,get}=setup();
  api.setState({flow:{stage:5,status:'REVIEW_PENDING',running:false},realTask:{id:'t',candidate_id:'c',events:[]},
-  realCandidate:{id:'c',is_current_review:true,check_set_hash:'hash',requirement_results:[]},
-  realChecks:[{kind:'build',state:'UNKNOWN'},{kind:'test',state:'UNKNOWN',counts:{passed:0}},
-   {kind:'build',state:'PASS'},{kind:'test',state:'PASS',counts:{passed:6},case_results:{'UploadedTests.case0':'PASS'}}]});
+  realCandidate:{id:'c',tree_hash:'tree',is_current_review:true,check_set_hash:'hash',requirement_results:[]},
+  realChecks:[{kind:'build',subject_id:'c',tree_hash:'tree',state:'UNKNOWN'},{kind:'test',subject_id:'c',tree_hash:'tree',state:'UNKNOWN',counts:{passed:0}},
+   {kind:'build',subject_id:'c',tree_hash:'tree',state:'PASS'},{kind:'test',subject_id:'c',tree_hash:'tree',state:'PASS',counts:{passed:6},case_results:{'UploadedTests.case0':'PASS'},suite_results:{target:{state:'PASS',tests:['UploadedTests.case0']},regression:{state:'PASS',tests:['UploadedTests.case0']}}}]});
  api.render();
  assert.deepEqual(get('checks').children.map(row=>row.children[1].textContent),['通过','通过','通过']);
  assert.equal(get('test-list').children.length,1);
@@ -122,15 +123,15 @@ test('scoped XML cases preserve package identity in the report instead of collap
   realCandidate:{id:'c',tree_hash:'tree',requirement_results:[]},realChecks:[{kind:'build',state:'PASS'},
    {kind:'test',state:'PASS',subject_id:'c',tree_hash:'tree',counts:{passed:2},package_evidence:{version:1,parser:'SCOPED_SDK_XML_V1'},
     case_results:{'bench.Cases.case0':'PASS','bench.child.Cases.case0':'PASS'}}]});
- api.render();assert.deepEqual(get('test-list').children.map(row=>row.children[1].textContent),['bench.Cases.case0','bench.child.Cases.case0']);
+ api.render();assert.deepEqual(get('test-list').children.map(row=>row.children[0].textContent),['bench.Cases.case0','bench.child.Cases.case0']);
 });
 
 test('new unknown or failed checks cannot inherit verified metrics from older passes',()=>{
  for(const state of ['UNKNOWN','FAIL']){
   const {api,get}=setup();api.setState({flow:{stage:5,status:'REVIEW_PENDING',running:false},realTask:{id:'t',events:[]},
-   realCandidate:{id:'c',requirement_results:[]},realChecks:[{kind:'build',state:'PASS'},{kind:'test',state:'PASS',counts:{passed:6}},
-    {kind:'build',state:'PASS'},{kind:'test',state,counts:{passed:5},case_results:{'UploadedTests.case0':'PASS'}}]});
-  api.render();assert.equal(get('metric-tests').children[0].textContent,'—');assert.equal(get('test-list').children.length,0);
+   realCandidate:{id:'c',tree_hash:'tree',requirement_results:[]},realChecks:[{kind:'build',subject_id:'c',tree_hash:'tree',state:'PASS'},{kind:'test',subject_id:'c',tree_hash:'tree',state:'PASS',counts:{passed:6}},
+    {kind:'build',subject_id:'c',tree_hash:'tree',state:'PASS'},{kind:'test',subject_id:'c',tree_hash:'tree',state,counts:{passed:5},case_results:{'UploadedTests.case0':'PASS'}}]});
+  api.render();assert.equal(get('metric-tests').children[0].textContent,'—');assert.equal(get('test-list').children.length,1);assert.equal(get('test-list').children[0].children[2].textContent,state==='UNKNOWN'?'待核实':'通过');
  }
 });
 
@@ -253,4 +254,12 @@ test('failed detail refresh can reject the current revision and reaches a termin
  assert.equal(api.state().flow.status,'REJECTED');assert.equal(get('reject').disabled,true);assert.equal(get('accept').disabled,true);
  await api.rejectCandidate();assert.equal(calls.filter(([p])=>p.endsWith('/reject')).length,1);
  assert.equal(calls.some(([p])=>p.endsWith('/accept')),false);
+});
+
+test('verification report integration separates target failure from regression pass and keeps failed case visible',()=>{
+ const {api,get}=setup();const checks=[{kind:'build',subject_id:'c',tree_hash:'tree',state:'PASS'},
+ {kind:'test',subject_id:'c',tree_hash:'tree',state:'FAIL',case_results:{'A.target':'FAIL','B.regression':'PASS'},suite_results:{target:{state:'FAIL',tests:['A.target']},regression:{state:'PASS',tests:['B.regression']}},diagnostics:'actual SDK failure'}];
+ api.setState({realTask:{id:'t',candidate_id:'c',events:[],candidates:[]},realCandidate:{id:'c',tree_hash:'tree',attempt:1,requirement_results:[]},realChecks:checks});api.render();
+ const cards=get('report-checks').children;assert.equal(cards[1].children[1].textContent,'失败');assert.equal(cards[2].children[1].textContent,'通过');
+ assert.equal(get('test-list').children.length,2);assert.equal(get('test-list').children[0].children[0].textContent,'A.target');
 });

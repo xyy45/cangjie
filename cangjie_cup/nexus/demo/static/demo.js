@@ -75,11 +75,18 @@ function render(){
   $('policy-rules').replaceChildren(...policyRows.map(([label,value])=>{const d=document.createElement('div');d.className='rule-item';d.append(Object.assign(document.createElement('span'),{textContent:label}),Object.assign(document.createElement('span'),{textContent:value}));return d;}));
   $('approval-probe').disabled=mode!=='real'||flow.status!=='REVIEW_PENDING'||reviewBusy;
   $('requirement-list').replaceChildren(...current.requirements.map((label,i)=>{const supported=real?(current.kind==='probe'&&flow.status==='DENIED'||(realCandidate?.requirement_results||[]).find(r=>r.id===current.requirement_ids?.[i])?.status==='SATISFIED_BY_TESTS'):verified;const d=document.createElement('div');d.className='requirement-item '+(supported?'checked':'');d.append(document.createTextNode(label),icon('check'));return d;}));
-  const rows=['工程构建','目标行为','回归测试'].map((name,i)=>{const check=real?latestCheck(i===0?'build':'test'):null;const pass=real?check?.state==='PASS':verified&&current.verdict!=='DENY';return {name,pass,state:real?(check?.state||'NOT_RUN'):(pass?'PASS':'NOT_RUN')};});
-  $('checks').replaceChildren(...rows.map(r=>{const d=document.createElement('div');d.className='check-item '+(r.pass?'passed':'');const left=document.createElement('span');left.className='check-icon';left.append(icon('check'),document.createTextNode(r.name));const value=document.createElement('span');value.textContent=r.pass?'通过':r.state==='FAIL'?'失败':r.state==='UNKNOWN'?'未知':'—';d.append(left,value);return d;}));
-  $('report-checks').replaceChildren(...rows.map(r=>{const d=document.createElement('div');d.className='report-check';const state=document.createElement('span');state.className=r.pass?'green':'';state.textContent=r.pass?'通过':r.state==='FAIL'?'失败':'—';d.append(document.createTextNode(r.name),state);return d;}));
-  let tests=verified?(real?Object.entries(latestCheck('test')?.case_results||{}).map(([name,state])=>({name:latestCheck('test')?.package_evidence?.version===1?name:name.split('.').pop(),state})):current.tests):[];
-  const testList=$('test-list');testList.replaceChildren(...tests.map(t=>{const d=document.createElement('div');d.className='test-item';d.append(icon('check'),document.createTextNode(t.name),Object.assign(document.createElement('span'),{className:'test-state',textContent:t.state.endsWith('PASS')?'通过':t.state}));return d;}));
+  const reportCandidate=validationCandidate(realCandidate);
+  const verification=VerificationReportUI.buildModel({mode,current,task:realTask,candidate:reportCandidate,checks:realChecks,verified,loading:roundLoading});
+  const rows=verification.rows;
+  $('checks').replaceChildren(...rows.map(r=>{const d=document.createElement('div');d.className='check-item '+(r.state==='PASS'?'passed':'');const left=document.createElement('span');left.className='check-icon';left.append(icon('check'),document.createTextNode(r.name));const value=document.createElement('span');value.textContent=VerificationReportUI.LABELS[r.state];d.append(left,value);return d;}));
+
+  VerificationReportUI.render(verification,{document,get:$,renderers:{
+    feedback:typeof FeedbackUI==='undefined'?null:FeedbackUI,
+    exploration:typeof ExplorationUI==='undefined'?null:ExplorationUI,
+    properties:typeof PropertyUI==='undefined'?null:PropertyUI,
+    relations:typeof RelationUI==='undefined'?null:RelationUI,
+    sequences:typeof SequenceUI==='undefined'?null:SequenceUI
+  }});
   const packageReport=$('report-packages'),packageSummary=real?scopedCheckSummary(latestCheck('test'),realCandidate):null;
   if(packageReport){packageReport.hidden=!packageSummary;packageReport.replaceChildren();if(packageSummary){
     const heading=document.createElement('h3');heading.textContent='固定 SDK 原始报告';

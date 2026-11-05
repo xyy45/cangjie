@@ -349,3 +349,41 @@ dialog::backdrop{background:rgba(18,36,31,.32)}
 @media(prefers-reduced-motion:reduce){
 .upload-stepper-item,.stepper-num,.stepper-label,.upload-advanced>summary::before{transition:none}
 }
+
+/* Verification report: separate verdicts, observed cases, and execution evidence. */
+#report-tab .report-check{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 16px}
+#report-tab .report-check small{grid-column:1/-1;font-size:12px;line-height:1.7;color:var(--secondary)}
+.verification-state{font-size:12px;font-weight:600;white-space:nowrap}
+.verification-state.state-pass{color:var(--green)}
+.verification-state.state-fail{color:var(--red)}
+.verification-state.state-unknown{color:var(--amber)}
+.verification-state.state-not_run{color:var(--muted)}
+.verification-summary{padding:20px 24px;border-bottom:1px solid var(--line);background:var(--input)}
+.verification-heading{margin:0 0 8px;font-size:14px;font-weight:600;overflow-wrap:anywhere}
+.verification-summary-text{margin:0;font-size:13px;line-height:1.7;color:var(--secondary)}
+.verification-section{padding:22px 24px;border-bottom:1px solid var(--line)}
+.verification-section>h3{margin:0 0 14px;font-size:14px;font-weight:600}
+#report-tab .verification-cases{display:grid;grid-template-columns:1fr;gap:0;padding:0}
+.verification-case{display:grid;grid-template-columns:minmax(0,1fr) 130px 64px;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
+.verification-case:last-child{border-bottom:0}
+.verification-case-name{font:12px/1.7 ui-monospace,SFMono-Regular,monospace;color:var(--text);overflow-wrap:anywhere}
+.verification-suite{font-size:12px;color:var(--secondary)}
+.verification-case[data-state="FAIL"] .verification-case-name{color:var(--red)}
+.verification-empty{margin:0;color:var(--secondary);font-size:13px;line-height:1.8}
+.verification-diagnostic{border:1px solid var(--line);border-radius:8px;margin-top:12px;background:var(--input)}
+.verification-diagnostic>summary{padding:13px 16px;cursor:pointer;font-size:13px;color:var(--text);line-height:1.7}
+.verification-diagnostic>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.verification-log{margin:0;padding:16px;border-top:1px solid var(--line);font:12px/1.8 ui-monospace,SFMono-Regular,monospace;color:var(--secondary);white-space:pre-wrap;overflow-wrap:anywhere;tab-size:4}
+.verification-log-ref{display:block;padding:0 16px 14px;font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.verification-advanced-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:16px}
+.verification-advanced-state{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border:1px solid var(--line);border-radius:8px;background:var(--input);font-size:12px}
+#report-tab .counterexamples{margin:0}
+#report-advanced>.counterexamples{margin-top:16px}
+@media(max-width:700px){
+ #report-tab .report-checks{grid-template-columns:1fr}
+ .verification-summary,.verification-section{padding:18px 16px}
+ .verification-case{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
+ .verification-case-name{grid-column:1/-1}
+ .verification-advanced-grid{grid-template-columns:1fr}
+}
+#report-tab .counterexample-list{max-height:none;overflow:visible}
