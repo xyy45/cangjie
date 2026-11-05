@@ -27,7 +27,7 @@ function setup({properties=false,relations=false,sequences=false}={}){
   if(properties)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/properties.js'),'utf8'),ctx);
   if(relations)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/relations.js'),'utf8'),ctx);
   if(sequences)vm.runInContext(fs.readFileSync(path.join(root,'nexus/demo/static/sequences.js'),'utf8'),ctx);
-  const source=fs.readFileSync(path.join(root,'nexus/demo/static/demo.js'),'utf8').split("\ndocument.querySelectorAll('[data-view]').forEach(b=>b.onclick")[0];
+  const source=fs.readFileSync(path.join(root,'nexus/demo/static/demo.js'),'utf8').split("\ndocument.querySelectorAll(")[0];
   vm.runInContext(source+`\nglobalThis.review={startReal,reset,selectCase,setMode,loadRecord,pollReal,render,rejectCandidate,accept,
     setApi(fn){api=fn;},setState(s){if(s.current!==undefined)current=s.current;if(s.mode!==undefined)mode=s.mode;if(s.realTask!==undefined)realTask=s.realTask;if(s.realCandidate!==undefined)realCandidate=s.realCandidate;if(s.realChecks!==undefined)realChecks=s.realChecks;if(s.flow!==undefined)Object.assign(flow,s.flow);},
     state(){return {mode,current,caseId,realTask,flow:{stage:flow.stage,status:flow.status,running:flow.running},downloadUrl,epoch,starting,history};}};`,ctx);
