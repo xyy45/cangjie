@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="460" viewBox="0 0 1080 460" role="img" aria-labelledby="title desc">
+  <title id="title">CangSight Nexus 分层系统架构</title>
+  <desc id="desc">四层结构依次为交互、分析与编排、执行与验证、版本与证据。分析证据提供给修复控制器，验证失败时反馈反例。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6.2" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0.5 6.6 3.5 0 6.5Z" fill="#46566a"/>
+    </marker>
+    <marker id="accent-arrow" markerWidth="7" markerHeight="7" refX="6.2" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0.5 6.6 3.5 0 6.5Z" fill="#345e83"/>
+    </marker>
+    <style>
+      text { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+      .band { fill: #f8fafc; stroke: #9dabb9; stroke-width: 1; }
+      .rail { fill: #e9eff5; }
+      .rail-line { stroke: #9dabb9; stroke-width: 1; }
+      .layer { fill: #20334a; font-size: 16px; font-weight: 600; }
+      .index { fill: #527291; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1.5px; }
+      .box { fill: #fff; stroke: #899aad; stroke-width: 1; }
+      .focus { fill: #f0f5fa; stroke: #55789a; }
+      .node { fill: #182a3c; font-size: 16px; font-weight: 600; }
+      .detail { fill: #425367; font-size: 13px; }
+      .annotation { fill: #415269; font-size: 12px; }
+      .accent-label { fill: #254f75; font-size: 12px; font-weight: 600; }
+      .flow { fill: none; stroke: #46566a; stroke-width: 1.2; marker-end: url(#arrow); }
+      .signal { fill: none; stroke: #345e83; stroke-width: 1.5; marker-end: url(#accent-arrow); }
+      .feedback { stroke-dasharray: 4 3; }
+    </style>
+  </defs>
+
+  <rect width="1080" height="460" fill="#fff"/>
+
+  <g aria-label="层级边界">
+    <rect class="band" x="12.5" y="12.5" width="1055" height="65"/>
+    <rect class="band" x="12.5" y="106.5" width="1055" height="88"/>
+    <rect class="band" x="12.5" y="227.5" width="1055" height="94"/>
+    <rect class="band" x="12.5" y="352.5" width="1055" height="95"/>
+
+    <path class="rail" d="M13 13h151v64H13z M13 107h151v87H13z M13 228h151v93H13z M13 353h151v94H13z"/>
+    <path class="rail-line" d="M164.5 13v64 M164.5 107v87 M164.5 228v93 M164.5 353v94"/>
+    <text class="index" x="32" y="36">01</text>
+    <text class="layer" x="32" y="59">用户交互层</text>
+    <text class="index" x="32" y="139">02</text>
+    <text class="layer" x="32" y="165">分析与编排层</text>
+    <text class="index" x="32" y="262">03</text>
+    <text class="layer" x="32" y="287">执行与验证层</text>
+    <text class="index" x="32" y="387">04</text>
+    <text class="layer" x="32" y="412">版本与证据层</text>
+  </g>
+
+  <g aria-label="组件与职责">
+    <rect class="box" x="187.5" y="25.5" width="855" height="40"/>
+    <text class="node" x="212" y="51">Web 工作台</text>
+    <path class="rail-line" d="M345.5 34v23"/>
+    <text class="detail" x="368" y="50">上传源码 · 确认需求与范围 · 审阅候选 · 下载证据包</text>
+
+    <rect class="box" x="187.5" y="121.5" width="377" height="58"/>
+    <text class="node" x="376" y="146" text-anchor="middle">源码分析服务</text>
+    <text class="detail" x="376" y="166" text-anchor="middle">SymPas 原生切片 · 依赖图 · 符号提取</text>
+
+    <rect class="box focus" x="665.5" y="121.5" width="377" height="58"/>
+    <text class="node" x="854" y="146" text-anchor="middle">缺陷修复控制器</text>
+    <text class="detail" x="854" y="166" text-anchor="middle">DeepSeek 候选生成 · CEGIS 反例迭代</text>
+
+    <rect class="box" x="187.5" y="243.5" width="230" height="63"/>
+    <text class="node" x="302.5" y="271" text-anchor="middle">仓颉原生核心</text>
+    <text class="detail" x="302.5" y="291" text-anchor="middle">策略判定 · 状态迁移 · 边界轴生成</text>
+
+    <rect class="box" x="502.5" y="243.5" width="220" height="63"/>
+    <text class="node" x="612.5" y="271" text-anchor="middle">MCP 工具服务</text>
+    <text class="detail" x="612.5" y="291" text-anchor="middle">候选应用 · 工具调用 · 导出</text>
+
+    <rect class="box focus" x="804.5" y="243.5" width="238" height="63"/>
+    <text class="node" x="923.5" y="271" text-anchor="middle">仓颉 SDK 与业务验证</text>
+    <text class="detail" x="923.5" y="291" text-anchor="middle">编译测试 · 规则、属性、关系、序列</text>
+
+    <rect class="box" x="187.5" y="368.5" width="230" height="63"/>
+    <text class="node" x="302.5" y="395" text-anchor="middle">冻结材料与候选</text>
+    <text class="detail" x="302.5" y="415" text-anchor="middle">基线 · 需求 · 测试与规则</text>
+
+    <rect class="box" x="502.5" y="368.5" width="220" height="63"/>
+    <text class="node" x="612.5" y="395" text-anchor="middle">任务与状态记录</text>
+    <text class="detail" x="612.5" y="415" text-anchor="middle">SQLite · 工具调用 · 候选轮次</text>
+
+    <rect class="box" x="804.5" y="368.5" width="238" height="63"/>
+    <text class="node" x="923.5" y="395" text-anchor="middle">验证与审阅证据</text>
+    <text class="detail" x="923.5" y="415" text-anchor="middle">原始日志 · 验证报告 · 摘要清单</text>
+  </g>
+
+  <g aria-label="调用、证据与反馈">
+    <path class="flow" d="M376 65.5V121.5"/>
+    <path class="flow" d="M854 65.5V121.5"/>
+    <path class="signal" d="M564.5 152H665.5"/>
+    <text class="accent-label" x="615" y="141" text-anchor="middle">有效分析证据</text>
+
+    <path class="flow" d="M782 179.5V211H612.5V243.5"/>
+    <text class="annotation" x="698" y="205" text-anchor="middle">修复提案</text>
+
+    <path class="signal feedback" d="M943 243.5V179.5"/>
+    <text class="accent-label" x="954" y="215">反例反馈</text>
+
+    <path class="flow" d="M502.5 278H417.5"/>
+    <text class="annotation" x="460" y="266" text-anchor="middle">策略判定</text>
+    <path class="flow" d="M722.5 278H804.5"/>
+    <text class="annotation" x="763.5" y="266" text-anchor="middle">构建测试</text>
+
+    <path class="flow" d="M612.5 306.5V368.5"/>
+    <path class="flow" d="M923.5 306.5V368.5"/>
+    <text class="annotation" x="624" y="339">运行留痕</text>
+    <text class="annotation" x="935" y="339">证据归档</text>
+  </g>
+</svg>

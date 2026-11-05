@@ -1,0 +1,25 @@
+{
+  "diagram_type": "architecture",
+  "output": "/Users/jxy/Desktop/cangjie_cup/docs/答辩架构图/总体技术架构.html",
+  "specification_sha256": "2fb8388de15d404c9c44a180f05c7a5b23848f8a40178e020bfb7c13b3578631",
+  "artifact_sha256": "1d1713ef5c593795bd99a8c32abdc941b90ca5cca0db28e8423877ff463c1dcf",
+  "validation": "9/9 showcase, 0 errors, 0 warnings",
+  "browser_evidence": "passed",
+  "visual_review": "passed",
+  "correction_rounds": 1,
+  "exports": {
+    "总体技术方案.svg": {
+      "sha256": "dc80917f04a56e5499c2a9190f29db82d223ffd82e68ae5e49f58aab95d6fd71",
+      "bytes": 157441
+    },
+    "总体技术方案-4K.png": {
+      "sha256": "63e50d080336328b79b1e3eee745f2cc67253d4683d47275123020c0fdb78d71",
+      "bytes": 339515
+    }
+  },
+  "png_dimensions": [
+    3840,
+    2160
+  ],
+  "note": "Architecture simplified from repository evidence in this chat. Static SVG derived from native viewer export with a 16:9 title frame and pinned light color scheme. Both viewer themes and final PNG visually inspected."
+}

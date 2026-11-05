@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "CangSight Nexus｜总体技术架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1320,
+      660
+    ]
+  },
+  "components": [
+    {
+      "id": "workbench",
+      "type": "frontend",
+      "label": "交互工作台",
+      "sublabel": "源码上传 · 需求 · 审阅",
+      "pos": [
+        42.0,
+        288.0
+      ],
+      "size": [
+        162.0,
+        66.0
+      ]
+    },
+    {
+      "id": "native-analysis",
+      "type": "external",
+      "label": "原生程序分析",
+      "sublabel": "SymPas 切片 · 图分析 · 符号提取",
+      "pos": [
+        282.0,
+        90.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "program-views",
+      "type": "backend",
+      "label": "多视角源码理解",
+      "sublabel": "SDG / PDG / CFG / CG / CDG / DFG",
+      "pos": [
+        552.0,
+        90.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "analysis-context",
+      "type": "backend",
+      "label": "结构化分析证据",
+      "sublabel": "来源校验 · 结果筛选 · 证据引用",
+      "pos": [
+        822.0,
+        90.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "frozen-task",
+      "type": "backend",
+      "label": "需求与不可变基线",
+      "sublabel": "冻结测试 · 修改范围 · 版本摘要",
+      "pos": [
+        282.0,
+        288.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "repair-controller",
+      "type": "backend",
+      "label": "反例引导修复控制器",
+      "sublabel": "DeepSeek 候选生成 · 最多 3 轮",
+      "pos": [
+        552.0,
+        288.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "mcp-tools",
+      "type": "backend",
+      "label": "MCP 受控工具执行",
+      "sublabel": "候选应用 · 构建测试 · 导出门禁",
+      "pos": [
+        822.0,
+        288.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "cangjie-core",
+      "type": "security",
+      "label": "仓颉原生核心",
+      "sublabel": "策略决策 · 状态迁移 · 边界轴生成",
+      "pos": [
+        1080.0,
+        288.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "verification",
+      "type": "backend",
+      "label": "多层行为验证",
+      "sublabel": "SDK · 规则 · 属性 · 关系 · 序列",
+      "pos": [
+        822.0,
+        486.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "human-delivery",
+      "type": "frontend",
+      "label": "人工审阅与交付",
+      "sublabel": "批准绑定 · 代码差异 · 证据包导出",
+      "pos": [
+        1080.0,
+        486.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    },
+    {
+      "id": "evidence-store",
+      "type": "database",
+      "label": "版本与证据管理",
+      "sublabel": "SQLite · 原始日志 · SHA-256 清单",
+      "pos": [
+        282.0,
+        486.0
+      ],
+      "size": [
+        180.0,
+        66.0
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "edge-0",
+      "from": "workbench",
+      "to": "native-analysis",
+      "label": "分析请求",
+      "variant": "default"
+    },
+    {
+      "id": "edge-1",
+      "from": "native-analysis",
+      "to": "program-views",
+      "label": "原生切片与图",
+      "variant": "default"
+    },
+    {
+      "id": "edge-2",
+      "from": "program-views",
+      "to": "analysis-context",
+      "label": "结构化结果",
+      "variant": "default"
+    },
+    {
+      "id": "edge-3",
+      "from": "analysis-context",
+      "to": "repair-controller",
+      "label": "有效证据入模",
+      "variant": "default"
+    },
+    {
+      "id": "edge-4",
+      "from": "workbench",
+      "to": "frozen-task",
+      "label": "确认任务",
+      "variant": "default",
+      "labelAt": [
+        243.0,
+        336.0
+      ]
+    },
+    {
+      "id": "edge-5",
+      "from": "frozen-task",
+      "to": "repair-controller",
+      "label": "需求与基线",
+      "variant": "default"
+    },
+    {
+      "id": "edge-6",
+      "from": "repair-controller",
+      "to": "mcp-tools",
+      "label": "修改提案",
+      "variant": "default",
+      "labelAt": [
+        810,
+        375
+      ]
+    },
+    {
+      "id": "edge-7",
+      "from": "mcp-tools",
+      "to": "cangjie-core",
+      "label": "原生 IPC",
+      "variant": "default"
+    },
+    {
+      "id": "edge-8",
+      "from": "mcp-tools",
+      "to": "verification",
+      "label": "真实执行",
+      "variant": "default",
+      "labelAt": [
+        936.0,
+        423.0
+      ]
+    },
+    {
+      "id": "edge-9",
+      "from": "verification",
+      "to": "repair-controller",
+      "label": "失败反例反馈",
+      "variant": "dashed"
+    },
+    {
+      "id": "edge-10",
+      "from": "verification",
+      "to": "human-delivery",
+      "label": "必要检查通过",
+      "variant": "default"
+    },
+    {
+      "id": "edge-11",
+      "from": "frozen-task",
+      "to": "evidence-store",
+      "label": "冻结与归档",
+      "variant": "default",
+      "labelAt": [
+        396.0,
+        423.0
+      ]
+    }
+  ]
+}
