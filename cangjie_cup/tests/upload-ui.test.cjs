@@ -1,14 +1,15 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 class Element{
- constructor(){this.children=[];this.value='';this.checked=false;this.disabled=false;this.hidden=false;this.open=false;this.files=[];this.textContent='';}
+ constructor(){this.events=[];this.children=[];this.value='';this.checked=false;this.disabled=false;this.hidden=false;this.open=false;this.files=[];this.textContent='';}
+ dispatchEvent(event){this.events.push(event.type);}
  append(...xs){this.children.push(...xs);}replaceChildren(...xs){this.children=xs;}showModal(){this.open=true;}close(){this.open=false;this.onclose?.();}
 }
 function page(){
  const nodes=new Map(),get=id=>{if(!nodes.has(id))nodes.set(id,new Element());return nodes.get(id);};let transport=async()=>({uploads:[]});const calls=[],selections=[];
  const ctx={$:get,document:{createElement:()=>new Element()},flow:{running:false},starting:false,reviewBusy:false,csrf:'token',location:{origin:'http://localhost'},
-  TextDecoder,crypto:require('node:crypto').webcrypto,FormData:class{append(){}},toast(){},selectCase:async id=>{selections.push(id);return{id};},
-  fetch:async(path,options)=>{calls.push([path,options]);return {ok:true,json:async()=>transport(path,options)};}};
+  TextDecoder,Event,crypto:require('node:crypto').webcrypto,FormData:class{append(){}},toast(){},selectCase:async id=>{selections.push(id);return{id};},
+  fetch:async(path,options)=>{calls.push([path,options]);const value=await transport(path,options);return {ok:!value.error,status:value.error?400:200,json:async()=>value};}};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync('nexus/demo/static/upload.js','utf8')+'\nglobalThis.ui=UploadUI;',ctx);
  return {get,calls,selections,setApi(fn){transport=fn;},ui:ctx.ui};
 }
@@ -106,4 +107,28 @@ test('manual rule edits invalidate an in-flight rule import and reset consent',a
  p.get('upload-consent').checked=true;p.get('upload-oracle').value='manual';p.get('upload-oracle').oninput();
  resolve(new TextEncoder().encode('{}').buffer);await pending;
  assert.equal(p.get('upload-oracle').value,'manual');assert.equal(p.get('upload-consent').checked,false);
+});
+
+
+test('blank expected behavior allows local function reading and can be imported afterward',async()=>{
+ const p=page();await p.get('upload-open').onclick();p.get('upload-file').files=[{}];p.setApi(async()=>({...draft,goal:''}));
+ await p.get('upload-prepare').onclick();
+ assert.equal(p.get('upload-function').value,'fee');assert.equal(p.get('upload-goal').disabled,false);
+ assert.deepEqual(p.get('upload-dialog').events,['upload-functions-loaded']);
+ await importing(p,'goal',file('goal.md','数量乘以单价'));
+ assert.equal(p.get('upload-goal').value,'数量乘以单价');
+ p.get('upload-consent').checked=true;
+ p.setApi(async path=>path.endsWith('/goal')?{...draft,goal:'数量乘以单价'}:{...draft,status:'CONFIRMED'});
+ await p.get('upload-confirm').onclick();
+ assert.equal(JSON.parse(p.calls.at(-2)[1].body).goal,'数量乘以单价');
+ assert.ok(p.calls.at(-1)[0].endsWith('/confirm'));
+});
+
+test('source reading renders the backend cause in the status shared by all steps',async()=>{
+ const p=page();await p.get('upload-open').onclick();p.get('upload-file').files=[{}];p.setApi(async()=>({error:'未找到支持的函数'}));
+ await p.get('upload-prepare').onclick();
+ assert.equal(p.get('upload-status').textContent,'未找到支持的函数');
+ assert.deepEqual(p.get('upload-dialog').events,[]);
+ const template=fs.readFileSync('nexus/demo/templates/demo.html','utf8');
+ assert.match(template,/<\/section>\s*<p id="upload-status"[^>]+><\/p>\s*<div class="upload-wizard-nav">/);
 });

@@ -3,15 +3,19 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 class Element{constructor(){this.children=[];this.value='';this.checked=false;this.disabled=false;this.hidden=false;this.open=false;this.files=[];this.textContent='';this.dataset={};}append(...xs){this.children.push(...xs);}replaceChildren(...xs){this.children=xs;}showModal(){this.open=true;}close(){this.open=false;this.onclose?.();}}
 const examples='[{"args":[9007199254740993],"expected":9007199254740993,"suite":"target"},{"args":[1],"expected":1,"suite":"regression"}]';
 const oracle='{"version":1,"function":"fee","domains":{"x":{"min":0,"max":9223372036854775807}},"expression":"x","seed":0,"max_cases":32}';
-function page({state='SUCCEEDED',contentStatus='DRAFT_READY',project=false}={}){
+function page({state='SUCCEEDED',contentStatus='DRAFT_READY',project=false,goal='原样返回输入'}={}){
  const nodes=new Map(),get=id=>{if(!nodes.has(id))nodes.set(id,new Element());return nodes.get(id);};const calls=[];
- const upload={id:'upload_a',status:'DRAFT',filename:'fee.cj',goal:'原样返回输入',version:1,source_sha256:'sourcehash',functions:[{name:'fee',params:[{name:'x',type:'Int64'}],return_type:'Int64'}]};
+ const upload={id:'upload_a',status:'DRAFT',filename:'fee.cj',goal,version:1,source_sha256:'sourcehash',functions:[{name:'fee',params:[{name:'x',type:'Int64'}],return_type:'Int64'}]};
  if(project)Object.assign(upload,{kind:'PROJECT',production_paths:['src/a.cj','src/b.cj'],original_tests:[],original_manifest:{'src/a.cj':'a','src/b.cj':'b','cjpm.toml':'c'}});
- const job={id:'rd_a',upload_id:upload.id,call_state:state,binding:{upload_id:upload.id,upload_version:1,source_sha256:'sourcehash',signature:{name:'fee'},allowed_paths:project?['src/a.cj','src/b.cj']:['src/uploaded.cj']},result:state==='SUCCEEDED'?{status:contentStatus,business_verified:false,examples_json:examples,oracle_json:oracle,suggestion:{summary:'模型草案，需业务核对',assumptions:['x的输入域需核对'],questions:contentStatus==='NEEDS_CLARIFICATION'?['需要明确边界']:[]}}:null};
+ const job={id:'rd_a',upload_id:upload.id,call_state:state,binding:{upload_id:upload.id,upload_version:1,source_sha256:'sourcehash',signature:{name:'fee'},allowed_paths:project?['src/a.cj','src/b.cj']:['src/uploaded.cj']},result:state==='SUCCEEDED'?{status:contentStatus,business_verified:false,examples_json:examples,oracle_json:contentStatus==='DRAFT_READY'?oracle:null,reason:contentStatus==='EXAMPLES_READY'?'独立规则校验未通过':null,suggestion:{summary:'模型草案，需业务核对',assumptions:['x的输入域需核对'],questions:contentStatus==='NEEDS_CLARIFICATION'?['需要明确边界']:[]}}:null};
  const defaults=async(path,options={})=>{
   if(path==='/api/uploads/repair')return options.method==='POST'?upload:{uploads:[]};
+  if(path.endsWith('/goal'))return {...upload,goal:JSON.parse(options.body).goal};
   if(path.endsWith('/rule-drafts'))return options.method==='POST'?{id:'rd_a',call_state:'CREATED'}:{jobs:[job]};
-  if(path.endsWith('/apply-preview'))return {examples_json:examples,oracle_json:oracle,rule_draft_ref:{id:'rd_a',binding_hash:'bound',result_sha256:'result'},business_verified:false};
+  if(path.endsWith('/apply-preview')){
+   const only=JSON.parse(options.body).examples_only===true;
+   return {examples_json:examples,oracle_json:only?null:oracle,rule_draft_ref:{id:'rd_a',binding_hash:'bound',result_sha256:'result',...(only?{examples_only:true}:{})},business_verified:false};
+  }
   if(path.endsWith('/confirm'))return {...upload,status:'CONFIRMED'};
   if(path.endsWith('/rd_a'))return job;
   return upload;
@@ -93,4 +97,43 @@ test('editing after arming replacement invalidates the pending application',asyn
  p.get('upload-examples').value='new manual input';p.get('upload-examples').oninput();
  await p.get('upload-draft-apply').onclick();
  assert.equal(p.get('upload-examples').value,'new manual input');assert.equal(p.calls.some(c=>c.path.endsWith('/apply-preview')),false);
+});
+
+
+test('valid tests can fill without an independent rule and preserve a manual rule',async()=>{
+ const p=page({contentStatus:'EXAMPLES_READY'});await ready(p);p.get('upload-oracle').value='manual rule';await generate(p);
+ const button=p.get('upload-draft-apply-examples');
+ assert.equal(p.get('upload-draft-apply').hidden,true);assert.equal(button.disabled,false);
+ assert.equal(p.get('upload-draft-examples-preview').value,examples);
+ assert.match(p.get('upload-draft-status').textContent,/测试用例已生成.*独立规则校验未通过/);
+ await button.onclick();await button.onclick();
+ assert.equal(p.get('upload-examples').value,examples);
+ assert.equal(p.get('upload-oracle').value,'manual rule');
+ const body=JSON.parse(p.calls.find(c=>c.path.endsWith('/apply-preview')).body);assert.equal(body.examples_only,true);
+});
+
+test('replacement confirmation is specific to the selected action',async()=>{
+ const p=page();await ready(p);await generate(p);
+ const only=p.get('upload-draft-apply-examples'),both=p.get('upload-draft-apply');
+ assert.equal(only.disabled,false);assert.equal(both.disabled,false);
+ await only.onclick();await both.onclick();
+ assert.equal(p.calls.some(c=>c.path.endsWith('/apply-preview')),false);
+ await both.onclick();assert.equal(p.get('upload-oracle').value,oracle);
+});
+
+
+test('model generation binds the newly entered goal before dispatching',async()=>{
+ const p=page({goal:''});await ready(p);
+ p.get('upload-draft-consent').checked=true;
+ const before=p.calls.length;await p.get('upload-draft-generate').onclick();
+ assert.equal(p.calls.length,before);
+ assert.match(p.get('upload-draft-status').textContent,/填写预期行为/);
+ p.get('upload-goal').value='原样返回输入';p.get('upload-goal').oninput();
+ await generate(p);
+ const requests=p.calls.slice(before).filter(c=>c.method==='POST');
+ assert.equal(requests.length,2);
+ assert.ok(requests[0].path.endsWith('/goal'));
+ assert.equal(JSON.parse(requests[0].body).goal,'原样返回输入');
+ assert.ok(requests[1].path.endsWith('/rule-drafts'));
+ assert.equal(p.get('upload-goal').disabled,true);
 });

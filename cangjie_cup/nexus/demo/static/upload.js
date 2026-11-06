@@ -1,8 +1,8 @@
 'use strict';
 const UploadUI=(()=>{
  let draft=null,busy=false,generation=0,key=null,projectChecks=[];
- const draftEnabled=!!$('upload-draft-generate');
- let draftJob=null,draftRef=null,draftEpoch=0,draftTimer=null,draftBusy=false,draftUnresolved=false,draftError='',replacementArmed=false;
+ const draftEnabled=!!$('upload-draft-generate'),applyExamples=$('upload-draft-apply-examples');
+ let draftJob=null,draftRef=null,draftEpoch=0,draftTimer=null,draftBusy=false,draftUnresolved=false,draftError='',replacementArmed=null;
  const mode=()=>['project','directory'].includes($('upload-mode').value)?$('upload-mode').value:'single';
  const readEpoch={goal:0,examples:0,oracle:0,properties:0,relations:0,sequences:0},reading={goal:false,examples:false,oracle:false,properties:false,relations:false,sequences:false};
  function invalidateImports(kind){for(const name of kind?[kind]:['goal','examples','oracle','properties','relations','sequences']){readEpoch[name]++;reading[name]=false;}}
@@ -11,17 +11,30 @@ const UploadUI=(()=>{
  async function send(path,body){
   const options=body===undefined?{}:{method:'POST',headers:{'Origin':location.origin,'X-CSRF-Token':csrf},body};
   if(body!==undefined&&!(body instanceof FormData)){options.headers['Content-Type']='application/json';options.body=JSON.stringify(body);}
-  const response=await fetch(path,options),data=await response.json();if(!response.ok){const error=new Error(data.error||'上传操作失败');error.status=response.status;error.code=data.code;throw error;}return data;
+  const response=await fetch(path,options);
+  const data=await response.json().catch(()=>null);
+  if(!response.ok||!data){const error=new Error(data?.error||'上传服务返回无效响应（HTTP '+response.status+'）');error.status=response.status;error.code=data?.code;throw error;}
+  return data;
  }
  function resetRuleDraft(keepSource=false){
   const uncertain=draftUnresolved||draftBusy||['CREATED','STARTED','IN_DOUBT'].includes(draftJob?.call_state);
   draftEpoch++;if(draftTimer!==null){clearTimeout(draftTimer);draftTimer=null;}
-  draftJob=null;draftBusy=false;draftError='';replacementArmed=false;draftUnresolved=keepSource?uncertain:false;if(!keepSource)draftRef=null;
+  draftJob=null;draftBusy=false;draftError='';replacementArmed=null;draftUnresolved=keepSource?uncertain:false;if(!keepSource)draftRef=null;
   if(draftEnabled)$('upload-draft-consent').checked=false;
  }
  function selectedPaths(){return draft?.kind==='PROJECT'?projectChecks.filter(input=>input.checked).map(input=>input.value).sort():null;}
  function draftContext(){return{generation,epoch:draftEpoch,id:draft?.id,function:$('upload-function').value,paths:selectedPaths()};}
  function currentDraftContext(ctx){return ctx.generation===generation&&ctx.epoch===draftEpoch&&draft?.id===ctx.id&&ctx.function===$('upload-function').value&&JSON.stringify(ctx.paths)===JSON.stringify(selectedPaths())&&$('upload-dialog').open;}
+ async function bindGoal(ctx){
+  if(draft.goal)return true;
+  const goal=$('upload-goal').value.trim();
+  if(!goal||Array.from(goal).length>4000)throw Error('请填写不超过4000字的预期行为');
+  const value=await send('/api/uploads/repair/'+ctx.id+'/goal',{expected_version:draft.version,goal});
+  if(!currentDraftContext(ctx))return false;
+  if(value.id!==ctx.id||value.version!==draft.version||value.goal!==goal)throw Error('预期行为与当前上传不符，请重新打开上传记录');
+  draft={...draft,goal:value.goal};$('upload-goal').value=value.goal;
+  return true;
+ }
  function matchingDraft(job){return job?.binding?.upload_id===draft?.id&&job.binding.upload_version===draft.version&&job.binding.source_sha256===draft.source_sha256&&job.binding.signature?.name===$('upload-function').value&&JSON.stringify(job.binding.allowed_paths)===JSON.stringify(selectedPaths()||['src/uploaded.cj']);}
  function renderRuleDraft(){
   if(!draftEnabled)return;
@@ -29,14 +42,37 @@ const UploadUI=(()=>{
   $('upload-draft-consent').disabled=disabled||draftBusy;
   $('upload-draft-generate').disabled=disabled||draftBusy||draftUnresolved||draftJob?.call_state==='IN_DOUBT';
   $('upload-draft-query').disabled=disabled||draftBusy;
-  $('upload-draft-apply').disabled=disabled||draftBusy||result?.status!=='DRAFT_READY';
-  $('upload-draft-apply').textContent=replacementArmed?'确认替换并填入':'应用草案';
+  const complete=result?.status==='DRAFT_READY',examplesReady=complete||result?.status==='EXAMPLES_READY';
+  const applyBoth=$('upload-draft-apply');
+  applyBoth.hidden=!complete;
+  applyBoth.disabled=disabled||draftBusy||!complete;
+  applyBoth.textContent=replacementArmed==='both'?'确认替换并填入':'填入测试与规则';
+  if(applyExamples){
+   applyExamples.hidden=!examplesReady;
+   applyExamples.disabled=disabled||draftBusy||!examplesReady;
+   applyExamples.textContent=replacementArmed==='examples'?'确认替换并填入':'填入测试用例';
+  }
   $('upload-draft-preview').hidden=!result;
   $('upload-draft-summary').textContent=(draftJob?.model_id?draftJob.model_id+' · '+(draftJob.origin==='LIVE'?'模型请求':'测试夹具')+'：':'')+(result?.suggestion?.summary||'');
   $('upload-draft-assumptions').textContent=(result?.suggestion?.assumptions||[]).join('；');
   $('upload-draft-questions').textContent=(result?.suggestion?.questions||[]).join('；');
   $('upload-draft-examples-preview').value=result?.examples_json||'';$('upload-draft-oracle-preview').value=result?.oracle_json||'';
-  $('upload-draft-status').textContent=(replacementArmed?'再次点击“确认替换并填入”将替换现有测试与规则，之后仍需核对并确认修复。':'')||draftError||(draftUnresolved||draftJob?.call_state==='IN_DOUBT'?'请求结果待核实，请查询原记录；不会自动重发。':draftBusy?'正在生成草案，关闭窗口不撤回已发送请求。':draftJob?.call_state==='FAILED'?'草案生成未成功：'+(draftJob.error_code||'请检查配置和原件'):result?.status==='DRAFT_READY'?'模型草案 · 结构校验完成，请核对业务含义后再应用。':result?.status==='NEEDS_CLARIFICATION'?'草案需要澄清，请补全预期行为后重新准备上传。':result?'草案校验未通过：'+(result.reason||'请检查规则'):'读取函数后可生成草案，或查询本会话已有记录。');
+  const details=$('upload-draft-output'),rulePreview=$('upload-draft-rule-preview');
+  if(details)details.hidden=!examplesReady;
+  if(rulePreview)rulePreview.hidden=!complete;
+  let message=draftError;
+  if(replacementArmed)message=replacementArmed==='examples'?'再次点击“确认替换并填入”将替换现有测试用例。':'再次点击“确认替换并填入”将替换现有测试与规则。';
+  else if(!message){
+   if(draftUnresolved||draftJob?.call_state==='IN_DOUBT')message='请求结果待核实，请查询原记录；不会自动重发。';
+   else if(draftBusy)message='正在生成测试用例，关闭窗口不撤回已发送请求。';
+   else if(draftJob?.call_state==='FAILED')message='测试用例生成未成功：'+(draftJob.error_code||'请检查配置和原件');
+   else if(complete)message='测试用例和独立规则已通过结构校验，请核对业务含义。';
+   else if(examplesReady)message='测试用例已生成，'+result.reason+'。核对后可单独填入用例。';
+   else if(result?.status==='NEEDS_CLARIFICATION')message='请回答下方问题，补全预期行为后重新准备上传。';
+   else if(result)message='测试用例校验未通过：'+(result.reason||'请检查用例');
+   else message='读取函数后可生成测试用例，或查询本会话已有记录。';
+  }
+  $('upload-draft-status').textContent=message;
  }
  async function pollRuleDraft(ctx,id){
   try{
@@ -49,14 +85,18 @@ const UploadUI=(()=>{
  }
  async function generateRuleDraft(){
   if(!draftEnabled||busy||importing()||draftBusy||!draft||draft.status==='CONFIRMED'||draftUnresolved||draftJob?.call_state==='IN_DOUBT')return;
+  if(!$('upload-goal').value.trim()){$('upload-draft-status').textContent='请先填写预期行为，再生成测试用例。';return;}
   if(!$('upload-draft-consent').checked){$('upload-draft-status').textContent='请先同意现在发送所选源码和需求以生成草案。';return;}
   const paths=selectedPaths();if(paths&&(paths.length<1||paths.length>3)){$('upload-draft-status').textContent='请选择1至3个生产文件';return;}
   resetRuleDraft(true);draftUnresolved=false;const ctx=draftContext();draftBusy=true;$('upload-consent').checked=false;render();
+  let requestStarted=false;
   try{
+   if(!await bindGoal(ctx)||!currentDraftContext(ctx))return;
    const body={expected_version:draft.version,function:ctx.function,request_key:crypto.randomUUID(),consent:true};if(paths)body.allowed_paths=paths;
+   requestStarted=true;
    const value=await send('/api/uploads/repair/'+ctx.id+'/rule-drafts',body);
    if(!currentDraftContext(ctx))return;draftJob=value;await pollRuleDraft(ctx,value.id);
-  }catch(error){if(currentDraftContext(ctx)){draftBusy=false;draftUnresolved=!error.status||error.status===409;draftError=error.message;render();}}
+  }catch(error){if(currentDraftContext(ctx)){draftBusy=false;draftUnresolved=requestStarted&&(!error.status||error.status===409);draftError=error.message;render();}}
  }
  async function queryRuleDraft(){
   if(!draftEnabled||busy||draftBusy||!draft||draft.status==='CONFIRMED')return;
@@ -67,22 +107,29 @@ const UploadUI=(()=>{
    if(found)await pollRuleDraft(ctx,found.id);else{draftBusy=false;draftError=draftUnresolved?'尚未找到已登记请求，当前未知请求不会重发。':'当前函数和范围暂无已登记草案。';render();}
   }catch(error){if(currentDraftContext(ctx)){draftBusy=false;draftError=error.message;render();}}
  }
- async function applyRuleDraft(){
-  if(!draftEnabled||busy||importing()||draftBusy||!draft||draft.status==='CONFIRMED'||draftJob?.result?.status!=='DRAFT_READY')return;
-  if(($('upload-examples').value.trim()||$('upload-oracle').value.trim())&&!replacementArmed){replacementArmed=true;render();return;}
-  replacementArmed=false;
+ async function applyRuleDraft(examplesOnly=false){
+  if(!draftEnabled||busy||importing()||draftBusy||!draft||draft.status==='CONFIRMED')return;
+  const status=draftJob?.result?.status;
+  if(status!=='DRAFT_READY'&&!(examplesOnly&&status==='EXAMPLES_READY'))return;
+  const action=examplesOnly?'examples':'both';
+  const overwrites=$('upload-examples').value.trim()||(!examplesOnly&&$('upload-oracle').value.trim());
+  if(overwrites&&replacementArmed!==action){replacementArmed=action;render();return;}
+  replacementArmed=null;
   const ctx=draftContext();draftBusy=true;render();
   try{
    const body={expected_version:draft.version,function:ctx.function};if(ctx.paths)body.allowed_paths=ctx.paths;
+   if(examplesOnly)body.examples_only=true;
    const result=await send('/api/uploads/repair/'+ctx.id+'/rule-drafts/'+draftJob.id+'/apply-preview',body);
    if(!currentDraftContext(ctx))return;
-   invalidateImports('examples');invalidateImports('oracle');$('upload-examples').value=result.examples_json;$('upload-oracle').value=result.oracle_json;
-   draftRef=result.rule_draft_ref;$('upload-consent').checked=false;draftBusy=false;$('upload-status').textContent='草案已填入，可编辑；请核对预期行为后确认。';render();
+   invalidateImports('examples');$('upload-examples').value=result.examples_json;
+   if(!examplesOnly&&result.oracle_json!=null){invalidateImports('oracle');$('upload-oracle').value=result.oracle_json;}
+   draftRef=result.rule_draft_ref;$('upload-consent').checked=false;draftBusy=false;
+   $('upload-status').textContent=(examplesOnly?'测试用例已填入':'测试用例和独立规则已填入')+'，可编辑。请核对预期行为后确认。';render();
   }catch(error){if(currentDraftContext(ctx)){draftBusy=false;draftError=error.message;render();}}
  }
  async function importFile(kind,input){
   const file=input.files?.[0];input.value='';
-  if(!file||busy||!$('upload-dialog').open||kind==='goal'&&draft||kind!=='goal'&&(!draft||draft.status==='CONFIRMED'))return;
+  if(!file||busy||!$('upload-dialog').open||kind==='goal'&&(draft?.goal||draftBusy)||kind!=='goal'&&(!draft||draft.status==='CONFIRMED'))return;
   if(kind!=='goal')resetRuleDraft(true);
   const stamp=++readEpoch[kind],version=generation;reading[kind]=true;render();
   const current=()=>stamp===readEpoch[kind]&&version===generation&&$('upload-dialog').open&&!busy;
@@ -113,7 +160,7 @@ const UploadUI=(()=>{
  }
  function render(){
   $('upload-open').disabled=starting||reviewBusy||flow.running;
-  $('upload-prepare').disabled=busy||importing()||draft?.status==='CONFIRMED';
+  $('upload-prepare').disabled=busy||importing()||draftBusy||draft?.status==='CONFIRMED';
   $('upload-confirm').disabled=busy||importing()||draftBusy||!draft;
   const frozen=draft?.status==='CONFIRMED';
   $('upload-oracle').disabled=busy||!draft||frozen;
@@ -125,7 +172,7 @@ const UploadUI=(()=>{
   $('upload-relations-aliases').textContent=signature?[...['left','right'].flatMap(side=>signature.params.map((p,i)=>side+'_arg'+i+' = '+p.name+' ('+p.type+')')),'left_result / right_result = 左右实际返回 ('+signature.return_type+')'].join('；'):'';
   $('upload-sequences-aliases').textContent=signature?[...signature.params.map((p,i)=>'arg'+i+' = '+p.name+' ('+p.type+')'),'initial_state = 初态；before_state = 当前前态；expected_state = 模型参考状态；state_param指定状态参数，context_params按参数位置使用ctx别名'].join('；'):'';
   $('upload-function').disabled=busy||!draft||frozen;$('upload-examples').disabled=busy||!draft||frozen;
-  $('upload-file').disabled=busy;$('upload-goal').disabled=busy||!!draft;$('upload-recent').disabled=busy;
+  $('upload-file').disabled=busy;$('upload-goal').disabled=busy||draftBusy||!!draft?.goal;$('upload-recent').disabled=busy;
   $('upload-mode').disabled=busy;$('upload-directory').disabled=busy;
   $('upload-file').hidden=mode()==='directory';$('upload-directory').hidden=mode()!=='directory';
   $('upload-file').accept=mode()==='project'?'.zip':'.cj';
@@ -133,7 +180,7 @@ const UploadUI=(()=>{
    '工程ZIP／目录最多2MiB、100文件、16个包；使用单一cjpm构建根和固定1.0.5 SDK，支持冻结的工程内跨包导入、只读struct/class、纯实例方法及Int64／Bool／String／Array<Int64>函数。String最多256 UTF-8字节，数组最多16项；测试支持标准@Test／@TestCase中的字面量@Expect及返回对象的字段投影。';
   for(const input of projectChecks){input.disabled=busy||frozen;if(input.scopeLabel)input.scopeLabel.textContent=input.checked?'允许修改正文':'只读依赖';}
   renderPackages();
-  for(const [kind,disabled] of [['goal',busy||!!draft],['examples',busy||!draft||frozen],['oracle',busy||!draft||frozen],['properties',busy||!draft||frozen],['relations',busy||!draft||frozen],['sequences',busy||!draft||frozen]]){
+  for(const [kind,disabled] of [['goal',busy||draftBusy||!!draft?.goal],['examples',busy||!draft||frozen],['oracle',busy||!draft||frozen],['properties',busy||!draft||frozen],['relations',busy||!draft||frozen],['sequences',busy||!draft||frozen]]){
    $('upload-'+kind+'-import').disabled=disabled;$('upload-'+kind+'-file').disabled=disabled;
    $('upload-'+kind+'-import').textContent=reading[kind]?'重新选择文件':'导入文件';
   }
@@ -167,8 +214,8 @@ const UploadUI=(()=>{
   const seed=kind=>kind==='Array<Int64>'?[]:kind==='Bool'?false:kind==='String'?'':kind==='Int64'?0:Object.prototype.hasOwnProperty.call(types,kind)?{$type:kind,fields:Object.fromEntries(types[kind].fields.map(field=>[field.name,seed(field.type)]))}:null;
   $('upload-examples').value=JSON.stringify(['target','regression'].map(suite=>({args:f.params.map(p=>seed(p.type)),expected:null,suite})),null,2);
  }
- function load(value){
-  resetRuleDraft();  invalidateImports();draft=value;$('upload-mode').value=value.kind==='PROJECT'?'project':'single';
+ function load(value,sourceMode=value.kind==='PROJECT'?'project':'single'){
+  resetRuleDraft();  invalidateImports();draft=value;$('upload-mode').value=sourceMode;
   $('upload-goal').value=value.goal;$('upload-function').replaceChildren(...value.functions.map(f=>make('option',f.name+'('+f.params.map(p=>p.name+': '+p.type).join(', ')+'): '+f.return_type+(f.path?' · '+f.path:''),f.name)));
   $('upload-function').value=value.function||value.functions[0].name;
   $('upload-consent').checked=value.status==='CONFIRMED';
@@ -194,13 +241,14 @@ const UploadUI=(()=>{
    }
   }
   $('upload-status').textContent=value.status==='CONFIRMED'?'示例已冻结，进入工作台后点击“开始”。':
-   '函数已读取。请填写真实输入及预期值（null必须替换），每种分组至少一项。';render();
+   '已读取 '+value.functions.length+' 个函数。请选择待测函数，再填写预期行为。';render();
+  $('upload-dialog').dispatchEvent?.(new Event('upload-functions-loaded'));
  }
  function clear(){
   $('upload-properties').value='';$('upload-relations').value='';$('upload-sequences').value='';
   resetRuleDraft();  invalidateImports();draft=null;key=null;projectChecks=[];$('upload-project').hidden=true;$('upload-project-tree').replaceChildren();
   $('upload-mode').value='single';$('upload-directory').value='';$('upload-goal').value='';$('upload-file').value='';$('upload-function').replaceChildren();$('upload-examples').value='';$('upload-oracle').value='';
-  $('upload-identity').textContent='';$('upload-consent').checked=false;$('upload-status').textContent='选择文件并填写预期行为，再读取函数。';render();
+  $('upload-identity').textContent='';$('upload-consent').checked=false;$('upload-status').textContent='选择源码文件或工程，再点击“读取函数”。';render();
  }
  async function open(){
   if(starting||reviewBusy||flow.running)return;
@@ -211,26 +259,29 @@ const UploadUI=(()=>{
   }catch(error){if(version===generation)$('upload-status').textContent=error.message;}
  }
  async function prepare(){
-  if(busy||importing())return;const selectedMode=mode(),file=$('upload-file').files[0],directory=Array.from($('upload-directory').files||[]),goal=$('upload-goal').value.trim();
-  if(!(selectedMode==='directory'?directory.length:file)||!goal){$('upload-status').textContent='请选择源码文件／工程并填写预期行为';return;}
+  if(busy||importing()||draftBusy)return;
+  const selectedMode=mode(),file=$('upload-file').files[0],directory=Array.from($('upload-directory').files||[]);
+  if(!(selectedMode==='directory'?directory.length:file)){$('upload-status').textContent='请先选择源码文件或工程';return;}
   busy=true;render();const version=generation;key=key||crypto.randomUUID();
   const body=new FormData();
   if(selectedMode==='directory'){
    body.append('paths_json',JSON.stringify(directory.map(f=>f.webkitRelativePath||f.name)));
    for(const selected of directory)body.append('files',selected);
   }else body.append('file',file);
-  body.append('goal',goal);body.append('request_key',key);
+  body.append('request_key',key);
   $('upload-status').textContent='检查受限语法并读取函数…';
-  try{const result=await send(selectedMode==='single'?'/api/uploads/repair':'/api/uploads/repair/project',body);if(version===generation&&$('upload-dialog').open)load(result);}
+  try{const result=await send(selectedMode==='single'?'/api/uploads/repair':'/api/uploads/repair/project',body);if(version===generation&&$('upload-dialog').open)load(result,selectedMode);}
   catch(error){if(version===generation)$('upload-status').textContent=error.message;}
   finally{if(version===generation){busy=false;render();}}
  }
  async function confirm(){
   if(busy||importing()||draftBusy||!draft)return;
+  if(draft.status!=='CONFIRMED'&&!$('upload-goal').value.trim()){$('upload-status').textContent='请填写预期行为后再确认修复。';return;}
   if(!$('upload-consent').checked){$('upload-status').textContent='请确认测试预期，并同意开始修复时向MCP和DeepSeek发送源码及公开示例';return;}
-  busy=true;render();const version=generation;
+  busy=true;render();const version=generation,ctx=draftContext();
   try{
    if(draft.status!=='CONFIRMED'){
+    if(!await bindGoal(ctx)||!currentDraftContext(ctx))return;
     const body={expected_version:draft.version,function:$('upload-function').value,examples_json:$('upload-examples').value,consent:true};
     if(draft.kind==='PROJECT'){
      body.allowed_paths=projectChecks.filter(input=>input.checked).map(input=>input.value);
@@ -263,7 +314,7 @@ const UploadUI=(()=>{
  };
  $('upload-file').onchange=sourceChanged;$('upload-directory').onchange=sourceChanged;
  $('upload-mode').onchange=()=>{$('upload-file').value='';$('upload-directory').value='';sourceChanged();};
- $('upload-goal').oninput=()=>{invalidateImports('goal');key=null;render();};
+ $('upload-goal').oninput=()=>{invalidateImports('goal');$('upload-consent').checked=false;render();};
  for(const kind of ['examples','oracle','properties','relations','sequences'])$('upload-'+kind).oninput=()=>{resetRuleDraft(true);invalidateImports(kind);$('upload-consent').checked=false;render();};
  $('upload-recent').onchange=async()=>{
   const id=$('upload-recent').value;if(!id||busy)return;
@@ -272,6 +323,6 @@ const UploadUI=(()=>{
   catch(error){if(version===generation)$('upload-status').textContent=error.message;}
   finally{if(version===generation){busy=false;render();}}
  };
- if(draftEnabled){$('upload-draft-generate').onclick=generateRuleDraft;$('upload-draft-query').onclick=queryRuleDraft;$('upload-draft-apply').onclick=applyRuleDraft;}
+ if(draftEnabled){$('upload-draft-generate').onclick=generateRuleDraft;$('upload-draft-query').onclick=queryRuleDraft;$('upload-draft-apply').onclick=()=>applyRuleDraft();if(applyExamples)applyExamples.onclick=()=>applyRuleDraft(true);}
  return{render};
 })();
