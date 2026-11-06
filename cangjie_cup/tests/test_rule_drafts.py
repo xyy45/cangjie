@@ -93,7 +93,7 @@ def test_clarification_cannot_become_applicable_even_with_coherent_examples(prep
     'code_execution','divide_zero','overflow','outside_domain','inconsistent_rule','missing_oracle','missing_examples',
     'model_actor','model_permission','model_status','normalized_rule_fields','reserved_holdout','too_long_text','bool_version',
 ])
-def test_invalid_suggestions_never_yield_usable_test_payload(prepared,change):
+def test_unsafe_rules_are_discarded_and_invalid_examples_are_blocked(prepared,change):
     raw=suggestion()
     if change=='null_expected':raw['examples'][0]['expected']=None
     elif change=='bool_for_int':raw['examples'][0]['args'][0]=True
@@ -116,8 +116,16 @@ def test_invalid_suggestions_never_yield_usable_test_payload(prepared,change):
     elif change=='too_long_text':raw['summary']='x'*2001
     else:raw['schema_version']=True
     result=contract_module().validate_suggestion(json.dumps(raw),snapshot(prepared))
-    assert result['status']=='INVALID' and result['business_verified'] is False
-    assert result['examples_json'] is None and result['oracle_json'] is None
+    rule_only={'unknown_parameter','unknown_function','code_execution','divide_zero','overflow',
+               'outside_domain','inconsistent_rule','missing_oracle','normalized_rule_fields','reserved_holdout'}
+    assert result['business_verified'] is False and result['oracle_json'] is None
+    assert result['normalized_oracle'] is None
+    if change in rule_only:
+        assert result['status']=='EXAMPLES_READY'
+        assert json.loads(result['examples_json'])==EXAMPLES
+        assert result['suggestion']['oracle'] is None
+    else:
+        assert result['status']=='INVALID' and result['examples_json'] is None
     assert prepared[0].get(prepared[1]['id'],actor_id='alice')['status']=='DRAFT'
 
 
@@ -286,3 +294,28 @@ def test_each_upload_has_a_small_independent_generation_limit(prepared):
     with pytest.raises(ValueError):create_job(service,prepared,key='generation-4')
     assert len(FixtureDraftProvider.calls)==3
     with service.store.connect() as db:assert db.execute('SELECT count(*) FROM tasks').fetchone()[0]==0
+
+
+def test_malformed_oracle_does_not_prevent_valid_test_examples(prepared):
+    raw=suggestion();raw['oracle']=['not a rule object']
+    result=contract_module().validate_suggestion(json.dumps(raw),snapshot(prepared))
+    assert result['status']=='EXAMPLES_READY'
+    assert json.loads(result['examples_json'])==EXAMPLES
+    assert result['oracle_json'] is None
+
+
+def test_legacy_failed_result_can_still_be_read_from_originals(prepared):
+    from nexus.uploads.rule_drafts import sha
+    service=draft_service(prepared);job=create_job(service,prepared);service.run(job['id'])
+    _,_,payload=service._row(job['id'])
+    path=service.directory(job['id'])
+    response=json.loads((path/'response.json').read_bytes());raw=suggestion();raw['oracle']=None
+    response['raw_text']=json.dumps(raw)
+    (path/'response.json').write_text(json.dumps(response))
+    legacy=contract_module().validate_suggestion(response['raw_text'],snapshot(prepared),result_version=1)
+    assert legacy['schema_version']==1 and legacy['status']=='INVALID'
+    (path/'result.json').write_text(json.dumps(legacy))
+    payload.update(response_sha256=sha((path/'response.json').read_bytes()),result_sha256=sha((path/'result.json').read_bytes()))
+    with service.store.connect() as db:
+        db.execute('UPDATE rule_draft_requests SET payload=? WHERE id=?',(json.dumps(payload),job['id']))
+    assert service.get(job['id'],actor_id='alice')['result']==legacy

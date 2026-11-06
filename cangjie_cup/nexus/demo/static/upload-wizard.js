@@ -14,14 +14,15 @@
   const TOTAL = steps.length;
   let current = 1;
   let visited = new Set([1]);
-  let observedFnDisabled = null;
 
   const modeLabels = { single: '单个 .cj 文件', project: '仓颉工程 ZIP', directory: '仓颉工程目录' };
   const field = id => document.getElementById(id);
 
   function gateError(next) {
-    if (next === 3 && !field('upload-function')?.value) return '请先在第 1 步「读取函数」，并在此选择待测函数';
+    if (next === 2 && !field('upload-function')?.value) return '请先选择源码并点击「读取函数」';
+    if (next === 3 && !field('upload-function')?.value) return '请选择待测函数';
     if (next === 4) {
+      if (!field('upload-goal')?.value.trim()) return '请填写预期行为';
       const examples = field('upload-examples')?.value.trim();
       if (!examples) return '请先填写或导入「输入与预期输出」测试 JSON';
       try { JSON.parse(examples); } catch { return '测试 JSON 格式有误，请先修正'; }
@@ -39,7 +40,7 @@
     });
     prevBtn.disabled = current === 1;
     nextBtn.hidden = current === TOTAL; // 最后一步由「确认测试并进入工作台」收尾
-    if (hint && current !== 2 && current !== 3) hint.textContent = '';
+    if (hint) hint.textContent = '';
     if (current === TOTAL) fillSummary();
   }
 
@@ -90,17 +91,9 @@
     if (current < TOTAL) { event.preventDefault(); goTo(current + 1); }
   });
 
-  // 读取函数完成后自动进入第 2 步
-  function watchPrepare() {
-    const fn = field('upload-function');
-    if (!fn || observedFnDisabled === null) return;
-    if (observedFnDisabled && !fn.disabled && dialog.open) { observedFnDisabled = false; goTo(Math.max(current, 2)); return; }
-    observedFnDisabled = fn.disabled;
-  }
-  observedFnDisabled = field('upload-function') ? field('upload-function').disabled : null;
-  setInterval(watchPrepare, 300);
-  const prepareBtn = field('upload-prepare');
-  if (prepareBtn) prepareBtn.addEventListener('click', () => { observedFnDisabled = true; });
+  dialog.addEventListener('upload-functions-loaded', () => {
+    if (dialog.open && current === 1) goTo(2);
+  });
 
   // 每次打开对话框时回到第 1 步（保留已填内容）
   dialog.addEventListener('close', () => { current = 1; visited = new Set([1]); render(); });

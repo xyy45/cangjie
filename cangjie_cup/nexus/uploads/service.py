@@ -9,6 +9,15 @@ from nexus.store import uid
 from nexus.uploads.language import inspect_source,validate_examples,validate_candidate,literal
 
 
+class UploadGoalConflict(ValueError):pass
+
+
+def validate_goal(goal,*,required=True):
+    if not isinstance(goal,str) or len(goal.strip())>4000 or (required and not goal.strip()):
+        raise ValueError('请填写不超过4000字的预期行为')
+    return goal if goal.strip() else ''
+
+
 class UploadService:
     def __init__(self,store):
         self.store=store
@@ -52,8 +61,8 @@ class UploadService:
         return [self.get(row[0],actor_id=actor_id) for row in rows]
     def prepare(self,filename,data,goal,*,actor_id,request_key):
         source=validate_source(filename,data);info=inspect_source(source['code'])
-        if not isinstance(goal,str) or not 1<=len(goal.strip())<=4000 or not actor_id:
-            raise ValueError('请填写不超过4000字的预期行为')
+        goal=validate_goal(goal,required=False)
+        if not actor_id:raise ValueError('缺少上传会话')
         if not isinstance(request_key,str) or not 1<=len(request_key)<=64:raise ValueError('上传请求标识无效')
         body_hash=digest(dict(filename=filename,source_sha256=source['source_sha256'],goal=goal))
         with self.store.connect() as db:
@@ -72,10 +81,27 @@ class UploadService:
     def prepare_project(self,filename,data,goal,*,actor_id,request_key,entries=None):
         from nexus.projects.service import prepare_project
         return prepare_project(self,filename,data,goal,actor_id=actor_id,request_key=request_key,entries=entries)
+    def bind_goal(self,identity,*,actor_id,expected_version,goal):
+        goal=validate_goal(goal)
+        self.get(identity,actor_id=actor_id)
+        with self.store.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('SELECT payload FROM upload_projects WHERE id=? AND actor_id=?',(identity,actor_id)).fetchone()
+            if row is None:raise LookupError('上传不存在')
+            value=json.loads(row[0])
+            if type(expected_version) is not int or expected_version!=value['version']:
+                raise UploadGoalConflict('上传版本已变化，请重新打开上传记录')
+            if value['goal']==goal:return value
+            if value['status']!='DRAFT' or value['goal']:
+                raise UploadGoalConflict('此上传的预期行为已绑定，请读取新上传后填写不同的预期行为')
+            value['goal']=goal
+            db.execute('UPDATE upload_projects SET payload=? WHERE id=? AND actor_id=?',(json.dumps(value,ensure_ascii=False),identity,actor_id))
+            return value
     def confirm(self,identity,*,expected_version,function,examples_json,consent,actor_id,oracle_json=None,allowed_paths=None,rule_draft_ref=None,properties_json=None,relations_json=None,sequences_json=None):
         value=self.get(identity,actor_id=actor_id)
         if type(expected_version) is not int or expected_version!=1 or consent is not True:
             raise ValueError('请确认当前版本、公开测试示例及远端发送许可')
+        validate_goal(value['goal'])
         if not isinstance(examples_json,str) or len(examples_json.encode())>8192:raise ValueError('示例JSON最多8KiB')
         try:examples=json.loads(examples_json)
         except (ValueError,RecursionError):raise ValueError('示例JSON格式无效') from None

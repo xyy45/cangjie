@@ -55,7 +55,9 @@ def test_object_draft_rejects_untrusted_types_versions_and_inconsistent_values(t
     elif change=='version':raw['oracle']['version']=4
     elif change=='model-types':raw['oracle']['types']=types()
     else:raw['oracle']['excluded_inputs']=[[state(2),0]]
-    assert validate_suggestion(json.dumps(raw),snapshot)['status']=='INVALID'
+    result=validate_suggestion(json.dumps(raw),snapshot)
+    assert result['status']==('INVALID' if change in ('tag','field','bool-int') else 'EXAMPLES_READY')
+    assert result['oracle_json'] is None
 
 
 def test_object_confirm_shares_oracle5_reserved_set_and_preserves_raw_json(tmp_path):

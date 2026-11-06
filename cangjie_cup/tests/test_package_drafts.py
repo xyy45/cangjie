@@ -32,7 +32,8 @@ def test_scoped_suggestion_requires_version6_even_for_only_primitive_values(tmp_
     assert result['status']=='DRAFT_READY' and result['normalized_oracle']['signature']['scope']==snap['signature']['scope']
     assert 'READONLY_BODY_NOT_SENT' not in json.dumps(snap) and 'ORIGINAL_TEST_BODY_NOT_FOR_MODEL' not in json.dumps(snap)
     raw['oracle']['scope']=snap['signature']['scope']
-    assert validate_suggestion(json.dumps(raw),snap)['status']=='INVALID'
+    invalid_rule=validate_suggestion(json.dumps(raw),snap)
+    assert invalid_rule['status']=='EXAMPLES_READY' and invalid_rule['oracle_json'] is None
 
 
 @pytest.mark.parametrize('kind',['object','primitive'])
@@ -41,7 +42,7 @@ def test_scoped_prompt_uses_canonical_names_empty_exclusions_and_never_sends(tmp
     monkeypatch.setattr(provider,'model_config',lambda:dict(DEEPSEEK_API_KEY='fixture-key',DEEPSEEK_MODEL='fixture-model',DEEPSEEK_BASE_URL='https://fixture.invalid'))
     calls=[];client=RuleDraftProvider(transport=httpx.MockTransport(lambda request:calls.append(request)))
     snap,_=fixture(tmp_path,kind);body=client.prepare(snap);text=body['messages'][0]['content']
-    assert 'rule-draft-packages-prompt-v1' in text and 'oracle仅允许version=6' in text
+    assert 'rule-draft-packages-prompt-v2' in text and 'oracle仅允许version=6' in text
     assert 'excluded_inputs必须为[]' in text and 'scope' in text and '规范' in text
     assert 'max_cases、excluded_inputs；' in text
     assert not calls

@@ -128,3 +128,31 @@ def test_bounded_large_upstream_metadata_keeps_known_success_and_original(web,mo
     service.run(job['id']);state=alice.get(base+'/rule-drafts/'+job['id']).json
     assert state['call_state']=='SUCCEEDED' and state['result']['status']=='DRAFT_READY'
     assert state['response_sha256'] and len(json.dumps(state).encode())<65536
+
+
+@pytest.mark.parametrize('invalid_rule',[True,False])
+def test_fill_examples_only_and_confirm_without_a_rule(web,invalid_rule):
+    from tests.test_rule_drafts import EXAMPLES,suggestion
+    app,alice,headers,uploaded,service=web;base='/api/uploads/repair/'+uploaded['id']
+    class Provider(FixtureDraftProvider):
+        async def complete(self,body):
+            response=await super().complete(body)
+            raw=suggestion()
+            if invalid_rule:raw['oracle']['domains']['quantity']['max']=1
+            response['raw_text']=json.dumps(raw)
+            return response
+    service.provider_factory=Provider
+    job=alice.post(base+'/rule-drafts',json=job_body(),headers=headers).json
+    service.run(job['id'])
+    done=alice.get(base+'/rule-drafts/'+job['id']).json
+    assert done['result']['status']==('EXAMPLES_READY' if invalid_rule else 'DRAFT_READY')
+    preview_url=base+'/rule-drafts/'+job['id']+'/apply-preview'
+    response=alice.post(preview_url,json=dict(expected_version=1,function='fee',examples_only=True),headers=headers)
+    assert response.status_code==200,response.json
+    preview=response.json
+    assert json.loads(preview['examples_json'])==EXAMPLES
+    assert preview['oracle_json'] is None and preview['rule_draft_ref']['examples_only'] is True
+    response=alice.post(base+'/confirm',json=dict(expected_version=1,function='fee',examples_json=preview['examples_json'],rule_draft_ref=preview['rule_draft_ref'],consent=True),headers=headers)
+    assert response.status_code==200,response.json
+    assert response.json['examples']==EXAMPLES and not response.json.get('oracle_contract')
+    assert response.json['rule_draft_provenance']['edited_by_user'] is False

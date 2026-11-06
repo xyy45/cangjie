@@ -153,7 +153,9 @@ class RuleDraftService:
         snapshot=self._input(identity,payload)
         request=self._read(identity,payload,'request');reply=self._read(identity,payload,'response');result=self._read(identity,payload,'result')
         if result is not None:
-            if reply is None or result!=validate_suggestion(reply.get('raw_text'),snapshot):raise ValueError('草案结果与原始响应不符')
+            if (reply is None or type(result) is not dict or
+                    result!=validate_suggestion(reply.get('raw_text'),snapshot,result_version=result.get('schema_version'))):
+                raise ValueError('草案结果与原始响应不符')
         return {**payload,'call_state':state,'result':result,
                 'binding':{k:v for k,v in snapshot.items() if k!='files'}}
 
@@ -163,7 +165,8 @@ class RuleDraftService:
             rows=db.execute("SELECT id FROM rule_draft_requests WHERE actor_id=? AND json_extract(payload,'$.upload_id')=? ORDER BY rowid DESC LIMIT 10",(actor_id,upload_id)).fetchall()
         return [self.get(identity,actor_id=actor_id) for identity, in rows]
 
-    def apply_preview(self,identity,*,actor_id,expected_version,function,allowed_paths=None):
+    def apply_preview(self,identity,*,actor_id,expected_version,function,allowed_paths=None,examples_only=False):
+        if type(examples_only) is not bool:raise ValueError('草案应用方式无效')
         state=self.get(identity,actor_id=actor_id)
         actor,_,payload=self._row(identity,actor_id)
         snapshot=self._current(identity,payload,actor)
@@ -172,20 +175,28 @@ class RuleDraftService:
         upload=self.uploads.get(snapshot['upload_id'],actor_id=actor_id)
         expected_paths=snapshot['allowed_paths'] if upload.get('kind')=='PROJECT' else None
         if allowed_paths!=expected_paths:raise DraftConflict('草案不属于当前选择的生产范围')
-        if state['call_state']!='SUCCEEDED' or state['result']['status']!='DRAFT_READY':raise DraftConflict('草案尚不可应用，请先核对问题或状态')
-        return dict(examples_json=state['result']['examples_json'],oracle_json=state['result']['oracle_json'],
-                    rule_draft_ref=dict(id=identity,binding_hash=snapshot['binding_hash'],result_sha256=state['result_sha256']),
-                    business_verified=False)
+        result=state['result']
+        if state['call_state']!='SUCCEEDED' or not result or result['status'] not in ('DRAFT_READY','EXAMPLES_READY'):
+            raise DraftConflict('草案尚不可应用，请先核对问题或状态')
+        examples_only=examples_only or result['status']=='EXAMPLES_READY'
+        reference=dict(id=identity,binding_hash=snapshot['binding_hash'],result_sha256=state['result_sha256'])
+        if examples_only:reference['examples_only']=True
+        return dict(examples_json=result['examples_json'],oracle_json=None if examples_only else result['oracle_json'],
+                    rule_draft_ref=reference,business_verified=False)
 
     def confirmation_material(self,reference,*,upload_id,actor_id,expected_version,function,allowed_paths,examples,oracle):
-        if type(reference) is not dict or set(reference)!={'id','binding_hash','result_sha256'}:
+        fields={'id','binding_hash','result_sha256'}
+        if type(reference) is not dict or (set(reference)!=fields and
+                (set(reference)!=fields|{'examples_only'} or reference.get('examples_only') is not True)):
             raise ValueError('草案来源字段无效')
+        examples_only=reference.get('examples_only',False)
         state=self.get(reference['id'],actor_id=actor_id)
         _,_,payload=self._row(reference['id'],actor_id)
         old=self._input(reference['id'],payload);upload=self.uploads.get(upload_id,actor_id=actor_id)
         if (state['upload_id']!=upload_id or reference['binding_hash']!=state['binding_hash'] or
                 reference['result_sha256']!=state.get('result_sha256') or state['call_state']!='SUCCEEDED' or
-                not state['result'] or state['result']['status']!='DRAFT_READY'):
+                not state['result'] or state['result']['status'] not in
+                (('DRAFT_READY','EXAMPLES_READY') if examples_only else ('DRAFT_READY',))):
             raise ValueError('草案来源与生成结果不符')
         paths=allowed_paths if upload.get('kind')=='PROJECT' else ['src/uploaded.cj']
         if (type(expected_version) is not int or expected_version!=old['upload_version'] or
@@ -193,7 +204,8 @@ class RuleDraftService:
                 upload['source_sha256']!=old['source_sha256'] or upload['goal']!=old['goal']):
             raise ValueError('草案来源与当前上传、函数或范围不符')
         if upload['status']=='DRAFT':self._current(reference['id'],payload,actor_id)
-        generated=dict(examples=state['result']['suggestion']['examples'],oracle=state['result']['normalized_oracle'])
+        generated=dict(examples=state['result']['suggestion']['examples'],
+                       oracle=None if examples_only else state['result']['normalized_oracle'])
         confirmed=dict(examples=examples,oracle=oracle)
         proof=dict(schema_version=1,rule_draft_id=reference['id'],source_binding_hash=old['binding_hash'],
                    result_sha256=state['result_sha256'],model_id=state['model_id'],origin=state['origin'],business_verified=False,

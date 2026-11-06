@@ -49,7 +49,9 @@ def test_wire_example_schema_has_scalar_suite_and_signature_types(tmp_path, monk
         if value['type'] == 'integer':
             assert value['minimum'] == -(2**63) and value['maximum'] == 2**63-1
     assert schema['properties']['schema_version']['const'] == 1
-    assert 'rule-draft-prompt-v2' in instructions
+    assert 'rule-draft-prompt-v3' in instructions
+    assert 'oracle是可选增强' in instructions and '120个语法树节点' in instructions
+    assert '覆盖每个公开用例的每个实参' in instructions
     assert '"suite":"target"' in instructions and '"suite":"regression"' in instructions
 
 

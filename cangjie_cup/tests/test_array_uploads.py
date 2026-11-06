@@ -82,7 +82,10 @@ def test_array_draft_v4_remains_data_until_explicit_confirmation(tmp_path):
 
 def test_array_draft_cannot_invent_private_excluded_inputs(tmp_path):
     u,d,_=prepare(tmp_path);snapshot=draft_snapshot(u,d['id'],actor_id='alice',expected_version=1,function='orderTotal');rule=raw_oracle();rule['excluded_inputs']=[[[],2]]
-    assert validate_suggestion(suggestion(rule),snapshot)['status']=='INVALID'
+    result=validate_suggestion(suggestion(rule),snapshot)
+    assert result['status']=='EXAMPLES_READY' and result['code']=='RULE_INVALID'
+    assert result['oracle_json'] is None and result['normalized_oracle'] is None
+    assert result['suggestion']['oracle'] is None
 
 
 def test_array_schema_and_prompt_match_server_v4_and_readonly_subset(tmp_path,monkeypatch):

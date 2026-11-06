@@ -8,11 +8,13 @@ from nexus.contracts import digest,source_manifest
 from nexus.projects.archive import read_archive,read_entries
 from nexus.projects.index import inspect_project
 from nexus.store import uid
+from nexus.uploads.service import validate_goal
 
 
 def prepare_project(service,filename,data,goal,*,actor_id,request_key,entries=None):
     if not isinstance(filename,str) or len(filename)>120 or not re.fullmatch(r'[^/\\\x00-\x1f]+',filename):raise ValueError('工程显示文件名无效')
-    if not isinstance(goal,str) or not 1<=len(goal.strip())<=4000 or not actor_id:raise ValueError('请填写不超过4000字的预期行为')
+    goal=validate_goal(goal,required=False)
+    if not actor_id:raise ValueError('缺少上传会话')
     if not isinstance(request_key,str) or not 1<=len(request_key)<=64:raise ValueError('上传请求标识无效')
     files=read_entries(entries) if entries is not None else read_archive(data)
     info=inspect_project(files)

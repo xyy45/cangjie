@@ -74,17 +74,17 @@
 <dialog id="upload-dialog" class="upload-dialog">
 <div class="dialog-heading"><div><h2>上传文件修复</h2><p class="dialog-subtitle">冻结源码与验证依据，生成并审阅修复候选</p></div><button class="icon-button" data-close="upload-dialog" aria-label="关闭">×</button></div>
 <ol class="upload-stepper" aria-label="上传步骤">
-<li class="upload-stepper-item active" data-step-dot="1"><span class="stepper-num">1</span><span class="stepper-label">源码与目标</span></li>
+<li class="upload-stepper-item active" data-step-dot="1"><span class="stepper-num">1</span><span class="stepper-label">导入源码</span></li>
 <li class="upload-stepper-item" data-step-dot="2"><span class="stepper-num">2</span><span class="stepper-label">函数与范围</span></li>
 <li class="upload-stepper-item" data-step-dot="3"><span class="stepper-num">3</span><span class="stepper-label">测试与规则</span></li>
 <li class="upload-stepper-item" data-step-dot="4"><span class="stepper-num">4</span><span class="stepper-label">核对与授权</span></li>
 </ol>
 <section class="upload-step" data-step="1">
-<h3 class="upload-step-title">源码与目标</h3>
+<h3 class="upload-step-title">导入源码</h3>
 <p id="upload-source-help" class="evidence-note">上传UTF-8仓颉源码，支持Int64／Bool／String普通函数，String最多256 UTF-8字节。。</p>
 <div class="upload-fields"><label class="upload-field">本会话上传记录<select id="upload-recent"><option value="">选择已上传记录</option></select></label>
 <label class="upload-field">导入方式<select id="upload-mode"><option value="single">单个.cj文件</option><option value="project">仓颉工程 ZIP</option><option value="directory">仓颉工程目录</option></select></label></div>
-<div class="upload-fields"><label class="upload-field">源码文件<input id="upload-file" type="file" accept=".cj"><input id="upload-directory" type="file" webkitdirectory multiple hidden></label><div class="upload-field"><div class="upload-field-heading"><label for="upload-goal">预期行为</label><button id="upload-goal-import" type="button" class="button secondary" aria-label="导入预期行为文件">导入文件</button></div><input id="upload-goal-file" type="file" accept=".txt,.md" hidden><textarea id="upload-goal" rows="3" maxlength="4000" placeholder="例如：费用应为数量乘单价，数量非法时返回-1"></textarea></div></div>
+<div class="upload-fields"><label class="upload-field">源码文件<input id="upload-file" type="file" accept=".cj"><input id="upload-directory" type="file" webkitdirectory multiple hidden></label></div>
 <div class="upload-prepare-row"><button id="upload-prepare" class="button secondary">读取函数</button><code id="upload-identity" class="evidence-hash"></code></div>
 </section>
 <section class="upload-step" data-step="2" hidden>
@@ -96,14 +96,15 @@
 </section>
 <section class="upload-step" data-step="3" hidden>
 <h3 class="upload-step-title">测试与规则</h3>
+<div class="upload-field"><div class="upload-field-heading"><label for="upload-goal">预期行为</label><button id="upload-goal-import" type="button" class="button secondary" aria-label="导入预期行为文件">导入文件</button></div><input id="upload-goal-file" type="file" accept=".txt,.md" hidden><textarea id="upload-goal" rows="3" maxlength="4000" placeholder="例如：费用应为数量乘单价，数量非法时返回-1"></textarea></div>
 <p class="evidence-note">公开测试为必填项；规则草案可辅助生成。下方高级验证规则按需启用，留空不执行。</p>
 <section class="upload-project" aria-label="业务规则草案">
-<div class="upload-field-heading"><h3>业务规则草案</h3><div><button id="upload-draft-query" type="button" class="button secondary" disabled>查询草案</button> <button id="upload-draft-generate" type="button" class="button secondary" disabled>生成草案</button></div></div>
-<label class="upload-consent"><input id="upload-draft-consent" type="checkbox" disabled>我同意现在将所选源码和预期行为发送给模型，生成测试与规则草案。</label>
-<p id="upload-draft-status" class="evidence-note" role="status">读取函数后可生成或查询草案。</p>
+<div class="upload-field-heading"><h3>自动生成测试</h3><div><button id="upload-draft-query" type="button" class="button secondary" disabled>查询草案</button> <button id="upload-draft-generate" type="button" class="button secondary" disabled>生成测试用例</button></div></div>
+<label class="upload-consent"><input id="upload-draft-consent" type="checkbox" disabled>我同意现在将所选源码和预期行为发送给 DeepSeek，生成测试用例和可选的独立规则。</label>
+<p id="upload-draft-status" class="evidence-note" role="status">读取函数后可生成测试用例或查询已有草案。</p>
 <div id="upload-draft-preview" hidden><p id="upload-draft-summary"></p><p id="upload-draft-assumptions" class="evidence-note"></p><p id="upload-draft-questions" role="status"></p>
-<details><summary>查看生成的测试与规则</summary><label class="upload-field">测试草案<textarea id="upload-draft-examples-preview" rows="5" readonly spellcheck="false"></textarea></label><label class="upload-field">规则草案<textarea id="upload-draft-oracle-preview" rows="5" readonly spellcheck="false"></textarea></label></details>
-<button id="upload-draft-apply" type="button" class="button secondary" disabled>填入编辑框</button></div></section>
+<details id="upload-draft-output" open><summary>预览生成结果</summary><label class="upload-field">测试用例<textarea id="upload-draft-examples-preview" rows="5" readonly spellcheck="false"></textarea></label><label id="upload-draft-rule-preview" class="upload-field">独立规则<textarea id="upload-draft-oracle-preview" rows="5" readonly spellcheck="false"></textarea></label></details>
+<button id="upload-draft-apply-examples" type="button" class="button secondary" hidden disabled>填入测试用例</button> <button id="upload-draft-apply" type="button" class="button secondary" hidden disabled>填入测试与规则</button></div></section>
 <div class="upload-field"><div class="upload-field-heading"><label for="upload-examples">输入与预期输出（JSON）</label><button id="upload-examples-import" type="button" class="button secondary" aria-label="导入测试JSON文件" disabled>导入文件</button></div><input id="upload-examples-file" type="file" accept=".json" hidden disabled><textarea id="upload-examples" rows="10" spellcheck="false" disabled></textarea></div>
 <p class="evidence-note">args是按函数签名排序的参数数组，expected为真实预期值，suite为target或regression；每组至少一项。请替换null。确认后源码、测试及所选验证契约冻结，模型不能修改验证依据。</p>
 <details class="upload-advanced"><summary><strong>高级验证规则（可选）</strong><span class="evidence-note">独立规则、业务属性、成对关系、状态模型，按需启用</span></summary>
@@ -119,8 +120,9 @@
 <p class="evidence-note">确认以下内容后冻结：源码、测试与所选验证契约在修复期间不可更改。</p>
 <dl class="upload-summary" id="upload-summary"><div><dt>待测函数</dt><dd id="upload-summary-function">—</dd></div><div><dt>导入方式</dt><dd id="upload-summary-mode">—</dd></div><div><dt>预期行为</dt><dd id="upload-summary-goal">—</dd></div><div><dt>公开测试</dt><dd id="upload-summary-examples">—</dd></div><div><dt>高级验证</dt><dd id="upload-summary-advanced">—</dd></div></dl>
 <label class="upload-consent"><input id="upload-consent" type="checkbox">我已核对预期值及所填写的规则、业务属性与成对关系，同意开始修复时向课题组MCP和DeepSeek发送源码、需求及公开测试示例。</label>
-<p id="upload-status" class="evidence-note" role="status"></p><button id="upload-confirm" class="button primary" disabled>确认测试并进入工作台</button>
+<button id="upload-confirm" class="button primary" disabled>确认测试并进入工作台</button>
 </section>
+<p id="upload-status" class="evidence-note" role="status"></p>
 <div class="upload-wizard-nav"><button type="button" id="upload-step-prev" class="button secondary" disabled>上一步</button><span id="upload-step-hint" class="evidence-note" role="status"></span><button type="button" id="upload-step-next" class="button primary">下一步</button></div>
 </dialog>
 <script src="{{ url_for('demo_assets.static',filename='flow.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='evidence-core.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='feedback.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='exploration.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='properties.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='relations.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='sequences.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='localization.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='verification-report.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='demo.js') }}"></script><script src="{{ url_for('demo_assets.static',filename='evidence.js') }}"></script>

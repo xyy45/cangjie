@@ -1,7 +1,7 @@
 """Preparing and confirming uploads does not invoke tools or a model."""
 from flask import request,session,jsonify
 from nexus.analysis.normalize import MAX_SOURCE
-from nexus.uploads.service import UploadService
+from nexus.uploads.service import UploadService,UploadGoalConflict
 from nexus.projects.archive import MAX_ARCHIVE,MAX_FILE,MAX_FILES,MAX_TOTAL
 import json
 import threading
@@ -32,7 +32,9 @@ def register_uploads(app,store):
             if (type(body) is not dict or set(body)-{'expected_version','function','request_key','consent','allowed_paths'} or
                     not {'expected_version','function','request_key','consent'}<=set(body)):
                 raise ValueError('请确认函数、版本、范围及生成发送许可')
-            service.get(identity,actor_id=session['actor_id'])
+            uploaded=service.get(identity,actor_id=session['actor_id'])
+            if not uploaded['goal']:
+                return jsonify(error='请填写预期行为后再生成测试用例',code='DRAFT_INPUT_INVALID'),400
             if drafts.provider_factory is None:
                 from nexus.demo.rule_draft_provider import RuleDraftProvider
                 if not RuleDraftProvider.available():return jsonify(error='模型草案配置未就绪',code='DRAFT_MODEL_UNAVAILABLE'),503
@@ -55,7 +57,7 @@ def register_uploads(app,store):
         try:
             bound_draft(identity,draft_id)
             body=request.get_json()
-            if type(body) is not dict or set(body)-{'expected_version','function','allowed_paths'} or not {'expected_version','function'}<=set(body):raise ValueError('应用输入无效')
+            if type(body) is not dict or set(body)-{'expected_version','function','allowed_paths','examples_only'} or not {'expected_version','function'}<=set(body):raise ValueError('应用输入无效')
             return jsonify(drafts.apply_preview(draft_id,actor_id=session['actor_id'],**body))
         except LookupError:return jsonify(error='上传或草案不存在'),404
         except DraftConflict as exc:return jsonify(error=str(exc),code='DRAFT_CONFLICT'),409
@@ -68,13 +70,24 @@ def register_uploads(app,store):
     @app.get('/api/uploads/repair/<identity>')
     def upload_get(identity):return jsonify(service.get(identity,actor_id=session['actor_id']))
 
+    @app.post('/api/uploads/repair/<identity>/goal')
+    def upload_bind_goal(identity):
+        try:
+            body=request.get_json()
+            if type(body) is not dict or set(body)!={'goal','expected_version'}:
+                raise ValueError('请提供预期行为和上传版本')
+            return jsonify(service.bind_goal(identity,actor_id=session['actor_id'],**body))
+        except LookupError:return jsonify(error='上传不存在'),404
+        except UploadGoalConflict as exc:return jsonify(error=str(exc),code='UPLOAD_GOAL_CONFLICT'),409
+        except ValueError as exc:return jsonify(error=str(exc),code='UPLOAD_INPUT_INVALID'),400
+
     @app.post('/api/uploads/repair')
     def upload_prepare():
         try:
-            if set(request.files)!={'file'} or len(request.files.getlist('file'))!=1 or set(request.form)!={'goal','request_key'}:
-                raise ValueError('请选择单个.cj并填写预期行为')
+            if set(request.files)!={'file'} or len(request.files.getlist('file'))!=1 or set(request.form) not in ({'request_key'},{'goal','request_key'}):
+                raise ValueError('请选择单个 .cj 文件')
             file=request.files['file']
-            value=service.prepare(file.filename,file.stream.read(MAX_SOURCE+1),request.form['goal'],
+            value=service.prepare(file.filename,file.stream.read(MAX_SOURCE+1),request.form.get('goal',''),
                 actor_id=session['actor_id'],request_key=request.form['request_key'])
             return jsonify(value),201
         except ValueError as exc:return jsonify(error=str(exc),code='UPLOAD_INPUT_INVALID'),400
@@ -92,11 +105,11 @@ def register_uploads(app,store):
     @app.post('/api/uploads/repair/project')
     def project_prepare():
         try:
-            if set(request.files)=={'file'} and set(request.form)=={'goal','request_key'} and len(request.files.getlist('file'))==1:
+            if set(request.files)=={'file'} and set(request.form) in ({'request_key'},{'goal','request_key'}) and len(request.files.getlist('file'))==1:
                 file=request.files['file']
                 if not file.filename.lower().endswith('.zip'):raise ValueError('工程归档请选择.zip')
-                value=service.prepare_project(file.filename,file.stream.read(MAX_ARCHIVE+1),request.form['goal'],actor_id=session['actor_id'],request_key=request.form['request_key'])
-            elif set(request.files)=={'files'} and set(request.form)=={'goal','request_key','paths_json'}:
+                value=service.prepare_project(file.filename,file.stream.read(MAX_ARCHIVE+1),request.form.get('goal',''),actor_id=session['actor_id'],request_key=request.form['request_key'])
+            elif set(request.files)=={'files'} and set(request.form) in ({'request_key','paths_json'},{'goal','request_key','paths_json'}):
                 raw=request.form['paths_json']
                 if len(raw.encode())>32768:raise ValueError('工程路径清单超限')
                 try:paths=json.loads(raw)
@@ -108,7 +121,7 @@ def register_uploads(app,store):
                     data=file.stream.read(MAX_FILE+1);total+=len(data)
                     if len(data)>MAX_FILE or total>MAX_TOTAL:raise ValueError('工程文件或总大小超限')
                     entries[path]=data
-                value=service.prepare_project('目录工程',None,request.form['goal'],actor_id=session['actor_id'],request_key=request.form['request_key'],entries=entries)
+                value=service.prepare_project('目录工程',None,request.form.get('goal',''),actor_id=session['actor_id'],request_key=request.form['request_key'],entries=entries)
             else:raise ValueError('请选择单个ZIP或一份工程目录')
             return jsonify(value),201
         except ValueError as exc:return jsonify(error=str(exc),code='UPLOAD_INPUT_INVALID'),400
